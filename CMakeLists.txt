@@ -118,7 +118,7 @@ set(CF_SRCS
 	src/internal/yyjson.c
 
 	libraries/cimgui/imgui/backends/imgui_impl_sdl.cpp
-	
+
 	libraries/cimgui/imgui/imgui.cpp
 	libraries/cimgui/imgui/imgui_demo.cpp
 	libraries/cimgui/imgui/imgui_draw.cpp
