@@ -463,9 +463,9 @@ target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_
 target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libraries/cimgui>)
 target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libraries/cimgui/imgui>)
 
-# These are not properly tested!!!
-# install(TARGETS cute EXPORT cute DESTINATION "lib")
-# install(FILES ${CF_PUBLIC_HDRS} DESTINATION "include/cute")
-# install(FILES ${IMGUI_HDRS} DESTINATION "include/cute/imgui")
-# install(FILES ${CIMGUI_HDRS} DESTINATION "include/cute/cimgui")
-# install(FILES ${SOKOL_HDRS} DESTINATION "include/cute/sokol")
+# Install libraries and headers
+install(TARGETS cute EXPORT cute DESTINATION "lib")
+install(FILES ${CF_PUBLIC_HDRS} DESTINATION "include/cute")
+install(FILES ${IMGUI_HDRS} DESTINATION "include/cute/imgui")
+install(FILES ${CIMGUI_HDRS} DESTINATION "include/cute/cimgui")
+install(FILES ${SOKOL_HDRS} DESTINATION "include/cute/sokol")
