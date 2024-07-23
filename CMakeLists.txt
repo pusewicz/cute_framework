@@ -32,6 +32,9 @@ option(CF_FRAMEWORK_STATIC "Build static library for Cute Framework." ON)
 option(CF_FRAMEWORK_BUILD_TESTS "Build the cute framework unit tests." ON)
 option(CF_FRAMEWORK_BUILD_SAMPLES "Build the cute framework sample programs." ON)
 
+set(INSTALL_LIB_DIR "${CMAKE_INSTALL_PREFIX}/lib" CACHE PATH "Installation directory for libraries")
+set(INSTALL_INC_DIR "${CMAKE_INSTALL_PREFIX}/include" CACHE PATH "Installation directory for headers")
+
 # Platform detection.
 if(CMAKE_SYSTEM_NAME MATCHES "Emscripten")
 	set(EMSCRIPTEN TRUE)
@@ -464,8 +467,17 @@ target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_
 target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libraries/cimgui/imgui>)
 
 # Install libraries and headers
-install(TARGETS cute EXPORT cute DESTINATION "lib")
-install(FILES ${CF_PUBLIC_HDRS} DESTINATION "include/cute")
-install(FILES ${IMGUI_HDRS} DESTINATION "include/cute/imgui")
-install(FILES ${CIMGUI_HDRS} DESTINATION "include/cute/cimgui")
-install(FILES ${SOKOL_HDRS} DESTINATION "include/cute/sokol")
+if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL )
+    install(TARGETS cute
+        RUNTIME DESTINATION "${INSTALL_BIN_DIR}"
+        ARCHIVE DESTINATION "${INSTALL_LIB_DIR}"
+        LIBRARY DESTINATION "${INSTALL_LIB_DIR}"
+	FRAMEWORK DESTINATION "${INSTALL_LIB_DIR}"
+	)
+endif())
+if(NOT SKIP_INSTALL_HEADERS AND NOT SKIP_INSTALL_ALL )
+    install(FILES ${CF_PUBLIC_HDRS} DESTINATION "${INSTALL_INC_DIR}")
+    install(FILES ${IMGUI_HDRS} DESTINATION "include/cute/imgui")
+    install(FILES ${CIMGUI_HDRS} DESTINATION "include/cute/cimgui")
+    install(FILES ${SOKOL_HDRS} DESTINATION "include/cute/sokol")
+endif()
