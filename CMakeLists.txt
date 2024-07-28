@@ -315,7 +315,7 @@ else()
 	fetch_content_with_folder(
 		SDL2
 		GIT_REPOSITORY https://github.com/libsdl-org/SDL
-		GIT_TAG release-2.26.1
+		GIT_TAG SDL2
 		GIT_PROGRESS TRUE
 	)
 	set(CF_LINK_LIBS ${CF_LINK_LIBS} SDL2main SDL2-static)
