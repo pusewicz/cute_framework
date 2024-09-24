@@ -1,0 +1,23 @@
+.{
+    .name = "cute_framework",
+    .version = "1.0.1",
+    .dependencies = .{
+        .sdl = .{
+            .url = "https://github.com/libsdl-org/SDL/archive/88a01fbc964fbea1203071ea3ca2c6f799d4f571.tar.gz",
+            .hash = "1220d2e9c08b783d9bd972cd1c14e21768a051445dc12b40934aa29c3533c79a1001",
+        },
+        .glslang = .{ .url = "https://github.com/Games-by-Mason/glslang-zig/archive/refs/heads/main.tar.gz", .hash = "1220d8a973a82dc73994c611172c007155aa1938be78f672f003a30c7dca057e3fff" },
+        .physfs = .{
+            .url = "https://github.com/icculus/physfs/archive/bfa7997c671957eb0a340ff1cf3c634e6269904a.tar.gz",
+            .hash = "12206d6eb8b5166a4ab0ae2552c847c6f85cf3400e60dfe3943c526a735dd203dde7",
+        },
+    },
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "include",
+        "libraries",
+        "src",
+    },
+}
