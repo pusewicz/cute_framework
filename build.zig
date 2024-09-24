@@ -95,10 +95,6 @@ fn addPhysfs(
     lib.addCSourceFiles(.{
         .root = root,
         .files = files.toOwnedSlice() catch @panic("OOM"),
-        .flags = &.{
-            "-DPHYSFS_SUPPORTS_DEFAULT=0",
-            "-DPHYSFS_SUPPORTS_ZIP=1",
-        },
     });
     lib.linkLibCpp();
     return lib;
