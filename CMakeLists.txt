@@ -486,6 +486,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 	# Cute sample prgrams (optional, defaulted to also build).
 	if (CF_FRAMEWORK_BUILD_SAMPLES)
+		add_executable(demo samples/demo.c)
 		add_executable(easysprite samples/easy_sprite.c)
 		add_executable(basicserialization samples/basic_serialization.c)
 		add_executable(imgui samples/imgui.c)
@@ -520,6 +521,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 		add_executable(ime samples/ime.c)
 		add_executable(pivot samples/pivot.cpp)
 		set(SAMPLE_EXECUTABLES
+			demo
 			easysprite
 			basicserialization
 			imgui
@@ -595,6 +597,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 		endif()
 
 		# Copy over some folders for certain samples.
+		add_custom_command(TARGET demo PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/samples/demo_data $<TARGET_FILE_DIR:demo>/demo_data)
 		add_custom_command(TARGET spaceshooter PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/samples/spaceshooter_data $<TARGET_FILE_DIR:spaceshooter>/spaceshooter_data)
 		add_custom_command(TARGET waves PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/samples/waves_data $<TARGET_FILE_DIR:waves>/waves_data)
 		add_custom_command(TARGET shallow_water PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/samples/shallow_water_data $<TARGET_FILE_DIR:shallow_water>/shallow_water_data)
