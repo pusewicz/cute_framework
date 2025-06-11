@@ -1,14 +1,20 @@
-[](../header.md ':include')
+---
+title: Web Builds with Emscripten
+parent: Topics
+nav_order: 3
+---
 
-<br>
+# Web Builds with Emscripten
 
+{: .warning }
 CF can not currently build for the web, as CF switched to SDL's SDL_GPU API. SDL_GPU has deprecated all OpenGL support, which unfortunately means no access to OpenGLES, which was used to cross-compile for the web via a compiler called [Emscripten](https://emscripten.org/). The rest of this page details old steps to get emscripten builds going. In the future CF will seek out a replacement technology to enable web builds.
 
 ---
 
 Getting started with Emscripten is a bit challenging, so hopefully this page can help get you started. Once you get your game building for the web it's usually quite a breeze after the initial setup.
 
-!> **Note** Emscripten builds automatically disable CF's [HTTPS support](https://randygaul.github.io/cute_framework/#/api_reference?id=web), since web builds suffer from very poor support of this feature.
+{: .note }
+Emscripten builds automatically disable CF's [HTTPS support](https://randygaul.github.io/cute_framework/#/api_reference?id=web), since web builds suffer from very poor support of this feature.
 
 ## Install Emscripten
 
@@ -16,7 +22,8 @@ Make sure [emscripten is installed](https://emscripten.org/docs/getting_started/
 
 ?> Be sure to install any [platform-specific](https://emscripten.org/docs/getting_started/downloads.html#platform-specific-notes) dependencies first.
 
-?> **Note** For windows users performing setup with the command prompt you should omit `./` from the Emscripten docs. Instead of typing `./emsdk install latest`, try typing `emsdk install latest`.
+{: .note }
+For windows users performing setup with the command prompt you should omit `./` from the Emscripten docs. Instead of typing `./emsdk install latest`, try typing `emsdk install latest`.
 
 1. Run `./emsdk install latest` (or `emsdk install latest` for Windows users).
 2. Run `./emsdk activate latest` (or `emsdk activate latest` for Windows users).

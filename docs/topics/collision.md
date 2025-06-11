@@ -1,6 +1,10 @@
-[](../header.md ':include')
+---
+title: Collision
+parent: Topics
+nav_order: 3
+---
 
-<br>
+# Collision
 
 CF comes with a full-featured [`Collision API`](https://randygaul.github.io/cute_framework/#/api_reference?id=collision). Here's a quick list of the features available:
 

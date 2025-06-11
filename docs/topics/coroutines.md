@@ -1,6 +1,8 @@
-[](../header.md ':include')
-
-<br>
+---
+title: Coroutines
+parent: Topics
+nav_order: 3
+---
 
 # Coroutines
 

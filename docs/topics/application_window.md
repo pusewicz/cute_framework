@@ -1,4 +1,10 @@
-[](../header.md ':include')
+---
+title: Application Window
+parent: Topics
+nav_order: 3
+---
+
+# Application Window
 
 ## Creating a Window
 

@@ -1,6 +1,10 @@
-[](../header.md ':include')
+---
+title: Input
+parent: Topics
+nav_order: 3
+---
 
-<br>
+# Input
 
 There are four main ways to gather input: keyboard, mouse, touch, input text, and IME (input method editor).
 

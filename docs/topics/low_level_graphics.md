@@ -1,6 +1,10 @@
-[](../header.md ':include')
+---
+title: Low-Level Graphics
+parent: Topics
+nav_order: 3
+---
 
-<br>
+# Low-Level Graphics
 
 This page talks about the low level graphics API in CF. If you want to draw shapes, text, or sprites you may instead by looking for [Drawing](https://randygaul.github.io/cute_framework/#/topics/drawing). This page covers things such as canvases, shaders, meshes, and similar. You will want to use this lower level graphics API whenever implementing custom rendering, or implementing advanced rendering techniques.
 

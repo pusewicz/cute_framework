@@ -1,6 +1,10 @@
-[](../header.md ':include')
+---
+title: Shader Compilation
+parent: Topics
+nav_order: 3
+---
 
-<br>
+# Shader Compilation
 
 CF uses SDL_Gpu under the hood for rendering.
 SDL_Gpu will, at some point, offer their own [shader tools](https://github.com/libsdl-org/SDL_shader_tools) to provide an easy way to support cross-platform shaders. For now, CF has its own shader tooling based on [glslang](https://github.com/KhronosGroup/glslang) as a temporary solution, to be removed once SDL_Gpu shader tools gets going.

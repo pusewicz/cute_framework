@@ -1,10 +1,15 @@
-[](/header.md ':include')
+---
+title: Getting Started
+nav_order: 2
+---
+![Logo](/assets/CF_Text_Hifi.png)
 
-<br>
+# Getting Started
 
 Cute Framework (CF for short) is the *cutest* framework available for making 2D games in C++. CF provides a portable foundational layer for building 2D games in C/C++ without baggage, gnarly dependencies, or cryptic APIs. CF runs almost anywhere, including Windows, MacOS, iOS, Android, Linux, and more!
 
-?> **Note** Cute Framework documentation covers the C API, however, the vast majority of CF also has associated C++ wrapper APIs that sit along-side the C API in each header.
+{: .note }
+Cute Framework documentation covers the C API, however, the vast majority of CF also has associated C++ wrapper APIs that sit along-side the C API in each header.
 
 ## Download and Setup
 

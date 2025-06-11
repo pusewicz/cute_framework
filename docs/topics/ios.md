@@ -1,10 +1,15 @@
-[](../header.md ':include')
+---
+title: macOS + iOS Builds
+parent: Topics
+nav_order: 3
+---
 
-<br>
+# iOS
 
 Building a game for iOS requires you to setup a developer account, and slightly complicates a few CMake commands. However, once setup it's very easy to build and install your game onto iOS devices through Xcode. Building your game for MacOS is even simpler than on iOS!
 
-> **Note** Just a friendly reminder that CF only supports 64-bit builds. There is no support for 32-bit builds.
+{: .note }
+Just a friendly reminder that CF only supports 64-bit builds. There is no support for 32-bit builds.
 
 ## Setup your MacOS Device
 

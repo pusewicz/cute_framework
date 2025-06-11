@@ -1,6 +1,10 @@
-[](../header.md ':include')
+---
+title: Data Structures
+parent: Topics
+nav_order: 3
+---
 
-<br>
+# Data Structures
 
 Data structures are used as work-horse tools to implement all kinds of features or tools in games. The data structures available include:
 
