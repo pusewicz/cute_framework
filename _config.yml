@@ -29,6 +29,10 @@ exclude:
 
 logo: "/assets/CF_Text.png"
 
+aux_links:
+  Cute Framework on GitHub:
+    - https://github.com/RandyGaul/cute_framework
+
 # Enable or disable the site search
 # Supports true (default) or false
 search_enabled: true
