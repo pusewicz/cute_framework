@@ -7,11 +7,8 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_free
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
-Frees a block of memory previously allocated by [cf_alloc](/allocator/cf_alloc.md).
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
+Frees a block of memory previously allocated by [cf_alloc](/allocator/cf_alloc).
 
 ```cpp
 void cf_free(void* ptr);
@@ -19,9 +16,9 @@ void cf_free(void* ptr);
 
 ## Related Pages
 
-  * [CF_Allocator](/allocator/cf_allocator.md)  
-  * [cf_allocator_override](/allocator/cf_allocator_override.md)  
-  * [cf_allocator_restore_default](/allocator/cf_allocator_restore_default.md)  
-  * [cf_alloc](/allocator/cf_alloc.md)  
-  * [cf_realloc](/allocator/cf_realloc.md)  
-  * [cf_calloc](/allocator/cf_calloc.md)  
+  * [CF_Allocator](/allocator/cf_allocator)  
+  * [cf_allocator_override](/allocator/cf_allocator_override)  
+  * [cf_allocator_restore_default](/allocator/cf_allocator_restore_default)  
+  * [cf_alloc](/allocator/cf_alloc)  
+  * [cf_realloc](/allocator/cf_realloc)  
+  * [cf_calloc](/allocator/cf_calloc)  

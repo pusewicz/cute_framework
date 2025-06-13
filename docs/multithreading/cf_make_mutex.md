@@ -7,11 +7,8 @@ parent: multithreading
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_mutex
 
-Category: [multithreading](/docs/multithreading)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
-Returns an unlocked [CF_Mutex](/multithreading/cf_mutex.md).
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
+Returns an unlocked [CF_Mutex](/multithreading/cf_mutex).
 
 ```cpp
 CF_Mutex cf_make_mutex();
@@ -19,12 +16,12 @@ CF_Mutex cf_make_mutex();
 
 ## Remarks
 
-Destroy the mutex with [cf_destroy_mutex](/multithreading/cf_destroy_mutex.md) when done.
+Destroy the mutex with [cf_destroy_mutex](/multithreading/cf_destroy_mutex) when done.
 
 ## Related Pages
 
-  * [CF_Mutex](/multithreading/cf_mutex.md)  
-  * [cf_mutex_try_lock](/multithreading/cf_mutex_try_lock.md)  
-  * [cf_destroy_mutex](/multithreading/cf_destroy_mutex.md)  
-  * [cf_mutex_lock](/multithreading/cf_mutex_lock.md)  
-  * [cf_mutex_unlock](/multithreading/cf_mutex_unlock.md)  
+  * [CF_Mutex](/multithreading/cf_mutex)  
+  * [cf_mutex_try_lock](/multithreading/cf_mutex_try_lock)  
+  * [cf_destroy_mutex](/multithreading/cf_destroy_mutex)  
+  * [cf_mutex_lock](/multithreading/cf_mutex_lock)  
+  * [cf_mutex_unlock](/multithreading/cf_mutex_unlock)  

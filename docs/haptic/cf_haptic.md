@@ -7,10 +7,7 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Haptic
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
 An opaque pointer representing a haptic.
 
 ## Remarks
@@ -20,15 +17,15 @@ Haptics is for rumbling or vibrating devices or controllers.
 A haptic pointer can be opened by calling `haptic_open` on a joypad. See cute_joypad.h for info on joypads.
 
 Haptics can be a little complicated -- if you just want a simple rumble effect then the rumble functions might be a good option for you.
-- [cf_haptic_rumble_supported](/haptic/cf_haptic_rumble_supported.md)
-- [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play.md)
-- [cf_haptic_rumble_stop](/haptic/cf_haptic_rumble_stop.md)
+- [cf_haptic_rumble_supported](/haptic/cf_haptic_rumble_supported)
+- [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play)
+- [cf_haptic_rumble_stop](/haptic/cf_haptic_rumble_stop)
 
 TODO - Open haptic on the device itself (e.g. for phones).
 
 ## Related Pages
 
-  * [CF_HapticEffect](/haptic/cf_hapticeffect.md)  
-  * [CF_HapticType](/haptic/cf_haptictype.md)  
-  * [cf_haptic_open](/haptic/cf_haptic_open.md)  
-  * [cf_haptic_close](/haptic/cf_haptic_close.md)  
+  * [CF_HapticEffect](/haptic/cf_hapticeffect)  
+  * [CF_HapticType](/haptic/cf_haptictype)  
+  * [cf_haptic_open](/haptic/cf_haptic_open)  
+  * [cf_haptic_close](/haptic/cf_haptic_close)  

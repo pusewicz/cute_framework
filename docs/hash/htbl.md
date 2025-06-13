@@ -7,10 +7,7 @@ parent: hash
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # htbl
 
-Category: [hash](/docs/hash)  
-GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)  
----
-
+GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)
 An empty macro used in the C API to markup hastables.
 
 ```cpp
@@ -27,7 +24,7 @@ hset(pts, 0, cf_v2(3, 5)); // Contructs a new table on-the-spot. The table is hi
 hset(pts, 10, cf_v2(-1, -1);
 hset(pts, -2, cf_v2(0, 0));
 
-// Use [hget](/hash/hget.md) to fetch values.
+// Use [hget](/hash/hget) to fetch values.
 CF_V2 a = hget(pts, 0);
 CF_V2 b = hget(pts, 10);
 CF_V2 c = hget(pts, -2);
@@ -53,18 +50,18 @@ parameters or struct member definitions. It's saying "Hey, I'm a hashtable!" to 
 
 ## Related Pages
 
-  * [hfree](/hash/hfree.md)  
-  * [hset](/hash/hset.md)  
-  * [hadd](/hash/hadd.md)  
-  * [hget](/hash/hget.md)  
-  * [hfind](/hash/hfind.md)  
-  * [hget_ptr](/hash/hget_ptr.md)  
-  * [hfind_ptr](/hash/hfind_ptr.md)  
-  * [hhas](/hash/hhas.md)  
-  * [hdel](/hash/hdel.md)  
-  * [hclear](/hash/hclear.md)  
-  * [hkeys](/hash/hkeys.md)  
-  * [hitems](/hash/hitems.md)  
-  * [hswap](/hash/hswap.md)  
-  * [hsize](/hash/hsize.md)  
-  * [hcount](/hash/hcount.md)  
+  * [hfree](/hash/hfree)  
+  * [hset](/hash/hset)  
+  * [hadd](/hash/hadd)  
+  * [hget](/hash/hget)  
+  * [hfind](/hash/hfind)  
+  * [hget_ptr](/hash/hget_ptr)  
+  * [hfind_ptr](/hash/hfind_ptr)  
+  * [hhas](/hash/hhas)  
+  * [hdel](/hash/hdel)  
+  * [hclear](/hash/hclear)  
+  * [hkeys](/hash/hkeys)  
+  * [hitems](/hash/hitems)  
+  * [hswap](/hash/hswap)  
+  * [hsize](/hash/hsize)  
+  * [hcount](/hash/hcount)  

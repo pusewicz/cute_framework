@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ShaderUniformMemberInfo
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_shader_bytecode.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_shader_bytecode.h)  
----
-
+GitHub: [cute_shader_bytecode.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_shader_bytecode.h)
 Information about a uniform block member.
 
 Struct Members | Description
@@ -22,5 +19,5 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [CF_ShaderBytecode](/graphics/cf_shaderbytecode.md)  
-  * [CF_ShaderUniformInfo](/graphics/cf_shaderuniforminfo.md)  
+  * [CF_ShaderBytecode](/graphics/cf_shaderbytecode)  
+  * [CF_ShaderUniformInfo](/graphics/cf_shaderuniforminfo)  

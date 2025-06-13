@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_TextureUsageFlagBits
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Bitmask flags that indicate the intended usage of a texture.
 
 ## Values

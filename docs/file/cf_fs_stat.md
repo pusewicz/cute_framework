@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fs_stat
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Returns file information at the given virtual path, such as file size or creation time.
 
 ```cpp
@@ -19,7 +16,7 @@ CF_Result cf_fs_stat(const char* virtual_path, CF_Stat* stat);
 
 ## Return Value
 
-Returns any errors as a [CF_Result](/utility/cf_result.md).
+Returns any errors as a [CF_Result](/utility/cf_result).
 
 ## Remarks
 
@@ -27,9 +24,9 @@ This doesn't open the file itself, and is a fairly light-weight operation in com
 
 ## Related Pages
 
-  * [CF_File](/file/cf_file.md)  
-  * [CF_Stat](/file/cf_stat.md)  
-  * [cf_fs_create_file](/file/cf_fs_create_file.md)  
-  * [cf_fs_open_file_for_write](/file/cf_fs_open_file_for_write.md)  
-  * [cf_fs_open_file_for_read](/file/cf_fs_open_file_for_read.md)  
-  * [cf_fs_close](/file/cf_fs_close.md)  
+  * [CF_File](/file/cf_file)  
+  * [CF_Stat](/file/cf_stat)  
+  * [cf_fs_create_file](/file/cf_fs_create_file)  
+  * [cf_fs_open_file_for_write](/file/cf_fs_open_file_for_write)  
+  * [cf_fs_open_file_for_read](/file/cf_fs_open_file_for_read)  
+  * [cf_fs_close](/file/cf_fs_close)  

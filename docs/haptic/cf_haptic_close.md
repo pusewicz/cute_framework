@@ -7,11 +7,8 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_haptic_close
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
-Frees up a [CF_Haptic](/haptic/cf_haptic.md) previously created by [cf_haptic_open](/haptic/cf_haptic_open.md).
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
+Frees up a [CF_Haptic](/haptic/cf_haptic) previously created by [cf_haptic_open](/haptic/cf_haptic_open).
 
 ```cpp
 void cf_haptic_close(CF_Haptic haptic);
@@ -23,8 +20,8 @@ haptic | The haptic.
 
 ## Related Pages
 
-  * [CF_Haptic](/haptic/cf_haptic.md)  
-  * [cf_haptic_open](/haptic/cf_haptic_open.md)  
-  * [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play.md)  
-  * [cf_haptic_create_effect](/haptic/cf_haptic_create_effect.md)  
-  * [cf_haptic_run_effect](/haptic/cf_haptic_run_effect.md)  
+  * [CF_Haptic](/haptic/cf_haptic)  
+  * [cf_haptic_open](/haptic/cf_haptic_open)  
+  * [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play)  
+  * [cf_haptic_create_effect](/haptic/cf_haptic_create_effect)  
+  * [cf_haptic_run_effect](/haptic/cf_haptic_run_effect)  

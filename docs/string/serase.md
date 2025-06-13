@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # serase
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Deletes a number of characters from the string.
 
 ```cpp
@@ -25,11 +22,11 @@ count | Number of character to delete.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [strim](/string/strim.md)  
-  * [sltrim](/string/sltrim.md)  
-  * [srtrim](/string/srtrim.md)  
-  * [slpad](/string/slpad.md)  
-  * [srpad](/string/srpad.md)  
-  * [sdedup](/string/sdedup.md)  
-  * [sreplace](/string/sreplace.md)  
+  * [sdyna](/string/sdyna)  
+  * [strim](/string/strim)  
+  * [sltrim](/string/sltrim)  
+  * [srtrim](/string/srtrim)  
+  * [slpad](/string/slpad)  
+  * [srpad](/string/srpad)  
+  * [sdedup](/string/sdedup)  
+  * [sreplace](/string/sreplace)  

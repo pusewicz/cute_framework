@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_cast_ray
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Casts a ray onto a shape.
 
 ```cpp
@@ -21,9 +18,9 @@ Parameters | Description
 --- | ---
 A | The ray.
 B | The shape.
-typeB | The [CF_ShapeType](/collision/cf_shapetype.md) of the shape `B`.
-bx_ptr | Can be `NULL` to represent an identity transform. An optional pointer to a [CF_Transform](/math/cf_transform.md) to transform `B`.
-out | Can be `NULL`. [CF_Raycast](/math/cf_raycast.md) results are placed here (contains normal + time of impact).
+typeB | The [CF_ShapeType](/collision/cf_shapetype) of the shape `B`.
+bx_ptr | Can be `NULL` to represent an identity transform. An optional pointer to a [CF_Transform](/math/cf_transform) to transform `B`.
+out | Can be `NULL`. [CF_Raycast](/math/cf_raycast) results are placed here (contains normal + time of impact).
 
 ## Return Value
 
@@ -31,7 +28,7 @@ Returns true if the ray hit the shape.
 
 ## Related Pages
 
-  * [CF_Ray](/math/cf_ray.md)  
-  * [CF_Raycast](/math/cf_raycast.md)  
-  * [CF_Transform](/math/cf_transform.md)  
-  * [CF_ShapeType](/collision/cf_shapetype.md)  
+  * [CF_Ray](/math/cf_ray)  
+  * [CF_Raycast](/math/cf_raycast)  
+  * [CF_Transform](/math/cf_transform)  
+  * [CF_ShapeType](/collision/cf_shapetype)  

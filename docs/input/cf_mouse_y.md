@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mouse_y
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Returns the current mouse y-coordinate in pixels.
 
 ```cpp
@@ -23,6 +20,6 @@ float cf_mouse_y();
 
 ## Related Pages
 
-  * [CF_MouseButton](/input/cf_mousebutton.md)  
-  * [cf_mouse_down](/input/cf_mouse_down.md)  
-  * [cf_mouse_x](/input/cf_mouse_x.md)  
+  * [CF_MouseButton](/input/cf_mousebutton)  
+  * [cf_mouse_down](/input/cf_mouse_down)  
+  * [cf_mouse_x](/input/cf_mouse_x)  

@@ -7,11 +7,8 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_joypad_type_to_string
 
-Category: [input](/docs/input)  
-GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)  
----
-
-Convert an enum [CF_JoypadType](/input/cf_joypadtype.md) to a c-style string.
+GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)
+Convert an enum [CF_JoypadType](/input/cf_joypadtype) to a c-style string.
 
 ```cpp
 const char* cf_joypad_type_to_string(CF_JoypadType type)
@@ -24,5 +21,5 @@ state | The state to convert to a string.
 ## Related Pages
 
   * CF_Joypad  
-  * [CF_JoypadType](/input/cf_joypadtype.md)  
-  * [cf_joypad_type](/input/cf_joypad_type.md)  
+  * [CF_JoypadType](/input/cf_joypadtype)  
+  * [cf_joypad_type](/input/cf_joypad_type)  

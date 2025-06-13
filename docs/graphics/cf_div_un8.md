@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_div_un8
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
 Returns the 8-bit unsigned division of two input 8-bit numbers, intended for implementing 8-bit color blend operations.
 
 ```cpp
@@ -29,6 +26,6 @@ The core calculation is done with full integers to help avoid intermediate overf
 
 ## Related Pages
 
-  * [cf_mul_un8](/graphics/cf_mul_un8.md)  
-  * [cf_sub_un8](/graphics/cf_sub_un8.md)  
-  * [cf_add_un8](/graphics/cf_add_un8.md)  
+  * [cf_mul_un8](/graphics/cf_mul_un8)  
+  * [cf_sub_un8](/graphics/cf_sub_un8)  
+  * [cf_add_un8](/graphics/cf_add_un8)  

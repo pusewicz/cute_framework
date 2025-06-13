@@ -7,10 +7,7 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_json_array_pop
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
 Removes the last element of the array and returns it.
 
 ```cpp
@@ -19,6 +16,6 @@ CF_JVal cf_json_array_pop(CF_JVal arr);
 
 ## Related Pages
 
-  * [CF_JVal](/json/cf_jval.md)  
-  * [cf_json_array_add](/json/cf_json_array_add.md)  
-  * [cf_json_object_add](/json/cf_json_object_add.md)  
+  * [CF_JVal](/json/cf_jval)  
+  * [cf_json_array_add](/json/cf_json_array_add)  
+  * [cf_json_object_add](/json/cf_json_object_add)  

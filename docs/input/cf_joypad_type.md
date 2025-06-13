@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_joypad_type
 
-Category: [input](/docs/input)  
-GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)  
----
-
+GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)
 Returns the type of the joypad.
 
 ```cpp
@@ -24,4 +21,4 @@ player_index | An index represeting the joypad for a particular player, starting
 ## Related Pages
 
   * CF_Joypad  
-  * [CF_JoypadType](/input/cf_joypadtype.md)  
+  * [CF_JoypadType](/input/cf_joypadtype)  

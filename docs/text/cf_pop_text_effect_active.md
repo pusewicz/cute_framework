@@ -7,11 +7,8 @@ parent: text
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_pop_text_effect_active
 
-Category: [text](/docs/text)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
-Pops the previously pushed activated state for text effects. See [cf_push_text_effect_active](/text/cf_push_text_effect_active.md).
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
+Pops the previously pushed activated state for text effects. See [cf_push_text_effect_active](/text/cf_push_text_effect_active).
 
 ```cpp
 bool cf_pop_text_effect_active();
@@ -19,5 +16,5 @@ bool cf_pop_text_effect_active();
 
 ## Related Pages
 
-  * [cf_push_text_effect_active](/text/cf_push_text_effect_active.md)  
-  * [cf_peek_text_effect_active](/text/cf_peek_text_effect_active.md)  
+  * [cf_push_text_effect_active](/text/cf_push_text_effect_active)  
+  * [cf_peek_text_effect_active](/text/cf_peek_text_effect_active)  

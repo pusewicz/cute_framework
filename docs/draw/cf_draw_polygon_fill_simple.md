@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_polygon_fill_simple
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Draws a filled polygon.
 
 ```cpp
@@ -24,16 +21,16 @@ count | The number of points in the polygon.
 
 ## Remarks
 
-Unlike [cf_draw_polygon_fill](/draw/cf_draw_polygon_fill.md), this function can render a higher number of vertices than 8. However, the polygon
+Unlike [cf_draw_polygon_fill](/draw/cf_draw_polygon_fill), this function can render a higher number of vertices than 8. However, the polygon
 must be a _simple polygon_, meaning no self-intersections are allowed, no duplicate or overlapping vertices are
 allowed, and other features like chubbiness or antialias can not be applied. This function simply converts your
 polygon and renders a series of triangles under the hood. Please be sure to submit your vertices in CCW order.
 
 ## Related Pages
 
-  * [cf_draw_line](/draw/cf_draw_line.md)  
-  * [cf_draw_polyline](/draw/cf_draw_polyline.md)  
-  * [cf_draw_bezier_line](/draw/cf_draw_bezier_line.md)  
-  * [cf_draw_bezier_line2](/draw/cf_draw_bezier_line2.md)  
-  * [cf_draw_arrow](/draw/cf_draw_arrow.md)  
-  * [cf_draw_polygon_fill](/draw/cf_draw_polygon_fill.md)  
+  * [cf_draw_line](/draw/cf_draw_line)  
+  * [cf_draw_polyline](/draw/cf_draw_polyline)  
+  * [cf_draw_bezier_line](/draw/cf_draw_bezier_line)  
+  * [cf_draw_bezier_line2](/draw/cf_draw_bezier_line2)  
+  * [cf_draw_arrow](/draw/cf_draw_arrow)  
+  * [cf_draw_polygon_fill](/draw/cf_draw_polygon_fill)  

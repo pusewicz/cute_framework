@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_joypad_axis_prev
 
-Category: [input](/docs/input)  
-GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)  
----
-
+GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)
 Returns the previous axis value from the last frame.
 
 ```cpp
@@ -25,8 +22,8 @@ axis | The axis.
 ## Related Pages
 
   * CF_Joypad  
-  * [CF_JoypadButton](/input/cf_joypadbutton.md)  
-  * [cf_joypad_button_down](/input/cf_joypad_button_down.md)  
-  * [cf_joypad_button_just_pressed](/input/cf_joypad_button_just_pressed.md)  
-  * [cf_joypad_button_just_released](/input/cf_joypad_button_just_released.md)  
-  * [cf_joypad_axis](/input/cf_joypad_axis.md)  
+  * [CF_JoypadButton](/input/cf_joypadbutton)  
+  * [cf_joypad_button_down](/input/cf_joypad_button_down)  
+  * [cf_joypad_button_just_pressed](/input/cf_joypad_button_just_pressed)  
+  * [cf_joypad_button_just_released](/input/cf_joypad_button_just_released)  
+  * [cf_joypad_axis](/input/cf_joypad_axis)  

@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_set_uniform
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Pushes a uniform and binds it by name.
 
 ```cpp
@@ -21,13 +18,13 @@ Parameters | Description
 --- | ---
 name | The name of the uniform in the shader.
 data | A pointer to the data to send to the shader.
-type | The [CF_UniformType](/graphics/cf_uniformtype.md) of data to send.
-array_length | The number of elements of [CF_UniformType](/graphics/cf_uniformtype.md) to send.
+type | The [CF_UniformType](/graphics/cf_uniformtype) of data to send.
+array_length | The number of elements of [CF_UniformType](/graphics/cf_uniformtype) to send.
 
 ## Related Pages
 
-  * [cf_draw_set_texture](/draw/cf_draw_set_texture.md)  
-  * [cf_draw_set_uniform_color](/draw/cf_draw_set_uniform_color.md)  
-  * [cf_draw_set_uniform_int](/draw/cf_draw_set_uniform_int.md)  
-  * [cf_draw_set_uniform_float](/draw/cf_draw_set_uniform_float.md)  
-  * [cf_draw_set_uniform_v2](/draw/cf_draw_set_uniform_v2.md)  
+  * [cf_draw_set_texture](/draw/cf_draw_set_texture)  
+  * [cf_draw_set_uniform_color](/draw/cf_draw_set_uniform_color)  
+  * [cf_draw_set_uniform_int](/draw/cf_draw_set_uniform_int)  
+  * [cf_draw_set_uniform_float](/draw/cf_draw_set_uniform_float)  
+  * [cf_draw_set_uniform_v2](/draw/cf_draw_set_uniform_v2)  

@@ -7,10 +7,7 @@ parent: array
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # acap
 
-Category: [array](/docs/array)  
-GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)  
----
-
+GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)
 Returns the capacity of the array.
 
 ```cpp
@@ -24,22 +21,22 @@ a | The array.
 ## Remarks
 
 `a` can be `NULL`. The capacity automatically grows if the size of the array grows over the capacity.
- You can use [afit](/array/afit.md) to ensure a minimum capacity as an optimization.
+ You can use [afit](/array/afit) to ensure a minimum capacity as an optimization.
 
 ## Related Pages
 
-  * [dyna](/array/dyna.md)  
-  * [asize](/array/asize.md)  
-  * [acount](/array/acount.md)  
-  * [afree](/array/afree.md)  
-  * [afit](/array/afit.md)  
-  * [apush](/array/apush.md)  
-  * [apop](/array/apop.md)  
-  * [aend](/array/aend.md)  
-  * [alast](/array/alast.md)  
-  * [aclear](/array/aclear.md)  
-  * [aset](/array/aset.md)  
-  * [arev](/array/arev.md)  
-  * [ahash](/array/ahash.md)  
-  * [adel](/array/adel.md)  
-  * [astatic](/array/astatic.md)  
+  * [dyna](/array/dyna)  
+  * [asize](/array/asize)  
+  * [acount](/array/acount)  
+  * [afree](/array/afree)  
+  * [afit](/array/afit)  
+  * [apush](/array/apush)  
+  * [apop](/array/apop)  
+  * [aend](/array/aend)  
+  * [alast](/array/alast)  
+  * [aclear](/array/aclear)  
+  * [aset](/array/aset)  
+  * [arev](/array/arev)  
+  * [ahash](/array/ahash)  
+  * [adel](/array/adel)  
+  * [astatic](/array/astatic)  

@@ -7,10 +7,7 @@ parent: utility
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_load_function
 
-Category: [utility](/docs/utility)  
-GitHub: [cute_symbol.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_symbol.h)  
----
-
+GitHub: [cute_symbol.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_symbol.h)
 Loads a function out of a shared library.
 
 ```cpp
@@ -29,5 +26,5 @@ you must typecast it yourself. Returns `NULL` in the case of errors.
 
 ## Related Pages
 
-  * [cf_load_shared_library](/utility/cf_load_shared_library.md)  
-  * [cf_unload_shared_library](/utility/cf_unload_shared_library.md)  
+  * [cf_load_shared_library](/utility/cf_load_shared_library)  
+  * [cf_unload_shared_library](/utility/cf_unload_shared_library)  

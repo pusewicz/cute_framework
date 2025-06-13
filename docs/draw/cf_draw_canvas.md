@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_canvas
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Draws a canvas.
 
 ```cpp
@@ -32,5 +29,5 @@ and sample from the canvas as-needed.
 
 ## Related Pages
 
-  * [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen.md)  
-  * [cf_render_to](/draw/cf_render_to.md)  
+  * [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen)  
+  * [cf_render_to](/draw/cf_render_to)  

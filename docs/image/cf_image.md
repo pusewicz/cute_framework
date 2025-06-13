@@ -7,10 +7,7 @@ parent: image
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Image
 
-Category: [image](/docs/image)  
-GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)  
----
-
+GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)
 An array of pixels.
 
 Struct Members | Description
@@ -27,6 +24,6 @@ However, a good use case is, for example, if you want to implement some custom s
 
 ## Related Pages
 
-  * [cf_image_premultiply](/image/cf_image_premultiply.md)  
-  * [CF_ImageIndexed](/image/cf_imageindexed.md)  
-  * [cf_image_load_png](/image/cf_image_load_png.md)  
+  * [cf_image_premultiply](/image/cf_image_premultiply)  
+  * [CF_ImageIndexed](/image/cf_imageindexed)  
+  * [cf_image_load_png](/image/cf_image_load_png)  

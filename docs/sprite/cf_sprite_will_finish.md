@@ -7,11 +7,8 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_will_finish
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
-Returns true if the animation will loop around and finish if [cf_sprite_update](/sprite/cf_sprite_update.md) is called.
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
+Returns true if the animation will loop around and finish if [cf_sprite_update](/sprite/cf_sprite_update) is called.
 
 ```cpp
 bool cf_sprite_will_finish(CF_Sprite* sprite)
@@ -27,8 +24,8 @@ This is useful to see if you're currently on the last frame of animation, and wi
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [cf_sprite_frame_count](/sprite/cf_sprite_frame_count.md)  
-  * [cf_sprite_current_frame](/sprite/cf_sprite_current_frame.md)  
-  * [cf_sprite_frame_delay](/sprite/cf_sprite_frame_delay.md)  
-  * [cf_sprite_animation_delay](/sprite/cf_sprite_animation_delay.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [cf_sprite_frame_count](/sprite/cf_sprite_frame_count)  
+  * [cf_sprite_current_frame](/sprite/cf_sprite_current_frame)  
+  * [cf_sprite_frame_delay](/sprite/cf_sprite_frame_delay)  
+  * [cf_sprite_animation_delay](/sprite/cf_sprite_animation_delay)  

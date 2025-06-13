@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fs_remove
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Removes a file or directory.
 
 ```cpp
@@ -23,7 +20,7 @@ virtual_path | The virtual path to the file or directory.
 
 ## Return Value
 
-Returns any errors as a [CF_Result](/utility/cf_result.md).
+Returns any errors as a [CF_Result](/utility/cf_result).
 
 ## Remarks
 
@@ -32,6 +29,6 @@ Returns any errors as a [CF_Result](/utility/cf_result.md).
 ## Related Pages
 
   * cf_fs_remove_directory  
-  * [cf_fs_create_directory](/file/cf_fs_create_directory.md)  
-  * [cf_fs_enumerate_directory](/file/cf_fs_enumerate_directory.md)  
-  * [cf_fs_free_enumerated_directory](/file/cf_fs_free_enumerated_directory.md)  
+  * [cf_fs_create_directory](/file/cf_fs_create_directory)  
+  * [cf_fs_enumerate_directory](/file/cf_fs_enumerate_directory)  
+  * [cf_fs_free_enumerated_directory](/file/cf_fs_free_enumerated_directory)  

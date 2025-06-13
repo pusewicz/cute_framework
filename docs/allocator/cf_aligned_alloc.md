@@ -7,10 +7,7 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_aligned_alloc
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
 Allocates a block of memory aligned along a byte boundary.
 
 ```cpp
@@ -32,4 +29,4 @@ Aligned allocation is mostly useful as a performance optimization, or for SIMD o
 
 ## Related Pages
 
-  * [cf_aligned_free](/allocator/cf_aligned_free.md)  
+  * [cf_aligned_free](/allocator/cf_aligned_free)  

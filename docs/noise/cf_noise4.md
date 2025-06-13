@@ -7,10 +7,7 @@ parent: noise
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_noise4
 
-Category: [noise](/docs/noise)  
-GitHub: [cute_noise.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_noise.h)  
----
-
+GitHub: [cute_noise.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_noise.h)
 Generates a random value given a 4D coordinate.
 
 ```cpp
@@ -31,13 +28,13 @@ Returns a random value at the specified point.
 
 ## Remarks
 
-You're probably looking for image generation functions such as [cf_noise_pixels](/noise/cf_noise_pixels.md) or [cf_noise_fbm_pixels](/noise/cf_noise_fbm_pixels.md). This
+You're probably looking for image generation functions such as [cf_noise_pixels](/noise/cf_noise_pixels) or [cf_noise_fbm_pixels](/noise/cf_noise_fbm_pixels). This
 function is fairly low-level and intended for those who know what they're doing.
 
 ## Related Pages
 
-  * [CF_Noise](/noise/cf_noise.md)  
-  * [cf_make_noise](/noise/cf_make_noise.md)  
-  * [cf_destroy_noise](/noise/cf_destroy_noise.md)  
-  * [cf_noise2](/noise/cf_noise2.md)  
-  * [cf_noise3](/noise/cf_noise3.md)  
+  * [CF_Noise](/noise/cf_noise)  
+  * [cf_make_noise](/noise/cf_make_noise)  
+  * [cf_destroy_noise](/noise/cf_destroy_noise)  
+  * [cf_noise2](/noise/cf_noise2)  
+  * [cf_noise3](/noise/cf_noise3)  

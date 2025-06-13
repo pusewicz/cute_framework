@@ -7,11 +7,8 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_aligned_free
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
-Frees a block of memory previously allocated by [cf_aligned_alloc](/allocator/cf_aligned_alloc.md).
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
+Frees a block of memory previously allocated by [cf_aligned_alloc](/allocator/cf_aligned_alloc).
 
 ```cpp
 void cf_aligned_free(void* ptr);
@@ -27,4 +24,4 @@ Aligned allocation is mostly useful as a performance optimization, or for SIMD o
 
 ## Related Pages
 
-  * [cf_aligned_alloc](/allocator/cf_aligned_alloc.md)  
+  * [cf_aligned_alloc](/allocator/cf_aligned_alloc)  

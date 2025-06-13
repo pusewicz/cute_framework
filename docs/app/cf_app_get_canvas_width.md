@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_get_canvas_width
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Gets the app's canvas width in pixels.
 
 ```cpp
@@ -19,8 +16,8 @@ int cf_app_get_canvas_width();
 
 ## Related Pages
 
-  * [cf_app_get_canvas](/app/cf_app_get_canvas.md)  
-  * [cf_app_set_canvas_size](/app/cf_app_set_canvas_size.md)  
-  * [cf_app_get_canvas_height](/app/cf_app_get_canvas_height.md)  
-  * [cf_app_set_vsync](/app/cf_app_set_vsync.md)  
-  * [cf_app_get_vsync](/app/cf_app_get_vsync.md)  
+  * [cf_app_get_canvas](/app/cf_app_get_canvas)  
+  * [cf_app_set_canvas_size](/app/cf_app_set_canvas_size)  
+  * [cf_app_get_canvas_height](/app/cf_app_get_canvas_height)  
+  * [cf_app_set_vsync](/app/cf_app_set_vsync)  
+  * [cf_app_get_vsync](/app/cf_app_get_vsync)  

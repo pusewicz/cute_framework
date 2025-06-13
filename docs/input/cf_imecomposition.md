@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ImeComposition
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Represents the IME (Input Method Editor) composition from the operating system, for gathering complex text inputs.
 
 Struct Members | Description
@@ -21,5 +18,5 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [cf_input_enable_ime](/input/cf_input_enable_ime.md)  
-  * [cf_input_get_ime_composition](/input/cf_input_get_ime_composition.md)  
+  * [cf_input_enable_ime](/input/cf_input_enable_ime)  
+  * [cf_input_get_ime_composition](/input/cf_input_get_ime_composition)  

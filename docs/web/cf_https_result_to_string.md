@@ -7,10 +7,7 @@ parent: web
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_https_result_to_string
 
-Category: [web](/docs/web)  
-GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)  
----
-
+GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)
 Convert an enum `CF_HttpsState` to a c-style string.
 
 ```cpp
@@ -23,5 +20,5 @@ state | The state to convert to a string.
 
 ## Related Pages
 
-  * [CF_HttpsRequest](/web/cf_httpsrequest.md)  
-  * [cf_https_process](/web/cf_https_process.md)  
+  * [CF_HttpsRequest](/web/cf_httpsrequest)  
+  * [cf_https_process](/web/cf_https_process)  

@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_set_uniform_float
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Pushes a float uniform by name.
 
 ```cpp
@@ -19,8 +16,8 @@ void cf_draw_set_uniform_float(const char* name, float val);
 
 ## Related Pages
 
-  * [cf_draw_set_texture](/draw/cf_draw_set_texture.md)  
-  * [cf_draw_set_uniform](/draw/cf_draw_set_uniform.md)  
-  * [cf_draw_set_uniform_int](/draw/cf_draw_set_uniform_int.md)  
-  * [cf_draw_set_uniform_color](/draw/cf_draw_set_uniform_color.md)  
-  * [cf_draw_set_uniform_v2](/draw/cf_draw_set_uniform_v2.md)  
+  * [cf_draw_set_texture](/draw/cf_draw_set_texture)  
+  * [cf_draw_set_uniform](/draw/cf_draw_set_uniform)  
+  * [cf_draw_set_uniform_int](/draw/cf_draw_set_uniform_int)  
+  * [cf_draw_set_uniform_color](/draw/cf_draw_set_uniform_color)  
+  * [cf_draw_set_uniform_v2](/draw/cf_draw_set_uniform_v2)  

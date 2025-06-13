@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_apply_scissor
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Sets up a scissor box to clip rendering within.
 
 ```cpp
@@ -28,9 +25,9 @@ h | Height of the scissor box in pixels.
 
 The scissor box is a window on the screen that rendering will be clipped within. Any rendering that occurs outside the
 scissor box will simply be ignored, rendering nothing and leaving the previous pixel contents untouched. You must only call this
-after calling [cf_apply_shader](/graphics/cf_apply_shader.md).
+after calling [cf_apply_shader](/graphics/cf_apply_shader).
 
 ## Related Pages
 
-  * [cf_apply_canvas](/graphics/cf_apply_canvas.md)  
-  * [cf_apply_viewport](/graphics/cf_apply_viewport.md)  
+  * [cf_apply_canvas](/graphics/cf_apply_canvas)  
+  * [cf_apply_viewport](/graphics/cf_apply_viewport)  

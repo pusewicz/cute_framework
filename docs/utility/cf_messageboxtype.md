@@ -7,10 +7,7 @@ parent: utility
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_MessageBoxType
 
-Category: [utility](/docs/utility)  
-GitHub: [cute_result.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_result.h)  
----
-
+GitHub: [cute_result.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_result.h)
 Types of supported message boxes.
 
 ## Values
@@ -23,5 +20,5 @@ MESSAGE_BOX_TYPE_INFORMATION | An informational message box.
 
 ## Related Pages
 
-  * [cf_message_box](/utility/cf_message_box.md)  
-  * [cf_message_box_type_to_string](/utility/cf_message_box_type_to_string.md)  
+  * [cf_message_box](/utility/cf_message_box)  
+  * [cf_message_box_type_to_string](/utility/cf_message_box_type_to_string)  

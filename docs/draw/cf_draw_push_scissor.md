@@ -7,11 +7,8 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_push_scissor
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
-Pushes a [CF_Rect](/math/cf_rect.md) for the scissor to render within.
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
+Pushes a [CF_Rect](/math/cf_rect) for the scissor to render within.
 
 ```cpp
 void cf_draw_push_scissor(CF_Rect scissor);

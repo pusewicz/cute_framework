@@ -7,10 +7,7 @@ parent: noise
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_noise_fbm_pixels
 
-Category: [noise](/docs/noise)  
-GitHub: [cute_noise.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_noise.h)  
----
-
+GitHub: [cute_noise.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_noise.h)
 Creates an image from noise using fractal brownian motion.
 
 ```cpp
@@ -33,10 +30,10 @@ Returns a generated image filled with noise.
 
 ## Remarks
 
-If you want the image to animate over a loop, or tile seamlessly, then check out [cf_noise_fbm_pixels_wrapped](/noise/cf_noise_fbm_pixels_wrapped.md).
+If you want the image to animate over a loop, or tile seamlessly, then check out [cf_noise_fbm_pixels_wrapped](/noise/cf_noise_fbm_pixels_wrapped).
 
 ## Related Pages
 
-  * [cf_noise_pixels](/noise/cf_noise_pixels.md)  
-  * [cf_noise_pixels_wrapped](/noise/cf_noise_pixels_wrapped.md)  
-  * [cf_noise_fbm_pixels_wrapped](/noise/cf_noise_fbm_pixels_wrapped.md)  
+  * [cf_noise_pixels](/noise/cf_noise_pixels)  
+  * [cf_noise_pixels_wrapped](/noise/cf_noise_pixels_wrapped)  
+  * [cf_noise_fbm_pixels_wrapped](/noise/cf_noise_fbm_pixels_wrapped)  

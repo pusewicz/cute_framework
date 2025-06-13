@@ -7,10 +7,7 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_json_array_from_string
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
 Creates a new json array from an array of strings.
 
 ```cpp
@@ -19,17 +16,17 @@ CF_JVal cf_json_array_from_string(CF_JDoc doc, const char** vals, int count);
 
 ## Remarks
 
-The returned [CF_JVal](/json/cf_jval.md) can be attached to the document by [cf_json_array_add](/json/cf_json_array_add.md) or [cf_json_object_add](/json/cf_json_object_add.md).
+The returned [CF_JVal](/json/cf_jval) can be attached to the document by [cf_json_array_add](/json/cf_json_array_add) or [cf_json_object_add](/json/cf_json_object_add).
 
 ## Related Pages
 
-  * [CF_JVal](/json/cf_jval.md)  
-  * [cf_json_array](/json/cf_json_array.md)  
-  * [cf_json_array_from_int](/json/cf_json_array_from_int.md)  
-  * [cf_json_array_from_i64](/json/cf_json_array_from_i64.md)  
-  * [cf_json_array_from_u64](/json/cf_json_array_from_u64.md)  
-  * [cf_json_array_from_float](/json/cf_json_array_from_float.md)  
-  * [cf_json_array_from_double](/json/cf_json_array_from_double.md)  
-  * [cf_json_array_from_bool](/json/cf_json_array_from_bool.md)  
-  * [cf_json_object_add](/json/cf_json_object_add.md)  
-  * [cf_json_array_add](/json/cf_json_array_add.md)  
+  * [CF_JVal](/json/cf_jval)  
+  * [cf_json_array](/json/cf_json_array)  
+  * [cf_json_array_from_int](/json/cf_json_array_from_int)  
+  * [cf_json_array_from_i64](/json/cf_json_array_from_i64)  
+  * [cf_json_array_from_u64](/json/cf_json_array_from_u64)  
+  * [cf_json_array_from_float](/json/cf_json_array_from_float)  
+  * [cf_json_array_from_double](/json/cf_json_array_from_double)  
+  * [cf_json_array_from_bool](/json/cf_json_array_from_bool)  
+  * [cf_json_object_add](/json/cf_json_object_add)  
+  * [cf_json_array_add](/json/cf_json_array_add)  

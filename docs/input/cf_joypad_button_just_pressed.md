@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_joypad_button_just_pressed
 
-Category: [input](/docs/input)  
-GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)  
----
-
+GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)
 Returns true if the button was just pressed.
 
 ```cpp
@@ -25,7 +22,7 @@ button | The button.
 ## Related Pages
 
   * CF_Joypad  
-  * [CF_JoypadButton](/input/cf_joypadbutton.md)  
-  * [cf_joypad_button_down](/input/cf_joypad_button_down.md)  
-  * [cf_joypad_axis](/input/cf_joypad_axis.md)  
-  * [cf_joypad_button_just_released](/input/cf_joypad_button_just_released.md)  
+  * [CF_JoypadButton](/input/cf_joypadbutton)  
+  * [cf_joypad_button_down](/input/cf_joypad_button_down)  
+  * [cf_joypad_axis](/input/cf_joypad_axis)  
+  * [cf_joypad_button_just_released](/input/cf_joypad_button_just_released)  

@@ -7,10 +7,7 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_json_iter
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
 Creates an iterator for a given JSON value.
 
 ```cpp
@@ -23,7 +20,7 @@ val | The JSON value to iterate upon.
 
 ## Return Value
 
-Returns a [CF_JIter](/json/cf_jiter.md) for iterating.
+Returns a [CF_JIter](/json/cf_jiter) for iterating.
 
 ## Code Example
 
@@ -45,13 +42,13 @@ Returns a [CF_JIter](/json/cf_jiter.md) for iterating.
 
 ## Remarks
 
-The [CF_JIter](/json/cf_jiter.md) can be used in foor loops, and can traverse both JSON arrays and objects. When
-traversing arrays do not call [cf_json_iter_key](/json/cf_json_iter_key.md).
+The [CF_JIter](/json/cf_jiter) can be used in foor loops, and can traverse both JSON arrays and objects. When
+traversing arrays do not call [cf_json_iter_key](/json/cf_json_iter_key).
 
 ## Related Pages
 
-  * [CF_JVal](/json/cf_jval.md)  
-  * [cf_json_get](/json/cf_json_get.md)  
-  * [cf_json_array_at](/json/cf_json_array_at.md)  
-  * [cf_json_array_get](/json/cf_json_array_get.md)  
-  * [cf_json_iter_remove](/json/cf_json_iter_remove.md)  
+  * [CF_JVal](/json/cf_jval)  
+  * [cf_json_get](/json/cf_json_get)  
+  * [cf_json_array_at](/json/cf_json_array_at)  
+  * [cf_json_array_get](/json/cf_json_array_get)  
+  * [cf_json_iter_remove](/json/cf_json_iter_remove)  

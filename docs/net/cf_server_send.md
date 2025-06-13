@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_server_send
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 Sends a packet to a client.
 
 ```cpp
@@ -22,12 +19,12 @@ Parameters | Description
 server | The server.
 packet | Data to send.
 size | Size of `data` in bytes.
-client_index | An index representing a particular client, from [CF_ServerEvent](/net/cf_serverevent.md).
+client_index | An index representing a particular client, from [CF_ServerEvent](/net/cf_serverevent).
 send_reliably | If `true` the packet will be sent reliably and in order. If false the packet will be sent just once, and may
                arrive out of order or not at all.
 
 ## Related Pages
 
-  * [cf_server_update](/net/cf_server_update.md)  
-  * [CF_ServerEvent](/net/cf_serverevent.md)  
-  * [cf_server_pop_event](/net/cf_server_pop_event.md)  
+  * [cf_server_update](/net/cf_server_update)  
+  * [CF_ServerEvent](/net/cf_serverevent)  
+  * [cf_server_pop_event](/net/cf_server_pop_event)  

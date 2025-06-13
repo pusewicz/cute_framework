@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_filter_to_string
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a [CF_Filter](/graphics/cf_filter.md) converted to a C string.
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a [CF_Filter](/graphics/cf_filter) converted to a C string.
 
 ```cpp
 const char* cf_filter_to_string(CF_Filter filter)
@@ -19,5 +16,5 @@ const char* cf_filter_to_string(CF_Filter filter)
 
 ## Related Pages
 
-  * [CF_Filter](/graphics/cf_filter.md)  
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
+  * [CF_Filter](/graphics/cf_filter)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  

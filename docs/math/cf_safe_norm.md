@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_safe_norm
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns a normalized vector.
 
 ```cpp
@@ -19,12 +16,12 @@ CF_V2 cf_safe_norm(CF_V2 a)
 
 ## Remarks
 
-Sets the vector to `{ 0, 0 }` if the length of the vector is zero. Unlike [cf_norm](/math/cf_norm.md), this function cannot fail for
+Sets the vector to `{ 0, 0 }` if the length of the vector is zero. Unlike [cf_norm](/math/cf_norm), this function cannot fail for
 the case of a zero vector.
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_len](/math/cf_len.md)  
-  * [cf_distance](/math/cf_distance.md)  
-  * [cf_norm](/math/cf_norm.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_len](/math/cf_len)  
+  * [cf_distance](/math/cf_distance)  
+  * [cf_norm](/math/cf_norm)  

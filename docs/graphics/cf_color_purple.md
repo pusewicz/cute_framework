@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_color_purple
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
-Helper function to return a purple [CF_Color](/graphics/cf_color.md).
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
+Helper function to return a purple [CF_Color](/graphics/cf_color).
 
 ```cpp
 CF_Color cf_color_purple()
@@ -19,14 +16,14 @@ CF_Color cf_color_purple()
 
 ## Related Pages
 
-  * [cf_color_invisible](/graphics/cf_color_invisible.md)  
-  * [cf_color_black](/graphics/cf_color_black.md)  
-  * [cf_color_white](/graphics/cf_color_white.md)  
-  * [cf_color_red](/graphics/cf_color_red.md)  
-  * [cf_color_green](/graphics/cf_color_green.md)  
-  * [cf_color_blue](/graphics/cf_color_blue.md)  
-  * [cf_color_yellow](/graphics/cf_color_yellow.md)  
-  * [cf_color_orange](/graphics/cf_color_orange.md)  
-  * [cf_color_magenta](/graphics/cf_color_magenta.md)  
-  * [cf_color_grey](/graphics/cf_color_grey.md)  
-  * [cf_color_cyan](/graphics/cf_color_cyan.md)  
+  * [cf_color_invisible](/graphics/cf_color_invisible)  
+  * [cf_color_black](/graphics/cf_color_black)  
+  * [cf_color_white](/graphics/cf_color_white)  
+  * [cf_color_red](/graphics/cf_color_red)  
+  * [cf_color_green](/graphics/cf_color_green)  
+  * [cf_color_blue](/graphics/cf_color_blue)  
+  * [cf_color_yellow](/graphics/cf_color_yellow)  
+  * [cf_color_orange](/graphics/cf_color_orange)  
+  * [cf_color_magenta](/graphics/cf_color_magenta)  
+  * [cf_color_grey](/graphics/cf_color_grey)  
+  * [cf_color_cyan](/graphics/cf_color_cyan)  

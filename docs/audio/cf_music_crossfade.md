@@ -7,10 +7,7 @@ parent: audio
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_music_crossfade
 
-Category: [audio](/docs/audio)  
-GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)  
----
-
+GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)
 Crossfades the currently playing track out with the next track in.
 
 ```cpp
@@ -23,13 +20,13 @@ cross_fade_time | A number of seconds to crossfade to the next track. Can be 0.0
 
 ## Related Pages
 
-  * [cf_music_play](/audio/cf_music_play.md)  
-  * [cf_music_stop](/audio/cf_music_stop.md)  
-  * [cf_music_set_volume](/audio/cf_music_set_volume.md)  
-  * [cf_music_set_loop](/audio/cf_music_set_loop.md)  
-  * [cf_music_pause](/audio/cf_music_pause.md)  
-  * [cf_music_resume](/audio/cf_music_resume.md)  
-  * [cf_music_switch_to](/audio/cf_music_switch_to.md)  
-  * [cf_music_set_pitch](/audio/cf_music_set_pitch.md)  
-  * [cf_music_get_sample_index](/audio/cf_music_get_sample_index.md)  
-  * [cf_music_set_sample_index](/audio/cf_music_set_sample_index.md)  
+  * [cf_music_play](/audio/cf_music_play)  
+  * [cf_music_stop](/audio/cf_music_stop)  
+  * [cf_music_set_volume](/audio/cf_music_set_volume)  
+  * [cf_music_set_loop](/audio/cf_music_set_loop)  
+  * [cf_music_pause](/audio/cf_music_pause)  
+  * [cf_music_resume](/audio/cf_music_resume)  
+  * [cf_music_switch_to](/audio/cf_music_switch_to)  
+  * [cf_music_set_pitch](/audio/cf_music_set_pitch)  
+  * [cf_music_get_sample_index](/audio/cf_music_get_sample_index)  
+  * [cf_music_set_sample_index](/audio/cf_music_set_sample_index)  

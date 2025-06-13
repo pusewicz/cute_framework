@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_clamp_aabb
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns `a` clamped within `b`.
 
 ```cpp
@@ -19,11 +16,11 @@ CF_Aabb cf_clamp_aabb(CF_Aabb a, CF_Aabb b)
 
 ## Related Pages
 
-  * [CF_Aabb](/math/cf_aabb.md)  
-  * [cf_contains_point](/math/cf_contains_point.md)  
-  * [cf_contains_aabb](/math/cf_contains_aabb.md)  
-  * [cf_surface_area_aabb](/math/cf_surface_area_aabb.md)  
-  * [cf_area_aabb](/math/cf_area_aabb.md)  
-  * [cf_clamp_aabb_v2](/math/cf_clamp_aabb_v2.md)  
-  * [cf_overlaps](/math/cf_overlaps.md)  
-  * [cf_combine](/math/cf_combine.md)  
+  * [CF_Aabb](/math/cf_aabb)  
+  * [cf_contains_point](/math/cf_contains_point)  
+  * [cf_contains_aabb](/math/cf_contains_aabb)  
+  * [cf_surface_area_aabb](/math/cf_surface_area_aabb)  
+  * [cf_area_aabb](/math/cf_area_aabb)  
+  * [cf_clamp_aabb_v2](/math/cf_clamp_aabb_v2)  
+  * [cf_overlaps](/math/cf_overlaps)  
+  * [cf_combine](/math/cf_combine)  

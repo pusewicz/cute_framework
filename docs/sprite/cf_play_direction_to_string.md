@@ -7,11 +7,8 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_play_direction_to_string
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
-Returns a [CF_PlayDirection](/sprite/cf_playdirection.md) converted to a C string.
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
+Returns a [CF_PlayDirection](/sprite/cf_playdirection) converted to a C string.
 
 ```cpp
 const char* cf_play_direction_to_string(CF_PlayDirection dir)
@@ -19,5 +16,5 @@ const char* cf_play_direction_to_string(CF_PlayDirection dir)
 
 ## Related Pages
 
-  * [CF_PlayDirection](/sprite/cf_playdirection.md)  
-  * [CF_Animation](/sprite/cf_animation.md)  
+  * [CF_PlayDirection](/sprite/cf_playdirection)  
+  * [CF_Animation](/sprite/cf_animation)  

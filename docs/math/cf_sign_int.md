@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sign_int
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the sign (either 1 or -1) of an int.
 
 ```cpp
@@ -19,8 +16,8 @@ int cf_sign_int(int a)
 
 ## Related Pages
 
-  * [cf_is_odd](/math/cf_is_odd.md)  
-  * [cf_abs_int](/math/cf_abs_int.md)  
-  * [cf_clamp_int](/math/cf_clamp_int.md)  
-  * [cf_clamp01_int](/math/cf_clamp01_int.md)  
-  * [cf_is_even](/math/cf_is_even.md)  
+  * [cf_is_odd](/math/cf_is_odd)  
+  * [cf_abs_int](/math/cf_abs_int)  
+  * [cf_clamp_int](/math/cf_clamp_int)  
+  * [cf_clamp01_int](/math/cf_clamp01_int)  
+  * [cf_is_even](/math/cf_is_even)  

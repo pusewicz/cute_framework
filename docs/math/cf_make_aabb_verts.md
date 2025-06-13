@@ -7,11 +7,8 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_aabb_verts
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
-Returns a [CF_Aabb](/math/cf_aabb.md) that tightly contains all input verts.
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
+Returns a [CF_Aabb](/math/cf_aabb) that tightly contains all input verts.
 
 ```cpp
 CF_Aabb cf_make_aabb_verts(CF_V2* verts, int count)
@@ -19,5 +16,5 @@ CF_Aabb cf_make_aabb_verts(CF_V2* verts, int count)
 
 ## Related Pages
 
-  * [CF_Aabb](/math/cf_aabb.md)  
-  * [cf_aabb_verts](/math/cf_aabb_verts.md)  
+  * [CF_Aabb](/math/cf_aabb)  
+  * [cf_aabb_verts](/math/cf_aabb_verts)  

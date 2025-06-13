@@ -7,10 +7,7 @@ parent: text
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_text_effect_register
 
-Category: [text](/docs/text)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Registers a custom text effect.
 
 ```cpp
@@ -20,7 +17,7 @@ void cf_text_effect_register(const char* name, CF_TextEffectFn* fn);
 Parameters | Description
 --- | ---
 name | A unique name for your text effect.
-fn | The [CF_TextEffectFn](/text/cf_texteffectfn.md) function you must implement to perform the custom effect.
+fn | The [CF_TextEffectFn](/text/cf_texteffectfn) function you must implement to perform the custom effect.
 
 ## Code Example
 
@@ -83,8 +80,8 @@ where the `color` markup contains a parameter called `metadata` and a strinf val
 
 ## Related Pages
 
-  * [CF_TextEffect](/text/cf_texteffect.md)  
-  * [CF_TextEffectFn](/text/cf_texteffectfn.md)  
-  * [cf_text_effect_get_string](/text/cf_text_effect_get_string.md)  
-  * [cf_text_effect_get_number](/text/cf_text_effect_get_number.md)  
-  * [cf_text_effect_get_color](/text/cf_text_effect_get_color.md)  
+  * [CF_TextEffect](/text/cf_texteffect)  
+  * [CF_TextEffectFn](/text/cf_texteffectfn)  
+  * [cf_text_effect_get_string](/text/cf_text_effect_get_string)  
+  * [cf_text_effect_get_number](/text/cf_text_effect_get_number)  
+  * [cf_text_effect_get_color](/text/cf_text_effect_get_color)  

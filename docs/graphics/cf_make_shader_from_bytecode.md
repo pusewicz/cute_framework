@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_shader_from_bytecode
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Creates a shader from SPIR-V bytecode.
 
 ```cpp
@@ -19,15 +16,15 @@ CF_Shader cf_make_shader_from_bytecode(CF_ShaderBytecode vertex_bytecode, CF_Sha
 
 Parameters | Description
 --- | ---
-vertex_bytecode | A bytecode blob from [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode.md) or the cute-shaderc compiler for the vertex shader.
-fragment_bytecode | A bytecode blob from [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode.md) or the cute-shaderc compiler for the fragment shader.
+vertex_bytecode | A bytecode blob from [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode) or the cute-shaderc compiler for the vertex shader.
+fragment_bytecode | A bytecode blob from [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode) or the cute-shaderc compiler for the fragment shader.
 
 ## Remarks
 
 This function is good for precompiling shaders from bytecode, which can help speed up app
 startup times. SPIR-V blobs can be saved straight to disk and shipped with your game. Create the
-bytecode blob with [cf_make_shader_from_bytecode](/graphics/cf_make_shader_from_bytecode.md).
+bytecode blob with [cf_make_shader_from_bytecode](/graphics/cf_make_shader_from_bytecode).
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
+  * [CF_Shader](/graphics/cf_shader)  

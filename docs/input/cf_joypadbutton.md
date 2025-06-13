@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_JoypadButton
 
-Category: [input](/docs/input)  
-GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)  
----
-
+GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)
 Various buttons on a `CF_Joypad`.
 
 ## Values
@@ -37,6 +34,6 @@ JOYPAD_BUTTON_COUNT | (null)
 
 ## Related Pages
 
-  * [cf_joypad_button_down](/input/cf_joypad_button_down.md)  
-  * [cf_joypad_button_to_string](/input/cf_joypad_button_to_string.md)  
+  * [cf_joypad_button_down](/input/cf_joypad_button_down)  
+  * [cf_joypad_button_to_string](/input/cf_joypad_button_to_string)  
   * CF_Joypad  

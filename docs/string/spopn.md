@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # spopn
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Removes n characters from the back of a string.
 
 ```cpp
@@ -24,7 +21,7 @@ n | Number of characters to pop.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [spop](/string/spop.md)  
-  * [slast](/string/slast.md)  
-  * [serase](/string/serase.md)  
+  * [sdyna](/string/sdyna)  
+  * [spop](/string/spop)  
+  * [slast](/string/slast)  
+  * [serase](/string/serase)  

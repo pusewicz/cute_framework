@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_unload
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Unloads the sprite's image resources from the internal cache.
 
 ```cpp
@@ -23,10 +20,10 @@ aseprite_path | Virtual path to a .ase file.
 
 ## Remarks
 
-Any live [CF_Sprite](/sprite/cf_sprite.md) instances for `aseprite_path` will now by "dangling". See [Virtual File System](https://randygaul.github.io/cute_framework/#/topics/virtual_file_system).
+Any live [CF_Sprite](/sprite/cf_sprite) instances for `aseprite_path` will now by "dangling". See [Virtual File System](https://randygaul.github.io/cute_framework/#/topics/virtual_file_system).
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [cf_make_sprite](/sprite/cf_make_sprite.md)  
-  * [cf_sprite_reload](/sprite/cf_sprite_reload.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [cf_make_sprite](/sprite/cf_make_sprite)  
+  * [cf_sprite_reload](/sprite/cf_sprite_reload)  

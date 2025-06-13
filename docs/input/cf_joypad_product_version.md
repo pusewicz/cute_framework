@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_joypad_product_version
 
-Category: [input](/docs/input)  
-GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)  
----
-
+GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)
 Returns the product version.
 
 ```cpp
@@ -28,4 +25,4 @@ Returns 0 if not available.
 ## Related Pages
 
   * CF_Joypad  
-  * [CF_JoypadType](/input/cf_joypadtype.md)  
+  * [CF_JoypadType](/input/cf_joypadtype)  

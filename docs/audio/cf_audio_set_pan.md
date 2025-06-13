@@ -7,10 +7,7 @@ parent: audio
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_audio_set_pan
 
-Category: [audio](/docs/audio)  
-GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)  
----
-
+GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)
 Sets the global stereo pan for all audio.
 
 ```cpp
@@ -23,6 +20,6 @@ pan | 0.5f means perfect balance for left/right speakers. 0.0f means only left s
 
 ## Related Pages
 
-  * [cf_audio_set_pause](/audio/cf_audio_set_pause.md)  
-  * [cf_audio_set_global_volume](/audio/cf_audio_set_global_volume.md)  
-  * [cf_audio_set_sound_volume](/audio/cf_audio_set_sound_volume.md)  
+  * [cf_audio_set_pause](/audio/cf_audio_set_pause)  
+  * [cf_audio_set_global_volume](/audio/cf_audio_set_global_volume)  
+  * [cf_audio_set_sound_volume](/audio/cf_audio_set_sound_volume)  

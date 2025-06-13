@@ -7,13 +7,10 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Animation
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 A named set of frames in sequence.
 
 ## Related Pages
 
-  * [CF_Frame](/sprite/cf_frame.md)  
-  * [CF_Sprite](/sprite/cf_sprite.md)  
+  * [CF_Frame](/sprite/cf_frame)  
+  * [CF_Sprite](/sprite/cf_sprite)  

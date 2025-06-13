@@ -7,11 +7,8 @@ parent: list
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_LIST_NODE
 
-Category: [list](/docs/list)  
-GitHub: [cute_doubly_list.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_doubly_list.h)  
----
-
-Converts a pointer to a host struct/object to a specific [CF_ListNode](/list/cf_listnode.md) member.
+GitHub: [cute_doubly_list.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_doubly_list.h)
+Converts a pointer to a host struct/object to a specific [CF_ListNode](/list/cf_listnode) member.
 
 ```cpp
 #define CF_LIST_NODE(T, member, ptr) ((CF_ListNode*)((uintptr_t)ptr + CF_OFFSET_OF(T, member)))
@@ -25,7 +22,7 @@ ptr | A pointer to the host.
 
 ## Return Value
 
-Returns a pointer to a [CF_ListNode](/list/cf_listnode.md).
+Returns a pointer to a [CF_ListNode](/list/cf_listnode).
 
 ## Code Example
 
@@ -52,18 +49,18 @@ easily convert to/from host pointer and node pointer.
 
 ## Related Pages
 
-  * [CF_ListNode](/list/cf_listnode.md)  
-  * [CF_List](/list/cf_list.md)  
-  * [cf_list_back](/list/cf_list_back.md)  
-  * [CF_LIST_HOST](/list/cf_list_host.md)  
-  * [cf_list_init_node](/list/cf_list_init_node.md)  
-  * [cf_list_init](/list/cf_list_init.md)  
-  * [cf_list_push_front](/list/cf_list_push_front.md)  
-  * [cf_list_push_back](/list/cf_list_push_back.md)  
-  * [cf_list_remove](/list/cf_list_remove.md)  
-  * [cf_list_pop_front](/list/cf_list_pop_front.md)  
-  * [cf_list_pop_back](/list/cf_list_pop_back.md)  
-  * [cf_list_empty](/list/cf_list_empty.md)  
-  * [cf_list_begin](/list/cf_list_begin.md)  
-  * [cf_list_end](/list/cf_list_end.md)  
-  * [cf_list_front](/list/cf_list_front.md)  
+  * [CF_ListNode](/list/cf_listnode)  
+  * [CF_List](/list/cf_list)  
+  * [cf_list_back](/list/cf_list_back)  
+  * [CF_LIST_HOST](/list/cf_list_host)  
+  * [cf_list_init_node](/list/cf_list_init_node)  
+  * [cf_list_init](/list/cf_list_init)  
+  * [cf_list_push_front](/list/cf_list_push_front)  
+  * [cf_list_push_back](/list/cf_list_push_back)  
+  * [cf_list_remove](/list/cf_list_remove)  
+  * [cf_list_pop_front](/list/cf_list_pop_front)  
+  * [cf_list_pop_back](/list/cf_list_pop_back)  
+  * [cf_list_empty](/list/cf_list_empty)  
+  * [cf_list_begin](/list/cf_list_begin)  
+  * [cf_list_end](/list/cf_list_end)  
+  * [cf_list_front](/list/cf_list_front)  

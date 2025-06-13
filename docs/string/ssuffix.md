@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # ssuffix
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Check to see if the string's suffix matches.
 
 ```cpp
@@ -28,9 +25,9 @@ Returns true if `suffix` is the suffix of `s`, false otherwise.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sprefix](/string/sprefix.md)  
-  * [sfind](/string/sfind.md)  
-  * [scontains](/string/scontains.md)  
-  * [sfirst_index_of](/string/sfirst_index_of.md)  
-  * [slast_index_of](/string/slast_index_of.md)  
+  * [sdyna](/string/sdyna)  
+  * [sprefix](/string/sprefix)  
+  * [sfind](/string/sfind)  
+  * [scontains](/string/scontains)  
+  * [sfirst_index_of](/string/sfirst_index_of)  
+  * [slast_index_of](/string/slast_index_of)  

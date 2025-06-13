@@ -7,27 +7,24 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_HapticData
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
 Container struct for all possible supported haptic types.
 
 Struct Members | Description
 --- | ---
-`CF_HapticType type` | The type of the haptic, see [CF_HapticType](/haptic/cf_haptictype.md).
-`CF_HapticLeftRight leftright` | A leftright haptic if `type` is `CF_HAPTIC_TYPE_LEFTRIGHT`, see [CF_HapticLeftRight](/haptic/cf_hapticleftright.md).
-`CF_HapticPeriodic periodic` | A periodic haptic if `type` is `CF_HAPTIC_TYPE_PERIODIC`, see [CF_HapticLeftRight](/haptic/cf_hapticleftright.md).
-`CF_HapticRamp ramp` | A ramp haptic if `type` is `CF_HAPTIC_TYPE_RAMP`, see [CF_HapticLeftRight](/haptic/cf_hapticleftright.md).
+`CF_HapticType type` | The type of the haptic, see [CF_HapticType](/haptic/cf_haptictype).
+`CF_HapticLeftRight leftright` | A leftright haptic if `type` is `CF_HAPTIC_TYPE_LEFTRIGHT`, see [CF_HapticLeftRight](/haptic/cf_hapticleftright).
+`CF_HapticPeriodic periodic` | A periodic haptic if `type` is `CF_HAPTIC_TYPE_PERIODIC`, see [CF_HapticLeftRight](/haptic/cf_hapticleftright).
+`CF_HapticRamp ramp` | A ramp haptic if `type` is `CF_HAPTIC_TYPE_RAMP`, see [CF_HapticLeftRight](/haptic/cf_hapticleftright).
 
 ## Related Pages
 
-  * [CF_Haptic](/haptic/cf_haptic.md)  
-  * [CF_HapticType](/haptic/cf_haptictype.md)  
-  * [cf_haptic_open](/haptic/cf_haptic_open.md)  
-  * [cf_haptic_close](/haptic/cf_haptic_close.md)  
-  * [CF_HapticEffect](/haptic/cf_hapticeffect.md)  
-  * [cf_haptic_create_effect](/haptic/cf_haptic_create_effect.md)  
-  * [CF_HapticRamp](/haptic/cf_hapticramp.md)  
-  * [CF_HapticPeriodic](/haptic/cf_hapticperiodic.md)  
-  * [CF_HapticLeftRight](/haptic/cf_hapticleftright.md)  
+  * [CF_Haptic](/haptic/cf_haptic)  
+  * [CF_HapticType](/haptic/cf_haptictype)  
+  * [cf_haptic_open](/haptic/cf_haptic_open)  
+  * [cf_haptic_close](/haptic/cf_haptic_close)  
+  * [CF_HapticEffect](/haptic/cf_hapticeffect)  
+  * [cf_haptic_create_effect](/haptic/cf_haptic_create_effect)  
+  * [CF_HapticRamp](/haptic/cf_hapticramp)  
+  * [CF_HapticPeriodic](/haptic/cf_hapticperiodic)  
+  * [CF_HapticLeftRight](/haptic/cf_hapticleftright)  

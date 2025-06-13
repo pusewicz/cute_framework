@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_get_framerate
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Returns the current framerate of the application.
 
 ```cpp
@@ -19,4 +16,4 @@ float cf_app_get_framerate();
 
 ## Related Pages
 
-  * [cf_app_get_smoothed_framerate](/app/cf_app_get_smoothed_framerate.md)  
+  * [cf_app_get_smoothed_framerate](/app/cf_app_get_smoothed_framerate)  

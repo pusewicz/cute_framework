@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_pixel_white
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
 Helper function to return a invisible `white`.
 
 ```cpp
@@ -19,14 +16,14 @@ CF_Pixel cf_pixel_white()
 
 ## Related Pages
 
-  * [cf_pixel_invisible](/graphics/cf_pixel_invisible.md)  
-  * [cf_pixel_black](/graphics/cf_pixel_black.md)  
-  * [cf_pixel_magenta](/graphics/cf_pixel_magenta.md)  
-  * [cf_pixel_red](/graphics/cf_pixel_red.md)  
-  * [cf_pixel_green](/graphics/cf_pixel_green.md)  
-  * [cf_pixel_blue](/graphics/cf_pixel_blue.md)  
-  * [cf_pixel_yellow](/graphics/cf_pixel_yellow.md)  
-  * [cf_pixel_orange](/graphics/cf_pixel_orange.md)  
-  * [cf_pixel_purple](/graphics/cf_pixel_purple.md)  
-  * [cf_pixel_grey](/graphics/cf_pixel_grey.md)  
-  * [cf_pixel_cyan](/graphics/cf_pixel_cyan.md)  
+  * [cf_pixel_invisible](/graphics/cf_pixel_invisible)  
+  * [cf_pixel_black](/graphics/cf_pixel_black)  
+  * [cf_pixel_magenta](/graphics/cf_pixel_magenta)  
+  * [cf_pixel_red](/graphics/cf_pixel_red)  
+  * [cf_pixel_green](/graphics/cf_pixel_green)  
+  * [cf_pixel_blue](/graphics/cf_pixel_blue)  
+  * [cf_pixel_yellow](/graphics/cf_pixel_yellow)  
+  * [cf_pixel_orange](/graphics/cf_pixel_orange)  
+  * [cf_pixel_purple](/graphics/cf_pixel_purple)  
+  * [cf_pixel_grey](/graphics/cf_pixel_grey)  
+  * [cf_pixel_cyan](/graphics/cf_pixel_cyan)  

@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_capsule_to_poly
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns true an capsule is intersecting a polygon.
 
 ```cpp
@@ -19,10 +16,10 @@ bool cf_capsule_to_poly(CF_Capsule A, const CF_Poly* B, const CF_Transform* bx);
 
 ## Remarks
 
-For information about _how_ two shapes are intersecting (and not just boolean result), see [cf_capsule_to_poly_manifold](/collision/cf_capsule_to_poly_manifold.md).
+For information about _how_ two shapes are intersecting (and not just boolean result), see [cf_capsule_to_poly_manifold](/collision/cf_capsule_to_poly_manifold).
 
 ## Related Pages
 
-  * [CF_Capsule](/collision/cf_capsule.md)  
-  * [CF_Poly](/collision/cf_poly.md)  
-  * [cf_capsule_to_poly_manifold](/collision/cf_capsule_to_poly_manifold.md)  
+  * [CF_Capsule](/collision/cf_capsule)  
+  * [CF_Poly](/collision/cf_poly)  
+  * [cf_capsule_to_poly_manifold](/collision/cf_capsule_to_poly_manifold)  

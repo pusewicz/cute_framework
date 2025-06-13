@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_CullMode
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Settings to control if triangles are culled in clockwise order, counter-clockwise order, or not at all.
 
 ## Values
@@ -23,5 +20,5 @@ CULL_MODE_BACK | Cull triangles ordered counter-clockwise.
 
 ## Related Pages
 
-  * [CF_RenderState](/graphics/cf_renderstate.md)  
-  * [cf_cull_mode_string](/graphics/cf_cull_mode_string.md)  
+  * [CF_RenderState](/graphics/cf_renderstate)  
+  * [cf_cull_mode_string](/graphics/cf_cull_mode_string)  

@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_V2
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 A 2d vector.
 
 Struct Members | Description
@@ -20,7 +17,7 @@ Struct Members | Description
 
 ## Remarks
 
-To construct a vector you may use the function [cf_v2](/math/cf_v2.md), which is defined like this:
+To construct a vector you may use the function [cf_v2](/math/cf_v2), which is defined like this:
 
 ```cpp
 CF_V2 cf_v2(float x, float y);
@@ -30,8 +27,8 @@ The C++ API uses `V2(x, y)`.
 
 ## Related Pages
 
-  * [cf_div_v2_f](/math/cf_div_v2_f.md)  
-  * [cf_add_v2](/math/cf_add_v2.md)  
-  * [cf_sub_v2](/math/cf_sub_v2.md)  
-  * [cf_dot](/math/cf_dot.md)  
-  * [cf_mul_v2_f](/math/cf_mul_v2_f.md)  
+  * [cf_div_v2_f](/math/cf_div_v2_f)  
+  * [cf_add_v2](/math/cf_add_v2)  
+  * [cf_sub_v2](/math/cf_sub_v2)  
+  * [cf_dot](/math/cf_dot)  
+  * [cf_mul_v2_f](/math/cf_mul_v2_f)  

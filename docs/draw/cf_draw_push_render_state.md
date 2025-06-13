@@ -7,11 +7,8 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_push_render_state
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
-Pushes a [CF_RenderState](/graphics/cf_renderstate.md) for controlling various rendering settings.
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
+Pushes a [CF_RenderState](/graphics/cf_renderstate) for controlling various rendering settings.
 
 ```cpp
 void cf_draw_push_render_state(CF_RenderState render_state);

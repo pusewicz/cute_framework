@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sisdyna
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Checks to see if a C string is a dynamic string from Cute Framework's string API, or not.
 
 ```cpp
@@ -31,7 +28,7 @@ This can be evaluated at compile time for string literals.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sstatic](/string/sstatic.md)  
-  * [sset](/string/sset.md)  
-  * [spush](/string/spush.md)  
+  * [sdyna](/string/sdyna)  
+  * [sstatic](/string/sstatic)  
+  * [sset](/string/sset)  
+  * [spush](/string/spush)  

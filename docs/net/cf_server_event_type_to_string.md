@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_server_event_type_to_string
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Convert an enum [CF_ServerEventType](/net/cf_servereventtype.md) to a c-style string.
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Convert an enum [CF_ServerEventType](/net/cf_servereventtype) to a c-style string.
 
 ```cpp
 const char* cf_server_event_type_to_string(CF_ServerEventType type)
@@ -23,6 +20,6 @@ state | The state to convert to a string.
 
 ## Related Pages
 
-  * [CF_ServerEventType](/net/cf_servereventtype.md)  
-  * [cf_server_pop_event](/net/cf_server_pop_event.md)  
-  * [CF_ServerEvent](/net/cf_serverevent.md)  
+  * [CF_ServerEventType](/net/cf_servereventtype)  
+  * [cf_server_pop_event](/net/cf_server_pop_event)  
+  * [CF_ServerEvent](/net/cf_serverevent)  

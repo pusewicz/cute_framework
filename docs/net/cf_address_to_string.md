@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_address_to_string
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Converts a [CF_Address](/net/cf_address.md) to a C string.
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Converts a [CF_Address](/net/cf_address) to a C string.
 
 ```cpp
 void cf_address_to_string(CF_Address endpoint, char* buffer, int buffer_size);
@@ -19,6 +16,6 @@ void cf_address_to_string(CF_Address endpoint, char* buffer, int buffer_size);
 
 ## Related Pages
 
-  * [CF_Address](/net/cf_address.md)  
-  * [cf_address_init](/net/cf_address_init.md)  
-  * [cf_address_equals](/net/cf_address_equals.md)  
+  * [CF_Address](/net/cf_address)  
+  * [cf_address_init](/net/cf_address_init)  
+  * [cf_address_equals](/net/cf_address_equals)  

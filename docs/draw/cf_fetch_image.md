@@ -7,11 +7,8 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fetch_image
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
-Returns a [CF_TemporaryImage](/draw/cf_temporaryimage.md) for a given sprite.
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
+Returns a [CF_TemporaryImage](/draw/cf_temporaryimage) for a given sprite.
 
 ```cpp
 CF_TemporaryImage cf_fetch_image(const CF_Sprite* sprite);
@@ -24,8 +21,8 @@ sprite | The sprite.
 ## Remarks
 
 Useful to render a sprite in an external system, e.g. Dear ImGui. This struct is only valid until the next time
-[cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen.md) is called. This function can have a negative impact on rendering perf.
+[cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen) is called. This function can have a negative impact on rendering perf.
 
 ## Related Pages
 
-  * [CF_TemporaryImage](/draw/cf_temporaryimage.md)  
+  * [CF_TemporaryImage](/draw/cf_temporaryimage)  

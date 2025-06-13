@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # scontains
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Returns true if s contains a certain substring.
 
 ```cpp
@@ -24,9 +21,9 @@ contains_me | A substring to search for.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sprefix](/string/sprefix.md)  
-  * [ssuffix](/string/ssuffix.md)  
-  * [sfind](/string/sfind.md)  
-  * [sfirst_index_of](/string/sfirst_index_of.md)  
-  * [slast_index_of](/string/slast_index_of.md)  
+  * [sdyna](/string/sdyna)  
+  * [sprefix](/string/sprefix)  
+  * [ssuffix](/string/ssuffix)  
+  * [sfind](/string/sfind)  
+  * [sfirst_index_of](/string/sfirst_index_of)  
+  * [slast_index_of](/string/slast_index_of)  

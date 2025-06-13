@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_circle_to_aabb
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns true if a circle is intersecting with an Aabb.
 
 ```cpp
@@ -19,10 +16,10 @@ bool cf_circle_to_aabb(CF_Circle A, CF_Aabb B);
 
 ## Remarks
 
-For information about _how_ two shapes are intersecting (and not just boolean result), see [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold.md).
+For information about _how_ two shapes are intersecting (and not just boolean result), see [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold).
 
 ## Related Pages
 
-  * [CF_Circle](/math/cf_circle.md)  
-  * [CF_Aabb](/math/cf_aabb.md)  
-  * [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold.md)  
+  * [CF_Circle](/math/cf_circle)  
+  * [CF_Aabb](/math/cf_aabb)  
+  * [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold)  

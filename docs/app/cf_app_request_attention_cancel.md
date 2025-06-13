@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_request_attention_cancel
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Cancels any previous requests for attention.
 
 ```cpp
@@ -19,5 +16,5 @@ void cf_app_request_attention_cancel();
 
 ## Related Pages
 
-  * [cf_app_request_attention](/app/cf_app_request_attention.md)  
-  * [cf_app_request_attention_continuously](/app/cf_app_request_attention_continuously.md)  
+  * [cf_app_request_attention](/app/cf_app_request_attention)  
+  * [cf_app_request_attention_continuously](/app/cf_app_request_attention_continuously)  

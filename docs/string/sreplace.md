@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sreplace
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Replaces all substrings `replace_me` with the substring `with_me`.
 
 ```cpp
@@ -29,11 +26,11 @@ Supports srings that start with "0x", "#", or no prefix.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [strim](/string/strim.md)  
-  * [sltrim](/string/sltrim.md)  
-  * [srtrim](/string/srtrim.md)  
-  * [slpad](/string/slpad.md)  
-  * [srpad](/string/srpad.md)  
-  * [sdedup](/string/sdedup.md)  
-  * [serase](/string/serase.md)  
+  * [sdyna](/string/sdyna)  
+  * [strim](/string/strim)  
+  * [sltrim](/string/sltrim)  
+  * [srtrim](/string/srtrim)  
+  * [slpad](/string/slpad)  
+  * [srpad](/string/srpad)  
+  * [sdedup](/string/sdedup)  
+  * [serase](/string/serase)  

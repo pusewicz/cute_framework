@@ -7,10 +7,7 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_haptic_open
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
 Attempts to open a joypad for haptics use.
 
 ```cpp
@@ -23,7 +20,7 @@ player_index | An index represeting the joypad for a particular player, starting
 
 ## Return Value
 
-Returns a new [CF_Haptic](/haptic/cf_haptic.md).
+Returns a new [CF_Haptic](/haptic/cf_haptic).
 
 ## Remarks
 
@@ -31,9 +28,9 @@ Returns `NULL` upon any errors, including missing support from the underlying de
 
 ## Related Pages
 
-  * [CF_Haptic](/haptic/cf_haptic.md)  
+  * [CF_Haptic](/haptic/cf_haptic)  
   * CF_Joypad  
-  * [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play.md)  
-  * [cf_haptic_close](/haptic/cf_haptic_close.md)  
-  * [cf_haptic_create_effect](/haptic/cf_haptic_create_effect.md)  
-  * [cf_haptic_run_effect](/haptic/cf_haptic_run_effect.md)  
+  * [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play)  
+  * [cf_haptic_close](/haptic/cf_haptic_close)  
+  * [cf_haptic_create_effect](/haptic/cf_haptic_create_effect)  
+  * [cf_haptic_run_effect](/haptic/cf_haptic_run_effect)  

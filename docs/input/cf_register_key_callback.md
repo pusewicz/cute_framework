@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_register_key_callback
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Registers a callback invoked whenever a key is pressed.
 
 ```cpp
@@ -19,13 +16,13 @@ void cf_register_key_callback(void (*key_callback)(CF_KeyButton key, bool true_d
 
 ## Related Pages
 
-  * [CF_KeyButton](/input/cf_keybutton.md)  
-  * [cf_key_down](/input/cf_key_down.md)  
-  * [cf_key_up](/input/cf_key_up.md)  
-  * [cf_key_just_pressed](/input/cf_key_just_pressed.md)  
-  * [cf_key_just_released](/input/cf_key_just_released.md)  
-  * [cf_key_ctrl](/input/cf_key_ctrl.md)  
-  * [cf_key_shift](/input/cf_key_shift.md)  
-  * [cf_key_alt](/input/cf_key_alt.md)  
-  * [cf_key_gui](/input/cf_key_gui.md)  
-  * [cf_clear_key_states](/input/cf_clear_key_states.md)  
+  * [CF_KeyButton](/input/cf_keybutton)  
+  * [cf_key_down](/input/cf_key_down)  
+  * [cf_key_up](/input/cf_key_up)  
+  * [cf_key_just_pressed](/input/cf_key_just_pressed)  
+  * [cf_key_just_released](/input/cf_key_just_released)  
+  * [cf_key_ctrl](/input/cf_key_ctrl)  
+  * [cf_key_shift](/input/cf_key_shift)  
+  * [cf_key_alt](/input/cf_key_alt)  
+  * [cf_key_gui](/input/cf_key_gui)  
+  * [cf_clear_key_states](/input/cf_clear_key_states)  

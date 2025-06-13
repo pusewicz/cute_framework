@@ -7,10 +7,7 @@ parent: audio
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_audio_sample_count
 
-Category: [audio](/docs/audio)  
-GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)  
----
-
+GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)
 Returns the sample count for a loaded audio resource.
 
 ```cpp
@@ -19,6 +16,6 @@ int cf_audio_sample_count(CF_Audio audio);
 
 ## Related Pages
 
-  * [CF_Audio](/audio/cf_audio.md)  
-  * [cf_audio_sample_rate](/audio/cf_audio_sample_rate.md)  
-  * [cf_audio_channel_count](/audio/cf_audio_channel_count.md)  
+  * [CF_Audio](/audio/cf_audio)  
+  * [cf_audio_sample_rate](/audio/cf_audio_sample_rate)  
+  * [cf_audio_channel_count](/audio/cf_audio_channel_count)  

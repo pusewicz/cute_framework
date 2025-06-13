@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_capsule
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns a capsule.
 
 ```cpp
@@ -19,4 +16,4 @@ CF_Capsule cf_make_capsule(CF_V2 a, CF_V2 b, float radius)
 
 ## Related Pages
 
-  * [CF_Capsule](/collision/cf_capsule.md)  
+  * [CF_Capsule](/collision/cf_capsule)  

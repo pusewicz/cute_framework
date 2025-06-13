@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_frame_delay
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Returns the `delay` member of the currently playing frame, in milliseconds.
 
 ```cpp
@@ -23,9 +20,9 @@ sprite | The sprite.
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [CF_Frame](/sprite/cf_frame.md)  
-  * [cf_sprite_frame_count](/sprite/cf_sprite_frame_count.md)  
-  * [cf_sprite_current_frame](/sprite/cf_sprite_current_frame.md)  
-  * [cf_sprite_animation_interpolant](/sprite/cf_sprite_animation_interpolant.md)  
-  * [cf_sprite_animation_delay](/sprite/cf_sprite_animation_delay.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [CF_Frame](/sprite/cf_frame)  
+  * [cf_sprite_frame_count](/sprite/cf_sprite_frame_count)  
+  * [cf_sprite_current_frame](/sprite/cf_sprite_current_frame)  
+  * [cf_sprite_animation_interpolant](/sprite/cf_sprite_animation_interpolant)  
+  * [cf_sprite_animation_delay](/sprite/cf_sprite_animation_delay)  

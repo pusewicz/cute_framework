@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sequ
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Returns true if the two strings are equivalent, false otherwise.
 
 ```cpp
@@ -24,7 +21,7 @@ b | The second string.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [scmp](/string/scmp.md)  
-  * [sicmp](/string/sicmp.md)  
-  * [siequ](/string/siequ.md)  
+  * [sdyna](/string/sdyna)  
+  * [scmp](/string/scmp)  
+  * [sicmp](/string/sicmp)  
+  * [siequ](/string/siequ)  

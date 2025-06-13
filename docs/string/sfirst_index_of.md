@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sfirst_index_of
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Scanning from left-to-right, returns the first index of `ch` found.
 
 ```cpp
@@ -28,6 +25,6 @@ Returns -1 if none are found.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sfind](/string/sfind.md)  
-  * [slast_index_of](/string/slast_index_of.md)  
+  * [sdyna](/string/sdyna)  
+  * [sfind](/string/sfind)  
+  * [slast_index_of](/string/slast_index_of)  

@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ShapeType
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Various types of supported collision shapes.
 
 ## Values
@@ -18,17 +15,17 @@ Various types of supported collision shapes.
 Enum | Description
 --- | ---
 SHAPE_TYPE_NONE | Unknown shape type.
-SHAPE_TYPE_CIRCLE | [CF_Circle](/math/cf_circle.md) shape type.
-SHAPE_TYPE_AABB | [CF_Aabb](/math/cf_aabb.md) shape type.
-SHAPE_TYPE_CAPSULE | [CF_Capsule](/collision/cf_capsule.md) shape type.
-SHAPE_TYPE_POLY | [CF_Poly](/collision/cf_poly.md) shape type.
+SHAPE_TYPE_CIRCLE | [CF_Circle](/math/cf_circle) shape type.
+SHAPE_TYPE_AABB | [CF_Aabb](/math/cf_aabb) shape type.
+SHAPE_TYPE_CAPSULE | [CF_Capsule](/collision/cf_capsule) shape type.
+SHAPE_TYPE_POLY | [CF_Poly](/collision/cf_poly) shape type.
 
 ## Related Pages
 
-  * [cf_cast_ray](/collision/cf_cast_ray.md)  
-  * [cf_shape_type_to_string](/collision/cf_shape_type_to_string.md)  
-  * [cf_gjk](/collision/cf_gjk.md)  
-  * [cf_toi](/collision/cf_toi.md)  
-  * [cf_inflate](/collision/cf_inflate.md)  
-  * [cf_collide](/collision/cf_collide.md)  
-  * [cf_collided](/collision/cf_collided.md)  
+  * [cf_cast_ray](/collision/cf_cast_ray)  
+  * [cf_shape_type_to_string](/collision/cf_shape_type_to_string)  
+  * [cf_gjk](/collision/cf_gjk)  
+  * [cf_toi](/collision/cf_toi)  
+  * [cf_inflate](/collision/cf_inflate)  
+  * [cf_collide](/collision/cf_collide)  
+  * [cf_collided](/collision/cf_collided)  

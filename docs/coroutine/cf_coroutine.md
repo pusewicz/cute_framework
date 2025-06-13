@@ -7,34 +7,31 @@ parent: coroutine
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Coroutine
 
-Category: [coroutine](/docs/coroutine)  
-GitHub: [cute_coroutine.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_coroutine.h)  
----
-
+GitHub: [cute_coroutine.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_coroutine.h)
 An opaque handle representing a coroutine.
 
 ## Remarks
 
 A coroutine is a function that can be paused and resumed. Coroutines are often used as an alternative
 way to implement state machines, or create gameplay-helper tools for control code logic/flow. Once a coroutine
-is created with [cf_make_coroutine](/coroutine/cf_make_coroutine.md) call [cf_coroutine_resume](/coroutine/cf_coroutine_resume.md) to start running it. At any moment the coroutine
-can pause itself with [cf_coroutine_yield](/coroutine/cf_coroutine_yield.md). Then, later, someone else can call [cf_coroutine_resume](/coroutine/cf_coroutine_resume.md). The coroutine
-will then continue running just after the last call to [cf_coroutine_yield](/coroutine/cf_coroutine_yield.md). This makes a coroutine great for
+is created with [cf_make_coroutine](/coroutine/cf_make_coroutine) call [cf_coroutine_resume](/coroutine/cf_coroutine_resume) to start running it. At any moment the coroutine
+can pause itself with [cf_coroutine_yield](/coroutine/cf_coroutine_yield). Then, later, someone else can call [cf_coroutine_resume](/coroutine/cf_coroutine_resume). The coroutine
+will then continue running just after the last call to [cf_coroutine_yield](/coroutine/cf_coroutine_yield). This makes a coroutine great for
 preserving state between yield/resume calls, for example to perform some complex action over multiple frames.
 
 ## Related Pages
 
-  * [cf_coroutine_currently_running](/coroutine/cf_coroutine_currently_running.md)  
-  * [CF_CoroutineFn](/coroutine/cf_coroutinefn.md)  
-  * [CF_CoroutineState](/coroutine/cf_coroutinestate.md)  
-  * [cf_make_coroutine](/coroutine/cf_make_coroutine.md)  
-  * [cf_destroy_coroutine](/coroutine/cf_destroy_coroutine.md)  
-  * [cf_coroutine_state_to_string](/coroutine/cf_coroutine_state_to_string.md)  
-  * [cf_coroutine_resume](/coroutine/cf_coroutine_resume.md)  
-  * [cf_coroutine_yield](/coroutine/cf_coroutine_yield.md)  
-  * [cf_coroutine_state](/coroutine/cf_coroutine_state.md)  
-  * [cf_coroutine_get_udata](/coroutine/cf_coroutine_get_udata.md)  
-  * [cf_coroutine_push](/coroutine/cf_coroutine_push.md)  
-  * [cf_coroutine_pop](/coroutine/cf_coroutine_pop.md)  
-  * [cf_coroutine_bytes_pushed](/coroutine/cf_coroutine_bytes_pushed.md)  
-  * [cf_coroutine_space_remaining](/coroutine/cf_coroutine_space_remaining.md)  
+  * [cf_coroutine_currently_running](/coroutine/cf_coroutine_currently_running)  
+  * [CF_CoroutineFn](/coroutine/cf_coroutinefn)  
+  * [CF_CoroutineState](/coroutine/cf_coroutinestate)  
+  * [cf_make_coroutine](/coroutine/cf_make_coroutine)  
+  * [cf_destroy_coroutine](/coroutine/cf_destroy_coroutine)  
+  * [cf_coroutine_state_to_string](/coroutine/cf_coroutine_state_to_string)  
+  * [cf_coroutine_resume](/coroutine/cf_coroutine_resume)  
+  * [cf_coroutine_yield](/coroutine/cf_coroutine_yield)  
+  * [cf_coroutine_state](/coroutine/cf_coroutine_state)  
+  * [cf_coroutine_get_udata](/coroutine/cf_coroutine_get_udata)  
+  * [cf_coroutine_push](/coroutine/cf_coroutine_push)  
+  * [cf_coroutine_pop](/coroutine/cf_coroutine_pop)  
+  * [cf_coroutine_bytes_pushed](/coroutine/cf_coroutine_bytes_pushed)  
+  * [cf_coroutine_space_remaining](/coroutine/cf_coroutine_space_remaining)  

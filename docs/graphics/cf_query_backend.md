@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_query_backend
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns which [CF_BackendType](/graphics/cf_backendtype.md) is currently active.
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns which [CF_BackendType](/graphics/cf_backendtype) is currently active.
 
 ```cpp
 CF_BackendType cf_query_backend();
@@ -19,5 +16,5 @@ CF_BackendType cf_query_backend();
 
 ## Related Pages
 
-  * [CF_BackendType](/graphics/cf_backendtype.md)  
-  * [cf_backend_type_to_string](/graphics/cf_backend_type_to_string.md)  
+  * [CF_BackendType](/graphics/cf_backendtype)  
+  * [cf_backend_type_to_string](/graphics/cf_backend_type_to_string)  

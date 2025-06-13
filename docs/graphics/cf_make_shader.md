@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_shader
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Creates a shader from glsl source code.
 
 ```cpp
@@ -23,8 +20,8 @@ vertex_path | A virtual path to the shader. See [Virtual File System](https://ra
 
 ## Remarks
 
-The shader paths must be in the shader directory. See [cf_shader_directory](/graphics/cf_shader_directory.md). For example, if you call [cf_shader_directory](/graphics/cf_shader_directory.md) with
-the path `"/assets/shaders"`, you should then supply paths to [cf_make_shader](/graphics/cf_make_shader.md) relative to the shader directory, and
+The shader paths must be in the shader directory. See [cf_shader_directory](/graphics/cf_shader_directory). For example, if you call [cf_shader_directory](/graphics/cf_shader_directory) with
+the path `"/assets/shaders"`, you should then supply paths to [cf_make_shader](/graphics/cf_make_shader) relative to the shader directory, and
 simply pass in paths such as `"/shader.vert`" or `"shader.frag"`. This also applies to `#include` between shaders.
 
 Note the expected glsl version is 450.
@@ -63,7 +60,7 @@ layout (set = 3, binding = 0) uniform uniform_block {
 ```
 
 For uniforms you only have one uniform block available, and it must be named `uniform_block`. However, if your
-shader is make from the draw api ([cf_make_draw_shader](/draw/cf_make_draw_shader.md)) uniform blocks must be named user_uniforms.
+shader is make from the draw api ([cf_make_draw_shader](/draw/cf_make_draw_shader)) uniform blocks must be named user_uniforms.
 
 Shaders that sit in the shader directory may be `#include`'d into another shader. Though, it doesn't work
 quite exactly like a C/C++ include, it's very similar -- each shader may be included into another
@@ -72,7 +69,7 @@ or if two files try to include the same file) subsequent includes will be ignore
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [CF_Material](/graphics/cf_material.md)  
-  * [cf_shader_directory](/graphics/cf_shader_directory.md)  
-  * [cf_apply_shader](/graphics/cf_apply_shader.md)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [CF_Material](/graphics/cf_material)  
+  * [cf_shader_directory](/graphics/cf_shader_directory)  
+  * [cf_apply_shader](/graphics/cf_apply_shader)  

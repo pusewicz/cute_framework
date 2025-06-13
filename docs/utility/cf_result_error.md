@@ -7,11 +7,8 @@ parent: utility
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_result_error
 
-Category: [utility](/docs/utility)  
-GitHub: [cute_result.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_result.h)  
----
-
-Returns a [CF_Result](/utility/cf_result.md) containing an error.
+GitHub: [cute_result.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_result.h)
+Returns a [CF_Result](/utility/cf_result) containing an error.
 
 ```cpp
 CF_Result cf_result_error(const char* details)
@@ -23,7 +20,7 @@ details | Details about the error.
 
 ## Related Pages
 
-  * [CF_Result](/utility/cf_result.md)  
-  * [cf_is_error](/utility/cf_is_error.md)  
+  * [CF_Result](/utility/cf_result)  
+  * [cf_is_error](/utility/cf_is_error)  
   * cf_result_make  
-  * [cf_result_success](/utility/cf_result_success.md)  
+  * [cf_result_success](/utility/cf_result_success)  

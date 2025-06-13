@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # Display Orientation
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Represents the orientation style of a display.
 
 ## Values
@@ -25,5 +22,5 @@ DISPLAY_ORIENTATION_PORTRAIT_FLIPPED | Portrait orientation (upside down).
 
 ## Related Pages
 
-  * [cf_make_app](/app/cf_make_app.md)  
-  * [cf_display_orientation](/app/cf_display_orientation.md)  
+  * [cf_make_app](/app/cf_make_app)  
+  * [cf_display_orientation](/app/cf_display_orientation)  

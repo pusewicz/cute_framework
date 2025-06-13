@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_pop_vertex_attributes
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Pops the current vertex attribute state, restoring the previous state.
 
 ```cpp
@@ -19,7 +16,7 @@ CF_Color cf_draw_pop_vertex_attributes();
 
 ## Related Pages
 
-  * [CF_Vertex](/draw/cf_vertex.md)  
-  * [cf_draw_push_vertex_attributes](/draw/cf_draw_push_vertex_attributes.md)  
-  * [cf_draw_push_vertex_attributes2](/draw/cf_draw_push_vertex_attributes2.md)  
-  * [cf_draw_peek_vertex_attributes](/draw/cf_draw_peek_vertex_attributes.md)  
+  * [CF_Vertex](/draw/cf_vertex)  
+  * [cf_draw_push_vertex_attributes](/draw/cf_draw_push_vertex_attributes)  
+  * [cf_draw_push_vertex_attributes2](/draw/cf_draw_push_vertex_attributes2)  
+  * [cf_draw_peek_vertex_attributes](/draw/cf_draw_peek_vertex_attributes)  

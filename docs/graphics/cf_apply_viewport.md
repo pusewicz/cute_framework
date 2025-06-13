@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_apply_viewport
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Sets up a viewport to render within.
 
 ```cpp
@@ -27,9 +24,9 @@ h | Height of the viewport in pixels.
 ## Remarks
 
 The viewport is a window on the screen to render within. The canvas will be stretched to fit onto the viewport. You must only call this
-after calling [cf_apply_shader](/graphics/cf_apply_shader.md).
+after calling [cf_apply_shader](/graphics/cf_apply_shader).
 
 ## Related Pages
 
-  * [cf_apply_canvas](/graphics/cf_apply_canvas.md)  
-  * [cf_apply_scissor](/graphics/cf_apply_scissor.md)  
+  * [cf_apply_canvas](/graphics/cf_apply_canvas)  
+  * [cf_apply_scissor](/graphics/cf_apply_scissor)  

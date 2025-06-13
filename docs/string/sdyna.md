@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sdyna
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 An empty macro used in the C API to markup dynamic strings.
 
 ```cpp
@@ -24,10 +21,10 @@ dynamic string.
 
 ## Related Pages
 
-  * [smake](/string/smake.md)  
-  * [sfmt](/string/sfmt.md)  
-  * [sfmt_append](/string/sfmt_append.md)  
-  * [svfmt](/string/svfmt.md)  
-  * [svfmt_append](/string/svfmt_append.md)  
-  * [sset](/string/sset.md)  
-  * [sdup](/string/sdup.md)  
+  * [smake](/string/smake)  
+  * [sfmt](/string/sfmt)  
+  * [sfmt_append](/string/sfmt_append)  
+  * [svfmt](/string/svfmt)  
+  * [svfmt_append](/string/svfmt_append)  
+  * [sset](/string/sset)  
+  * [sdup](/string/sdup)  

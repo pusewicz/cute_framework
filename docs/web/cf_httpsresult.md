@@ -7,11 +7,8 @@ parent: web
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_HttpsResult
 
-Category: [web](/docs/web)  
-GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)  
----
-
-Status of a [CF_HttpsRequest](/web/cf_httpsrequest.md).
+GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)
+Status of a [CF_HttpsRequest](/web/cf_httpsrequest).
 
 ## Values
 
@@ -24,15 +21,15 @@ HTTPS_RESULT_CANNOT_VERIFY_CA_CHAIN | Unable to verify the host's cert.
 HTTPS_RESULT_NO_MATCHING_ENCRYPTION_ALGORITHMS | Unable to form a secure connection.
 HTTPS_RESULT_SOCKET_ERROR | Socket on the local machine failed.
 HTTPS_RESULT_FAILED | Unknown error.
-HTTPS_RESULT_PENDING | Continue calling [cf_https_process](/web/cf_https_process.md).
-HTTPS_RESULT_OK | The result has finished, you may stop calling [cf_https_process](/web/cf_https_process.md), and fetch the response via [cf_https_response](/web/cf_https_response.md).
+HTTPS_RESULT_PENDING | Continue calling [cf_https_process](/web/cf_https_process).
+HTTPS_RESULT_OK | The result has finished, you may stop calling [cf_https_process](/web/cf_https_process), and fetch the response via [cf_https_response](/web/cf_https_response).
 
 ## Remarks
 
-Intended to be used in a loop, along with [cf_https_process](/web/cf_https_process.md). See [CF_HttpsRequest](/web/cf_httpsrequest.md).
+Intended to be used in a loop, along with [cf_https_process](/web/cf_https_process). See [CF_HttpsRequest](/web/cf_httpsrequest).
 
 ## Related Pages
 
-  * [CF_HttpsRequest](/web/cf_httpsrequest.md)  
-  * [cf_https_process](/web/cf_https_process.md)  
-  * [cf_https_result_to_string](/web/cf_https_result_to_string.md)  
+  * [CF_HttpsRequest](/web/cf_httpsrequest)  
+  * [cf_https_process](/web/cf_https_process)  
+  * [cf_https_result_to_string](/web/cf_https_result_to_string)  

@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_poly
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Fills out the polygon with values.
 
 ```cpp
@@ -19,10 +16,10 @@ void cf_make_poly(CF_Poly* p);
 
 ## Remarks
 
-Runs [cf_hull](/collision/cf_hull.md) and [cf_norms](/collision/cf_norms.md), assumes p->verts and p->count are both set to valid values.
+Runs [cf_hull](/collision/cf_hull) and [cf_norms](/collision/cf_norms), assumes p->verts and p->count are both set to valid values.
 
 ## Related Pages
 
-  * [CF_Poly](/collision/cf_poly.md)  
-  * [cf_hull](/collision/cf_hull.md)  
-  * [cf_norms](/collision/cf_norms.md)  
+  * [CF_Poly](/collision/cf_poly)  
+  * [cf_hull](/collision/cf_hull)  
+  * [cf_norms](/collision/cf_norms)  

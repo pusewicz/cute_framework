@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_draw_onto_screen
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Draws the app onto the screen.
 
 ```cpp
@@ -53,7 +50,7 @@ Call this at the end of your main loop. You may only call this function once per
 
 ## Related Pages
 
-  * [cf_make_app](/app/cf_make_app.md)  
-  * [cf_app_is_running](/app/cf_app_is_running.md)  
-  * [cf_app_signal_shutdown](/app/cf_app_signal_shutdown.md)  
-  * [cf_destroy_app](/app/cf_destroy_app.md)  
+  * [cf_make_app](/app/cf_make_app)  
+  * [cf_app_is_running](/app/cf_app_is_running)  
+  * [cf_app_signal_shutdown](/app/cf_app_signal_shutdown)  
+  * [cf_destroy_app](/app/cf_destroy_app)  

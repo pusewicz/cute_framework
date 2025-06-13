@@ -7,10 +7,7 @@ parent: web
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_https_add_header
 
-Category: [web](/docs/web)  
-GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)  
----
-
+GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)
 Adds a header to the request.
 
 ```cpp
@@ -25,13 +22,13 @@ value | String representation of the header's value.
 
 ## Remarks
 
-You should call this before calling [cf_https_process](/web/cf_https_process.md). Calling this after [cf_https_process](/web/cf_https_process.md) will break things.
+You should call this before calling [cf_https_process](/web/cf_https_process). Calling this after [cf_https_process](/web/cf_https_process) will break things.
 
 ## Related Pages
 
-  * [CF_HttpsRequest](/web/cf_httpsrequest.md)  
-  * [cf_https_get](/web/cf_https_get.md)  
-  * [cf_https_post](/web/cf_https_post.md)  
-  * [cf_https_destroy](/web/cf_https_destroy.md)  
-  * [cf_https_process](/web/cf_https_process.md)  
-  * [cf_https_response](/web/cf_https_response.md)  
+  * [CF_HttpsRequest](/web/cf_httpsrequest)  
+  * [cf_https_get](/web/cf_https_get)  
+  * [cf_https_post](/web/cf_https_post)  
+  * [cf_https_destroy](/web/cf_https_destroy)  
+  * [cf_https_process](/web/cf_https_process)  
+  * [cf_https_response](/web/cf_https_response)  

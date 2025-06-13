@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # spush
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Pushes character `ch` onto the end of the string.
 
 ```cpp
@@ -28,8 +25,8 @@ Does not overwite the nul-byte. If the string is empty a nul-byte is pushed afte
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sset](/string/sset.md)  
-  * [spop](/string/spop.md)  
-  * [sfit](/string/sfit.md)  
-  * [sfree](/string/sfree.md)  
+  * [sdyna](/string/sdyna)  
+  * [sset](/string/sset)  
+  * [spop](/string/spop)  
+  * [sfit](/string/sfit)  
+  * [sfree](/string/sfree)  

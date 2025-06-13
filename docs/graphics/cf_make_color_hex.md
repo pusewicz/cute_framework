@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_color_hex
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
-Returns a [CF_Color](/graphics/cf_color.md) made from integer hex input.
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
+Returns a [CF_Color](/graphics/cf_color) made from integer hex input.
 
 ```cpp
 CF_Color cf_make_color_hex(int hex)
@@ -27,9 +24,9 @@ The opacity of the output color is set to 0xFF (fully opaque).
 
 ## Related Pages
 
-  * [CF_Color](/graphics/cf_color.md)  
-  * [cf_make_color_rgb_f](/graphics/cf_make_color_rgb_f.md)  
-  * [cf_make_color_rgba_f](/graphics/cf_make_color_rgba_f.md)  
-  * [cf_make_color_rgb](/graphics/cf_make_color_rgb.md)  
-  * [cf_make_color_rgba](/graphics/cf_make_color_rgba.md)  
-  * [cf_make_color_hex_string](/graphics/cf_make_color_hex_string.md)  
+  * [CF_Color](/graphics/cf_color)  
+  * [cf_make_color_rgb_f](/graphics/cf_make_color_rgb_f)  
+  * [cf_make_color_rgba_f](/graphics/cf_make_color_rgba_f)  
+  * [cf_make_color_rgb](/graphics/cf_make_color_rgb)  
+  * [cf_make_color_rgba](/graphics/cf_make_color_rgba)  
+  * [cf_make_color_hex_string](/graphics/cf_make_color_hex_string)  

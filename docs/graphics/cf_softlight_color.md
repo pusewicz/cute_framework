@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_softlight_color
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
 Returns a softlight'd color, where the colors are darkened or lightened depending on the `blend` color.
 
 ```cpp
@@ -29,8 +26,8 @@ The `blend` color is used to adjust colors in the `base`, while still preserving
 
 ## Related Pages
 
-  * [CF_Color](/graphics/cf_color.md)  
-  * [cf_hue](/graphics/cf_hue.md)  
-  * [cf_overlay_color](/graphics/cf_overlay_color.md)  
-  * [cf_softlight](/graphics/cf_softlight.md)  
-  * [cf_overlay](/graphics/cf_overlay.md)  
+  * [CF_Color](/graphics/cf_color)  
+  * [cf_hue](/graphics/cf_hue)  
+  * [cf_overlay_color](/graphics/cf_overlay_color)  
+  * [cf_softlight](/graphics/cf_softlight)  
+  * [cf_overlay](/graphics/cf_overlay)  

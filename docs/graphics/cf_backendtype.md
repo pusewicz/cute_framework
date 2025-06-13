@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_BackendType
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 The various supported graphics backends.
 
 ## Values
@@ -26,5 +23,5 @@ BACKEND_TYPE_PRIVATE | A "secret" backend for platforms under non-disclosure agr
 
 ## Related Pages
 
-  * [cf_query_backend](/graphics/cf_query_backend.md)  
-  * [cf_backend_type_to_string](/graphics/cf_backend_type_to_string.md)  
+  * [cf_query_backend](/graphics/cf_query_backend)  
+  * [cf_backend_type_to_string](/graphics/cf_backend_type_to_string)  

@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_scale
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Scales the current coordinate system.
 
 ```cpp
@@ -24,11 +21,11 @@ h | The height to scale the y-axis by.
 
 ## Related Pages
 
-  * [cf_draw_scale_v2](/draw/cf_draw_scale_v2.md)  
-  * [cf_draw_translate](/draw/cf_draw_translate.md)  
-  * [cf_draw_transform](/draw/cf_draw_transform.md)  
-  * [cf_draw_translate](/draw/cf_draw_translate.md)  
-  * [cf_draw_pop](/draw/cf_draw_pop.md)  
-  * [cf_draw_rotate](/draw/cf_draw_rotate.md)  
-  * [cf_draw_TSR](/draw/cf_draw_tsr.md)  
-  * [cf_draw_push](/draw/cf_draw_push.md)  
+  * [cf_draw_scale_v2](/draw/cf_draw_scale_v2)  
+  * [cf_draw_translate](/draw/cf_draw_translate)  
+  * [cf_draw_transform](/draw/cf_draw_transform)  
+  * [cf_draw_translate](/draw/cf_draw_translate)  
+  * [cf_draw_pop](/draw/cf_draw_pop)  
+  * [cf_draw_rotate](/draw/cf_draw_rotate)  
+  * [cf_draw_TSR](/draw/cf_draw_tsr)  
+  * [cf_draw_push](/draw/cf_draw_push)  

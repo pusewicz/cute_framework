@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mouse_lock_inside_window
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Locks the mouse within the window's borders.
 
 ```cpp
@@ -23,5 +20,5 @@ This is off by default, meaning the mouse is free to leave the border of the win
 
 ## Related Pages
 
-  * [cf_mouse_hide](/input/cf_mouse_hide.md)  
-  * [cf_mouse_hidden](/input/cf_mouse_hidden.md)  
+  * [cf_mouse_hide](/input/cf_mouse_hide)  
+  * [cf_mouse_hidden](/input/cf_mouse_hidden)  

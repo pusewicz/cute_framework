@@ -7,11 +7,8 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_HapticEnvelope
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
-Defines a fade in and fade out of strength for a [CF_HapticEffect](/haptic/cf_hapticeffect.md).
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
+Defines a fade in and fade out of strength for a [CF_HapticEffect](/haptic/cf_hapticeffect).
 
 Struct Members | Description
 --- | ---
@@ -49,7 +46,7 @@ From (3) to (4) is the `fade_milliseconds`.
 
 ## Related Pages
 
-  * [CF_Haptic](/haptic/cf_haptic.md)  
-  * [cf_haptic_create_effect](/haptic/cf_haptic_create_effect.md)  
-  * [CF_HapticEffect](/haptic/cf_hapticeffect.md)  
-  * [CF_HapticData](/haptic/cf_hapticdata.md)  
+  * [CF_Haptic](/haptic/cf_haptic)  
+  * [cf_haptic_create_effect](/haptic/cf_haptic_create_effect)  
+  * [CF_HapticEffect](/haptic/cf_hapticeffect)  
+  * [CF_HapticData](/haptic/cf_hapticdata)  

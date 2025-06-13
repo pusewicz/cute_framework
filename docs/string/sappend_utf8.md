@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sappend_UTF8
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Appends a UTF32 codepoint (as `uint32_t`) encoded as UTF8 onto the string.
 
 ```cpp
@@ -46,5 +43,5 @@ looks like question mark inside of a dark diamond.
 
 ## Related Pages
 
-  * [cf_decode_UTF16](/string/cf_decode_utf16.md)  
-  * [cf_decode_UTF8](/string/cf_decode_utf8.md)  
+  * [cf_decode_UTF16](/string/cf_decode_utf16)  
+  * [cf_decode_UTF8](/string/cf_decode_utf8)  

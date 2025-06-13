@@ -7,23 +7,20 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_VertexAttribute
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Describes the memory layout of vertex attributes.
 
 Struct Members | Description
 --- | ---
 `const char* name` | The name of the vertex attribute as it appears in the shader.
-`CF_VertexFormat format` | The layout in memory of one vertex. See [CF_VertexFormat](/graphics/cf_vertexformat.md).
+`CF_VertexFormat format` | The layout in memory of one vertex. See [CF_VertexFormat](/graphics/cf_vertexformat).
 `int offset` | The offset in memory from the beginning of a vertex to this attribute.
 `bool per_instance` | Set to true if you want this attribute bound to the mesh's instance buffer, instead of the vertex buffer.
 
 ## Remarks
 
 An attribute is a component of a vertex, usually one, two, three or four floats/integers. A vertex is an input
-to a vertex shader. A [CF_Mesh](/graphics/cf_mesh.md) is a collection of vertices and attribute layout definitions.
+to a vertex shader. A [CF_Mesh](/graphics/cf_mesh) is a collection of vertices and attribute layout definitions.
 
 ## Related Pages
 

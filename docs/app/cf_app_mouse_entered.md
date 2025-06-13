@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_mouse_entered
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Returns true if the mouse's coordinates began hovering over the app last frame.
 
 ```cpp
@@ -19,9 +16,9 @@ bool cf_app_mouse_entered();
 
 ## Remarks
 
-This function only deals with mouse coordinates, not focus (such as [cf_app_has_focus](/app/cf_app_has_focus.md)).
+This function only deals with mouse coordinates, not focus (such as [cf_app_has_focus](/app/cf_app_has_focus)).
 
 ## Related Pages
 
-  * [cf_app_mouse_exited](/app/cf_app_mouse_exited.md)  
-  * [cf_app_mouse_inside](/app/cf_app_mouse_inside.md)  
+  * [cf_app_mouse_exited](/app/cf_app_mouse_exited)  
+  * [cf_app_mouse_inside](/app/cf_app_mouse_inside)  

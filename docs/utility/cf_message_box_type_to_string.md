@@ -7,11 +7,8 @@ parent: utility
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_message_box_type_to_string
 
-Category: [utility](/docs/utility)  
-GitHub: [cute_result.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_result.h)  
----
-
-Convert an enum [CF_MessageBoxType](/utility/cf_messageboxtype.md) to a c-style string.
+GitHub: [cute_result.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_result.h)
+Convert an enum [CF_MessageBoxType](/utility/cf_messageboxtype) to a c-style string.
 
 ```cpp
 const char* cf_message_box_type_to_string(CF_MessageBoxType type)
@@ -23,5 +20,5 @@ state | The state to convert to a string.
 
 ## Related Pages
 
-  * [CF_MessageBoxType](/utility/cf_messageboxtype.md)  
-  * [cf_message_box](/utility/cf_message_box.md)  
+  * [CF_MessageBoxType](/utility/cf_messageboxtype)  
+  * [cf_message_box](/utility/cf_message_box)  

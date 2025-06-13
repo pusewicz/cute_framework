@@ -7,11 +7,8 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_render_layers_to
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
-Renders to a [CF_Canvas](/graphics/cf_canvas.md) between a lo/hi range (inclusive).
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
+Renders to a [CF_Canvas](/graphics/cf_canvas) between a lo/hi range (inclusive).
 
 ```cpp
 void cf_render_layers_to(CF_Canvas canvas, int layer_lo, int layer_hi, bool clear);
@@ -31,11 +28,11 @@ Renders a range of layers to a canvas. All `draw_` functions called on other lay
 
 ## Related Pages
 
-  * [cf_draw_scale](/draw/cf_draw_scale.md)  
-  * [cf_draw_translate](/draw/cf_draw_translate.md)  
-  * [cf_draw_rotate](/draw/cf_draw_rotate.md)  
-  * [cf_draw_push](/draw/cf_draw_push.md)  
-  * [cf_draw_pop](/draw/cf_draw_pop.md)  
-  * [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen.md)  
-  * [cf_render_to](/draw/cf_render_to.md)  
-  * [cf_draw_canvas](/draw/cf_draw_canvas.md)  
+  * [cf_draw_scale](/draw/cf_draw_scale)  
+  * [cf_draw_translate](/draw/cf_draw_translate)  
+  * [cf_draw_rotate](/draw/cf_draw_rotate)  
+  * [cf_draw_push](/draw/cf_draw_push)  
+  * [cf_draw_pop](/draw/cf_draw_pop)  
+  * [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen)  
+  * [cf_render_to](/draw/cf_render_to)  
+  * [cf_draw_canvas](/draw/cf_draw_canvas)  

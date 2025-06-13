@@ -7,13 +7,10 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Server
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 An opaque pointer representing a single networked server.
 
 ## Related Pages
 
-  * [CF_Client](/net/cf_client.md)  
-  * [cf_make_client](/net/cf_make_client.md)  
+  * [CF_Client](/net/cf_client)  
+  * [cf_make_client](/net/cf_make_client)  

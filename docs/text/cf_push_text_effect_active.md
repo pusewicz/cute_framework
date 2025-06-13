@@ -7,10 +7,7 @@ parent: text
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_push_text_effect_active
 
-Category: [text](/docs/text)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Turns on/off text effects.
 
 ```cpp
@@ -23,5 +20,5 @@ Text effects are on by default.
 
 ## Related Pages
 
-  * [cf_peek_text_effect_active](/text/cf_peek_text_effect_active.md)  
-  * [cf_pop_text_effect_active](/text/cf_pop_text_effect_active.md)  
+  * [cf_peek_text_effect_active](/text/cf_peek_text_effect_active)  
+  * [cf_pop_text_effect_active](/text/cf_pop_text_effect_active)  

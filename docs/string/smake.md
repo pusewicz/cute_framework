@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # smake
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Returns a completely new string copy.
 
 ```cpp
@@ -24,10 +21,10 @@ b | Source for copying.
 
 ## Remarks
 
-You must free the copy with [sfree](/string/sfree.md) when done. Does the same thing as [sdup](/string/sdup.md).
+You must free the copy with [sfree](/string/sfree) when done. Does the same thing as [sdup](/string/sdup).
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sset](/string/sset.md)  
-  * [sdup](/string/sdup.md)  
+  * [sdyna](/string/sdyna)  
+  * [sset](/string/sset)  
+  * [sdup](/string/sdup)  

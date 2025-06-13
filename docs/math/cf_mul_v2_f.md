@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mul_v2_f
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Multiplies a vector with a float.
 
 ```cpp
@@ -19,6 +16,6 @@ CF_V2 cf_mul_v2_f(CF_V2 a, float b)
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_div_v2_f](/math/cf_div_v2_f.md)  
-  * [cf_mul_v2](/math/cf_mul_v2.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_div_v2_f](/math/cf_div_v2_f)  
+  * [cf_mul_v2](/math/cf_mul_v2)  

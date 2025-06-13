@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # spop
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Removes a character from the end of the string.
 
 ```cpp
@@ -23,7 +20,7 @@ s | The string. Can be `NULL`.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [slast](/string/slast.md)  
-  * [spopn](/string/spopn.md)  
-  * [serase](/string/serase.md)  
+  * [sdyna](/string/sdyna)  
+  * [slast](/string/slast)  
+  * [spopn](/string/spopn)  
+  * [serase](/string/serase)  

@@ -7,11 +7,8 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_haptic_wave_type_to_string
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
-Converts a [CF_HapticWaveType](/haptic/cf_hapticwavetype.md) to a C string.
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
+Converts a [CF_HapticWaveType](/haptic/cf_hapticwavetype) to a C string.
 
 ```cpp
 const char* cf_haptic_wave_type_to_string(CF_HapticWaveType type)
@@ -23,4 +20,4 @@ type | The string to convert.
 
 ## Related Pages
 
-  * [CF_HapticWaveType](/haptic/cf_hapticwavetype.md)  
+  * [CF_HapticWaveType](/haptic/cf_hapticwavetype)  

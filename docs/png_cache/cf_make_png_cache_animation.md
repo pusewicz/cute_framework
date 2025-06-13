@@ -7,10 +7,7 @@ parent: png_cache
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_png_cache_animation
 
-Category: [png_cache](/docs/png_cache)  
-GitHub: [cute_png_cache.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_png_cache.h)  
----
-
+GitHub: [cute_png_cache.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_png_cache.h)
 Constructs an animation out of an array of frames, along with their delays in milliseconds, or returns one from the cache if it already exists.
 
 ```cpp
@@ -20,25 +17,25 @@ const CF_Animation* cf_make_png_cache_animation(const char* name, const CF_Png* 
 Parameters | Description
 --- | ---
 name | A unique name for the animation.
-pngs | An array of pngs, see [CF_Png](/png_cache/cf_png.md).
+pngs | An array of pngs, see [CF_Png](/png_cache/cf_png).
 pngs_count | The number of images in the `pngs` array.
 delays | A delay in milliseconds for each frame of the animation.
 delays_count | The number of floats in the `delays` array. This must match `pngs_count`.
 
 ## Return Value
 
-Returns a [CF_Animation](/sprite/cf_animation.md), representing a single animation sequence.
+Returns a [CF_Animation](/sprite/cf_animation), representing a single animation sequence.
 
 ## Remarks
 
 Since png files do not contain any kind of animation information (frame delays or sets of frames)
 you must specify all of the animation data yourself in order to make sprites. To flip between different
-animations you can construct an animation table with [cf_make_png_cache_animation_table](/png_cache/cf_make_png_cache_animation_table.md), which returns
-a table of unique animation names to individual [CF_Animation](/sprite/cf_animation.md)'s.
+animations you can construct an animation table with [cf_make_png_cache_animation_table](/png_cache/cf_make_png_cache_animation_table), which returns
+a table of unique animation names to individual [CF_Animation](/sprite/cf_animation)'s.
 
 ## Related Pages
 
-  * [CF_Png](/png_cache/cf_png.md)  
-  * [cf_png_cache_load](/png_cache/cf_png_cache_load.md)  
-  * [cf_make_png_cache_sprite](/png_cache/cf_make_png_cache_sprite.md)  
-  * [cf_make_png_cache_animation_table](/png_cache/cf_make_png_cache_animation_table.md)  
+  * [CF_Png](/png_cache/cf_png)  
+  * [cf_png_cache_load](/png_cache/cf_png_cache_load)  
+  * [cf_make_png_cache_sprite](/png_cache/cf_make_png_cache_sprite)  
+  * [cf_make_png_cache_animation_table](/png_cache/cf_make_png_cache_animation_table)  

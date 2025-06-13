@@ -7,10 +7,7 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_allocator_restore_default
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
 Restores the default allocator.
 
 ```cpp
@@ -20,14 +17,14 @@ void cf_allocator_restore_default();
 ## Remarks
 
 The default allocator simply calls malloc/free and friends. You may override this behavior by passing
-a [CF_Allocator](/allocator/cf_allocator.md) to this function. This lets you hook up your own custom allocator. Usually you only want
+a [CF_Allocator](/allocator/cf_allocator) to this function. This lets you hook up your own custom allocator. Usually you only want
 to do this on certain platforms for performance optimizations, but is not a necessary thing to do for many games.
 
 ## Related Pages
 
-  * [CF_Allocator](/allocator/cf_allocator.md)  
-  * [cf_allocator_override](/allocator/cf_allocator_override.md)  
-  * [cf_realloc](/allocator/cf_realloc.md)  
-  * [cf_alloc](/allocator/cf_alloc.md)  
-  * [cf_free](/allocator/cf_free.md)  
-  * [cf_calloc](/allocator/cf_calloc.md)  
+  * [CF_Allocator](/allocator/cf_allocator)  
+  * [cf_allocator_override](/allocator/cf_allocator_override)  
+  * [cf_realloc](/allocator/cf_realloc)  
+  * [cf_alloc](/allocator/cf_alloc)  
+  * [cf_free](/allocator/cf_free)  
+  * [cf_calloc](/allocator/cf_calloc)  

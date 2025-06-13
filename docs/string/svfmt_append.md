@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # svfmt_append
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Printf's into the string using the format string `fmt`.
 
 ```cpp
@@ -25,13 +22,13 @@ fmt | The format string.
 
 ## Remarks
 
-You probably are looking for [sfmt_append](/string/sfmt_append.md) instead. The string will be overwritten from the beginning. Will automatically adjust it's
+You probably are looking for [sfmt_append](/string/sfmt_append) instead. The string will be overwritten from the beginning. Will automatically adjust it's
 capacity as needed. args must be a `va_list`.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sfmt](/string/sfmt.md)  
-  * [sfmt_append](/string/sfmt_append.md)  
-  * [svfmt](/string/svfmt.md)  
-  * [sset](/string/sset.md)  
+  * [sdyna](/string/sdyna)  
+  * [sfmt](/string/sfmt)  
+  * [sfmt_append](/string/sfmt_append)  
+  * [svfmt](/string/svfmt)  
+  * [sset](/string/sset)  

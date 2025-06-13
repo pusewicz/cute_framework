@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sfind
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Scanning from left-to-right, returns a pointer to the substring `find`.
 
 ```cpp
@@ -28,6 +25,6 @@ Returns `NULL` if not found.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sfirst_index_of](/string/sfirst_index_of.md)  
-  * [slast_index_of](/string/slast_index_of.md)  
+  * [sdyna](/string/sdyna)  
+  * [sfirst_index_of](/string/sfirst_index_of)  
+  * [slast_index_of](/string/slast_index_of)  

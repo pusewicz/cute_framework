@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_server_pop_event
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Pops a [CF_ServerEvent](/net/cf_serverevent.md) off of the server, if available.
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Pops a [CF_ServerEvent](/net/cf_serverevent) off of the server, if available.
 
 ```cpp
 bool cf_server_pop_event(CF_Server* server, CF_ServerEvent* event);
@@ -24,12 +21,12 @@ Returns true if an event was popped.
 ## Remarks
 
 Server events notify of when a client connects/disconnects, or has sent a payload packet.
-You must free the payload packets with [cf_server_free_packet](/net/cf_server_free_packet.md) when done.
+You must free the payload packets with [cf_server_free_packet](/net/cf_server_free_packet) when done.
 
 ## Related Pages
 
-  * [CF_ServerEventType](/net/cf_servereventtype.md)  
-  * [cf_server_event_type_to_string](/net/cf_server_event_type_to_string.md)  
-  * [CF_ServerEvent](/net/cf_serverevent.md)  
-  * [cf_server_send](/net/cf_server_send.md)  
-  * [cf_server_update](/net/cf_server_update.md)  
+  * [CF_ServerEventType](/net/cf_servereventtype)  
+  * [cf_server_event_type_to_string](/net/cf_server_event_type_to_string)  
+  * [CF_ServerEvent](/net/cf_serverevent)  
+  * [cf_server_send](/net/cf_server_send)  
+  * [cf_server_update](/net/cf_server_update)  

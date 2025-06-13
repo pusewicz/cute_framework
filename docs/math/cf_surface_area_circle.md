@@ -7,11 +7,8 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_surface_area_circle
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
-Returns the surface area of a [CF_Circle](/math/cf_circle.md).
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
+Returns the surface area of a [CF_Circle](/math/cf_circle).
 
 ```cpp
 float cf_surface_area_circle(CF_Circle c)
@@ -19,5 +16,5 @@ float cf_surface_area_circle(CF_Circle c)
 
 ## Related Pages
 
-  * [CF_Circle](/math/cf_circle.md)  
-  * [cf_area_circle](/math/cf_area_circle.md)  
+  * [CF_Circle](/math/cf_circle)  
+  * [cf_area_circle](/math/cf_area_circle)  

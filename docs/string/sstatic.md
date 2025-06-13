@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sstatic
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Creates a string with an initial static storage backing.
 
 ```cpp
@@ -25,11 +22,11 @@ buffer_size | The size of `buffer` in bytes.
 
 ## Remarks
 
-Will grow onto the heap if the size becomes too large. Call [sfree](/string/sfree.md) when done.
+Will grow onto the heap if the size becomes too large. Call [sfree](/string/sfree) when done.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sset](/string/sset.md)  
-  * [sisdyna](/string/sisdyna.md)  
-  * [spush](/string/spush.md)  
+  * [sdyna](/string/sdyna)  
+  * [sset](/string/sset)  
+  * [sisdyna](/string/sisdyna)  
+  * [spush](/string/spush)  

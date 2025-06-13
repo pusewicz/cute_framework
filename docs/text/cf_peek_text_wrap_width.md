@@ -7,10 +7,7 @@ parent: text
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_peek_text_wrap_width
 
-Category: [text](/docs/text)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Returns the last text wrap width.
 
 ```cpp
@@ -19,9 +16,9 @@ float cf_peek_text_wrap_width();
 
 ## Related Pages
 
-  * [cf_make_font](/text/cf_make_font.md)  
-  * [cf_push_font](/text/cf_push_font.md)  
-  * [cf_push_text_wrap_width](/text/cf_push_text_wrap_width.md)  
-  * [cf_pop_text_wrap_width](/text/cf_pop_text_wrap_width.md)  
-  * [cf_draw_text](/text/cf_draw_text.md)  
+  * [cf_make_font](/text/cf_make_font)  
+  * [cf_push_font](/text/cf_push_font)  
+  * [cf_push_text_wrap_width](/text/cf_push_text_wrap_width)  
+  * [cf_pop_text_wrap_width](/text/cf_pop_text_wrap_width)  
+  * [cf_draw_text](/text/cf_draw_text)  
   * cf_push_text_clip_box  

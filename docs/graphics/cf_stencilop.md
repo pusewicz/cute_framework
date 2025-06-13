@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_StencilOp
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Stencil operations. These can happen when passing/failing a stencil test.
 
 ## Values
@@ -28,5 +25,5 @@ STENCIL_OP_DECREMENT_WRAP | Decrement wrap.
 
 ## Related Pages
 
-  * [CF_StencilFunction](/graphics/cf_stencilfunction.md)  
-  * [cf_stencil_op_string](/graphics/cf_stencil_op_string.md)  
+  * [CF_StencilFunction](/graphics/cf_stencilfunction)  
+  * [cf_stencil_op_string](/graphics/cf_stencil_op_string)  

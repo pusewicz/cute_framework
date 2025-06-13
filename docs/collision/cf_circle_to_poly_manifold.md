@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_circle_to_poly_manifold
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Computes information about how two shapes intersect.
 
 ```cpp
@@ -24,22 +21,22 @@ B | The second shape.
 
 ## Return Value
 
-Returns a [CF_Manifold](/collision/cf_manifold.md) containing information about the intersection. See [CF_Manifold](/collision/cf_manifold.md) for details.
+Returns a [CF_Manifold](/collision/cf_manifold) containing information about the intersection. See [CF_Manifold](/collision/cf_manifold) for details.
 
 ## Remarks
 
-This function is slightly slower than the boolean version [cf_circle_to_poly](/collision/cf_circle_to_poly.md).
+This function is slightly slower than the boolean version [cf_circle_to_poly](/collision/cf_circle_to_poly).
 
 ## Related Pages
 
-  * [CF_Manifold](/collision/cf_manifold.md)  
-  * [CF_Circle](/math/cf_circle.md)  
-  * [CF_Poly](/collision/cf_poly.md)  
-  * [cf_circle_to_circle_manifold](/collision/cf_circle_to_circle_manifold.md)  
-  * [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold.md)  
-  * [cf_circle_to_capsule_manifold](/collision/cf_circle_to_capsule_manifold.md)  
-  * [cf_aabb_to_aabb_manifold](/collision/cf_aabb_to_aabb_manifold.md)  
-  * [cf_aabb_to_capsule_manifold](/collision/cf_aabb_to_capsule_manifold.md)  
-  * [cf_poly_to_poly_manifold](/collision/cf_poly_to_poly_manifold.md)  
-  * [cf_aabb_to_poly_manifold](/collision/cf_aabb_to_poly_manifold.md)  
-  * [cf_capsule_to_poly_manifold](/collision/cf_capsule_to_poly_manifold.md)  
+  * [CF_Manifold](/collision/cf_manifold)  
+  * [CF_Circle](/math/cf_circle)  
+  * [CF_Poly](/collision/cf_poly)  
+  * [cf_circle_to_circle_manifold](/collision/cf_circle_to_circle_manifold)  
+  * [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold)  
+  * [cf_circle_to_capsule_manifold](/collision/cf_circle_to_capsule_manifold)  
+  * [cf_aabb_to_aabb_manifold](/collision/cf_aabb_to_aabb_manifold)  
+  * [cf_aabb_to_capsule_manifold](/collision/cf_aabb_to_capsule_manifold)  
+  * [cf_poly_to_poly_manifold](/collision/cf_poly_to_poly_manifold)  
+  * [cf_aabb_to_poly_manifold](/collision/cf_aabb_to_poly_manifold)  
+  * [cf_capsule_to_poly_manifold](/collision/cf_capsule_to_poly_manifold)  

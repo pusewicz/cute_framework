@@ -7,11 +7,8 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_peek
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
-Returns the current camera as a [CF_M3x2](/math/cf_m3x2.md).
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
+Returns the current camera as a [CF_M3x2](/math/cf_m3x2).
 
 ```cpp
 CF_M3x2 cf_draw_peek();
@@ -23,5 +20,5 @@ Multiplying this matrix against a vector will transform the vector to "cam space
 
 ## Related Pages
 
-  * [cf_draw_push](/draw/cf_draw_push.md)  
-  * [cf_draw_pop](/draw/cf_draw_pop.md)  
+  * [cf_draw_push](/draw/cf_draw_push)  
+  * [cf_draw_pop](/draw/cf_draw_pop)  

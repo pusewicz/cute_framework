@@ -7,10 +7,7 @@ parent: web
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_https_post
 
-Category: [web](/docs/web)  
-GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)  
----
-
+GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)
 Creates an HTTPS POST request.
 
 ```cpp
@@ -28,16 +25,16 @@ verify_cert | Recommended as true. Set to true to verify the server certificate 
 
 ## Return Value
 
-Returns a [CF_HttpsRequest](/web/cf_httpsrequest.md) for processing the get request and receiving a response.
+Returns a [CF_HttpsRequest](/web/cf_httpsrequest) for processing the get request and receiving a response.
 
 ## Remarks
 
-You should continually call [cf_https_process](/web/cf_https_process.md) on the [CF_HttpsRequest](/web/cf_httpsrequest.md). See [CF_HttpsRequest](/web/cf_httpsrequest.md) for details.
+You should continually call [cf_https_process](/web/cf_https_process) on the [CF_HttpsRequest](/web/cf_httpsrequest). See [CF_HttpsRequest](/web/cf_httpsrequest) for details.
 
 ## Related Pages
 
-  * [CF_HttpsRequest](/web/cf_httpsrequest.md)  
-  * [cf_https_get](/web/cf_https_get.md)  
-  * [cf_https_response](/web/cf_https_response.md)  
-  * [cf_https_destroy](/web/cf_https_destroy.md)  
-  * [cf_https_process](/web/cf_https_process.md)  
+  * [CF_HttpsRequest](/web/cf_httpsrequest)  
+  * [cf_https_get](/web/cf_https_get)  
+  * [cf_https_response](/web/cf_https_response)  
+  * [cf_https_destroy](/web/cf_https_destroy)  
+  * [cf_https_process](/web/cf_https_process)  

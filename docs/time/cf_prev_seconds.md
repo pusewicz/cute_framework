@@ -7,17 +7,14 @@ parent: time
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_PREV_SECONDS
 
-Category: [time](/docs/time)  
-GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)  
----
-
+GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)
 The number of seconds elapsed since program start for the last frame.
 
 ## Related Pages
 
-  * [CF_TICKS](/time/cf_ticks.md)  
-  * [CF_PREV_TICKS](/time/cf_prev_ticks.md)  
-  * [cf_get_ticks](/time/cf_get_ticks.md)  
-  * [cf_get_tick_frequency](/time/cf_get_tick_frequency.md)  
-  * [cf_make_stopwatch](/time/cf_make_stopwatch.md)  
-  * [CF_SECONDS](/time/cf_seconds.md)  
+  * [CF_TICKS](/time/cf_ticks)  
+  * [CF_PREV_TICKS](/time/cf_prev_ticks)  
+  * [cf_get_ticks](/time/cf_get_ticks)  
+  * [cf_get_tick_frequency](/time/cf_get_tick_frequency)  
+  * [cf_make_stopwatch](/time/cf_make_stopwatch)  
+  * [CF_SECONDS](/time/cf_seconds)  

@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_world_to_screen
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Converts a coordinate from world space into screen space.
 
 ```cpp
@@ -24,5 +21,5 @@ matches the coordinate space mouse coordinates are given.
 
 ## Related Pages
 
-  * [cf_screen_bounds_to_world](/draw/cf_screen_bounds_to_world.md)  
-  * [cf_screen_to_world](/draw/cf_screen_to_world.md)  
+  * [cf_screen_bounds_to_world](/draw/cf_screen_bounds_to_world)  
+  * [cf_screen_to_world](/draw/cf_screen_to_world)  

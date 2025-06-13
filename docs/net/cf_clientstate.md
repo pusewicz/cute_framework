@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ClientState
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-The various states of a [CF_Client](/net/cf_client.md).
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+The various states of a [CF_Client](/net/cf_client).
 
 ## Values
 
@@ -34,5 +31,5 @@ Anything less than or equal to 0 is an error.
 
 ## Related Pages
 
-  * [cf_client_state_get](/net/cf_client_state_get.md)  
-  * [cf_client_state_to_string](/net/cf_client_state_to_string.md)  
+  * [cf_client_state_get](/net/cf_client_state_get)  
+  * [cf_client_state_to_string](/net/cf_client_state_to_string)  

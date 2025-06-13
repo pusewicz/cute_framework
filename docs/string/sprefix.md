@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sprefix
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Check to see if the string's prefix matches.
 
 ```cpp
@@ -28,9 +25,9 @@ Returns true if `prefix` is the prefix of `s`, false otherwise.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sfind](/string/sfind.md)  
-  * [ssuffix](/string/ssuffix.md)  
-  * [scontains](/string/scontains.md)  
-  * [sfirst_index_of](/string/sfirst_index_of.md)  
-  * [slast_index_of](/string/slast_index_of.md)  
+  * [sdyna](/string/sdyna)  
+  * [sfind](/string/sfind)  
+  * [ssuffix](/string/ssuffix)  
+  * [scontains](/string/scontains)  
+  * [sfirst_index_of](/string/sfirst_index_of)  
+  * [slast_index_of](/string/slast_index_of)  

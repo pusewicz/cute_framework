@@ -7,10 +7,7 @@ parent: utility
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_load_shared_library
 
-Category: [utility](/docs/utility)  
-GitHub: [cute_symbol.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_symbol.h)  
----
-
+GitHub: [cute_symbol.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_symbol.h)
 Loads a shared library from disk and returns a pointer to the library.
 
 ```cpp
@@ -28,9 +25,9 @@ Returns `NULL` in the case of errors, and can be unloaded by calling `unload_sha
 ## Remarks
 
 Does not use the virtual file system. Once loaded, individual functions can be loaded from the shared
-library be called [cf_load_function](/utility/cf_load_function.md). See [Virtual File System](https://randygaul.github.io/cute_framework/#/topics/virtual_file_system).
+library be called [cf_load_function](/utility/cf_load_function). See [Virtual File System](https://randygaul.github.io/cute_framework/#/topics/virtual_file_system).
 
 ## Related Pages
 
-  * [cf_load_function](/utility/cf_load_function.md)  
-  * [cf_unload_shared_library](/utility/cf_unload_shared_library.md)  
+  * [cf_load_function](/utility/cf_load_function)  
+  * [cf_unload_shared_library](/utility/cf_unload_shared_library)  

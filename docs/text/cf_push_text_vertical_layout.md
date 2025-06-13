@@ -7,10 +7,7 @@ parent: text
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_push_text_vertical_layout
 
-Category: [text](/docs/text)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Pushes a whether or not to layout text vertically (as opposed to the default or horizontally).
 
 ```cpp
@@ -23,8 +20,8 @@ layout_vertically | True to layout vertically, false otherwise.
 
 ## Related Pages
 
-  * [cf_make_font](/text/cf_make_font.md)  
-  * [cf_push_font](/text/cf_push_font.md)  
-  * [cf_draw_text](/text/cf_draw_text.md)  
-  * [cf_pop_text_vertical_layout](/text/cf_pop_text_vertical_layout.md)  
-  * [cf_peek_text_vertical_layout](/text/cf_peek_text_vertical_layout.md)  
+  * [cf_make_font](/text/cf_make_font)  
+  * [cf_push_font](/text/cf_push_font)  
+  * [cf_draw_text](/text/cf_draw_text)  
+  * [cf_pop_text_vertical_layout](/text/cf_pop_text_vertical_layout)  
+  * [cf_peek_text_vertical_layout](/text/cf_peek_text_vertical_layout)  

@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Stat
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 A structure containing information about a file.
 
 Struct Members | Description
@@ -24,8 +21,8 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [CF_File](/file/cf_file.md)  
-  * [cf_fs_close](/file/cf_fs_close.md)  
-  * [cf_fs_create_file](/file/cf_fs_create_file.md)  
-  * [cf_fs_open_file_for_write](/file/cf_fs_open_file_for_write.md)  
-  * [cf_fs_open_file_for_read](/file/cf_fs_open_file_for_read.md)  
+  * [CF_File](/file/cf_file)  
+  * [cf_fs_close](/file/cf_fs_close)  
+  * [cf_fs_create_file](/file/cf_fs_create_file)  
+  * [cf_fs_open_file_for_write](/file/cf_fs_open_file_for_write)  
+  * [cf_fs_open_file_for_read](/file/cf_fs_open_file_for_read)  

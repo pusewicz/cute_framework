@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_TSR
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Transforms the current coordinate system by a rotation, then a scale, then a translation.
 
 ```cpp
@@ -19,11 +16,11 @@ void cf_draw_TSR(CF_V2 position, CF_V2 scale, float radians);
 
 ## Related Pages
 
-  * [cf_draw_TSR_absolute](/draw/cf_draw_tsr_absolute.md)  
-  * [cf_draw_translate](/draw/cf_draw_translate.md)  
-  * [cf_draw_transform](/draw/cf_draw_transform.md)  
-  * [cf_draw_translate](/draw/cf_draw_translate.md)  
-  * [cf_draw_scale](/draw/cf_draw_scale.md)  
-  * [cf_draw_rotate](/draw/cf_draw_rotate.md)  
-  * [cf_draw_pop](/draw/cf_draw_pop.md)  
-  * [cf_draw_push](/draw/cf_draw_push.md)  
+  * [cf_draw_TSR_absolute](/draw/cf_draw_tsr_absolute)  
+  * [cf_draw_translate](/draw/cf_draw_translate)  
+  * [cf_draw_transform](/draw/cf_draw_transform)  
+  * [cf_draw_translate](/draw/cf_draw_translate)  
+  * [cf_draw_scale](/draw/cf_draw_scale)  
+  * [cf_draw_rotate](/draw/cf_draw_rotate)  
+  * [cf_draw_pop](/draw/cf_draw_pop)  
+  * [cf_draw_push](/draw/cf_draw_push)  

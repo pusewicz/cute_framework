@@ -7,11 +7,8 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_joypad_axis_to_string
 
-Category: [input](/docs/input)  
-GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)  
----
-
-Convert an enum [CF_JoypadAxis](/input/cf_joypadaxis.md) to a c-style string.
+GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)
+Convert an enum [CF_JoypadAxis](/input/cf_joypadaxis) to a c-style string.
 
 ```cpp
 const char* cf_joypad_axis_to_string(CF_JoypadAxis axis)
@@ -23,7 +20,7 @@ state | The state to convert to a string.
 
 ## Related Pages
 
-  * [CF_JoypadAxis](/input/cf_joypadaxis.md)  
-  * [CF_JoypadType](/input/cf_joypadtype.md)  
+  * [CF_JoypadAxis](/input/cf_joypadaxis)  
+  * [CF_JoypadType](/input/cf_joypadtype)  
   * CF_Joypad  
-  * [cf_joypad_axis](/input/cf_joypad_axis.md)  
+  * [cf_joypad_axis](/input/cf_joypad_axis)  

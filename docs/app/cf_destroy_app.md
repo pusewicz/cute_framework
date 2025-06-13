@@ -7,11 +7,8 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_destroy_app
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
-Cleans up all resources used by the application. Call [cf_app_signal_shutdown](/app/cf_app_signal_shutdown.md) first.
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
+Cleans up all resources used by the application. Call [cf_app_signal_shutdown](/app/cf_app_signal_shutdown) first.
 
 ```cpp
 void cf_destroy_app();
@@ -19,6 +16,6 @@ void cf_destroy_app();
 
 ## Related Pages
 
-  * [cf_make_app](/app/cf_make_app.md)  
-  * [cf_app_is_running](/app/cf_app_is_running.md)  
-  * [cf_app_signal_shutdown](/app/cf_app_signal_shutdown.md)  
+  * [cf_make_app](/app/cf_make_app)  
+  * [cf_app_is_running](/app/cf_app_is_running)  
+  * [cf_app_signal_shutdown](/app/cf_app_signal_shutdown)  

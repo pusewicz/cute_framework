@@ -7,10 +7,7 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_alloc
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
 Allocates a block of memory of `size` bytes and returns it.
 
 ```cpp
@@ -19,9 +16,9 @@ void* cf_alloc(size_t size);
 
 ## Related Pages
 
-  * [CF_Allocator](/allocator/cf_allocator.md)  
-  * [cf_allocator_override](/allocator/cf_allocator_override.md)  
-  * [cf_allocator_restore_default](/allocator/cf_allocator_restore_default.md)  
-  * [cf_realloc](/allocator/cf_realloc.md)  
-  * [cf_free](/allocator/cf_free.md)  
-  * [cf_calloc](/allocator/cf_calloc.md)  
+  * [CF_Allocator](/allocator/cf_allocator)  
+  * [cf_allocator_override](/allocator/cf_allocator_override)  
+  * [cf_allocator_restore_default](/allocator/cf_allocator_restore_default)  
+  * [cf_realloc](/allocator/cf_realloc)  
+  * [cf_free](/allocator/cf_free)  
+  * [cf_calloc](/allocator/cf_calloc)  

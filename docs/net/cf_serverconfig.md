@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ServerConfig
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Parameters for calling [cf_make_server](/net/cf_make_server.md).
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Parameters for calling [cf_make_server](/net/cf_make_server).
 
 Struct Members | Description
 --- | ---
@@ -20,14 +17,14 @@ Struct Members | Description
 `int max_outgoing_bytes_per_second` | Not implemented yet.
 `int connection_timeout` | The number of seconds before consider a connection as timed out when not receiving any packets on the connection.
 `double resend_rate` | The number of seconds to wait before resending a packet that has not been acknowledge as received by a client.
-`CF_CryptoSignPublic public_key` | The public part of your public key cryptography used for connect tokens. This can be safely shared with your players publicly. See [CF_CryptoSignPublic](/net/cf_cryptosignpublic.md).
-`CF_CryptoSignSecret secret_key` | The secret part of your public key cryptography used for connect tokens. This must never be shared publicly and remain a complete secret only know to your servers. See [CF_CryptoSignSecret](/net/cf_cryptosignsecret.md).
+`CF_CryptoSignPublic public_key` | The public part of your public key cryptography used for connect tokens. This can be safely shared with your players publicly. See [CF_CryptoSignPublic](/net/cf_cryptosignpublic).
+`CF_CryptoSignSecret secret_key` | The secret part of your public key cryptography used for connect tokens. This must never be shared publicly and remain a complete secret only know to your servers. See [CF_CryptoSignSecret](/net/cf_cryptosignsecret).
 
 ## Remarks
 
-Call [cf_server_config_defaults](/net/cf_server_config_defaults.md) to get a good set of default parameters.
+Call [cf_server_config_defaults](/net/cf_server_config_defaults) to get a good set of default parameters.
 
 ## Related Pages
 
-  * [cf_make_server](/net/cf_make_server.md)  
-  * [cf_server_config_defaults](/net/cf_server_config_defaults.md)  
+  * [cf_make_server](/net/cf_make_server)  
+  * [cf_server_config_defaults](/net/cf_server_config_defaults)  

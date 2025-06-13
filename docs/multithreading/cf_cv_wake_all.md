@@ -7,10 +7,7 @@ parent: multithreading
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_cv_wake_all
 
-Category: [multithreading](/docs/multithreading)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
 Wakes all threads sleeping on the condition variable.
 
 ```cpp
@@ -23,12 +20,12 @@ cv | The condition variable.
 
 ## Return Value
 
-Returns any errors as a [CF_Result](/utility/cf_result.md).
+Returns any errors as a [CF_Result](/utility/cf_result).
 
 ## Related Pages
 
-  * [CF_ConditionVariable](/multithreading/cf_conditionvariable.md)  
-  * [cf_make_cv](/multithreading/cf_make_cv.md)  
-  * [cf_destroy_cv](/multithreading/cf_destroy_cv.md)  
-  * [cf_cv_wait](/multithreading/cf_cv_wait.md)  
-  * [cf_cv_wake_one](/multithreading/cf_cv_wake_one.md)  
+  * [CF_ConditionVariable](/multithreading/cf_conditionvariable)  
+  * [cf_make_cv](/multithreading/cf_make_cv)  
+  * [cf_destroy_cv](/multithreading/cf_destroy_cv)  
+  * [cf_cv_wait](/multithreading/cf_cv_wait)  
+  * [cf_cv_wake_one](/multithreading/cf_cv_wake_one)  

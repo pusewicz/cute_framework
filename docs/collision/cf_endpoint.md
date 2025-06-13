@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_endpoint
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the endpoint of a ray.
 
 ```cpp
@@ -24,5 +21,5 @@ unnecessarily large computations when doing raycasts.
 
 ## Related Pages
 
-  * [CF_Ray](/math/cf_ray.md)  
-  * [cf_impact](/collision/cf_impact.md)  
+  * [CF_Ray](/math/cf_ray)  
+  * [cf_impact](/collision/cf_impact)  

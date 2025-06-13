@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_render_state_defaults
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a good set of default parameters for a [CF_RenderState](/graphics/cf_renderstate.md).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a good set of default parameters for a [CF_RenderState](/graphics/cf_renderstate).
 
 ```cpp
 CF_RenderState cf_render_state_defaults();
@@ -19,5 +16,5 @@ CF_RenderState cf_render_state_defaults();
 
 ## Related Pages
 
-  * [CF_RenderState](/graphics/cf_renderstate.md)  
-  * [cf_material_set_render_state](/graphics/cf_material_set_render_state.md)  
+  * [CF_RenderState](/graphics/cf_renderstate)  
+  * [cf_material_set_render_state](/graphics/cf_material_set_render_state)  

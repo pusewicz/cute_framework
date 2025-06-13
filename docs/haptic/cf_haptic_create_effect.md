@@ -7,10 +7,7 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_haptic_create_effect
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
 Creates a single effect instance on the device.
 
 ```cpp
@@ -28,7 +25,7 @@ Run the haptic with `haptic_run_effect`.
 
 ## Related Pages
 
-  * [CF_Haptic](/haptic/cf_haptic.md)  
-  * [cf_haptic_open](/haptic/cf_haptic_open.md)  
-  * [CF_HapticEffect](/haptic/cf_hapticeffect.md)  
-  * [cf_haptic_run_effect](/haptic/cf_haptic_run_effect.md)  
+  * [CF_Haptic](/haptic/cf_haptic)  
+  * [cf_haptic_open](/haptic/cf_haptic_open)  
+  * [CF_HapticEffect](/haptic/cf_hapticeffect)  
+  * [cf_haptic_run_effect](/haptic/cf_haptic_run_effect)  

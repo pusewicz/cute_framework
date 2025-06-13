@@ -7,10 +7,7 @@ parent: web
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_HttpsRequest
 
-Category: [web](/docs/web)  
-GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)  
----
-
+GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)
 Represents an [HTTPS request](https://www.ibm.com/docs/en/cics-ts/5.3?topic=protocol-http-requests).
 
 ## Code Example
@@ -52,11 +49,11 @@ int main(int argc, char argv[])
 
 ## Remarks
 
-You may create a request by calling either [cf_https_get](/web/cf_https_get.md) or [cf_https_post](/web/cf_https_post.md). It is intended to continually
-call [cf_https_process](/web/cf_https_process.md) in a loop until the request generates a response, or fails.
+You may create a request by calling either [cf_https_get](/web/cf_https_get) or [cf_https_post](/web/cf_https_post). It is intended to continually
+call [cf_https_process](/web/cf_https_process) in a loop until the request generates a response, or fails.
 
 ## Related Pages
 
-  * [cf_https_post](/web/cf_https_post.md)  
-  * [CF_HttpsResponse](/web/cf_httpsresponse.md)  
-  * [cf_https_get](/web/cf_https_get.md)  
+  * [cf_https_post](/web/cf_https_post)  
+  * [CF_HttpsResponse](/web/cf_httpsresponse)  
+  * [cf_https_get](/web/cf_https_get)  

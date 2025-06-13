@@ -7,11 +7,8 @@ parent: noise
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_destroy_noise
 
-Category: [noise](/docs/noise)  
-GitHub: [cute_noise.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_noise.h)  
----
-
-Destroys a [CF_Noise](/noise/cf_noise.md) created by [cf_make_noise](/noise/cf_make_noise.md) or [cf_make_noise_fbm](/noise/cf_make_noise_fbm.md).
+GitHub: [cute_noise.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_noise.h)
+Destroys a [CF_Noise](/noise/cf_noise) created by [cf_make_noise](/noise/cf_make_noise) or [cf_make_noise_fbm](/noise/cf_make_noise_fbm).
 
 ```cpp
 void cf_destroy_noise(CF_Noise noise);
@@ -19,13 +16,13 @@ void cf_destroy_noise(CF_Noise noise);
 
 Parameters | Description
 --- | ---
-CF_Noise | The [CF_Noise](/noise/cf_noise.md) to destroy.
+CF_Noise | The [CF_Noise](/noise/cf_noise) to destroy.
 
 ## Related Pages
 
-  * [CF_Noise](/noise/cf_noise.md)  
-  * [cf_make_noise](/noise/cf_make_noise.md)  
-  * [cf_make_noise_fbm](/noise/cf_make_noise_fbm.md)  
-  * [cf_noise4](/noise/cf_noise4.md)  
-  * [cf_noise2](/noise/cf_noise2.md)  
-  * [cf_noise3](/noise/cf_noise3.md)  
+  * [CF_Noise](/noise/cf_noise)  
+  * [cf_make_noise](/noise/cf_make_noise)  
+  * [cf_make_noise_fbm](/noise/cf_make_noise_fbm)  
+  * [cf_noise4](/noise/cf_noise4)  
+  * [cf_noise2](/noise/cf_noise2)  
+  * [cf_noise3](/noise/cf_noise3)  

@@ -7,10 +7,7 @@ parent: time
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sleep
 
-Category: [time](/docs/time)  
-GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)  
----
-
+GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)
 Waits an estimated number of milliseconds before returning.
 
 ```cpp
@@ -20,10 +17,10 @@ void cf_sleep(int milliseconds);
 ## Remarks
 
 This function actually sleeps the application. If you want to instead pause updates without locking the entire
-applcation (so you can e.g. continue rendering and capturing user inputs) use [cf_pause_for](/time/cf_pause_for.md) instead.
+applcation (so you can e.g. continue rendering and capturing user inputs) use [cf_pause_for](/time/cf_pause_for) instead.
 
 ## Related Pages
 
-  * [cf_get_ticks](/time/cf_get_ticks.md)  
-  * [cf_get_tick_frequency](/time/cf_get_tick_frequency.md)  
-  * [cf_pause_for](/time/cf_pause_for.md)  
+  * [cf_get_ticks](/time/cf_get_ticks)  
+  * [cf_get_tick_frequency](/time/cf_get_tick_frequency)  
+  * [cf_pause_for](/time/cf_pause_for)  

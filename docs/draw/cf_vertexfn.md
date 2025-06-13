@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_VertexFn
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 An optional callback for modifying vertices before they are sent to the GPU.
 
 ```cpp
@@ -24,7 +21,7 @@ Setup this callback to apply per-vertex modulations for implementing advanced gr
 triangles. Since all shapes are rendered with signed-distance functions, most shapes merely generate
 a single quad, so you may find triangle counts lower than originally anticipated.
 
-Call [cf_set_vertex_callback](/draw/cf_set_vertex_callback.md) to setup your callback.
+Call [cf_set_vertex_callback](/draw/cf_set_vertex_callback) to setup your callback.
 
 There is no adjecancy info provided. If you need to know which triangles connect to others you
 should probably redesign your feature to not require adjecancy information, or use your own custom
@@ -33,5 +30,5 @@ any adjacency info can be controlled 100% by you a-priori.
 
 ## Related Pages
 
-  * [CF_Vertex](/draw/cf_vertex.md)  
-  * [cf_set_vertex_callback](/draw/cf_set_vertex_callback.md)  
+  * [CF_Vertex](/draw/cf_vertex)  
+  * [cf_set_vertex_callback](/draw/cf_set_vertex_callback)  

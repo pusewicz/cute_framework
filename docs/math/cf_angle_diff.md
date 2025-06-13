@@ -7,11 +7,8 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_angle_diff
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
-Returns the difference of two angles (b - a) in the range of -[CF_PI](/math/cf_pi.md) to [CF_PI](/math/cf_pi.md).
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
+Returns the difference of two angles (b - a) in the range of -[CF_PI](/math/cf_pi) to [CF_PI](/math/cf_pi).
 
 ```cpp
 float cf_angle_diff(float radians_a, float radians_b)
@@ -19,5 +16,5 @@ float cf_angle_diff(float radians_a, float radians_b)
 
 ## Related Pages
 
-  * [cf_shortest_arc](/math/cf_shortest_arc.md)  
-  * [cf_from_angle](/math/cf_from_angle.md)  
+  * [cf_shortest_arc](/math/cf_shortest_arc)  
+  * [cf_from_angle](/math/cf_from_angle)  

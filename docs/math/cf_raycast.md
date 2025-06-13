@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Raycast
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 The results for a raycast query.
 
 Struct Members | Description
@@ -21,8 +18,8 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [cf_ray_to_poly](/collision/cf_ray_to_poly.md)  
-  * [cf_ray_to_halfspace](/collision/cf_ray_to_halfspace.md)  
-  * [cf_ray_to_circle](/collision/cf_ray_to_circle.md)  
-  * [cf_ray_to_aabb](/collision/cf_ray_to_aabb.md)  
-  * [cf_ray_to_capsule](/collision/cf_ray_to_capsule.md)  
+  * [cf_ray_to_poly](/collision/cf_ray_to_poly)  
+  * [cf_ray_to_halfspace](/collision/cf_ray_to_halfspace)  
+  * [cf_ray_to_circle](/collision/cf_ray_to_circle)  
+  * [cf_ray_to_aabb](/collision/cf_ray_to_aabb)  
+  * [cf_ray_to_capsule](/collision/cf_ray_to_capsule)  

@@ -7,11 +7,8 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_json_iter_done
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
-Returns true if the [CF_JIter](/json/cf_jiter.md) has finished iterating over all elements.
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
+Returns true if the [CF_JIter](/json/cf_jiter) has finished iterating over all elements.
 
 ```cpp
 #define cf_json_iter_done(iter) ((iter).index >= (iter).count)
@@ -19,13 +16,13 @@ Returns true if the [CF_JIter](/json/cf_jiter.md) has finished iterating over al
 
 ## Remarks
 
-See [cf_json_iter](/json/cf_json_iter.md).
+See [cf_json_iter](/json/cf_json_iter).
 
 ## Related Pages
 
-  * [CF_JVal](/json/cf_jval.md)  
-  * [cf_json_get](/json/cf_json_get.md)  
-  * [cf_json_array_at](/json/cf_json_array_at.md)  
-  * [cf_json_array_get](/json/cf_json_array_get.md)  
-  * [cf_json_iter](/json/cf_json_iter.md)  
-  * [cf_json_iter_remove](/json/cf_json_iter_remove.md)  
+  * [CF_JVal](/json/cf_jval)  
+  * [cf_json_get](/json/cf_json_get)  
+  * [cf_json_array_at](/json/cf_json_array_at)  
+  * [cf_json_array_get](/json/cf_json_array_get)  
+  * [cf_json_iter](/json/cf_json_iter)  
+  * [cf_json_iter_remove](/json/cf_json_iter_remove)  

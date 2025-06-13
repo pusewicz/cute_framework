@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_MouseButton
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 The mouse buttons.
 
 ## Values
@@ -23,5 +20,5 @@ MOUSE_BUTTON_MIDDLE | (null)
 
 ## Related Pages
 
-  * [cf_mouse_down](/input/cf_mouse_down.md)  
-  * [cf_mouse_button_to_string](/input/cf_mouse_button_to_string.md)  
+  * [cf_mouse_down](/input/cf_mouse_down)  
+  * [cf_mouse_button_to_string](/input/cf_mouse_button_to_string)  

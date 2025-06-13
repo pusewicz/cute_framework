@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_texture_defaults
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a good set of default values for [CF_TextureParams](/graphics/cf_textureparams.md) to call [cf_make_texture](/graphics/cf_make_texture.md).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a good set of default values for [CF_TextureParams](/graphics/cf_textureparams) to call [cf_make_texture](/graphics/cf_make_texture).
 
 ```cpp
 CF_TextureParams cf_texture_defaults(int w, int h);
@@ -19,6 +16,6 @@ CF_TextureParams cf_texture_defaults(int w, int h);
 
 ## Related Pages
 
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
-  * [CF_Texture](/graphics/cf_texture.md)  
-  * [cf_make_texture](/graphics/cf_make_texture.md)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  
+  * [CF_Texture](/graphics/cf_texture)  
+  * [cf_make_texture](/graphics/cf_make_texture)  

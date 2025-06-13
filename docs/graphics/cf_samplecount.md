@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_SampleCount
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Multisample count used for MSAA render targets.
 
 ## Values
@@ -28,5 +25,5 @@ Only applies to textures used as render targets.
 
 ## Related Pages
 
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  
   * cf_sample_count_string  

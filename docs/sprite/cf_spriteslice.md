@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_SpriteSlice
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 A box defined within a .ase file.
 
 Struct Members | Description
@@ -25,6 +22,6 @@ Each frame can have different slices.
 
 ## Related Pages
 
-  * [CF_Frame](/sprite/cf_frame.md)  
-  * [CF_Animation](/sprite/cf_animation.md)  
-  * [CF_Sprite](/sprite/cf_sprite.md)  
+  * [CF_Frame](/sprite/cf_frame)  
+  * [CF_Animation](/sprite/cf_animation)  
+  * [CF_Sprite](/sprite/cf_sprite)  

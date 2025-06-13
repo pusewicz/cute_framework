@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_destroy_server
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Destroys a [CF_Server](/net/cf_server.md) created by [cf_make_server](/net/cf_make_server.md).
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Destroys a [CF_Server](/net/cf_server) created by [cf_make_server](/net/cf_make_server).
 
 ```cpp
 void cf_destroy_server(CF_Server* server);
@@ -19,8 +16,8 @@ void cf_destroy_server(CF_Server* server);
 
 ## Related Pages
 
-  * [CF_ServerConfig](/net/cf_serverconfig.md)  
-  * [cf_server_config_defaults](/net/cf_server_config_defaults.md)  
-  * [cf_make_server](/net/cf_make_server.md)  
-  * [cf_server_update](/net/cf_server_update.md)  
-  * [cf_server_start](/net/cf_server_start.md)  
+  * [CF_ServerConfig](/net/cf_serverconfig)  
+  * [cf_server_config_defaults](/net/cf_server_config_defaults)  
+  * [cf_make_server](/net/cf_make_server)  
+  * [cf_server_update](/net/cf_server_update)  
+  * [cf_server_start](/net/cf_server_start)  

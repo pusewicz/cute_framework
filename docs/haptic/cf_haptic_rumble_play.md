@@ -7,10 +7,7 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_haptic_rumble_play
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
 Starts playing a simple rumble effect
 
 ```cpp
@@ -29,7 +26,7 @@ Successive calls on this function will update the underlying rumble effect, inst
 
 ## Related Pages
 
-  * [CF_Haptic](/haptic/cf_haptic.md)  
-  * [cf_haptic_open](/haptic/cf_haptic_open.md)  
-  * [cf_haptic_rumble_supported](/haptic/cf_haptic_rumble_supported.md)  
-  * [cf_haptic_rumble_stop](/haptic/cf_haptic_rumble_stop.md)  
+  * [CF_Haptic](/haptic/cf_haptic)  
+  * [cf_haptic_open](/haptic/cf_haptic_open)  
+  * [cf_haptic_rumble_supported](/haptic/cf_haptic_rumble_supported)  
+  * [cf_haptic_rumble_stop](/haptic/cf_haptic_rumble_stop)  

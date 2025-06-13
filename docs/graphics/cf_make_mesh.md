@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_mesh
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a [CF_Mesh](/graphics/cf_mesh.md).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a [CF_Mesh](/graphics/cf_mesh).
 
 ```cpp
 CF_Mesh cf_make_mesh(int vertex_buffer_size_in_bytes, const CF_VertexAttribute* attributes, int attribute_count, int vertex_stride);
@@ -30,8 +27,8 @@ The max number of attributes is `CF_MESH_MAX_VERTEX_ATTRIBUTES` (32). Any more a
 
 ## Related Pages
 
-  * [CF_Mesh](/graphics/cf_mesh.md)  
-  * [cf_mesh_set_instance_buffer](/graphics/cf_mesh_set_instance_buffer.md)  
-  * [cf_destroy_mesh](/graphics/cf_destroy_mesh.md)  
-  * [cf_mesh_update_vertex_data](/graphics/cf_mesh_update_vertex_data.md)  
-  * [cf_mesh_set_index_buffer](/graphics/cf_mesh_set_index_buffer.md)  
+  * [CF_Mesh](/graphics/cf_mesh)  
+  * [cf_mesh_set_instance_buffer](/graphics/cf_mesh_set_instance_buffer)  
+  * [cf_destroy_mesh](/graphics/cf_destroy_mesh)  
+  * [cf_mesh_update_vertex_data](/graphics/cf_mesh_update_vertex_data)  
+  * [cf_mesh_set_index_buffer](/graphics/cf_mesh_set_index_buffer)  

@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # scat
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Appends the string b onto the end of a.
 
 ```cpp
@@ -24,13 +21,13 @@ b | Used to append onto `a`.
 
 ## Remarks
 
-You can technically do this with [sfmt](/string/sfmt.md), but this function is optimized much faster. Does the same thing as [sappend](/string/sappend.md).
+You can technically do this with [sfmt](/string/sfmt), but this function is optimized much faster. Does the same thing as [sappend](/string/sappend).
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sappend](/string/sappend.md)  
-  * [sfmt_append](/string/sfmt_append.md)  
-  * [sappend_range](/string/sappend_range.md)  
-  * [scat_range](/string/scat_range.md)  
-  * [sfmt](/string/sfmt.md)  
+  * [sdyna](/string/sdyna)  
+  * [sappend](/string/sappend)  
+  * [sfmt_append](/string/sfmt_append)  
+  * [sappend_range](/string/sappend_range)  
+  * [scat_range](/string/scat_range)  
+  * [sfmt](/string/sfmt)  

@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_PixelFormatOp
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 The various supported operations a pixel format can perform.
 
 ## Values
@@ -31,5 +28,5 @@ is available for your use-case.
 
 ## Related Pages
 
-  * [CF_PixelFormat](/graphics/cf_pixelformat.md)  
-  * [cf_pixel_format_op_to_string](/graphics/cf_pixel_format_op_to_string.md)  
+  * [CF_PixelFormat](/graphics/cf_pixelformat)  
+  * [cf_pixel_format_op_to_string](/graphics/cf_pixel_format_op_to_string)  

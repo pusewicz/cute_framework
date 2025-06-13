@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fs_create_directory
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Creates a directory at the path.
 
 ```cpp
@@ -23,7 +20,7 @@ virtual_path | The virtual path to the directory.
 
 ## Return Value
 
-Returns any errors as a [CF_Result](/utility/cf_result.md).
+Returns any errors as a [CF_Result](/utility/cf_result).
 
 ## Remarks
 
@@ -32,5 +29,5 @@ All missing directories are also created. [Virtual File System](https://randygau
 ## Related Pages
 
   * cf_fs_remove_directory  
-  * [cf_fs_free_enumerated_directory](/file/cf_fs_free_enumerated_directory.md)  
-  * [cf_fs_enumerate_directory](/file/cf_fs_enumerate_directory.md)  
+  * [cf_fs_free_enumerated_directory](/file/cf_fs_free_enumerated_directory)  
+  * [cf_fs_enumerate_directory](/file/cf_fs_enumerate_directory)  

@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Transform
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 2d transformation.
 
 Struct Members | Description
@@ -24,9 +21,9 @@ Mostly useful for physics colliders since there's no scale.
 
 ## Related Pages
 
-  * [cf_mulT_tf](/math/cf_mult_tf.md)  
-  * [cf_make_transform](/math/cf_make_transform.md)  
-  * [cf_make_transform_TR](/math/cf_make_transform_tr.md)  
-  * [cf_mul_tf_v2](/math/cf_mul_tf_v2.md)  
-  * [cf_mulT_tf_v2](/math/cf_mult_tf_v2.md)  
-  * [cf_mul_tf](/math/cf_mul_tf.md)  
+  * [cf_mulT_tf](/math/cf_mult_tf)  
+  * [cf_make_transform](/math/cf_make_transform)  
+  * [cf_make_transform_TR](/math/cf_make_transform_tr)  
+  * [cf_mul_tf_v2](/math/cf_mul_tf_v2)  
+  * [cf_mulT_tf_v2](/math/cf_mult_tf_v2)  
+  * [cf_mul_tf](/math/cf_mul_tf)  

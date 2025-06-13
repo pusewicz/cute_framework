@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_server_update
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 Updates the server.
 
 ```cpp
@@ -23,5 +20,5 @@ Call this once per game tick.
 
 ## Related Pages
 
-  * [cf_server_pop_event](/net/cf_server_pop_event.md)  
-  * [CF_ServerEvent](/net/cf_serverevent.md)  
+  * [cf_server_pop_event](/net/cf_server_pop_event)  
+  * [CF_ServerEvent](/net/cf_serverevent)  

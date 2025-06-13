@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_projection
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Sets the projection matrix used by the draw API.
 
 ```cpp
@@ -21,9 +18,9 @@ void cf_draw_projection(CF_M3x2 projection);
 
 You should not use this function unless you know what you're doing. You will need to call this
 again whenever the app is resized, as CF automatically sets the projection matrix upon resizing.
-See [cf_app_was_resized](/app/cf_app_was_resized.md). If you want to learn more you can try searching online for "model view
+See [cf_app_was_resized](/app/cf_app_was_resized). If you want to learn more you can try searching online for "model view
 projection" matrices, aka MVP matrices.
 
 ## Related Pages
 
-  * [cf_app_was_resized](/app/cf_app_was_resized.md)  
+  * [cf_app_was_resized](/app/cf_app_was_resized)  

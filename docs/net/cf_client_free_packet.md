@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_client_free_packet
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Free's a packet created by [cf_client_pop_packet](/net/cf_client_pop_packet.md).
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Free's a packet created by [cf_client_pop_packet](/net/cf_client_pop_packet).
 
 ```cpp
 void cf_client_free_packet(CF_Client* client, void* packet);
@@ -19,6 +16,6 @@ void cf_client_free_packet(CF_Client* client, void* packet);
 
 ## Related Pages
 
-  * [CF_Client](/net/cf_client.md)  
-  * [cf_client_pop_packet](/net/cf_client_pop_packet.md)  
-  * [cf_client_send](/net/cf_client_send.md)  
+  * [CF_Client](/net/cf_client)  
+  * [cf_client_pop_packet](/net/cf_client_pop_packet)  
+  * [cf_client_send](/net/cf_client_send)  

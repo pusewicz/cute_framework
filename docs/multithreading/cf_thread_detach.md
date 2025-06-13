@@ -7,11 +7,8 @@ parent: multithreading
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_thread_detach
 
-Category: [multithreading](/docs/multithreading)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
-Makes a special note your thread will never have [cf_thread_wait](/multithreading/cf_thread_wait.md) called on it. Useful as a minor optimization
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
+Makes a special note your thread will never have [cf_thread_wait](/multithreading/cf_thread_wait) called on it. Useful as a minor optimization
 for long-lived threads.
 
 ```cpp
@@ -24,13 +21,13 @@ thread | The thread.
 
 ## Remarks
 
-When a thread has [cf_thread_detach](/multithreading/cf_thread_detach.md) called on it, it is no longer necessary to call [cf_thread_wait](/multithreading/cf_thread_wait.md) on it.
+When a thread has [cf_thread_detach](/multithreading/cf_thread_detach) called on it, it is no longer necessary to call [cf_thread_wait](/multithreading/cf_thread_wait) on it.
 
 ## Related Pages
 
-  * [CF_Thread](/multithreading/cf_thread.md)  
-  * [CF_ThreadFn](/multithreading/cf_threadfn.md)  
-  * [cf_thread_create](/multithreading/cf_thread_create.md)  
-  * [cf_thread_wait](/multithreading/cf_thread_wait.md)  
-  * [cf_thread_get_id](/multithreading/cf_thread_get_id.md)  
-  * [cf_thread_id](/multithreading/cf_thread_id.md)  
+  * [CF_Thread](/multithreading/cf_thread)  
+  * [CF_ThreadFn](/multithreading/cf_threadfn)  
+  * [cf_thread_create](/multithreading/cf_thread_create)  
+  * [cf_thread_wait](/multithreading/cf_thread_wait)  
+  * [cf_thread_get_id](/multithreading/cf_thread_get_id)  
+  * [cf_thread_id](/multithreading/cf_thread_id)  

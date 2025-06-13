@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_shader_from_source
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Creates a shader from strings containing glsl source code.
 
 ```cpp
@@ -24,8 +21,8 @@ fragment_src | The fragment shader source as C-string.
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [cf_make_shader](/graphics/cf_make_shader.md)  
-  * [cf_shader_directory](/graphics/cf_shader_directory.md)  
-  * [cf_apply_shader](/graphics/cf_apply_shader.md)  
-  * [CF_Material](/graphics/cf_material.md)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [cf_make_shader](/graphics/cf_make_shader)  
+  * [cf_shader_directory](/graphics/cf_shader_directory)  
+  * [cf_apply_shader](/graphics/cf_apply_shader)  
+  * [CF_Material](/graphics/cf_material)  

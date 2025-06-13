@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_client_send
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 Sends a packet to the server.
 
 ```cpp
@@ -27,7 +24,7 @@ send_reliably | If `true` the packet will be sent reliably and in order. If fals
 
 ## Return Value
 
-Returns any errors as a [CF_Result](/utility/cf_result.md).
+Returns any errors as a [CF_Result](/utility/cf_result).
 
 ## Remarks
 
@@ -45,6 +42,6 @@ transform updates, can be sent unreliably.
 
 ## Related Pages
 
-  * [CF_Client](/net/cf_client.md)  
-  * [cf_client_pop_packet](/net/cf_client_pop_packet.md)  
-  * [cf_client_free_packet](/net/cf_client_free_packet.md)  
+  * [CF_Client](/net/cf_client)  
+  * [cf_client_pop_packet](/net/cf_client_pop_packet)  
+  * [cf_client_free_packet](/net/cf_client_free_packet)  

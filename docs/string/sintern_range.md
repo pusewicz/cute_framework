@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sintern_range
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Stores unique, static copy of a string in a global string interning table.
 
 ```cpp
@@ -24,7 +21,7 @@ end | A pointer to the end of the string to insert into the global table. Should
 
 ## Return Value
 
-Returns a static, unique, stable, read-only copy of the string. The pointer is stable until [sinuke](/string/sinuke.md) is called.
+Returns a static, unique, stable, read-only copy of the string. The pointer is stable until [sinuke](/string/sinuke) is called.
 
 ## Remarks
 
@@ -34,12 +31,12 @@ table.
 
 - You can hash returned pointers directly into hash tables (instead of hashing the entire string).
 - You can simply compare pointers for equality, as opposed to comparing the string contents, as long as both strings came from this function.
-- You may optionally call [sinuke](/string/sinuke.md) to free all resources used by the global string table.
+- You may optionally call [sinuke](/string/sinuke) to free all resources used by the global string table.
 - This function is very fast if the string was already stored previously.
 
 ## Related Pages
 
-  * [sintern](/string/sintern.md)  
-  * [sinuke](/string/sinuke.md)  
-  * [sivalid](/string/sivalid.md)  
-  * [silen](/string/silen.md)  
+  * [sintern](/string/sintern)  
+  * [sinuke](/string/sinuke)  
+  * [sivalid](/string/sivalid)  
+  * [silen](/string/silen)  

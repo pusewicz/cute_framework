@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_height
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Returns the sprite's height in pixels.
 
 ```cpp
@@ -19,5 +16,5 @@ int cf_sprite_height(CF_Sprite* sprite)
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [cf_sprite_width](/sprite/cf_sprite_width.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [cf_sprite_width](/sprite/cf_sprite_width)  

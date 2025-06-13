@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # scount
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Returns the number of characters in the string, including the nul-terminator.
 
 ```cpp
@@ -23,7 +20,7 @@ s | The string.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [slen](/string/slen.md)  
-  * [sempty](/string/sempty.md)  
-  * [scap](/string/scap.md)  
+  * [sdyna](/string/sdyna)  
+  * [slen](/string/slen)  
+  * [sempty](/string/sempty)  
+  * [scap](/string/scap)  

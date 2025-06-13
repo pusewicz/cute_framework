@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_InputTextBuffer
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Represents the application's input text buffer.
 
 Struct Members | Description
@@ -20,7 +17,7 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [cf_input_enable_ime](/input/cf_input_enable_ime.md)  
-  * [cf_input_disable_ime](/input/cf_input_disable_ime.md)  
-  * [cf_input_text_get_buffer](/input/cf_input_text_get_buffer.md)  
-  * [cf_input_text_clear](/input/cf_input_text_clear.md)  
+  * [cf_input_enable_ime](/input/cf_input_enable_ime)  
+  * [cf_input_disable_ime](/input/cf_input_disable_ime)  
+  * [cf_input_text_get_buffer](/input/cf_input_text_get_buffer)  
+  * [cf_input_text_clear](/input/cf_input_text_clear)  

@@ -7,10 +7,7 @@ parent: image
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_image_flip_horizontal
 
-Category: [image](/docs/image)  
-GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)  
----
-
+GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)
 Flips the image on the y-axis.
 
 ```cpp
@@ -19,4 +16,4 @@ void cf_image_flip_horizontal(CF_Image* img);
 
 ## Related Pages
 
-  * [CF_Image](/image/cf_image.md)  
+  * [CF_Image](/image/cf_image)  

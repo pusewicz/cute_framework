@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_hue
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
 Returns a result color with the luminance and saturation of the base color and the hue of the blend color.
 
 ```cpp
@@ -28,8 +25,8 @@ This function attempts to mimic the Hue [Photoshop blend-layer](https://helpx.ad
 
 ## Related Pages
 
-  * [CF_Color](/graphics/cf_color.md)  
-  * [cf_softlight](/graphics/cf_softlight.md)  
-  * [cf_overlay_color](/graphics/cf_overlay_color.md)  
-  * [cf_softlight_color](/graphics/cf_softlight_color.md)  
-  * [cf_overlay](/graphics/cf_overlay.md)  
+  * [CF_Color](/graphics/cf_color)  
+  * [cf_softlight](/graphics/cf_softlight)  
+  * [cf_overlay_color](/graphics/cf_overlay_color)  
+  * [cf_softlight_color](/graphics/cf_softlight_color)  
+  * [cf_overlay](/graphics/cf_overlay)  

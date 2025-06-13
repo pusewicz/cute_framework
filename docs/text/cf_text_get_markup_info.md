@@ -7,10 +7,7 @@ parent: text
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_text_get_markup_info
 
-Category: [text](/docs/text)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Reports markup information for a text effect.
 
 ```cpp
@@ -27,10 +24,10 @@ num_chars_to_draw | The number of characters to draw `text`. Use -1 to draw the 
 ## Remarks
 
 The callback `fn` is invoked once per markup within the renderable `text`. If you wish to fetch any of the markup metadata
-you may use [cf_text_effect_get_number](/text/cf_text_effect_get_number.md), [cf_text_effect_get_color](/text/cf_text_effect_get_color.md), or [cf_text_effect_get_string](/text/cf_text_effect_get_string.md) by passing in the `fx` pointer to each.
+you may use [cf_text_effect_get_number](/text/cf_text_effect_get_number), [cf_text_effect_get_color](/text/cf_text_effect_get_color), or [cf_text_effect_get_string](/text/cf_text_effect_get_string) by passing in the `fx` pointer to each.
 
 ## Related Pages
 
-  * [CF_TextEffect](/text/cf_texteffect.md)  
-  * [CF_MarkupInfo](/text/cf_markupinfo.md)  
-  * [cf_text_markup_info_fn](/text/cf_text_markup_info_fn.md)  
+  * [CF_TextEffect](/text/cf_texteffect)  
+  * [CF_MarkupInfo](/text/cf_markupinfo)  
+  * [cf_text_markup_info_fn](/text/cf_text_markup_info_fn)  

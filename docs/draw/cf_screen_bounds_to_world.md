@@ -7,11 +7,8 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_screen_bounds_to_world
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
-Returns a [CF_Aabb](/math/cf_aabb.md) of the screen bounds in world space.
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
+Returns a [CF_Aabb](/math/cf_aabb) of the screen bounds in world space.
 
 ```cpp
 CF_Aabb cf_screen_bounds_to_world();
@@ -23,5 +20,5 @@ This can be useful for colliding against the screen, or implementing occlusion c
 
 ## Related Pages
 
-  * [cf_world_to_screen](/draw/cf_world_to_screen.md)  
-  * [cf_screen_to_world](/draw/cf_screen_to_world.md)  
+  * [cf_world_to_screen](/draw/cf_world_to_screen)  
+  * [cf_screen_to_world](/draw/cf_screen_to_world)  

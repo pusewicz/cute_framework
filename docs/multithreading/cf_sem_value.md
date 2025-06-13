@@ -7,10 +7,7 @@ parent: multithreading
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sem_value
 
-Category: [multithreading](/docs/multithreading)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
 Atomically fetches the semaphore's counter.
 
 ```cpp
@@ -27,9 +24,9 @@ Returns any errors upon failure.
 
 ## Related Pages
 
-  * [CF_Semaphore](/multithreading/cf_semaphore.md)  
-  * [cf_make_sem](/multithreading/cf_make_sem.md)  
-  * [cf_destroy_sem](/multithreading/cf_destroy_sem.md)  
-  * [cf_sem_post](/multithreading/cf_sem_post.md)  
-  * [cf_sem_try](/multithreading/cf_sem_try.md)  
-  * [cf_sem_wait](/multithreading/cf_sem_wait.md)  
+  * [CF_Semaphore](/multithreading/cf_semaphore)  
+  * [cf_make_sem](/multithreading/cf_make_sem)  
+  * [cf_destroy_sem](/multithreading/cf_destroy_sem)  
+  * [cf_sem_post](/multithreading/cf_sem_post)  
+  * [cf_sem_try](/multithreading/cf_sem_try)  
+  * [cf_sem_wait](/multithreading/cf_sem_wait)  

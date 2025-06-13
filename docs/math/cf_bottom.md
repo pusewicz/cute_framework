@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_bottom
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the bottom of the aabb.
 
 ```cpp
@@ -19,12 +16,12 @@ CF_V2 cf_bottom(CF_Aabb bb)
 
 ## Related Pages
 
-  * [CF_Aabb](/math/cf_aabb.md)  
-  * [cf_min_aabb](/math/cf_min_aabb.md)  
-  * [cf_max_aabb](/math/cf_max_aabb.md)  
-  * [cf_midpoint](/math/cf_midpoint.md)  
-  * [cf_center](/math/cf_center.md)  
-  * [cf_top_left](/math/cf_top_left.md)  
-  * [cf_top_right](/math/cf_top_right.md)  
-  * [cf_bottom_left](/math/cf_bottom_left.md)  
-  * [cf_bottom_right](/math/cf_bottom_right.md)  
+  * [CF_Aabb](/math/cf_aabb)  
+  * [cf_min_aabb](/math/cf_min_aabb)  
+  * [cf_max_aabb](/math/cf_max_aabb)  
+  * [cf_midpoint](/math/cf_midpoint)  
+  * [cf_center](/math/cf_center)  
+  * [cf_top_left](/math/cf_top_left)  
+  * [cf_top_right](/math/cf_top_right)  
+  * [cf_bottom_left](/math/cf_bottom_left)  
+  * [cf_bottom_right](/math/cf_bottom_right)  

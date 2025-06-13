@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_TemporaryImage
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Returns temporal information about a sprite's rendering internals.
 
 Struct Members | Description
@@ -23,9 +20,9 @@ Struct Members | Description
 
 ## Remarks
 
-Useful to render a sprite in an external system, e.g. Dear ImGui. This struct is only valid until the next time [cf_render_to](/draw/cf_render_to.md) or
-[cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen.md) is called.
+Useful to render a sprite in an external system, e.g. Dear ImGui. This struct is only valid until the next time [cf_render_to](/draw/cf_render_to) or
+[cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen) is called.
 
 ## Related Pages
 
-  * [cf_fetch_image](/draw/cf_fetch_image.md)  
+  * [cf_fetch_image](/draw/cf_fetch_image)  

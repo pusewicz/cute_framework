@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sub_pixel
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
-Subtracts one [CF_Pixel](/graphics/cf_pixel.md) from another.
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
+Subtracts one [CF_Pixel](/graphics/cf_pixel) from another.
 
 ```cpp
 CF_Pixel cf_sub_pixel(CF_Pixel a, CF_Pixel b)
@@ -24,8 +21,8 @@ b | The second pixel.
 
 ## Related Pages
 
-  * [cf_mul_pixel](/graphics/cf_mul_pixel.md)  
-  * [cf_div_pixel](/graphics/cf_div_pixel.md)  
-  * [cf_add_pixel](/graphics/cf_add_pixel.md)  
-  * [cf_pixel_premultiply](/graphics/cf_pixel_premultiply.md)  
-  * [cf_pixel_lerp](/graphics/cf_pixel_lerp.md)  
+  * [cf_mul_pixel](/graphics/cf_mul_pixel)  
+  * [cf_div_pixel](/graphics/cf_div_pixel)  
+  * [cf_add_pixel](/graphics/cf_add_pixel)  
+  * [cf_pixel_premultiply](/graphics/cf_pixel_premultiply)  
+  * [cf_pixel_lerp](/graphics/cf_pixel_lerp)  

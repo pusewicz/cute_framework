@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_shader_directory
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Sets up the app's shader directory.
 
 ```cpp
@@ -24,14 +21,14 @@ path | A virtual path to the folder with your shaders (subfolders supported). Se
 ## Remarks
 
 Shaders can `#include` each other as long as they exist in this directory. Changes to shaders on disk
-may also be watched via [cf_shader_on_changed](/graphics/cf_shader_on_changed.md) to support shader reloading during development. If you call [cf_shader_directory](/graphics/cf_shader_directory.md) with
-the path `"/assets/shaders"`, you should then supply paths to [cf_make_shader](/graphics/cf_make_shader.md) relative to the shader directory, and
+may also be watched via [cf_shader_on_changed](/graphics/cf_shader_on_changed) to support shader reloading during development. If you call [cf_shader_directory](/graphics/cf_shader_directory) with
+the path `"/assets/shaders"`, you should then supply paths to [cf_make_shader](/graphics/cf_make_shader) relative to the shader directory, and
 simply pass in paths such as `"/shader.vert`" or `"shader.frag"`. This also applies to `#include` between shaders.
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [cf_make_shader](/graphics/cf_make_shader.md)  
-  * [cf_destroy_shader](/graphics/cf_destroy_shader.md)  
-  * [cf_apply_shader](/graphics/cf_apply_shader.md)  
-  * [CF_Material](/graphics/cf_material.md)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [cf_make_shader](/graphics/cf_make_shader)  
+  * [cf_destroy_shader](/graphics/cf_destroy_shader)  
+  * [cf_apply_shader](/graphics/cf_apply_shader)  
+  * [CF_Material](/graphics/cf_material)  

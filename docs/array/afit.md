@@ -7,10 +7,7 @@ parent: array
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # afit
 
-Category: [array](/docs/array)  
-GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)  
----
-
+GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)
 Ensures the capacity of the array is at least `n` elements large.
 
 ```cpp
@@ -34,18 +31,18 @@ automatically re-assigned to a new pointer if the array was internally regrown.
 
 ## Related Pages
 
-  * [dyna](/array/dyna.md)  
-  * [asize](/array/asize.md)  
-  * [acount](/array/acount.md)  
-  * [acap](/array/acap.md)  
-  * [afree](/array/afree.md)  
-  * [apush](/array/apush.md)  
-  * [apop](/array/apop.md)  
-  * [aend](/array/aend.md)  
-  * [alast](/array/alast.md)  
-  * [aclear](/array/aclear.md)  
-  * [aset](/array/aset.md)  
-  * [arev](/array/arev.md)  
-  * [ahash](/array/ahash.md)  
-  * [adel](/array/adel.md)  
-  * [astatic](/array/astatic.md)  
+  * [dyna](/array/dyna)  
+  * [asize](/array/asize)  
+  * [acount](/array/acount)  
+  * [acap](/array/acap)  
+  * [afree](/array/afree)  
+  * [apush](/array/apush)  
+  * [apop](/array/apop)  
+  * [aend](/array/aend)  
+  * [alast](/array/alast)  
+  * [aclear](/array/aclear)  
+  * [aset](/array/aset)  
+  * [arev](/array/arev)  
+  * [ahash](/array/ahash)  
+  * [adel](/array/adel)  
+  * [astatic](/array/astatic)  

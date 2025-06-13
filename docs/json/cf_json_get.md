@@ -7,10 +7,7 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_json_get
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
 Looks up a value for a given key.
 
 ```cpp
@@ -24,11 +21,11 @@ key | The search key.
 
 ## Return Value
 
-Returns the [CF_JVal](/json/cf_jval.md) associated with `key` on the object `val`.
+Returns the [CF_JVal](/json/cf_jval) associated with `key` on the object `val`.
 
 ## Related Pages
 
-  * [CF_JVal](/json/cf_jval.md)  
-  * [cf_json_iter](/json/cf_json_iter.md)  
-  * [cf_json_array_at](/json/cf_json_array_at.md)  
-  * [cf_json_array_get](/json/cf_json_array_get.md)  
+  * [CF_JVal](/json/cf_jval)  
+  * [cf_json_iter](/json/cf_json_iter)  
+  * [cf_json_array_at](/json/cf_json_array_at)  
+  * [cf_json_array_get](/json/cf_json_array_get)  

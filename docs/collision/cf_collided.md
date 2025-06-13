@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_collided
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns a true if two shapes collided.
 
 ```cpp
@@ -20,15 +17,15 @@ int cf_collided(const void* A, const CF_Transform* ax, CF_ShapeType typeA, const
 Parameters | Description
 --- | ---
 A | The first shape.
-typeA | The [CF_ShapeType](/collision/cf_shapetype.md) of the first shape `A`.
-ax_ptr | Can be `NULL` to represent an identity transform. An optional pointer to a [CF_Transform](/math/cf_transform.md) to transform `A`.
+typeA | The [CF_ShapeType](/collision/cf_shapetype) of the first shape `A`.
+ax_ptr | Can be `NULL` to represent an identity transform. An optional pointer to a [CF_Transform](/math/cf_transform) to transform `A`.
 vA | The velocity of `A`.
 B | The second shape.
-typeA | The [CF_ShapeType](/collision/cf_shapetype.md) of the second shape `B`.
-bx_ptr | Can be `NULL` to represent an identity transform. An optional pointer to a [CF_Transform](/math/cf_transform.md) to transform `B`.
+typeA | The [CF_ShapeType](/collision/cf_shapetype) of the second shape `B`.
+bx_ptr | Can be `NULL` to represent an identity transform. An optional pointer to a [CF_Transform](/math/cf_transform) to transform `B`.
 
 ## Related Pages
 
-  * [CF_ShapeType](/collision/cf_shapetype.md)  
-  * [cf_collide](/collision/cf_collide.md)  
-  * [CF_Transform](/math/cf_transform.md)  
+  * [CF_ShapeType](/collision/cf_shapetype)  
+  * [cf_collide](/collision/cf_collide)  
+  * [CF_Transform](/math/cf_transform)  

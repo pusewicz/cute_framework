@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_BlendFactor
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Blend factors to compose a blend equation.
 
 ## Values
@@ -33,9 +30,9 @@ BLENDFACTOR_SRC_ALPHA_SATURATE | min(S.alpha, 1 - D.alpha)
 
 ## Remarks
 
-See [CF_BlendState](/graphics/cf_blendstate.md) for an overview.
+See [CF_BlendState](/graphics/cf_blendstate) for an overview.
 
 ## Related Pages
 
-  * [CF_BlendState](/graphics/cf_blendstate.md)  
-  * [cf_blend_factor_string](/graphics/cf_blend_factor_string.md)  
+  * [CF_BlendState](/graphics/cf_blendstate)  
+  * [cf_blend_factor_string](/graphics/cf_blend_factor_string)  

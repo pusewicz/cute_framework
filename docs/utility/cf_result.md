@@ -7,10 +7,7 @@ parent: utility
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Result
 
-Category: [utility](/docs/utility)  
-GitHub: [cute_result.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_result.h)  
----
-
+GitHub: [cute_result.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_result.h)
 Information about the result of a function, containing any potential error details.
 
 Struct Members | Description
@@ -20,11 +17,11 @@ Struct Members | Description
 
 ## Remarks
 
-Check if a result is an error or not with [cf_is_error](/utility/cf_is_error.md).
+Check if a result is an error or not with [cf_is_error](/utility/cf_is_error).
 
 ## Related Pages
 
-  * [cf_result_success](/utility/cf_result_success.md)  
-  * [cf_is_error](/utility/cf_is_error.md)  
+  * [cf_result_success](/utility/cf_result_success)  
+  * [cf_is_error](/utility/cf_is_error)  
   * cf_result_make  
-  * [cf_result_error](/utility/cf_result_error.md)  
+  * [cf_result_error](/utility/cf_result_error)  

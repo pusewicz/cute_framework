@@ -7,10 +7,7 @@ parent: time
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_update_time
 
-Category: [time](/docs/time)  
-GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)  
----
-
+GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)
 Updates the application.
 
 ```cpp
@@ -19,17 +16,17 @@ void cf_update_time(CF_OnUpdateFn* on_update);
 
 Parameters | Description
 --- | ---
-on_update | Can be `NULL`. Called once per update. Mostly just useful for the fixed-timestep case (see [cf_set_fixed_timestep](/time/cf_set_fixed_timestep.md)).
+on_update | Can be `NULL`. Called once per update. Mostly just useful for the fixed-timestep case (see [cf_set_fixed_timestep](/time/cf_set_fixed_timestep)).
 
 ## Remarks
 
-Typically you will want to call this function just after [cf_app_update](/app/cf_app_update.md), or, alternatively pass
-  in `on_update` to [cf_app_update](/app/cf_app_update.md) instead of calling this function at all.
+Typically you will want to call this function just after [cf_app_update](/app/cf_app_update), or, alternatively pass
+  in `on_update` to [cf_app_update](/app/cf_app_update) instead of calling this function at all.
 
 ## Related Pages
 
-  * [cf_set_fixed_timestep](/time/cf_set_fixed_timestep.md)  
-  * [cf_set_fixed_timestep_max_updates](/time/cf_set_fixed_timestep_max_updates.md)  
-  * [CF_DELTA_TIME_INTERPOLANT](/time/cf_delta_time_interpolant.md)  
-  * [cf_set_update_udata](/time/cf_set_update_udata.md)  
-  * [CF_DELTA_TIME_FIXED](/time/cf_delta_time_fixed.md)  
+  * [cf_set_fixed_timestep](/time/cf_set_fixed_timestep)  
+  * [cf_set_fixed_timestep_max_updates](/time/cf_set_fixed_timestep_max_updates)  
+  * [CF_DELTA_TIME_INTERPOLANT](/time/cf_delta_time_interpolant)  
+  * [cf_set_update_udata](/time/cf_set_update_udata)  
+  * [CF_DELTA_TIME_FIXED](/time/cf_delta_time_fixed)  

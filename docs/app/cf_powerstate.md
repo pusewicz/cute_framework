@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_PowerState
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 The states of power for the application.
 
 ## Values
@@ -26,5 +23,5 @@ POWER_STATE_CHARGED | Plugged in and battery is charged.
 
 ## Related Pages
 
-  * [CF_PowerInfo](/app/cf_powerinfo.md)  
-  * [cf_app_power_info](/app/cf_app_power_info.md)  
+  * [CF_PowerInfo](/app/cf_powerinfo)  
+  * [cf_app_power_info](/app/cf_app_power_info)  

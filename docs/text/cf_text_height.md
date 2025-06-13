@@ -7,10 +7,7 @@ parent: text
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_text_height
 
-Category: [text](/docs/text)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Returns the height of a text given the currently pushed font.
 
 ```cpp
@@ -24,7 +21,7 @@ num_chars_to_draw | The number of characters to draw `text`. Use -1 to draw the 
 
 ## Related Pages
 
-  * [cf_make_font](/text/cf_make_font.md)  
-  * [cf_text_width](/text/cf_text_width.md)  
-  * [cf_text_size](/text/cf_text_size.md)  
-  * [cf_draw_text](/text/cf_draw_text.md)  
+  * [cf_make_font](/text/cf_make_font)  
+  * [cf_text_width](/text/cf_text_width)  
+  * [cf_text_size](/text/cf_text_size)  
+  * [cf_draw_text](/text/cf_draw_text)  

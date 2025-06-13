@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sfmt_append
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Printf's into the end of the string, using the format string `fmt`.
 
 ```cpp
@@ -29,8 +26,8 @@ All printed data is appended to the end of the string. Will automatically adjust
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sfmt](/string/sfmt.md)  
-  * [sset](/string/sset.md)  
-  * [svfmt](/string/svfmt.md)  
-  * [svfmt_append](/string/svfmt_append.md)  
+  * [sdyna](/string/sdyna)  
+  * [sfmt](/string/sfmt)  
+  * [sset](/string/sset)  
+  * [svfmt](/string/svfmt)  
+  * [svfmt_append](/string/svfmt_append)  

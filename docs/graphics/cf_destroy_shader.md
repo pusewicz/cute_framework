@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_destroy_shader
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Frees up a [CF_Shader](/graphics/cf_shader.md) created by [cf_make_shader](/graphics/cf_make_shader.md).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Frees up a [CF_Shader](/graphics/cf_shader) created by [cf_make_shader](/graphics/cf_make_shader).
 
 ```cpp
 void cf_destroy_shader(CF_Shader shader);
@@ -23,7 +20,7 @@ shader | A shader.
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [cf_make_shader](/graphics/cf_make_shader.md)  
-  * [CF_Material](/graphics/cf_material.md)  
-  * [cf_apply_shader](/graphics/cf_apply_shader.md)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [cf_make_shader](/graphics/cf_make_shader)  
+  * [CF_Material](/graphics/cf_material)  
+  * [cf_apply_shader](/graphics/cf_apply_shader)  

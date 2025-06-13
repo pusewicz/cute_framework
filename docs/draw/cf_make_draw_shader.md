@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_draw_shader
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Creates a custom draw shader.
 
 ```cpp
@@ -20,12 +17,12 @@ CF_Shader cf_make_draw_shader(const char* path);
 ## Remarks
 
 Your shader must be written in GLSL 450, and must follow some specific rules to be compatible with the draw API. For more in-depth explanations,
-see CF's docs on [Draw Shaders](https://randygaul.github.io/cute_framework/#/topics/drawing?id=shaders). Make sure to call [cf_shader_directory](/graphics/cf_shader_directory.md) first.
+see CF's docs on [Draw Shaders](https://randygaul.github.io/cute_framework/#/topics/drawing?id=shaders). Make sure to call [cf_shader_directory](/graphics/cf_shader_directory) first.
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [cf_draw_push_shader](/draw/cf_draw_push_shader.md)  
-  * [cf_draw_pop_shader](/draw/cf_draw_pop_shader.md)  
-  * [cf_draw_peek_shader](/draw/cf_draw_peek_shader.md)  
-  * [cf_make_draw_shader_from_source](/draw/cf_make_draw_shader_from_source.md)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [cf_draw_push_shader](/draw/cf_draw_push_shader)  
+  * [cf_draw_pop_shader](/draw/cf_draw_pop_shader)  
+  * [cf_draw_peek_shader](/draw/cf_draw_peek_shader)  
+  * [cf_make_draw_shader_from_source](/draw/cf_make_draw_shader_from_source)  

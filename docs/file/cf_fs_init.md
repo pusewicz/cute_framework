@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fs_init
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Initializes the [Virtual File System](https://randygaul.github.io/cute_framework/#/topics/virtual_file_system).
 
 ```cpp
@@ -30,4 +27,4 @@ function to enable all the `cf_fs_` functions.
 
 ## Related Pages
 
-  * [cf_fs_destroy](/file/cf_fs_destroy.md)  
+  * [cf_fs_destroy](/file/cf_fs_destroy)  

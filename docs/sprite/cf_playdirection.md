@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_PlayDirection
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 The direction a sprite plays frames.
 
 ## Values
@@ -23,5 +20,5 @@ PLAY_DIRECTION_PINGPONG | Flips through the frames of an animation forwards, the
 
 ## Related Pages
 
-  * [CF_Animation](/sprite/cf_animation.md)  
-  * [cf_play_direction_to_string](/sprite/cf_play_direction_to_string.md)  
+  * [CF_Animation](/sprite/cf_animation)  
+  * [cf_play_direction_to_string](/sprite/cf_play_direction_to_string)  

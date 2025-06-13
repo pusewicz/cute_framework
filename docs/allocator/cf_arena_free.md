@@ -7,10 +7,7 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_arena_free
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
 Frees the most recent allocation(s) from the arena.
 
 ```cpp
@@ -31,6 +28,6 @@ know what you're doing, otherwise you'll get memory corruption issues.
 
 ## Related Pages
 
-  * [cf_arena_init](/allocator/cf_arena_init.md)  
-  * [cf_arena_alloc](/allocator/cf_arena_alloc.md)  
-  * [cf_arena_reset](/allocator/cf_arena_reset.md)  
+  * [cf_arena_init](/allocator/cf_arena_init)  
+  * [cf_arena_alloc](/allocator/cf_arena_alloc)  
+  * [cf_arena_reset](/allocator/cf_arena_reset)  

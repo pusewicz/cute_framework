@@ -7,10 +7,7 @@ parent: time
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_set_fixed_timestep_max_updates
 
-Category: [time](/docs/time)  
-GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)  
----
-
+GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)
 Sets the frequency for fixed timestep updates to occur.
 
 ```cpp
@@ -23,14 +20,14 @@ max_updates | The max number of updates. A good default number is 5.
 
 ## Remarks
 
-Often times a fixed-timestep can occur multiple times in one frame. In this case, [CF_OnUpdateFn](/time/cf_onupdatefn.md) will be called once
-per update to simulate a fixed-timestep (see [CF_OnUpdateFn](/time/cf_onupdatefn.md) and [cf_update_time](/time/cf_update_time.md)). The max number of updates possible 
+Often times a fixed-timestep can occur multiple times in one frame. In this case, [CF_OnUpdateFn](/time/cf_onupdatefn) will be called once
+per update to simulate a fixed-timestep (see [CF_OnUpdateFn](/time/cf_onupdatefn) and [cf_update_time](/time/cf_update_time)). The max number of updates possible 
 is clamped below `max_updates`.
 
 ## Related Pages
 
-  * [cf_set_fixed_timestep](/time/cf_set_fixed_timestep.md)  
-  * [cf_set_target_framerate](/time/cf_set_target_framerate.md)  
-  * [cf_update_time](/time/cf_update_time.md)  
-  * [CF_DELTA_TIME_FIXED](/time/cf_delta_time_fixed.md)  
-  * [CF_DELTA_TIME_INTERPOLANT](/time/cf_delta_time_interpolant.md)  
+  * [cf_set_fixed_timestep](/time/cf_set_fixed_timestep)  
+  * [cf_set_target_framerate](/time/cf_set_target_framerate)  
+  * [cf_update_time](/time/cf_update_time)  
+  * [CF_DELTA_TIME_FIXED](/time/cf_delta_time_fixed)  
+  * [CF_DELTA_TIME_INTERPOLANT](/time/cf_delta_time_interpolant)  

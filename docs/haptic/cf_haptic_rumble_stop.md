@@ -7,10 +7,7 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_haptic_rumble_stop
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
 Stops playing the simple rumble effect.
 
 ```cpp
@@ -23,11 +20,11 @@ haptic | The haptic.
 
 ## Remarks
 
-See [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play.md) for more details.
+See [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play) for more details.
 
 ## Related Pages
 
-  * [CF_Haptic](/haptic/cf_haptic.md)  
-  * [cf_haptic_open](/haptic/cf_haptic_open.md)  
-  * [cf_haptic_rumble_supported](/haptic/cf_haptic_rumble_supported.md)  
-  * [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play.md)  
+  * [CF_Haptic](/haptic/cf_haptic)  
+  * [cf_haptic_open](/haptic/cf_haptic_open)  
+  * [cf_haptic_rumble_supported](/haptic/cf_haptic_rumble_supported)  
+  * [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play)  

@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_set_frame
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Sets the frame of the sprite.
 
 ```cpp
@@ -24,8 +21,8 @@ frame | The frame number to set.
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [cf_sprite_frame_count](/sprite/cf_sprite_frame_count.md)  
-  * [cf_sprite_current_frame](/sprite/cf_sprite_current_frame.md)  
-  * [cf_sprite_frame_delay](/sprite/cf_sprite_frame_delay.md)  
-  * [cf_sprite_animation_delay](/sprite/cf_sprite_animation_delay.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [cf_sprite_frame_count](/sprite/cf_sprite_frame_count)  
+  * [cf_sprite_current_frame](/sprite/cf_sprite_current_frame)  
+  * [cf_sprite_frame_delay](/sprite/cf_sprite_frame_delay)  
+  * [cf_sprite_animation_delay](/sprite/cf_sprite_animation_delay)  

@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_max
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the maximum of two values.
 
 ```cpp
@@ -19,4 +16,4 @@ Returns the maximum of two values.
 
 ## Related Pages
 
-  * [cf_min](/math/cf_min.md)  
+  * [cf_min](/math/cf_min)  

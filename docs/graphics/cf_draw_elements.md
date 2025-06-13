@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_elements
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Draws all elements within the last applied mesh.
 
 ```cpp
@@ -19,7 +16,7 @@ void cf_draw_elements();
 
 ## Related Pages
 
-  * [CF_Mesh](/graphics/cf_mesh.md)  
+  * [CF_Mesh](/graphics/cf_mesh)  
   * cf_create_mesh  
-  * [cf_apply_shader](/graphics/cf_apply_shader.md)  
-  * [cf_apply_canvas](/graphics/cf_apply_canvas.md)  
+  * [cf_apply_shader](/graphics/cf_apply_shader)  
+  * [cf_apply_canvas](/graphics/cf_apply_canvas)  

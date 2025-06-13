@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_client_state_to_string
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Convert an enum [CF_ClientState](/net/cf_clientstate.md) to a c-style string.
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Convert an enum [CF_ClientState](/net/cf_clientstate) to a c-style string.
 
 ```cpp
 const char* cf_client_state_to_string(CF_ClientState state)
@@ -23,5 +20,5 @@ state | The state to convert to a string.
 
 ## Related Pages
 
-  * [CF_ClientState](/net/cf_clientstate.md)  
-  * [cf_client_state_get](/net/cf_client_state_get.md)  
+  * [CF_ClientState](/net/cf_clientstate)  
+  * [cf_client_state_get](/net/cf_client_state_get)  

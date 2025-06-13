@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sicmp
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Compares two strings, ignoring case.
 
 ```cpp
@@ -28,7 +25,7 @@ Returns 0 if the two strings are equivalent. Otherwise returns 1 if a[i] > b[i],
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [scmp](/string/scmp.md)  
-  * [siequ](/string/siequ.md)  
-  * [sequ](/string/sequ.md)  
+  * [sdyna](/string/sdyna)  
+  * [scmp](/string/scmp)  
+  * [siequ](/string/siequ)  
+  * [sequ](/string/sequ)  

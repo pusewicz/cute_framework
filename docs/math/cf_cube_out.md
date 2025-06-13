@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_cube_out
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the cubic-out ease of a float from 0.0f to 1.0f.
 
 ```cpp
@@ -23,5 +20,5 @@ Here is a great link to [visualize each easing function](https://easings.net/).
 
 ## Related Pages
 
-  * [cf_cube_in](/math/cf_cube_in.md)  
-  * [cf_cube_in_out](/math/cf_cube_in_out.md)  
+  * [cf_cube_in](/math/cf_cube_in)  
+  * [cf_cube_in_out](/math/cf_cube_in_out)  

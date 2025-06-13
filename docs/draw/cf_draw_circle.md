@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_circle
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Draws a circle wireframe.
 
 ```cpp
@@ -24,6 +21,6 @@ thickness | The thickness of each line to draw.
 
 ## Related Pages
 
-  * [cf_draw_circle_fill2](/draw/cf_draw_circle_fill2.md)  
-  * [cf_draw_circle2](/draw/cf_draw_circle2.md)  
-  * [cf_draw_circle_fill](/draw/cf_draw_circle_fill.md)  
+  * [cf_draw_circle_fill2](/draw/cf_draw_circle_fill2)  
+  * [cf_draw_circle2](/draw/cf_draw_circle2)  
+  * [cf_draw_circle_fill](/draw/cf_draw_circle_fill)  

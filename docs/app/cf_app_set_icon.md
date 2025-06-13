@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_set_icon
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Sets the icon for the application.
 
 ```cpp
@@ -27,4 +24,4 @@ The icon file must be a png image. Suggested image dimensions are 32x32, 48x48, 
 
 ## Related Pages
 
-  * [cf_app_set_title](/app/cf_app_set_title.md)  
+  * [cf_app_set_title](/app/cf_app_set_title)  

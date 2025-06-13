@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mul_v2
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Multiplies two vectors together component-wise.
 
 ```cpp
@@ -23,6 +20,6 @@ The vector returned is `{ a.x  b.x, a.y  b.y }`.
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_mul_v2_f](/math/cf_mul_v2_f.md)  
-  * [cf_div_v2_f](/math/cf_div_v2_f.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_mul_v2_f](/math/cf_mul_v2_f)  
+  * [cf_div_v2_f](/math/cf_div_v2_f)  

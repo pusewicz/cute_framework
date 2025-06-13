@@ -7,10 +7,7 @@ parent: image
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_image_load_png_from_memory
 
-Category: [image](/docs/image)  
-GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)  
----
-
+GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)
 Loads a png image from memory.
 
 ```cpp
@@ -25,12 +22,12 @@ img | Out parameter for the image.
 
 ## Return Value
 
-Check the [CF_Result](/utility/cf_result.md) for errors.
+Check the [CF_Result](/utility/cf_result) for errors.
 
 ## Related Pages
 
-  * [CF_Image](/image/cf_image.md)  
-  * [cf_image_load_png](/image/cf_image_load_png.md)  
-  * [cf_image_premultiply](/image/cf_image_premultiply.md)  
-  * [cf_image_load_png_wh](/image/cf_image_load_png_wh.md)  
-  * [cf_image_load_png_indexed](/image/cf_image_load_png_indexed.md)  
+  * [CF_Image](/image/cf_image)  
+  * [cf_image_load_png](/image/cf_image_load_png)  
+  * [cf_image_premultiply](/image/cf_image_premultiply)  
+  * [cf_image_load_png_wh](/image/cf_image_load_png_wh)  
+  * [cf_image_load_png_indexed](/image/cf_image_load_png_indexed)  

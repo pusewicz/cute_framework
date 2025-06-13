@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_input_text_pop_utf32
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Pops a utf8 codepoint off of the input buffer of the application.
 
 ```cpp
@@ -24,6 +21,6 @@ multiple keystrokes, especially when dealing with non-Latin based inputs.
 
 ## Related Pages
 
-  * [cf_input_text_add_utf8](/input/cf_input_text_add_utf8.md)  
-  * [cf_input_text_clear](/input/cf_input_text_clear.md)  
-  * [cf_input_text_has_data](/input/cf_input_text_has_data.md)  
+  * [cf_input_text_add_utf8](/input/cf_input_text_add_utf8)  
+  * [cf_input_text_clear](/input/cf_input_text_clear)  
+  * [cf_input_text_has_data](/input/cf_input_text_has_data)  

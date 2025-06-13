@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_destroy_mesh
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Frees up a [CF_Mesh](/graphics/cf_mesh.md) previously created with [cf_make_mesh](/graphics/cf_make_mesh.md).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Frees up a [CF_Mesh](/graphics/cf_mesh) previously created with [cf_make_mesh](/graphics/cf_make_mesh).
 
 ```cpp
 void cf_destroy_mesh(CF_Mesh mesh);
@@ -23,6 +20,6 @@ mesh | The mesh.
 
 ## Related Pages
 
-  * [CF_Mesh](/graphics/cf_mesh.md)  
-  * [cf_make_mesh](/graphics/cf_make_mesh.md)  
-  * [cf_mesh_update_vertex_data](/graphics/cf_mesh_update_vertex_data.md)  
+  * [CF_Mesh](/graphics/cf_mesh)  
+  * [cf_make_mesh](/graphics/cf_make_mesh)  
+  * [cf_mesh_update_vertex_data](/graphics/cf_mesh_update_vertex_data)  

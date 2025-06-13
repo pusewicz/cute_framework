@@ -7,10 +7,7 @@ parent: array
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # apop
 
-Category: [array](/docs/array)  
-GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)  
----
-
+GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)
 Pops and returns an element off the back of the array.
 
 ```cpp
@@ -31,18 +28,18 @@ The last element of the array is fetched and will be returned. The size of the a
 
 ## Related Pages
 
-  * [dyna](/array/dyna.md)  
-  * [asize](/array/asize.md)  
-  * [acount](/array/acount.md)  
-  * [acap](/array/acap.md)  
-  * [afit](/array/afit.md)  
-  * [apush](/array/apush.md)  
-  * [afree](/array/afree.md)  
-  * [aend](/array/aend.md)  
-  * [alast](/array/alast.md)  
-  * [aclear](/array/aclear.md)  
-  * [aset](/array/aset.md)  
-  * [arev](/array/arev.md)  
-  * [ahash](/array/ahash.md)  
-  * [adel](/array/adel.md)  
-  * [astatic](/array/astatic.md)  
+  * [dyna](/array/dyna)  
+  * [asize](/array/asize)  
+  * [acount](/array/acount)  
+  * [acap](/array/acap)  
+  * [afit](/array/afit)  
+  * [apush](/array/apush)  
+  * [afree](/array/afree)  
+  * [aend](/array/aend)  
+  * [alast](/array/alast)  
+  * [aclear](/array/aclear)  
+  * [aset](/array/aset)  
+  * [arev](/array/arev)  
+  * [ahash](/array/ahash)  
+  * [adel](/array/adel)  
+  * [astatic](/array/astatic)  

@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_client_disconnect
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Attempts to gracefully disconnect a [CF_Client](/net/cf_client.md) from a [CF_Server](/net/cf_server.md).
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Attempts to gracefully disconnect a [CF_Client](/net/cf_client) from a [CF_Server](/net/cf_server).
 
 ```cpp
 void cf_client_disconnect(CF_Client* client);
@@ -19,8 +16,8 @@ void cf_client_disconnect(CF_Client* client);
 
 ## Related Pages
 
-  * [CF_Client](/net/cf_client.md)  
-  * [cf_make_client](/net/cf_make_client.md)  
-  * [cf_destroy_client](/net/cf_destroy_client.md)  
-  * [cf_client_connect](/net/cf_client_connect.md)  
-  * [cf_client_update](/net/cf_client_update.md)  
+  * [CF_Client](/net/cf_client)  
+  * [cf_make_client](/net/cf_make_client)  
+  * [cf_destroy_client](/net/cf_destroy_client)  
+  * [cf_client_connect](/net/cf_client_connect)  
+  * [cf_client_update](/net/cf_client_update)  

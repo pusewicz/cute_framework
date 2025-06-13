@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_CONNECT_TOKEN_USER_DATA_SIZE
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 The size of the user data section of a connect token.
 
 ```cpp
@@ -19,6 +16,6 @@ The size of the user data section of a connect token.
 
 ## Related Pages
 
-  * [CF_CONNECT_TOKEN_SIZE](/net/cf_connect_token_size.md)  
-  * [cf_client_connect](/net/cf_client_connect.md)  
-  * [cf_generate_connect_token](/net/cf_generate_connect_token.md)  
+  * [CF_CONNECT_TOKEN_SIZE](/net/cf_connect_token_size)  
+  * [cf_client_connect](/net/cf_client_connect)  
+  * [cf_generate_connect_token](/net/cf_generate_connect_token)  

@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_WrapMode
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Wrap modes to define behavior when addressing a texture beyond the [0,1] range.
 
 ## Values
@@ -23,5 +20,5 @@ WRAP_MODE_MIRRORED_REPEAT | The same as `CF_WRAP_MODE_REPEAT` but mirrors back a
 
 ## Related Pages
 
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
-  * [cf_wrap_mode_string](/graphics/cf_wrap_mode_string.md)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  
+  * [cf_wrap_mode_string](/graphics/cf_wrap_mode_string)  

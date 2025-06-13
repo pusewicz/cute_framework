@@ -7,10 +7,7 @@ parent: web
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_https_response_code
 
-Category: [web](/docs/web)  
-GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)  
----
-
+GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)
 Returns the HTTP code for the response.
 
 ```cpp
@@ -19,5 +16,5 @@ int cf_https_response_code(CF_HttpsResponse response);
 
 ## Related Pages
 
-  * [CF_HttpsResponse](/web/cf_httpsresponse.md)  
-  * [cf_https_response](/web/cf_https_response.md)  
+  * [CF_HttpsResponse](/web/cf_httpsresponse)  
+  * [cf_https_response](/web/cf_https_response)  

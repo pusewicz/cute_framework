@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fs_open_file_for_read
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Opens a file for reading.
 
 ```cpp
@@ -23,16 +20,16 @@ virtual_path | The virtual path to the file.
 
 ## Return Value
 
-Returns a [CF_File](/file/cf_file.md) pointer representing the file.
+Returns a [CF_File](/file/cf_file) pointer representing the file.
 
 ## Remarks
 
-If you just want some basic information about the file (such as it's size or when it was created), you can use [cf_fs_stat](/file/cf_fs_stat.md) instead. [Virtual File System](https://randygaul.github.io/cute_framework/#/topics/virtual_file_system).
+If you just want some basic information about the file (such as it's size or when it was created), you can use [cf_fs_stat](/file/cf_fs_stat) instead. [Virtual File System](https://randygaul.github.io/cute_framework/#/topics/virtual_file_system).
 
 ## Related Pages
 
-  * [CF_File](/file/cf_file.md)  
-  * [CF_Stat](/file/cf_stat.md)  
-  * [cf_fs_create_file](/file/cf_fs_create_file.md)  
-  * [cf_fs_open_file_for_write](/file/cf_fs_open_file_for_write.md)  
-  * [cf_fs_close](/file/cf_fs_close.md)  
+  * [CF_File](/file/cf_file)  
+  * [CF_Stat](/file/cf_stat)  
+  * [cf_fs_create_file](/file/cf_fs_create_file)  
+  * [cf_fs_open_file_for_write](/file/cf_fs_open_file_for_write)  
+  * [cf_fs_close](/file/cf_fs_close)  

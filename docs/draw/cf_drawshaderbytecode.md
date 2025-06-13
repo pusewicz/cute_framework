@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_DrawShaderBytecode
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Bytecode for a draw shader.
 
 Struct Members | Description
@@ -24,8 +21,8 @@ This can be created using the `cute-shaderc` compiler.
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [cf_draw_push_shader](/draw/cf_draw_push_shader.md)  
-  * [cf_draw_pop_shader](/draw/cf_draw_pop_shader.md)  
-  * [cf_draw_peek_shader](/draw/cf_draw_peek_shader.md)  
-  * [cf_make_draw_shader_from_bytecode](/draw/cf_make_draw_shader_from_bytecode.md)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [cf_draw_push_shader](/draw/cf_draw_push_shader)  
+  * [cf_draw_pop_shader](/draw/cf_draw_pop_shader)  
+  * [cf_draw_peek_shader](/draw/cf_draw_peek_shader)  
+  * [cf_make_draw_shader_from_bytecode](/draw/cf_make_draw_shader_from_bytecode)  

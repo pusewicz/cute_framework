@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sclear
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Sets the string size to zero.
 
 ```cpp
@@ -27,8 +24,8 @@ Does not free up any resources.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [spush](/string/spush.md)  
-  * [spop](/string/spop.md)  
-  * [sfirst](/string/sfirst.md)  
-  * [slast](/string/slast.md)  
+  * [sdyna](/string/sdyna)  
+  * [spush](/string/spush)  
+  * [spop](/string/spop)  
+  * [sfirst](/string/sfirst)  
+  * [slast](/string/slast)  

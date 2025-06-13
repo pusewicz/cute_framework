@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_capsule
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Draws a capsule wireframe.
 
 ```cpp
@@ -24,6 +21,6 @@ thickness | The thickness of each line to draw.
 
 ## Related Pages
 
-  * [cf_draw_capsule_fill2](/draw/cf_draw_capsule_fill2.md)  
-  * [cf_draw_capsule2](/draw/cf_draw_capsule2.md)  
-  * [cf_draw_capsule_fill](/draw/cf_draw_capsule_fill.md)  
+  * [cf_draw_capsule_fill2](/draw/cf_draw_capsule_fill2)  
+  * [cf_draw_capsule2](/draw/cf_draw_capsule2)  
+  * [cf_draw_capsule_fill](/draw/cf_draw_capsule_fill)  

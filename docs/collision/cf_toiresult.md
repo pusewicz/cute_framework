@@ -7,11 +7,8 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ToiResult
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
-Stores results of a time of impact calculation done by [cf_toi](/collision/cf_toi.md).
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
+Stores results of a time of impact calculation done by [cf_toi](/collision/cf_toi).
 
 ## Remarks
 
@@ -19,4 +16,4 @@ This is an advanced struct, intended to be used by people who know what they're 
 
 ## Related Pages
 
-  * [cf_toi](/collision/cf_toi.md)  
+  * [cf_toi](/collision/cf_toi)  

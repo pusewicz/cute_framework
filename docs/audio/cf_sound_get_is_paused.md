@@ -7,10 +7,7 @@ parent: audio
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sound_get_is_paused
 
-Category: [audio](/docs/audio)  
-GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)  
----
-
+GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)
 Returns whether or not a sound is paused.
 
 ```cpp
@@ -23,22 +20,22 @@ sound | The sound.
 
 ## Remarks
 
-You can set a sound to paused with [cf_sound_set_is_paused](/audio/cf_sound_set_is_paused.md), or upon creation with [cf_play_sound](/audio/cf_play_sound.md).
+You can set a sound to paused with [cf_sound_set_is_paused](/audio/cf_sound_set_is_paused), or upon creation with [cf_play_sound](/audio/cf_play_sound).
 
 ## Related Pages
 
-  * [CF_SoundParams](/audio/cf_soundparams.md)  
-  * [CF_Sound](/audio/cf_sound.md)  
-  * [cf_sound_params_defaults](/audio/cf_sound_params_defaults.md)  
-  * [cf_play_sound](/audio/cf_play_sound.md)  
-  * [cf_sound_is_active](/audio/cf_sound_is_active.md)  
-  * [cf_sound_get_pitch](/audio/cf_sound_get_pitch.md)  
-  * [cf_sound_get_is_looped](/audio/cf_sound_get_is_looped.md)  
-  * [cf_sound_get_volume](/audio/cf_sound_get_volume.md)  
-  * [cf_sound_get_sample_index](/audio/cf_sound_get_sample_index.md)  
-  * [cf_sound_set_sample_index](/audio/cf_sound_set_sample_index.md)  
-  * [cf_sound_set_is_paused](/audio/cf_sound_set_is_paused.md)  
-  * [cf_sound_set_is_looped](/audio/cf_sound_set_is_looped.md)  
-  * [cf_sound_set_volume](/audio/cf_sound_set_volume.md)  
-  * [cf_sound_stop](/audio/cf_sound_stop.md)  
-  * [cf_sound_set_pitch](/audio/cf_sound_set_pitch.md)  
+  * [CF_SoundParams](/audio/cf_soundparams)  
+  * [CF_Sound](/audio/cf_sound)  
+  * [cf_sound_params_defaults](/audio/cf_sound_params_defaults)  
+  * [cf_play_sound](/audio/cf_play_sound)  
+  * [cf_sound_is_active](/audio/cf_sound_is_active)  
+  * [cf_sound_get_pitch](/audio/cf_sound_get_pitch)  
+  * [cf_sound_get_is_looped](/audio/cf_sound_get_is_looped)  
+  * [cf_sound_get_volume](/audio/cf_sound_get_volume)  
+  * [cf_sound_get_sample_index](/audio/cf_sound_get_sample_index)  
+  * [cf_sound_set_sample_index](/audio/cf_sound_set_sample_index)  
+  * [cf_sound_set_is_paused](/audio/cf_sound_set_is_paused)  
+  * [cf_sound_set_is_looped](/audio/cf_sound_set_is_looped)  
+  * [cf_sound_set_volume](/audio/cf_sound_set_volume)  
+  * [cf_sound_stop](/audio/cf_sound_stop)  
+  * [cf_sound_set_pitch](/audio/cf_sound_set_pitch)  

@@ -7,10 +7,7 @@ parent: image
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_debug_dump_pixels
 
-Category: [image](/docs/image)  
-GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)  
----
-
+GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)
 Saves out an image to a png file on disk.
 
 ```cpp
@@ -24,5 +21,5 @@ function is not really optimized whatsoever and outputs poorly compressed file s
 
 ## Related Pages
 
-  * [CF_Image](/image/cf_image.md)  
-  * [cf_debug_dump_greyscale_pixels](/image/cf_debug_dump_greyscale_pixels.md)  
+  * [CF_Image](/image/cf_image)  
+  * [cf_debug_dump_greyscale_pixels](/image/cf_debug_dump_greyscale_pixels)  

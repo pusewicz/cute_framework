@@ -7,10 +7,7 @@ parent: image
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_image_depallete
 
-Category: [image](/docs/image)  
-GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)  
----
-
+GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)
 Converts a paletted image to a typical image with an array of pixels.
 
 ```cpp
@@ -27,6 +24,6 @@ Returns an image without a palette.
 
 ## Related Pages
 
-  * [CF_Image](/image/cf_image.md)  
-  * [CF_ImageIndexed](/image/cf_imageindexed.md)  
-  * [cf_image_load_png_indexed](/image/cf_image_load_png_indexed.md)  
+  * [CF_Image](/image/cf_image)  
+  * [CF_ImageIndexed](/image/cf_imageindexed)  
+  * [cf_image_load_png_indexed](/image/cf_image_load_png_indexed)  

@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_reflect_v2
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns a vector of equal length to `a` but with its direction reflected
 
 ```cpp
@@ -24,7 +21,7 @@ n | The normal of the plane that is being reflected off of
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_neg_v2](/math/cf_neg_v2.md)  
-  * [cf_norm](/math/cf_norm.md)  
-  * [cf_safe_norm](/math/cf_safe_norm.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_neg_v2](/math/cf_neg_v2)  
+  * [cf_norm](/math/cf_norm)  
+  * [cf_safe_norm](/math/cf_safe_norm)  

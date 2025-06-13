@@ -7,10 +7,7 @@ parent: random
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_rnd_uint
 
-Category: [random](/docs/random)  
-GitHub: [cute_rnd.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_rnd.h)  
----
-
+GitHub: [cute_rnd.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_rnd.h)
 Returns a random `uint64_t`.
 
 ```cpp
@@ -23,12 +20,12 @@ rnd | The random number generator state.
 
 ## Related Pages
 
-  * [CF_Rnd](/random/cf_rnd.md)  
-  * [cf_rnd_seed](/random/cf_rnd_seed.md)  
-  * [cf_rnd](/random/cf_rnd.md)  
-  * [cf_rnd_float](/random/cf_rnd_float.md)  
-  * [cf_rnd_double](/random/cf_rnd_double.md)  
-  * [cf_rnd_range_int](/random/cf_rnd_range_int.md)  
-  * [cf_rnd_range_uint64](/random/cf_rnd_range_uint64.md)  
-  * [cf_rnd_range_float](/random/cf_rnd_range_float.md)  
-  * [cf_rnd_range_double](/random/cf_rnd_range_double.md)  
+  * [CF_Rnd](/random/cf_rnd)  
+  * [cf_rnd_seed](/random/cf_rnd_seed)  
+  * [cf_rnd](/random/cf_rnd)  
+  * [cf_rnd_float](/random/cf_rnd_float)  
+  * [cf_rnd_double](/random/cf_rnd_double)  
+  * [cf_rnd_range_int](/random/cf_rnd_range_int)  
+  * [cf_rnd_range_uint64](/random/cf_rnd_range_uint64)  
+  * [cf_rnd_range_float](/random/cf_rnd_range_float)  
+  * [cf_rnd_range_double](/random/cf_rnd_range_double)  

@@ -7,11 +7,8 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mouse_button_to_string
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
-Convert an enum [CF_MouseButton](/input/cf_mousebutton.md) to a c-style string.
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
+Convert an enum [CF_MouseButton](/input/cf_mousebutton) to a c-style string.
 
 ```cpp
 const char* cf_mouse_button_to_string(CF_MouseButton button)
@@ -23,5 +20,5 @@ state | The state to convert to a string.
 
 ## Related Pages
 
-  * [CF_MouseButton](/input/cf_mousebutton.md)  
-  * [cf_mouse_down](/input/cf_mouse_down.md)  
+  * [CF_MouseButton](/input/cf_mousebutton)  
+  * [cf_mouse_down](/input/cf_mouse_down)  

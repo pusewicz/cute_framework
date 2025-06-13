@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # strim
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Removes all whitespace from the beginning and end of the string.
 
 ```cpp
@@ -23,11 +20,11 @@ s | The string.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [serase](/string/serase.md)  
-  * [sltrim](/string/sltrim.md)  
-  * [srtrim](/string/srtrim.md)  
-  * [slpad](/string/slpad.md)  
-  * [srpad](/string/srpad.md)  
-  * [sdedup](/string/sdedup.md)  
-  * [sreplace](/string/sreplace.md)  
+  * [sdyna](/string/sdyna)  
+  * [serase](/string/serase)  
+  * [sltrim](/string/sltrim)  
+  * [srtrim](/string/srtrim)  
+  * [slpad](/string/slpad)  
+  * [srpad](/string/srpad)  
+  * [sdedup](/string/sdedup)  
+  * [sreplace](/string/sreplace)  

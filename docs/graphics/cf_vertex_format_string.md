@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_vertex_format_string
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Frees up a [CF_Canvas](/graphics/cf_canvas.md) created by [cf_make_canvas](/graphics/cf_make_canvas.md).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Frees up a [CF_Canvas](/graphics/cf_canvas) created by [cf_make_canvas](/graphics/cf_make_canvas).
 
 ```cpp
 const char* cf_vertex_format_string(CF_VertexFormat format)
@@ -19,6 +16,6 @@ const char* cf_vertex_format_string(CF_VertexFormat format)
 
 ## Related Pages
 
-  * [CF_VertexFormat](/graphics/cf_vertexformat.md)  
+  * [CF_VertexFormat](/graphics/cf_vertexformat)  
   * cf_mesh_set_attributes  
-  * [CF_VertexAttribute](/graphics/cf_vertexattribute.md)  
+  * [CF_VertexAttribute](/graphics/cf_vertexattribute)  

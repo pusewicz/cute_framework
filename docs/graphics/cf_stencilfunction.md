@@ -7,18 +7,15 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_StencilFunction
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Defines functions for stencil rendering.
 
 Struct Members | Description
 --- | ---
-`CF_CompareFunction compare` | Comparison type for the stencil test. See [CF_CompareFunction](/graphics/cf_comparefunction.md).
-`CF_StencilOp fail_op` | An operation to perform upon failing a stencil test. See [CF_StencilOp](/graphics/cf_stencilop.md).
-`CF_StencilOp depth_fail_op` | An operation to perform upon failing a depth test. See [CF_StencilOp](/graphics/cf_stencilop.md).
-`CF_StencilOp pass_op` | An operation to perform upon passing a stencil test. See [CF_StencilOp](/graphics/cf_stencilop.md).
+`CF_CompareFunction compare` | Comparison type for the stencil test. See [CF_CompareFunction](/graphics/cf_comparefunction).
+`CF_StencilOp fail_op` | An operation to perform upon failing a stencil test. See [CF_StencilOp](/graphics/cf_stencilop).
+`CF_StencilOp depth_fail_op` | An operation to perform upon failing a depth test. See [CF_StencilOp](/graphics/cf_stencilop).
+`CF_StencilOp pass_op` | An operation to perform upon passing a stencil test. See [CF_StencilOp](/graphics/cf_stencilop).
 
 ## Remarks
 
@@ -28,6 +25,6 @@ has an excellent article](https://learnopengl.com/Advanced-OpenGL/Stencil-testin
 
 ## Related Pages
 
-  * [cf_material_set_render_state](/graphics/cf_material_set_render_state.md)  
-  * [CF_StencilParams](/graphics/cf_stencilparams.md)  
-  * [CF_RenderState](/graphics/cf_renderstate.md)  
+  * [cf_material_set_render_state](/graphics/cf_material_set_render_state)  
+  * [CF_StencilParams](/graphics/cf_stencilparams)  
+  * [CF_RenderState](/graphics/cf_renderstate)  

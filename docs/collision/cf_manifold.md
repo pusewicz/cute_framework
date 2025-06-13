@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Manifold
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Contains all information necessary to resolve a collision.
 
 Struct Members | Description
@@ -26,13 +23,13 @@ This is the information needed to separate shapes that are colliding.
 
 ## Related Pages
 
-  * [cf_poly_to_poly_manifold](/collision/cf_poly_to_poly_manifold.md)  
-  * [cf_circle_to_circle_manifold](/collision/cf_circle_to_circle_manifold.md)  
-  * [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold.md)  
-  * [cf_circle_to_capsule_manifold](/collision/cf_circle_to_capsule_manifold.md)  
-  * [cf_aabb_to_aabb_manifold](/collision/cf_aabb_to_aabb_manifold.md)  
-  * [cf_aabb_to_capsule_manifold](/collision/cf_aabb_to_capsule_manifold.md)  
-  * [cf_capsule_to_capsule_manifold](/collision/cf_capsule_to_capsule_manifold.md)  
-  * [cf_circle_to_poly_manifold](/collision/cf_circle_to_poly_manifold.md)  
-  * [cf_aabb_to_poly_manifold](/collision/cf_aabb_to_poly_manifold.md)  
-  * [cf_capsule_to_poly_manifold](/collision/cf_capsule_to_poly_manifold.md)  
+  * [cf_poly_to_poly_manifold](/collision/cf_poly_to_poly_manifold)  
+  * [cf_circle_to_circle_manifold](/collision/cf_circle_to_circle_manifold)  
+  * [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold)  
+  * [cf_circle_to_capsule_manifold](/collision/cf_circle_to_capsule_manifold)  
+  * [cf_aabb_to_aabb_manifold](/collision/cf_aabb_to_aabb_manifold)  
+  * [cf_aabb_to_capsule_manifold](/collision/cf_aabb_to_capsule_manifold)  
+  * [cf_capsule_to_capsule_manifold](/collision/cf_capsule_to_capsule_manifold)  
+  * [cf_circle_to_poly_manifold](/collision/cf_circle_to_poly_manifold)  
+  * [cf_aabb_to_poly_manifold](/collision/cf_aabb_to_poly_manifold)  
+  * [cf_capsule_to_poly_manifold](/collision/cf_capsule_to_poly_manifold)  

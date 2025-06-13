@@ -7,10 +7,7 @@ parent: web
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_HttpsHeader
 
-Category: [web](/docs/web)  
-GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)  
----
-
+GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)
 Represents an [HTTPS header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers).
 
 Struct Members | Description
@@ -20,11 +17,11 @@ Struct Members | Description
 
 ## Remarks
 
-Headers may be fetched from a [CF_HttpsResponse](/web/cf_httpsresponse.md) by calling [cf_https_response_find_header](/web/cf_https_response_find_header.md), or [cf_https_response_headers](/web/cf_https_response_headers.md).
+Headers may be fetched from a [CF_HttpsResponse](/web/cf_httpsresponse) by calling [cf_https_response_find_header](/web/cf_https_response_find_header), or [cf_https_response_headers](/web/cf_https_response_headers).
 
 ## Related Pages
 
-  * [CF_HttpsRequest](/web/cf_httpsrequest.md)  
-  * [CF_HttpsResponse](/web/cf_httpsresponse.md)  
-  * [cf_https_response_headers](/web/cf_https_response_headers.md)  
-  * [cf_https_response_find_header](/web/cf_https_response_find_header.md)  
+  * [CF_HttpsRequest](/web/cf_httpsrequest)  
+  * [CF_HttpsResponse](/web/cf_httpsresponse)  
+  * [cf_https_response_headers](/web/cf_https_response_headers)  
+  * [cf_https_response_find_header](/web/cf_https_response_find_header)  

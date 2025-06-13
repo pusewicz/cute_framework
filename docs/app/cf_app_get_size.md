@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_get_size
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Gets the size of the window in pixels.
 
 ```cpp
@@ -24,9 +21,9 @@ h | The height of the window in pixels.
 
 ## Related Pages
 
-  * [cf_app_set_size](/app/cf_app_set_size.md)  
-  * [cf_app_get_position](/app/cf_app_get_position.md)  
-  * [cf_app_set_position](/app/cf_app_set_position.md)  
-  * [cf_app_get_width](/app/cf_app_get_width.md)  
-  * [cf_app_get_height](/app/cf_app_get_height.md)  
-  * [cf_app_get_dpi_scale](/app/cf_app_get_dpi_scale.md)  
+  * [cf_app_set_size](/app/cf_app_set_size)  
+  * [cf_app_get_position](/app/cf_app_get_position)  
+  * [cf_app_set_position](/app/cf_app_set_position)  
+  * [cf_app_get_width](/app/cf_app_get_width)  
+  * [cf_app_get_height](/app/cf_app_get_height)  
+  * [cf_app_get_dpi_scale](/app/cf_app_get_dpi_scale)  

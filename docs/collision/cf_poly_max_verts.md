@@ -7,11 +7,8 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_POLY_MAX_VERTS
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
-The maximum number of vertices in a [CF_Poly](/collision/cf_poly.md).
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
+The maximum number of vertices in a [CF_Poly](/collision/cf_poly).
 
 ```cpp
 #define CF_POLY_MAX_VERTS 8
@@ -24,4 +21,4 @@ but be warned: higher than 8 and shapes generally start to look more like circle
 
 ## Related Pages
 
-  * [CF_Poly](/collision/cf_poly.md)  
+  * [CF_Poly](/collision/cf_poly)  

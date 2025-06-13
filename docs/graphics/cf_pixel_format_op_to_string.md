@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_pixel_format_op_to_string
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a [CF_PixelFormatOp](/graphics/cf_pixelformatop.md) converted to a C string.
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a [CF_PixelFormatOp](/graphics/cf_pixelformatop) converted to a C string.
 
 ```cpp
 const char* cf_pixel_format_op_to_string(CF_PixelFormatOp op)
@@ -19,5 +16,5 @@ const char* cf_pixel_format_op_to_string(CF_PixelFormatOp op)
 
 ## Related Pages
 
-  * [CF_PixelFormat](/graphics/cf_pixelformat.md)  
-  * [CF_PixelFormatOp](/graphics/cf_pixelformatop.md)  
+  * [CF_PixelFormat](/graphics/cf_pixelformat)  
+  * [CF_PixelFormatOp](/graphics/cf_pixelformatop)  

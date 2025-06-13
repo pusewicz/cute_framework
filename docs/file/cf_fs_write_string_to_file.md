@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fs_write_string_to_file
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Writes a string to a file.
 
 ```cpp
@@ -24,8 +21,8 @@ string | A string to write.
 
 ## Related Pages
 
-  * [cf_fs_read_entire_file_to_memory](/file/cf_fs_read_entire_file_to_memory.md)  
-  * [cf_fs_read_entire_file_to_memory_and_nul_terminate](/file/cf_fs_read_entire_file_to_memory_and_nul_terminate.md)  
-  * [cf_fs_write_entire_buffer_to_file](/file/cf_fs_write_entire_buffer_to_file.md)  
+  * [cf_fs_read_entire_file_to_memory](/file/cf_fs_read_entire_file_to_memory)  
+  * [cf_fs_read_entire_file_to_memory_and_nul_terminate](/file/cf_fs_read_entire_file_to_memory_and_nul_terminate)  
+  * [cf_fs_write_entire_buffer_to_file](/file/cf_fs_write_entire_buffer_to_file)  
   * cf_fs_write_string_file  
-  * [cf_fs_write_string_range_to_file](/file/cf_fs_write_string_range_to_file.md)  
+  * [cf_fs_write_string_range_to_file](/file/cf_fs_write_string_range_to_file)  

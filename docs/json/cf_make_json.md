@@ -7,10 +7,7 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_json
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
 Loads a json blob.
 
 ```cpp
@@ -24,18 +21,18 @@ size | The number of bytes in the `data` pointer.
 
 ## Return Value
 
-Returns a [CF_JDoc](/json/cf_jdoc.md).
+Returns a [CF_JDoc](/json/cf_jdoc).
 
 ## Remarks
 
-You should call [cf_json_get_root](/json/cf_json_get_root.md) on this document to begin fetching values out of it.
+You should call [cf_json_get_root](/json/cf_json_get_root) on this document to begin fetching values out of it.
 
 ## Related Pages
 
-  * [CF_JDoc](/json/cf_jdoc.md)  
-  * [cf_json_to_file](/json/cf_json_to_file.md)  
-  * [cf_make_json_from_file](/json/cf_make_json_from_file.md)  
-  * [cf_json_get_root](/json/cf_json_get_root.md)  
-  * [cf_destroy_json](/json/cf_destroy_json.md)  
-  * [cf_json_get_root](/json/cf_json_get_root.md)  
-  * [cf_json_to_string](/json/cf_json_to_string.md)  
+  * [CF_JDoc](/json/cf_jdoc)  
+  * [cf_json_to_file](/json/cf_json_to_file)  
+  * [cf_make_json_from_file](/json/cf_make_json_from_file)  
+  * [cf_json_get_root](/json/cf_json_get_root)  
+  * [cf_destroy_json](/json/cf_destroy_json)  
+  * [cf_json_get_root](/json/cf_json_get_root)  
+  * [cf_json_to_string](/json/cf_json_to_string)  

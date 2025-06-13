@@ -7,10 +7,7 @@ parent: audio
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_audio_set_sound_volume
 
-Category: [audio](/docs/audio)  
-GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)  
----
-
+GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)
 Sets the volume for all sound effects.
 
 ```cpp
@@ -23,11 +20,11 @@ volume | A value from 0.0f to 1.0f, where 0.0f means no volume, and 1.0f means f
 
 ## Remarks
 
-Sounds come from [cf_play_sound](/audio/cf_play_sound.md), as opposed to music coming from [cf_music_play](/audio/cf_music_play.md).
+Sounds come from [cf_play_sound](/audio/cf_play_sound), as opposed to music coming from [cf_music_play](/audio/cf_music_play).
 
 ## Related Pages
 
-  * [cf_audio_set_pan](/audio/cf_audio_set_pan.md)  
-  * [cf_audio_set_global_volume](/audio/cf_audio_set_global_volume.md)  
-  * [cf_play_sound](/audio/cf_play_sound.md)  
-  * [cf_audio_set_pause](/audio/cf_audio_set_pause.md)  
+  * [cf_audio_set_pan](/audio/cf_audio_set_pan)  
+  * [cf_audio_set_global_volume](/audio/cf_audio_set_global_volume)  
+  * [cf_play_sound](/audio/cf_play_sound)  
+  * [cf_audio_set_pause](/audio/cf_audio_set_pause)  

@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_free_shader_bytecode
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Free a bytecode blob previously returned from [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode.md).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Free a bytecode blob previously returned from [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode).
 
 ```cpp
 void cf_free_shader_bytecode(CF_ShaderBytecode bytecode);
@@ -23,6 +20,6 @@ bytecode | The bytecode blob to free.
 
 ## Remarks
 
-This function must only be called on the bytecode blob returned from [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode.md).
+This function must only be called on the bytecode blob returned from [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode).
 It cannot be called on the bytecode blob generated as a header from the `cute-shaderc` compiler.
 

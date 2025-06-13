@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_register_premade_atlas
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Registers a premade atlas within the draw system.
 
 ```cpp
@@ -27,10 +24,10 @@ This function is useful if you want to load up atlases into CF. However, interna
 it's own online atlas compiler, so baking atlases is not necessary. This function is here just
 for convenience.
 
-Call [cf_destroy_texture](/graphics/cf_destroy_texture.md) on the return value when done.
+Call [cf_destroy_texture](/graphics/cf_destroy_texture) on the return value when done.
 
 ## Related Pages
 
-  * [CF_AtlasSubImage](/draw/cf_atlassubimage.md)  
+  * [CF_AtlasSubImage](/draw/cf_atlassubimage)  
   * cf_destroy_premade_atlas  
-  * [cf_make_premade_sprite](/draw/cf_make_premade_sprite.md)  
+  * [cf_make_premade_sprite](/draw/cf_make_premade_sprite)  

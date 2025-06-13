@@ -7,15 +7,12 @@ parent: random
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Rnd
 
-Category: [random](/docs/random)  
-GitHub: [cute_rnd.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_rnd.h)  
----
-
+GitHub: [cute_rnd.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_rnd.h)
 A random number generator.
 
 Struct Members | Description
 --- | ---
-`uint64_t state[2]` | Just two `uint64_t`'s for the internal state. Very small! These are setup by [cf_rnd_seed](/random/cf_rnd_seed.md).
+`uint64_t state[2]` | Just two `uint64_t`'s for the internal state. Very small! These are setup by [cf_rnd_seed](/random/cf_rnd_seed).
 
 ## Remarks
 
@@ -29,5 +26,5 @@ https://github.com/mattiasgustavsson/libs/blob/main/rnd.h
 
 ## Related Pages
 
-  * [cf_rnd](/random/cf_rnd.md)  
-  * [cf_rnd_seed](/random/cf_rnd_seed.md)  
+  * [cf_rnd](/random/cf_rnd)  
+  * [cf_rnd_seed](/random/cf_rnd_seed)  

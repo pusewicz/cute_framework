@@ -7,10 +7,7 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_haptic_set_gain
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
 Sets the global gain for all haptics on this device.
 
 ```cpp
@@ -24,8 +21,8 @@ gain | Must be from 0 to 1. This is like a global "volume" for the strength of a
 
 ## Related Pages
 
-  * [CF_Haptic](/haptic/cf_haptic.md)  
-  * [cf_haptic_open](/haptic/cf_haptic_open.md)  
-  * [cf_haptic_close](/haptic/cf_haptic_close.md)  
-  * [cf_haptic_create_effect](/haptic/cf_haptic_create_effect.md)  
-  * [cf_haptic_run_effect](/haptic/cf_haptic_run_effect.md)  
+  * [CF_Haptic](/haptic/cf_haptic)  
+  * [cf_haptic_open](/haptic/cf_haptic_open)  
+  * [cf_haptic_close](/haptic/cf_haptic_close)  
+  * [cf_haptic_create_effect](/haptic/cf_haptic_create_effect)  
+  * [cf_haptic_run_effect](/haptic/cf_haptic_run_effect)  

@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_det2
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the 2x2 determinant of a matrix constructed with `a` and `b` as its columns.
 
 ```cpp
@@ -23,8 +20,8 @@ Also known as the 2D cross product.
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_skew](/math/cf_skew.md)  
-  * [cf_cw90](/math/cf_cw90.md)  
-  * [cf_perp](/math/cf_perp.md)  
-  * [cf_cross](/math/cf_cross.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_skew](/math/cf_skew)  
+  * [cf_cw90](/math/cf_cw90)  
+  * [cf_perp](/math/cf_perp)  
+  * [cf_cross](/math/cf_cross)  

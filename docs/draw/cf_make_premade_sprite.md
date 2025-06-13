@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_premade_sprite
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Initializes a single-frame drawable sprite from a premade atlas `image_id`.
 
 ```cpp
@@ -19,10 +16,10 @@ CF_Sprite cf_make_premade_sprite(uint64_t image_id);
 
 Parameters | Description
 --- | ---
-image_id | The id from [cf_register_premade_atlas](/draw/cf_register_premade_atlas.md).
+image_id | The id from [cf_register_premade_atlas](/draw/cf_register_premade_atlas).
 
 ## Related Pages
 
-  * [CF_AtlasSubImage](/draw/cf_atlassubimage.md)  
-  * [cf_register_premade_atlas](/draw/cf_register_premade_atlas.md)  
+  * [CF_AtlasSubImage](/draw/cf_atlassubimage)  
+  * [cf_register_premade_atlas](/draw/cf_register_premade_atlas)  
   * cf_destroy_premade_atlas  

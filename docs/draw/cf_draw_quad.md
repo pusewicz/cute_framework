@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_quad
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Draws a quad wireframe.
 
 ```cpp
@@ -25,6 +22,6 @@ chubbiness | Inflates the shape, similar to corner-rounding. Makes the shape chu
 
 ## Related Pages
 
-  * [cf_draw_quad_fill2](/draw/cf_draw_quad_fill2.md)  
-  * [cf_draw_quad2](/draw/cf_draw_quad2.md)  
-  * [cf_draw_quad_fill](/draw/cf_draw_quad_fill.md)  
+  * [cf_draw_quad_fill2](/draw/cf_draw_quad_fill2)  
+  * [cf_draw_quad2](/draw/cf_draw_quad2)  
+  * [cf_draw_quad_fill](/draw/cf_draw_quad_fill)  

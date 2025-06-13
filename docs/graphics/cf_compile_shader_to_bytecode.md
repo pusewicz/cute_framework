@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_compile_shader_to_bytecode
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Compiles a shader to SPIR-V bytecode.
 
 ```cpp
@@ -26,12 +23,12 @@ stage | The shaderstrage to differentiate between vertex or fragment shaders.
 
 This function is good for precompiling shaders to bytecode, which can help speed up app
 startup times. SPIR-V blobs can be saved straight to disk and shipped with your game. Load
-the bytecode blob pair (vertex + fragment shader blobs) into a [CF_Shader](/graphics/cf_shader.md) via [cf_make_shader_from_bytecode](/graphics/cf_make_shader_from_bytecode.md).
-The value returned from this function should be passed to [cf_free_shader_bytecode](/graphics/cf_free_shader_bytecode.md) when it is no longer needed.
+the bytecode blob pair (vertex + fragment shader blobs) into a [CF_Shader](/graphics/cf_shader) via [cf_make_shader_from_bytecode](/graphics/cf_make_shader_from_bytecode).
+The value returned from this function should be passed to [cf_free_shader_bytecode](/graphics/cf_free_shader_bytecode) when it is no longer needed.
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [CF_ShaderBytecode](/graphics/cf_shaderbytecode.md)  
-  * [cf_make_shader_from_bytecode](/graphics/cf_make_shader_from_bytecode.md)  
-  * [cf_free_shader_bytecode](/graphics/cf_free_shader_bytecode.md)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [CF_ShaderBytecode](/graphics/cf_shaderbytecode)  
+  * [cf_make_shader_from_bytecode](/graphics/cf_make_shader_from_bytecode)  
+  * [cf_free_shader_bytecode](/graphics/cf_free_shader_bytecode)  

@@ -7,10 +7,7 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_json_array_get
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
 Fetches a value in the given array.
 
 ```cpp
@@ -24,15 +21,15 @@ index | The index of the value to return.
 
 ## Return Value
 
-Returns the [CF_JVal](/json/cf_jval.md) associated with `index` on the object `val`.
+Returns the [CF_JVal](/json/cf_jval) associated with `index` on the object `val`.
 
 ## Remarks
 
-This function does the same thing as [cf_json_array_at](/json/cf_json_array_at.md).
+This function does the same thing as [cf_json_array_at](/json/cf_json_array_at).
 
 ## Related Pages
 
-  * [CF_JVal](/json/cf_jval.md)  
-  * [cf_json_get](/json/cf_json_get.md)  
-  * [cf_json_array_at](/json/cf_json_array_at.md)  
-  * [cf_json_iter](/json/cf_json_iter.md)  
+  * [CF_JVal](/json/cf_jval)  
+  * [cf_json_get](/json/cf_json_get)  
+  * [cf_json_array_at](/json/cf_json_array_at)  
+  * [cf_json_iter](/json/cf_json_iter)  

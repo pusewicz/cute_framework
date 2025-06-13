@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_color_rgba
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
-Returns a [CF_Color](/graphics/cf_color.md) made from RGB char inputs.
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
+Returns a [CF_Color](/graphics/cf_color) made from RGB char inputs.
 
 ```cpp
 CF_Color cf_make_color_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
@@ -26,9 +23,9 @@ a | The alpha component from 0 to 255.
 
 ## Related Pages
 
-  * [CF_Color](/graphics/cf_color.md)  
-  * [cf_make_color_rgb_f](/graphics/cf_make_color_rgb_f.md)  
-  * [cf_make_color_rgba_f](/graphics/cf_make_color_rgba_f.md)  
-  * [cf_make_color_rgb](/graphics/cf_make_color_rgb.md)  
-  * [cf_make_color_hex_string](/graphics/cf_make_color_hex_string.md)  
-  * [cf_make_color_hex](/graphics/cf_make_color_hex.md)  
+  * [CF_Color](/graphics/cf_color)  
+  * [cf_make_color_rgb_f](/graphics/cf_make_color_rgb_f)  
+  * [cf_make_color_rgba_f](/graphics/cf_make_color_rgba_f)  
+  * [cf_make_color_rgb](/graphics/cf_make_color_rgb)  
+  * [cf_make_color_hex_string](/graphics/cf_make_color_hex_string)  
+  * [cf_make_color_hex](/graphics/cf_make_color_hex)  

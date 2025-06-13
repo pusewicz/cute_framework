@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_generate_mipmaps
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Generates all remaining mip levels from the base level of the texture.
 
 ```cpp
@@ -28,9 +25,9 @@ and you want to downsample to fill in the full mip chain.
 
 ## Related Pages
 
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
-  * [CF_Texture](/graphics/cf_texture.md)  
-  * [cf_make_texture](/graphics/cf_make_texture.md)  
-  * [cf_destroy_texture](/graphics/cf_destroy_texture.md)  
-  * [cf_texture_update](/graphics/cf_texture_update.md)  
-  * [cf_texture_update_mip](/graphics/cf_texture_update_mip.md)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  
+  * [CF_Texture](/graphics/cf_texture)  
+  * [cf_make_texture](/graphics/cf_make_texture)  
+  * [cf_destroy_texture](/graphics/cf_destroy_texture)  
+  * [cf_texture_update](/graphics/cf_texture_update)  
+  * [cf_texture_update_mip](/graphics/cf_texture_update_mip)  

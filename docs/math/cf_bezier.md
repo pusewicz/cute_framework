@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_bezier
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns a point along a quadratic bezier curve according to time `t`.
 
 ```cpp
@@ -26,6 +23,6 @@ t | A position along the curve.
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_lerp_v2](/math/cf_lerp_v2.md)  
-  * [cf_bezier2](/math/cf_bezier2.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_lerp_v2](/math/cf_lerp_v2)  
+  * [cf_bezier2](/math/cf_bezier2)  

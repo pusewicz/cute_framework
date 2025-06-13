@@ -7,10 +7,7 @@ parent: audio
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_music_set_on_finish_callback
 
-Category: [audio](/docs/audio)  
-GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)  
----
-
+GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)
 Sets the callback for notifications of when the current song finishes playing.
 
 ```cpp
@@ -25,7 +22,7 @@ single_threaded | Set to true to queue up callbacks and invoke them on the main 
 
 ## Related Pages
 
-  * [CF_Audio](/audio/cf_audio.md)  
-  * [cf_audio_sample_rate](/audio/cf_audio_sample_rate.md)  
-  * [cf_audio_sample_count](/audio/cf_audio_sample_count.md)  
-  * [cf_audio_channel_count](/audio/cf_audio_channel_count.md)  
+  * [CF_Audio](/audio/cf_audio)  
+  * [cf_audio_sample_rate](/audio/cf_audio_sample_rate)  
+  * [cf_audio_sample_count](/audio/cf_audio_sample_count)  
+  * [cf_audio_channel_count](/audio/cf_audio_channel_count)  

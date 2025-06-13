@@ -7,10 +7,7 @@ parent: web
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_https_response_find_header
 
-Category: [web](/docs/web)  
-GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)  
----
-
+GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)
 Searches for and returns a header by name.
 
 ```cpp
@@ -24,6 +21,6 @@ header_name | The name of the header to search for.
 
 ## Related Pages
 
-  * [CF_HttpsHeader](/web/cf_httpsheader.md)  
-  * [CF_HttpsResponse](/web/cf_httpsresponse.md)  
-  * [cf_https_response_headers](/web/cf_https_response_headers.md)  
+  * [CF_HttpsHeader](/web/cf_httpsheader)  
+  * [CF_HttpsResponse](/web/cf_httpsresponse)  
+  * [cf_https_response_headers](/web/cf_https_response_headers)  

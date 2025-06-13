@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_mouse_inside
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Returns true while the mouse's coordinates are hovering the app currently.
 
 ```cpp
@@ -19,9 +16,9 @@ bool cf_app_mouse_inside();
 
 ## Remarks
 
-This function only deals with mouse coordinates, not focus (such as [cf_app_has_focus](/app/cf_app_has_focus.md)).
+This function only deals with mouse coordinates, not focus (such as [cf_app_has_focus](/app/cf_app_has_focus)).
 
 ## Related Pages
 
-  * [cf_app_mouse_entered](/app/cf_app_mouse_entered.md)  
-  * [cf_app_mouse_exited](/app/cf_app_mouse_exited.md)  
+  * [cf_app_mouse_entered](/app/cf_app_mouse_entered)  
+  * [cf_app_mouse_exited](/app/cf_app_mouse_exited)  

@@ -7,10 +7,7 @@ parent: audio
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_audio_set_pause
 
-Category: [audio](/docs/audio)  
-GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)  
----
-
+GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)
 Pauses all audio.
 
 ```cpp
@@ -23,6 +20,6 @@ true_for_paused | True to pause all audio, false to unpause.
 
 ## Related Pages
 
-  * [cf_audio_set_pan](/audio/cf_audio_set_pan.md)  
-  * [cf_audio_set_global_volume](/audio/cf_audio_set_global_volume.md)  
-  * [cf_audio_set_sound_volume](/audio/cf_audio_set_sound_volume.md)  
+  * [cf_audio_set_pan](/audio/cf_audio_set_pan)  
+  * [cf_audio_set_global_volume](/audio/cf_audio_set_global_volume)  
+  * [cf_audio_set_sound_volume](/audio/cf_audio_set_sound_volume)  

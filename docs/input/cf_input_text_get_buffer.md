@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_input_text_get_buffer
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Returns the content of the text input buffer.
 
 ```cpp
@@ -28,6 +25,6 @@ multiple keystrokes, especially when dealing with non-Latin based inputs.
 
 ## Related Pages
 
-  * [cf_input_enable_ime](/input/cf_input_enable_ime.md)  
-  * [cf_input_disable_ime](/input/cf_input_disable_ime.md)  
-  * [cf_input_text_clear](/input/cf_input_text_clear.md)  
+  * [cf_input_enable_ime](/input/cf_input_enable_ime)  
+  * [cf_input_disable_ime](/input/cf_input_disable_ime)  
+  * [cf_input_text_clear](/input/cf_input_text_clear)  

@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_ray_to_halfspace
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns a raycast to a halfspace (plane)
 
 ```cpp
@@ -21,8 +18,8 @@ Parameters | Description
 --- | ---
 A | The ray.
 B | The plane.
-Returns | a [CF_Raycast](/math/cf_raycast.md) containing results about the raycast.
+Returns | a [CF_Raycast](/math/cf_raycast) containing results about the raycast.
 
 ## Related Pages
 
-  * [CF_Ray](/math/cf_ray.md)  
+  * [CF_Ray](/math/cf_ray)  

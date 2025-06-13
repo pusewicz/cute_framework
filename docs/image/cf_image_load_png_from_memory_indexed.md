@@ -7,10 +7,7 @@ parent: image
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_image_load_png_from_memory_indexed
 
-Category: [image](/docs/image)  
-GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)  
----
-
+GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)
 Loads a png image in paletted form.
 
 ```cpp
@@ -25,11 +22,11 @@ img | Out parameter for the image.
 
 ## Return Value
 
-Check the [CF_Result](/utility/cf_result.md) for errors.
+Check the [CF_Result](/utility/cf_result) for errors.
 
 ## Related Pages
 
-  * [CF_ImageIndexed](/image/cf_imageindexed.md)  
-  * [cf_image_load_png_indexed](/image/cf_image_load_png_indexed.md)  
-  * [cf_image_depallete](/image/cf_image_depallete.md)  
-  * [cf_image_free_indexed](/image/cf_image_free_indexed.md)  
+  * [CF_ImageIndexed](/image/cf_imageindexed)  
+  * [cf_image_load_png_indexed](/image/cf_image_load_png_indexed)  
+  * [cf_image_depallete](/image/cf_image_depallete)  
+  * [cf_image_free_indexed](/image/cf_image_free_indexed)  

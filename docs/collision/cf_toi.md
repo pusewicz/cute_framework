@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_toi
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Computes the time of impact of two shapes.
 
 ```cpp
@@ -20,18 +17,18 @@ CF_ToiResult cf_toi(const void* A, CF_ShapeType typeA, const CF_Transform* ax_pt
 Parameters | Description
 --- | ---
 A | The first shape.
-typeA | The [CF_ShapeType](/collision/cf_shapetype.md) of the first shape `A`.
-ax_ptr | Can be `NULL` to represent an identity transform. An optional pointer to a [CF_Transform](/math/cf_transform.md) to transform `A`.
+typeA | The [CF_ShapeType](/collision/cf_shapetype) of the first shape `A`.
+ax_ptr | Can be `NULL` to represent an identity transform. An optional pointer to a [CF_Transform](/math/cf_transform) to transform `A`.
 vA | The velocity of `A`.
 B | The second shape.
-typeA | The [CF_ShapeType](/collision/cf_shapetype.md) of the second shape `B`.
-bx_ptr | Can be `NULL` to represent an identity transform. An optional pointer to a [CF_Transform](/math/cf_transform.md) to transform `B`.
+typeA | The [CF_ShapeType](/collision/cf_shapetype) of the second shape `B`.
+bx_ptr | Can be `NULL` to represent an identity transform. An optional pointer to a [CF_Transform](/math/cf_transform) to transform `B`.
 vB | The velocity of `B`.
-use_radius | True if you want to use the radius of any [CF_Circle](/math/cf_circle.md) or [CF_Capsule](/collision/cf_capsule.md) inputs, false to treat them as a point/line segment respectively (a radius of zero).
+use_radius | True if you want to use the radius of any [CF_Circle](/math/cf_circle) or [CF_Capsule](/collision/cf_capsule) inputs, false to treat them as a point/line segment respectively (a radius of zero).
 
 ## Return Value
 
-Returns a [CF_ToiResult](/collision/cf_toiresult.md) containing information about the time of impact.
+Returns a [CF_ToiResult](/collision/cf_toiresult) containing information about the time of impact.
 
 ## Remarks
 
@@ -43,22 +40,22 @@ will be a number from 0 to 1. To move each shape to the colliding configuration,
 
 IMPORTANT NOTE
 
-The [cf_toi](/collision/cf_toi.md) function can be used to implement a "swept character controller", but it can be difficult to do so. Say we compute a time
-of impact with [cf_toi](/collision/cf_toi.md) and move the shapes to the time of impact, and adjust the velocity by zeroing out the velocity along the surface
-normal. If we then call [cf_toi](/collision/cf_toi.md) again, it will fail since the shapes will be considered to start in a colliding configuration. There are
-many styles of tricks to get around this problem, and all of them involve giving the next call to [cf_toi](/collision/cf_toi.md) some breathing room. It is
+The [cf_toi](/collision/cf_toi) function can be used to implement a "swept character controller", but it can be difficult to do so. Say we compute a time
+of impact with [cf_toi](/collision/cf_toi) and move the shapes to the time of impact, and adjust the velocity by zeroing out the velocity along the surface
+normal. If we then call [cf_toi](/collision/cf_toi) again, it will fail since the shapes will be considered to start in a colliding configuration. There are
+many styles of tricks to get around this problem, and all of them involve giving the next call to [cf_toi](/collision/cf_toi) some breathing room. It is
 recommended to use some variation of the following algorithm:
 
-1. Call [cf_toi](/collision/cf_toi.md).
+1. Call [cf_toi](/collision/cf_toi).
 2. Move the shapes to the TOI.
 3. Slightly inflate the size of one, or both, of the shapes so they will be intersecting.
    The purpose is to make the shapes numerically intersecting, but not visually intersecting.
-   Another option is to call [cf_toi](/collision/cf_toi.md) with slightly deflated shapes.
-   See the function [cf_inflate](/collision/cf_inflate.md) for some more details.
-4. Compute the collision manifold between the inflated shapes (for example, use [cf_poly_to_poly_manifold](/collision/cf_poly_to_poly_manifold.md)).
-5. Gently push the shapes apart. This will give the next call to [cf_toi](/collision/cf_toi.md) some breathing room.
+   Another option is to call [cf_toi](/collision/cf_toi) with slightly deflated shapes.
+   See the function [cf_inflate](/collision/cf_inflate) for some more details.
+4. Compute the collision manifold between the inflated shapes (for example, use [cf_poly_to_poly_manifold](/collision/cf_poly_to_poly_manifold)).
+5. Gently push the shapes apart. This will give the next call to [cf_toi](/collision/cf_toi) some breathing room.
 
 ## Related Pages
 
-  * [CF_ToiResult](/collision/cf_toiresult.md)  
-  * [CF_ShapeType](/collision/cf_shapetype.md)  
+  * [CF_ToiResult](/collision/cf_toiresult)  
+  * [CF_ShapeType](/collision/cf_shapetype)  

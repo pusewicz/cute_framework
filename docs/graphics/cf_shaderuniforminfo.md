@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ShaderUniformInfo
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_shader_bytecode.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_shader_bytecode.h)  
----
-
+GitHub: [cute_shader_bytecode.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_shader_bytecode.h)
 Information about a uniform block.
 
 Struct Members | Description
@@ -22,7 +19,7 @@ Struct Members | Description
 
 ## Remarks
 
-The members of successive blocks are stored tightly as an array in [CF_ShaderInfo](/graphics/cf_shaderinfo.md).
+The members of successive blocks are stored tightly as an array in [CF_ShaderInfo](/graphics/cf_shaderinfo).
 To access them use the following code:
 
 ```c
@@ -42,5 +39,5 @@ for (int uniform_index = 0; uniform_index < shader_info.num_uniforms; ++uniform_
 
 ## Related Pages
 
-  * [CF_ShaderBytecode](/graphics/cf_shaderbytecode.md)  
-  * [CF_ShaderUniformMemberInfo](/graphics/cf_shaderuniformmemberinfo.md)  
+  * [CF_ShaderBytecode](/graphics/cf_shaderbytecode)  
+  * [CF_ShaderUniformMemberInfo](/graphics/cf_shaderuniformmemberinfo)  

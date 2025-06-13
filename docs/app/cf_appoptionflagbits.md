@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_AppOptionFlagBits
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Various options to control how the application starts up, such as fullscreen, or selecting a graphics backend.
 
 ## Values
@@ -22,7 +19,7 @@ APP_OPTIONS_FULLSCREEN_BIT | Starts the application in borderless full-screen mo
 APP_OPTIONS_RESIZABLE_BIT | Allows the window to be resized.
 APP_OPTIONS_HIDDEN_BIT | Starts the application with the window hidden.
 APP_OPTIONS_WINDOW_POS_CENTERED_BIT | Starts the application with the window centered on the screen. Does not affect any later adjustments to window size/position.
-APP_OPTIONS_FILE_SYSTEM_DONT_DEFAULT_MOUNT_BIT | Disables automatically mounting the folder the executable runs from to "/". See [cf_fs_mount](/file/cf_fs_mount.md) for more details.
+APP_OPTIONS_FILE_SYSTEM_DONT_DEFAULT_MOUNT_BIT | Disables automatically mounting the folder the executable runs from to "/". See [cf_fs_mount](/file/cf_fs_mount) for more details.
 APP_OPTIONS_NO_AUDIO_BIT | Starts the application with no audio.
 APP_OPTIONS_GFX_D3D11_BIT | Starts the application with a D3D11 backend.
 APP_OPTIONS_GFX_D3D12_BIT | Starts the application with a D3D12 backend.
@@ -48,9 +45,9 @@ int main(int argc, const char argv)
 
 ## Remarks
 
-The `app_options` parameter of [cf_make_app](/app/cf_make_app.md) is a bitmask flag. Simply take the `APP_OPTIONS_` flags listed above and OR them together.
+The `app_options` parameter of [cf_make_app](/app/cf_make_app) is a bitmask flag. Simply take the `APP_OPTIONS_` flags listed above and OR them together.
 
 ## Related Pages
 
-  * [cf_destroy_app](/app/cf_destroy_app.md)  
-  * [cf_make_app](/app/cf_make_app.md)  
+  * [cf_destroy_app](/app/cf_destroy_app)  
+  * [cf_make_app](/app/cf_make_app)  

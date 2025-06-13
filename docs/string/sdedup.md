@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sdedup
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Removes all consecutive occurances of `ch` from the string.
 
 ```cpp
@@ -24,11 +21,11 @@ ch | A character.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [strim](/string/strim.md)  
-  * [sltrim](/string/sltrim.md)  
-  * [srtrim](/string/srtrim.md)  
-  * [slpad](/string/slpad.md)  
-  * [srpad](/string/srpad.md)  
-  * [serase](/string/serase.md)  
-  * [sreplace](/string/sreplace.md)  
+  * [sdyna](/string/sdyna)  
+  * [strim](/string/strim)  
+  * [sltrim](/string/sltrim)  
+  * [srtrim](/string/srtrim)  
+  * [slpad](/string/slpad)  
+  * [srpad](/string/srpad)  
+  * [serase](/string/serase)  
+  * [sreplace](/string/sreplace)  

@@ -7,13 +7,10 @@ parent: time
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_DELTA_TIME
 
-Category: [time](/docs/time)  
-GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)  
----
-
+GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)
 The `dt` or elapsed time from the previous two frames. Use this as an estimate to advance your current frame.
 
 ## Related Pages
 
-  * [CF_OnUpdateFn](/time/cf_onupdatefn.md)  
-  * [cf_update_time](/time/cf_update_time.md)  
+  * [CF_OnUpdateFn](/time/cf_onupdatefn)  
+  * [cf_update_time](/time/cf_update_time)  

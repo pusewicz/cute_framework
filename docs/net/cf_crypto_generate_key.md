@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_crypto_generate_key
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 Returns a cryptography key in a cryptographically secure way.
 
 ```cpp
@@ -19,5 +16,5 @@ CF_CryptoKey cf_crypto_generate_key();
 
 ## Related Pages
 
-  * [CF_CryptoKey](/net/cf_cryptokey.md)  
-  * [cf_generate_connect_token](/net/cf_generate_connect_token.md)  
+  * [CF_CryptoKey](/net/cf_cryptokey)  
+  * [cf_generate_connect_token](/net/cf_generate_connect_token)  

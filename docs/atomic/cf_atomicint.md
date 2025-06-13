@@ -7,10 +7,7 @@ parent: atomic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_AtomicInt
 
-Category: [atomic](/docs/atomic)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
 An opaque handle representing an atomic integer.
 
 ## Remarks
@@ -19,11 +16,11 @@ Atomics are an advanced topic. You've been warned! Beej has a [good article on a
 
 ## Related Pages
 
-  * [cf_atomic_ptr_cas](/atomic/cf_atomic_ptr_cas.md)  
-  * [cf_atomic_zero](/atomic/cf_atomic_zero.md)  
-  * [cf_atomic_add](/atomic/cf_atomic_add.md)  
-  * [cf_atomic_set](/atomic/cf_atomic_set.md)  
-  * [cf_atomic_get](/atomic/cf_atomic_get.md)  
-  * [cf_atomic_cas](/atomic/cf_atomic_cas.md)  
-  * [cf_atomic_ptr_set](/atomic/cf_atomic_ptr_set.md)  
-  * [cf_atomic_ptr_get](/atomic/cf_atomic_ptr_get.md)  
+  * [cf_atomic_ptr_cas](/atomic/cf_atomic_ptr_cas)  
+  * [cf_atomic_zero](/atomic/cf_atomic_zero)  
+  * [cf_atomic_add](/atomic/cf_atomic_add)  
+  * [cf_atomic_set](/atomic/cf_atomic_set)  
+  * [cf_atomic_get](/atomic/cf_atomic_get)  
+  * [cf_atomic_cas](/atomic/cf_atomic_cas)  
+  * [cf_atomic_ptr_set](/atomic/cf_atomic_ptr_set)  
+  * [cf_atomic_ptr_get](/atomic/cf_atomic_ptr_get)  

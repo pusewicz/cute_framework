@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_lost_focus
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Returns true if the app lost focus last frame.
 
 ```cpp
@@ -23,6 +20,6 @@ The app has focus if user inputs will go to the app, such as after clicking on o
 
 ## Related Pages
 
-  * [cf_app_gained_focus](/app/cf_app_gained_focus.md)  
-  * [cf_app_has_focus](/app/cf_app_has_focus.md)  
-  * [cf_app_was_restored](/app/cf_app_was_restored.md)  
+  * [cf_app_gained_focus](/app/cf_app_gained_focus)  
+  * [cf_app_has_focus](/app/cf_app_has_focus)  
+  * [cf_app_was_restored](/app/cf_app_was_restored)  

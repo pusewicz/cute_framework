@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fs_tell
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Returns the current position within the file.
 
 ```cpp
@@ -27,10 +24,10 @@ This is an offset from the beginning of the file. Returns -1 on failure. [Virtua
 
 ## Related Pages
 
-  * [CF_File](/file/cf_file.md)  
-  * [cf_fs_file_exists](/file/cf_fs_file_exists.md)  
-  * [cf_fs_read](/file/cf_fs_read.md)  
-  * [cf_fs_write](/file/cf_fs_write.md)  
-  * [cf_fs_eof](/file/cf_fs_eof.md)  
-  * [cf_fs_size](/file/cf_fs_size.md)  
-  * [cf_fs_seek](/file/cf_fs_seek.md)  
+  * [CF_File](/file/cf_file)  
+  * [cf_fs_file_exists](/file/cf_fs_file_exists)  
+  * [cf_fs_read](/file/cf_fs_read)  
+  * [cf_fs_write](/file/cf_fs_write)  
+  * [cf_fs_eof](/file/cf_fs_eof)  
+  * [cf_fs_size](/file/cf_fs_size)  
+  * [cf_fs_seek](/file/cf_fs_seek)  

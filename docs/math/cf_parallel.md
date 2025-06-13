@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_parallel
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns true if two vectors are parallel within a `tol` tolerance value.
 
 ```cpp
@@ -25,9 +22,9 @@ what a good tolerance is for your situation.
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_lesser_v2](/math/cf_lesser_v2.md)  
-  * [cf_greater_v2](/math/cf_greater_v2.md)  
-  * [cf_lesser_equal_v2](/math/cf_lesser_equal_v2.md)  
-  * [cf_greater_equal_v2](/math/cf_greater_equal_v2.md)  
-  * [cf_parallel2](/math/cf_parallel2.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_lesser_v2](/math/cf_lesser_v2)  
+  * [cf_greater_v2](/math/cf_greater_v2)  
+  * [cf_lesser_equal_v2](/math/cf_lesser_equal_v2)  
+  * [cf_greater_equal_v2](/math/cf_greater_equal_v2)  
+  * [cf_parallel2](/math/cf_parallel2)  

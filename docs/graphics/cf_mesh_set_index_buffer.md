@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mesh_set_index_buffer
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Sets up an index buffer on the mesh, for indexed style rendering.
 
 ```cpp
@@ -25,6 +22,6 @@ index_bit_count | The number of bits to use for indices, must be either 16 or 32
 
 ## Related Pages
 
-  * [CF_Mesh](/graphics/cf_mesh.md)  
-  * [cf_make_mesh](/graphics/cf_make_mesh.md)  
-  * [cf_mesh_update_index_data](/graphics/cf_mesh_update_index_data.md)  
+  * [CF_Mesh](/graphics/cf_mesh)  
+  * [cf_make_mesh](/graphics/cf_make_mesh)  
+  * [cf_mesh_update_index_data](/graphics/cf_mesh_update_index_data)  

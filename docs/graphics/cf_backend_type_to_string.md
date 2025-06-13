@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_backend_type_to_string
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a [CF_BackendType](/graphics/cf_backendtype.md) converted to a string.
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a [CF_BackendType](/graphics/cf_backendtype) converted to a string.
 
 ```cpp
 const char* cf_backend_type_to_string(CF_BackendType type)
@@ -19,5 +16,5 @@ const char* cf_backend_type_to_string(CF_BackendType type)
 
 ## Related Pages
 
-  * [CF_BackendType](/graphics/cf_backendtype.md)  
-  * [cf_query_backend](/graphics/cf_query_backend.md)  
+  * [CF_BackendType](/graphics/cf_backendtype)  
+  * [cf_query_backend](/graphics/cf_query_backend)  

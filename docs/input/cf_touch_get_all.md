@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_touch_get_all
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Returns an array of all touch events.
 
 ```cpp
@@ -19,11 +16,11 @@ int cf_touch_get_all(CF_Touch** touch_all);
 
 Parameters | Description
 --- | ---
-touch_all | An array of all [CF_Touch](/input/cf_touch.md) touch events. See example section.
+touch_all | An array of all [CF_Touch](/input/cf_touch) touch events. See example section.
 
 ## Return Value
 
-Returns the number of [CF_Touch](/input/cf_touch.md) events in `touch_all`.
+Returns the number of [CF_Touch](/input/cf_touch) events in `touch_all`.
 
 ## Code Example
 
@@ -39,5 +36,5 @@ for (int i = 0; i < touch_count; ++i) {
 
 ## Related Pages
 
-  * [CF_Touch](/input/cf_touch.md)  
-  * [cf_touch_get](/input/cf_touch_get.md)  
+  * [CF_Touch](/input/cf_touch)  
+  * [cf_touch_get](/input/cf_touch_get)  

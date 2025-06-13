@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_pixel_to_int_rgba
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
-Converts an RGBA [CF_Pixel](/graphics/cf_pixel.md) to an integer.
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
+Converts an RGBA [CF_Pixel](/graphics/cf_pixel) to an integer.
 
 ```cpp
 uint32_t cf_pixel_to_int_rgba(CF_Pixel p)
@@ -28,6 +25,6 @@ the green component, the third byte is the blue component, the fourth byte is th
 
 ## Related Pages
 
-  * [cf_pixel_to_color](/graphics/cf_pixel_to_color.md)  
-  * [cf_pixel_to_string](/graphics/cf_pixel_to_string.md)  
-  * [cf_pixel_to_int_rgb](/graphics/cf_pixel_to_int_rgb.md)  
+  * [cf_pixel_to_color](/graphics/cf_pixel_to_color)  
+  * [cf_pixel_to_string](/graphics/cf_pixel_to_string)  
+  * [cf_pixel_to_int_rgb](/graphics/cf_pixel_to_int_rgb)  

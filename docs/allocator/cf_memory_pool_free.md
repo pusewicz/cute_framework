@@ -7,11 +7,8 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_memory_pool_free
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
-Frees an allocation made by [cf_memory_pool_alloc](/allocator/cf_memory_pool_alloc.md).
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
+Frees an allocation made by [cf_memory_pool_alloc](/allocator/cf_memory_pool_alloc).
 
 ```cpp
 void cf_memory_pool_free(CF_MemoryPool* pool, void* element);
@@ -24,6 +21,6 @@ element | The pointer to deallocate.
 
 ## Related Pages
 
-  * [cf_make_memory_pool](/allocator/cf_make_memory_pool.md)  
-  * [cf_destroy_memory_pool](/allocator/cf_destroy_memory_pool.md)  
-  * [cf_memory_pool_alloc](/allocator/cf_memory_pool_alloc.md)  
+  * [cf_make_memory_pool](/allocator/cf_make_memory_pool)  
+  * [cf_destroy_memory_pool](/allocator/cf_destroy_memory_pool)  
+  * [cf_memory_pool_alloc](/allocator/cf_memory_pool_alloc)  

@@ -7,10 +7,7 @@ parent: time
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_between_interval
 
-Category: [time](/docs/time)  
-GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)  
----
-
+GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)
 Returns true for one interval of seconds, every other interval.
 
 ```cpp
@@ -29,5 +26,5 @@ and then _not_ fire for N seconds, flipping back and forth periodically. Simply 
 
 ## Related Pages
 
-  * [cf_on_interval](/time/cf_on_interval.md)  
-  * [cf_on_timestamp](/time/cf_on_timestamp.md)  
+  * [cf_on_interval](/time/cf_on_interval)  
+  * [cf_on_timestamp](/time/cf_on_timestamp)  

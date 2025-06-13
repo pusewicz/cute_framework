@@ -7,10 +7,7 @@ parent: utility
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Guid
 
-Category: [utility](/docs/utility)  
-GitHub: [cute_guid.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_guid.h)  
----
-
+GitHub: [cute_guid.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_guid.h)
 A general purpose unique identifier.
 
 Struct Members | Description
@@ -19,5 +16,5 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [cf_guid_equal](/utility/cf_guid_equal.md)  
-  * [cf_make_guid](/utility/cf_make_guid.md)  
+  * [cf_guid_equal](/utility/cf_guid_equal)  
+  * [cf_make_guid](/utility/cf_make_guid)  

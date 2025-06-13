@@ -7,11 +7,8 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sivalid
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
-Returns true if the string is a static, stable, unique pointer from [sintern](/string/sintern.md).
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
+Returns true if the string is a static, stable, unique pointer from [sintern](/string/sintern).
 
 ```cpp
 #define sivalid(s) (((cf_intern_t*)s - 1)->cookie == CF_INTERN_COOKIE)
@@ -27,7 +24,7 @@ This is not a secure method -- do not use it on any potentially dangerous string
 
 ## Related Pages
 
-  * [sintern](/string/sintern.md)  
-  * [sintern_range](/string/sintern_range.md)  
-  * [sinuke](/string/sinuke.md)  
-  * [silen](/string/silen.md)  
+  * [sintern](/string/sintern)  
+  * [sintern_range](/string/sintern_range)  
+  * [sinuke](/string/sinuke)  
+  * [silen](/string/silen)  

@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_JoypadType
 
-Category: [input](/docs/input)  
-GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)  
----
-
+GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)
 Various types of joypads by enum name.
 
 ## Values
@@ -36,5 +33,5 @@ JOYPAD_TYPE_COUNT | (null)
 ## Related Pages
 
   * CF_Joypad  
-  * [cf_joypad_type](/input/cf_joypad_type.md)  
-  * [cf_joypad_type_to_string](/input/cf_joypad_type_to_string.md)  
+  * [cf_joypad_type](/input/cf_joypad_type)  
+  * [cf_joypad_type_to_string](/input/cf_joypad_type_to_string)  

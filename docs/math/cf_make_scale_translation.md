@@ -7,11 +7,8 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_scale_translation
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
-Returns a [CF_M3x2](/math/cf_m3x2.md) that represents a scale + translation.
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
+Returns a [CF_M3x2](/math/cf_m3x2) that represents a scale + translation.
 
 ```cpp
 CF_M3x2 cf_make_scale_translation(CF_V2 s, CF_V2 p)
@@ -19,12 +16,12 @@ CF_M3x2 cf_make_scale_translation(CF_V2 s, CF_V2 p)
 
 ## Related Pages
 
-  * [CF_M3x2](/math/cf_m3x2.md)  
-  * [cf_mul_m32_v2](/math/cf_mul_m32_v2.md)  
-  * [cf_mul_m32](/math/cf_mul_m32.md)  
-  * [cf_make_identity](/math/cf_make_identity.md)  
-  * [cf_make_translation](/math/cf_make_translation.md)  
-  * [cf_make_scale](/math/cf_make_scale.md)  
-  * [cf_invert](/math/cf_invert.md)  
-  * [cf_make_rotation](/math/cf_make_rotation.md)  
-  * [cf_make_transform_TSR](/math/cf_make_transform_tsr.md)  
+  * [CF_M3x2](/math/cf_m3x2)  
+  * [cf_mul_m32_v2](/math/cf_mul_m32_v2)  
+  * [cf_mul_m32](/math/cf_mul_m32)  
+  * [cf_make_identity](/math/cf_make_identity)  
+  * [cf_make_translation](/math/cf_make_translation)  
+  * [cf_make_scale](/math/cf_make_scale)  
+  * [cf_invert](/math/cf_invert)  
+  * [cf_make_rotation](/math/cf_make_rotation)  
+  * [cf_make_transform_TSR](/math/cf_make_transform_tsr)  

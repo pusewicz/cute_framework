@@ -7,10 +7,7 @@ parent: time
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_on_timestamp
 
-Category: [time](/docs/time)  
-GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)  
----
-
+GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)
 Returns true for one frame where a specific timestamp (relative to program start) occurs.
 
 ```cpp
@@ -28,5 +25,5 @@ This function is super useful for general purpose gameplay implementation where 
 
 ## Related Pages
 
-  * [cf_on_interval](/time/cf_on_interval.md)  
-  * [cf_between_interval](/time/cf_between_interval.md)  
+  * [cf_on_interval](/time/cf_on_interval)  
+  * [cf_between_interval](/time/cf_between_interval)  

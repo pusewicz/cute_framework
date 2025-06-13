@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_destroy_client
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Destroys a client created by [cf_make_client](/net/cf_make_client.md).
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Destroys a client created by [cf_make_client](/net/cf_make_client).
 
 ```cpp
 void cf_destroy_client(CF_Client* client);
@@ -19,11 +16,11 @@ void cf_destroy_client(CF_Client* client);
 
 ## Remarks
 
-Does not send out any disconnect packets. Call [cf_client_disconnect](/net/cf_client_disconnect.md) first.
+Does not send out any disconnect packets. Call [cf_client_disconnect](/net/cf_client_disconnect) first.
 
 ## Related Pages
 
-  * [CF_Client](/net/cf_client.md)  
-  * [cf_make_client](/net/cf_make_client.md)  
-  * [cf_client_disconnect](/net/cf_client_disconnect.md)  
-  * [cf_client_connect](/net/cf_client_connect.md)  
+  * [CF_Client](/net/cf_client)  
+  * [cf_make_client](/net/cf_make_client)  
+  * [cf_client_disconnect](/net/cf_client_disconnect)  
+  * [cf_client_connect](/net/cf_client_connect)  

@@ -7,10 +7,7 @@ parent: png_cache
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Png
 
-Category: [png_cache](/docs/png_cache)  
-GitHub: [cute_png_cache.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_png_cache.h)  
----
-
+GitHub: [cute_png_cache.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_png_cache.h)
 A single image of raw pixels, loaded from a png cache.
 
 Struct Members | Description
@@ -36,12 +33,12 @@ You will mostly just care about these three functions.
     cf_make_png_cache_sprite
 
 It's a cache, which means it actually caches images loaded in RAM, so subsequent
-calls to [cf_png_cache_load](/png_cache/cf_png_cache_load.md) won't have to fetch the image off of disk, as long as
+calls to [cf_png_cache_load](/png_cache/cf_png_cache_load) won't have to fetch the image off of disk, as long as
 the image is currently cached in RAM.
 
 ## Related Pages
 
-  * [cf_make_png_cache_sprite](/png_cache/cf_make_png_cache_sprite.md)  
-  * [cf_png_defaults](/png_cache/cf_png_defaults.md)  
-  * [cf_png_cache_load](/png_cache/cf_png_cache_load.md)  
-  * [cf_make_png_cache_animation](/png_cache/cf_make_png_cache_animation.md)  
+  * [cf_make_png_cache_sprite](/png_cache/cf_make_png_cache_sprite)  
+  * [cf_png_defaults](/png_cache/cf_png_defaults)  
+  * [cf_png_cache_load](/png_cache/cf_png_cache_load)  
+  * [cf_make_png_cache_animation](/png_cache/cf_make_png_cache_animation)  

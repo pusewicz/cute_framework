@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_quad_fill2
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Draws a quad.
 
 ```cpp
@@ -31,6 +28,6 @@ All points `p0` through `p3` are encouraged to be in counter-clockwise order.
 
 ## Related Pages
 
-  * [cf_draw_quad](/draw/cf_draw_quad.md)  
-  * [cf_draw_quad2](/draw/cf_draw_quad2.md)  
-  * [cf_draw_quad_fill](/draw/cf_draw_quad_fill.md)  
+  * [cf_draw_quad](/draw/cf_draw_quad)  
+  * [cf_draw_quad2](/draw/cf_draw_quad2)  
+  * [cf_draw_quad_fill](/draw/cf_draw_quad_fill)  

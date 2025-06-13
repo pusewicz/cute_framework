@@ -7,10 +7,7 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_arena_reset
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
 Resets the allocator.
 
 ```cpp
@@ -24,10 +21,10 @@ arena | The arena to reset.
 ## Remarks
 
 This does not free up internal resources, and will reuse all previously allocated
-resources to fulfill subsequent [cf_arena_alloc](/allocator/cf_arena_alloc.md) calls.
+resources to fulfill subsequent [cf_arena_alloc](/allocator/cf_arena_alloc) calls.
 
 ## Related Pages
 
-  * [cf_arena_init](/allocator/cf_arena_init.md)  
-  * [cf_arena_alloc](/allocator/cf_arena_alloc.md)  
-  * [cf_arena_free](/allocator/cf_arena_free.md)  
+  * [cf_arena_init](/allocator/cf_arena_init)  
+  * [cf_arena_alloc](/allocator/cf_arena_alloc)  
+  * [cf_arena_free](/allocator/cf_arena_free)  

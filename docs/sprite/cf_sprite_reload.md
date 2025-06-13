@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_reload
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Reloads the sprite's pixels from disk.
 
 ```cpp
@@ -33,6 +30,6 @@ All old instances of the sprite are now invalid and should be reset to this retu
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [cf_make_sprite](/sprite/cf_make_sprite.md)  
-  * [cf_sprite_unload](/sprite/cf_sprite_unload.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [cf_make_sprite](/sprite/cf_make_sprite)  
+  * [cf_sprite_unload](/sprite/cf_sprite_unload)  

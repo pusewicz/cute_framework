@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Material
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 An opaque handle representing a material.
 
 ## Remarks
@@ -22,14 +19,14 @@ specify which uniform buffer each uniform belongs to.
 
 ## Related Pages
 
-  * [CF_Texture](/graphics/cf_texture.md)  
-  * [CF_Canvas](/graphics/cf_canvas.md)  
-  * [cf_apply_shader](/graphics/cf_apply_shader.md)  
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [cf_make_material](/graphics/cf_make_material.md)  
-  * [cf_destroy_material](/graphics/cf_destroy_material.md)  
-  * [cf_material_set_render_state](/graphics/cf_material_set_render_state.md)  
-  * [cf_material_set_texture_vs](/graphics/cf_material_set_texture_vs.md)  
-  * [cf_material_set_texture_fs](/graphics/cf_material_set_texture_fs.md)  
-  * [cf_material_set_uniform_vs](/graphics/cf_material_set_uniform_vs.md)  
-  * [cf_material_set_uniform_fs](/graphics/cf_material_set_uniform_fs.md)  
+  * [CF_Texture](/graphics/cf_texture)  
+  * [CF_Canvas](/graphics/cf_canvas)  
+  * [cf_apply_shader](/graphics/cf_apply_shader)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [cf_make_material](/graphics/cf_make_material)  
+  * [cf_destroy_material](/graphics/cf_destroy_material)  
+  * [cf_material_set_render_state](/graphics/cf_material_set_render_state)  
+  * [cf_material_set_texture_vs](/graphics/cf_material_set_texture_vs)  
+  * [cf_material_set_texture_fs](/graphics/cf_material_set_texture_fs)  
+  * [cf_material_set_uniform_vs](/graphics/cf_material_set_uniform_vs)  
+  * [cf_material_set_uniform_fs](/graphics/cf_material_set_uniform_fs)  

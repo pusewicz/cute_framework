@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_input_is_ime_enabled
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Returns true if the IME (Input Method Editor) for the operating system is enabled.
 
 ```cpp
@@ -24,8 +21,8 @@ of different language inputs. This is usually a feature of the underlying operat
 
 ## Related Pages
 
-  * [cf_input_enable_ime](/input/cf_input_enable_ime.md)  
-  * [cf_input_disable_ime](/input/cf_input_disable_ime.md)  
-  * [cf_input_set_ime_rect](/input/cf_input_set_ime_rect.md)  
-  * [cf_input_has_ime_keyboard_support](/input/cf_input_has_ime_keyboard_support.md)  
-  * [cf_input_is_ime_keyboard_shown](/input/cf_input_is_ime_keyboard_shown.md)  
+  * [cf_input_enable_ime](/input/cf_input_enable_ime)  
+  * [cf_input_disable_ime](/input/cf_input_disable_ime)  
+  * [cf_input_set_ime_rect](/input/cf_input_set_ime_rect)  
+  * [cf_input_has_ime_keyboard_support](/input/cf_input_has_ime_keyboard_support)  
+  * [cf_input_is_ime_keyboard_shown](/input/cf_input_is_ime_keyboard_shown)  

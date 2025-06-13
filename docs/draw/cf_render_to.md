@@ -7,11 +7,8 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_render_to
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
-Renders to a [CF_Canvas](/graphics/cf_canvas.md).
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
+Renders to a [CF_Canvas](/graphics/cf_canvas).
 
 ```cpp
 void cf_render_to(CF_Canvas canvas, bool clear);
@@ -25,14 +22,14 @@ canvas | The canvas to render to.
 
 This is advanced function. It's useful for off-screen rendering for certain rendering effects, such as multi-pass
 effects like reflections, or advanced lighting techniques. By default, everything will get renderered to the app's
-canvas, so this function is not necessary to call at all. Instead, calling [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen.md) should be the go-to.
+canvas, so this function is not necessary to call at all. Instead, calling [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen) should be the go-to.
 
 ## Related Pages
 
-  * [cf_draw_scale](/draw/cf_draw_scale.md)  
-  * [cf_draw_translate](/draw/cf_draw_translate.md)  
-  * [cf_draw_rotate](/draw/cf_draw_rotate.md)  
-  * [cf_draw_push](/draw/cf_draw_push.md)  
-  * [cf_draw_pop](/draw/cf_draw_pop.md)  
-  * [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen.md)  
-  * [cf_draw_canvas](/draw/cf_draw_canvas.md)  
+  * [cf_draw_scale](/draw/cf_draw_scale)  
+  * [cf_draw_translate](/draw/cf_draw_translate)  
+  * [cf_draw_rotate](/draw/cf_draw_rotate)  
+  * [cf_draw_push](/draw/cf_draw_push)  
+  * [cf_draw_pop](/draw/cf_draw_pop)  
+  * [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen)  
+  * [cf_draw_canvas](/draw/cf_draw_canvas)  

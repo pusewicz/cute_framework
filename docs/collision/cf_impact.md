@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_impact
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the impact point of a ray, given the time of impact `t`.
 
 ```cpp
@@ -19,5 +16,5 @@ CF_V2 cf_impact(CF_Ray r, float t)
 
 ## Related Pages
 
-  * [CF_Ray](/math/cf_ray.md)  
-  * [cf_endpoint](/collision/cf_endpoint.md)  
+  * [CF_Ray](/math/cf_ray)  
+  * [cf_endpoint](/collision/cf_endpoint)  

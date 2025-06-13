@@ -7,10 +7,7 @@ parent: audio
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_audio_cull_duplicates
 
-Category: [audio](/docs/audio)  
-GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)  
----
-
+GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)
 Turns on/off duplicate culling.
 
 ```cpp
@@ -30,16 +27,16 @@ When on this applies to both sound FX and music.
 
 ## Related Pages
 
-  * [CF_SoundParams](/audio/cf_soundparams.md)  
-  * [CF_Sound](/audio/cf_sound.md)  
-  * [cf_sound_params_defaults](/audio/cf_sound_params_defaults.md)  
-  * [cf_play_sound](/audio/cf_play_sound.md)  
-  * [cf_sound_is_active](/audio/cf_sound_is_active.md)  
-  * [cf_sound_get_is_paused](/audio/cf_sound_get_is_paused.md)  
-  * [cf_sound_get_is_looped](/audio/cf_sound_get_is_looped.md)  
-  * [cf_sound_get_volume](/audio/cf_sound_get_volume.md)  
-  * [cf_sound_get_sample_index](/audio/cf_sound_get_sample_index.md)  
-  * [cf_sound_set_sample_index](/audio/cf_sound_set_sample_index.md)  
-  * [cf_sound_set_is_paused](/audio/cf_sound_set_is_paused.md)  
-  * [cf_sound_set_is_looped](/audio/cf_sound_set_is_looped.md)  
-  * [cf_sound_set_volume](/audio/cf_sound_set_volume.md)  
+  * [CF_SoundParams](/audio/cf_soundparams)  
+  * [CF_Sound](/audio/cf_sound)  
+  * [cf_sound_params_defaults](/audio/cf_sound_params_defaults)  
+  * [cf_play_sound](/audio/cf_play_sound)  
+  * [cf_sound_is_active](/audio/cf_sound_is_active)  
+  * [cf_sound_get_is_paused](/audio/cf_sound_get_is_paused)  
+  * [cf_sound_get_is_looped](/audio/cf_sound_get_is_looped)  
+  * [cf_sound_get_volume](/audio/cf_sound_get_volume)  
+  * [cf_sound_get_sample_index](/audio/cf_sound_get_sample_index)  
+  * [cf_sound_set_sample_index](/audio/cf_sound_set_sample_index)  
+  * [cf_sound_set_is_paused](/audio/cf_sound_set_is_paused)  
+  * [cf_sound_set_is_looped](/audio/cf_sound_set_is_looped)  
+  * [cf_sound_set_volume](/audio/cf_sound_set_volume)  

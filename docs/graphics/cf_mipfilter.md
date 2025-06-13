@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_MipFilter
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Describes how the GPU samples between mipmap levels.
 
 ## Values
@@ -22,5 +19,5 @@ MIP_FILTER_LINEAR | Linearly blends between mip levels for smooth transitions.
 
 ## Related Pages
 
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
-  * [cf_mip_filter_to_string](/graphics/cf_mip_filter_to_string.md)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  
+  * [cf_mip_filter_to_string](/graphics/cf_mip_filter_to_string)  

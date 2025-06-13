@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_set_position
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Sets the position of the window in pixels.
 
 ```cpp
@@ -24,7 +21,7 @@ y | The y position of the window in pixels.
 
 ## Related Pages
 
-  * [cf_app_get_size](/app/cf_app_get_size.md)  
-  * [cf_app_set_size](/app/cf_app_set_size.md)  
-  * [cf_app_get_position](/app/cf_app_get_position.md)  
-  * [cf_app_center_window](/app/cf_app_center_window.md)  
+  * [cf_app_get_size](/app/cf_app_get_size)  
+  * [cf_app_set_size](/app/cf_app_set_size)  
+  * [cf_app_get_position](/app/cf_app_get_position)  
+  * [cf_app_center_window](/app/cf_app_center_window)  

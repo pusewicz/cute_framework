@@ -7,16 +7,13 @@ parent: multithreading
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Thread
 
-Category: [multithreading](/docs/multithreading)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
 An opaque handle representing a thread.
 
 ## Related Pages
 
-  * [cf_thread_wait](/multithreading/cf_thread_wait.md)  
-  * [cf_thread_create](/multithreading/cf_thread_create.md)  
-  * [cf_thread_detach](/multithreading/cf_thread_detach.md)  
-  * [cf_thread_get_id](/multithreading/cf_thread_get_id.md)  
-  * [cf_thread_id](/multithreading/cf_thread_id.md)  
+  * [cf_thread_wait](/multithreading/cf_thread_wait)  
+  * [cf_thread_create](/multithreading/cf_thread_create)  
+  * [cf_thread_detach](/multithreading/cf_thread_detach)  
+  * [cf_thread_get_id](/multithreading/cf_thread_get_id)  
+  * [cf_thread_id](/multithreading/cf_thread_id)  

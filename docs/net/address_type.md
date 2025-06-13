@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # Address Type
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 Available types of endpoints.
 
 ## Values
@@ -23,4 +20,4 @@ ADDRESS_TYPE_IPV6 | (null)
 
 ## Related Pages
 
-  * [CF_Address](/net/cf_address.md)  
+  * [CF_Address](/net/cf_address)  

@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_norm
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns a normalized vector.
 
 ```cpp
@@ -23,7 +20,7 @@ Normalized vectors have unit-length without changing the vector's direction. Fai
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_len](/math/cf_len.md)  
-  * [cf_distance](/math/cf_distance.md)  
-  * [cf_safe_norm](/math/cf_safe_norm.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_len](/math/cf_len)  
+  * [cf_distance](/math/cf_distance)  
+  * [cf_safe_norm](/math/cf_safe_norm)  

@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Aabb
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Axis-aligned bounding box. A box that cannot rotate.
 
 Struct Members | Description
@@ -25,24 +22,24 @@ these options the min/max choice is the simplest when it comes to the majority o
 
 ## Related Pages
 
-  * [cf_aabb_to_poly_manifold](/collision/cf_aabb_to_poly_manifold.md)  
-  * [cf_make_aabb](/math/cf_make_aabb.md)  
-  * [cf_width](/math/cf_width.md)  
-  * [cf_height](/math/cf_height.md)  
-  * [cf_center](/math/cf_center.md)  
-  * [cf_top_left](/math/cf_top_left.md)  
-  * [cf_top_right](/math/cf_top_right.md)  
-  * [cf_bottom_left](/math/cf_bottom_left.md)  
-  * [cf_bottom_right](/math/cf_bottom_right.md)  
-  * [cf_contains_point](/math/cf_contains_point.md)  
-  * [cf_overlaps](/math/cf_overlaps.md)  
-  * [cf_make_aabb_verts](/math/cf_make_aabb_verts.md)  
-  * [cf_aabb_verts](/math/cf_aabb_verts.md)  
-  * [cf_circle_to_aabb](/collision/cf_circle_to_aabb.md)  
-  * [cf_aabb_to_aabb](/collision/cf_aabb_to_aabb.md)  
-  * [cf_aabb_to_capsule](/collision/cf_aabb_to_capsule.md)  
-  * [cf_aabb_to_poly](/collision/cf_aabb_to_poly.md)  
-  * [cf_ray_to_aabb](/collision/cf_ray_to_aabb.md)  
-  * [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold.md)  
-  * [cf_aabb_to_aabb_manifold](/collision/cf_aabb_to_aabb_manifold.md)  
-  * [cf_aabb_to_capsule_manifold](/collision/cf_aabb_to_capsule_manifold.md)  
+  * [cf_aabb_to_poly_manifold](/collision/cf_aabb_to_poly_manifold)  
+  * [cf_make_aabb](/math/cf_make_aabb)  
+  * [cf_width](/math/cf_width)  
+  * [cf_height](/math/cf_height)  
+  * [cf_center](/math/cf_center)  
+  * [cf_top_left](/math/cf_top_left)  
+  * [cf_top_right](/math/cf_top_right)  
+  * [cf_bottom_left](/math/cf_bottom_left)  
+  * [cf_bottom_right](/math/cf_bottom_right)  
+  * [cf_contains_point](/math/cf_contains_point)  
+  * [cf_overlaps](/math/cf_overlaps)  
+  * [cf_make_aabb_verts](/math/cf_make_aabb_verts)  
+  * [cf_aabb_verts](/math/cf_aabb_verts)  
+  * [cf_circle_to_aabb](/collision/cf_circle_to_aabb)  
+  * [cf_aabb_to_aabb](/collision/cf_aabb_to_aabb)  
+  * [cf_aabb_to_capsule](/collision/cf_aabb_to_capsule)  
+  * [cf_aabb_to_poly](/collision/cf_aabb_to_poly)  
+  * [cf_ray_to_aabb](/collision/cf_ray_to_aabb)  
+  * [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold)  
+  * [cf_aabb_to_aabb_manifold](/collision/cf_aabb_to_aabb_manifold)  
+  * [cf_aabb_to_capsule_manifold](/collision/cf_aabb_to_capsule_manifold)  

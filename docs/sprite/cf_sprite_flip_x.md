@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_flip_x
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Flip's the sprite on the x-axis.
 
 ```cpp
@@ -27,5 +24,5 @@ Works by flipping the sign of the sprite's scale on the x-axis.
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [cf_sprite_flip_y](/sprite/cf_sprite_flip_y.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [cf_sprite_flip_y](/sprite/cf_sprite_flip_y)  

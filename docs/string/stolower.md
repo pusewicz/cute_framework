@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # stolower
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Sets all characters in the string to lower case.
 
 ```cpp
@@ -23,7 +20,7 @@ s | The string. Can be `NULL`.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [stoupper](/string/stoupper.md)  
-  * [sicmp](/string/sicmp.md)  
-  * [siequ](/string/siequ.md)  
+  * [sdyna](/string/sdyna)  
+  * [stoupper](/string/stoupper)  
+  * [sicmp](/string/sicmp)  
+  * [siequ](/string/siequ)  

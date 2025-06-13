@@ -7,10 +7,7 @@ parent: path
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # spext_equ
 
-Category: [path](/docs/path)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Returns true if the file's extension matches, false otherwise.
 
 ```cpp
@@ -28,12 +25,12 @@ ext | The file extension.
 
 ## Related Pages
 
-  * [spfname](/path/spfname.md)  
-  * [spfname_no_ext](/path/spfname_no_ext.md)  
-  * [spext](/path/spext.md)  
-  * [spnorm](/path/spnorm.md)  
-  * [sppop](/path/sppop.md)  
-  * [sppopn](/path/sppopn.md)  
-  * [spcompact](/path/spcompact.md)  
-  * [spdir_of](/path/spdir_of.md)  
-  * [sptop_of](/path/sptop_of.md)  
+  * [spfname](/path/spfname)  
+  * [spfname_no_ext](/path/spfname_no_ext)  
+  * [spext](/path/spext)  
+  * [spnorm](/path/spnorm)  
+  * [sppop](/path/sppop)  
+  * [sppopn](/path/sppopn)  
+  * [spcompact](/path/spcompact)  
+  * [spdir_of](/path/spdir_of)  
+  * [sptop_of](/path/sptop_of)  

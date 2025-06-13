@@ -7,10 +7,7 @@ parent: path
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # spfname
 
-Category: [path](/docs/path)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Returns the filename portion of a path. Returns a new string.
 
 ```cpp
@@ -33,16 +30,16 @@ printf("%s\n", filename);
 
 ## Remarks
 
-Call [sfree](/string/sfree.md) on the return value when done. `sp` stands for "sting path".
+Call [sfree](/string/sfree) on the return value when done. `sp` stands for "sting path".
 
 ## Related Pages
 
-  * [spnorm](/path/spnorm.md)  
-  * [spfname_no_ext](/path/spfname_no_ext.md)  
-  * [spext](/path/spext.md)  
-  * [spext_equ](/path/spext_equ.md)  
-  * [sppop](/path/sppop.md)  
-  * [sppopn](/path/sppopn.md)  
-  * [spcompact](/path/spcompact.md)  
-  * [spdir_of](/path/spdir_of.md)  
-  * [sptop_of](/path/sptop_of.md)  
+  * [spnorm](/path/spnorm)  
+  * [spfname_no_ext](/path/spfname_no_ext)  
+  * [spext](/path/spext)  
+  * [spext_equ](/path/spext_equ)  
+  * [sppop](/path/sppop)  
+  * [sppopn](/path/sppopn)  
+  * [spcompact](/path/spcompact)  
+  * [spdir_of](/path/spdir_of)  
+  * [sptop_of](/path/sptop_of)  

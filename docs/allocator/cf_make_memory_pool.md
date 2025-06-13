@@ -7,10 +7,7 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_memory_pool
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
 Creates a memory pool.
 
 ```cpp
@@ -29,6 +26,6 @@ Returns a memory pool pointer.
 
 ## Related Pages
 
-  * [cf_destroy_memory_pool](/allocator/cf_destroy_memory_pool.md)  
-  * [cf_memory_pool_alloc](/allocator/cf_memory_pool_alloc.md)  
-  * [cf_memory_pool_free](/allocator/cf_memory_pool_free.md)  
+  * [cf_destroy_memory_pool](/allocator/cf_destroy_memory_pool)  
+  * [cf_memory_pool_alloc](/allocator/cf_memory_pool_alloc)  
+  * [cf_memory_pool_free](/allocator/cf_memory_pool_free)  

@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fs_get_actual_path
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Converts a virtual path to an actual path.
 
 ```cpp
@@ -30,6 +27,6 @@ if nothing suitable was found at all. [Virtual File System](https://randygaul.gi
 
 ## Related Pages
 
-  * [cf_fs_read_entire_file_to_memory](/file/cf_fs_read_entire_file_to_memory.md)  
-  * [cf_fs_read_entire_file_to_memory_and_nul_terminate](/file/cf_fs_read_entire_file_to_memory_and_nul_terminate.md)  
-  * [cf_fs_write_entire_buffer_to_file](/file/cf_fs_write_entire_buffer_to_file.md)  
+  * [cf_fs_read_entire_file_to_memory](/file/cf_fs_read_entire_file_to_memory)  
+  * [cf_fs_read_entire_file_to_memory_and_nul_terminate](/file/cf_fs_read_entire_file_to_memory_and_nul_terminate)  
+  * [cf_fs_write_entire_buffer_to_file](/file/cf_fs_write_entire_buffer_to_file)  

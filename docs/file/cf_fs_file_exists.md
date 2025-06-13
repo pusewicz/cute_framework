@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fs_file_exists
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Returns true if a file exists, false otherwise.
 
 ```cpp
@@ -27,10 +24,10 @@ virtual_path | A path to the file.
 
 ## Related Pages
 
-  * [CF_File](/file/cf_file.md)  
-  * [cf_fs_size](/file/cf_fs_size.md)  
-  * [cf_fs_read](/file/cf_fs_read.md)  
-  * [cf_fs_write](/file/cf_fs_write.md)  
-  * [cf_fs_eof](/file/cf_fs_eof.md)  
-  * [cf_fs_tell](/file/cf_fs_tell.md)  
-  * [cf_fs_seek](/file/cf_fs_seek.md)  
+  * [CF_File](/file/cf_file)  
+  * [cf_fs_size](/file/cf_fs_size)  
+  * [cf_fs_read](/file/cf_fs_read)  
+  * [cf_fs_write](/file/cf_fs_write)  
+  * [cf_fs_eof](/file/cf_fs_eof)  
+  * [cf_fs_tell](/file/cf_fs_tell)  
+  * [cf_fs_seek](/file/cf_fs_seek)  

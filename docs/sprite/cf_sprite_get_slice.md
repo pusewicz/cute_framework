@@ -7,11 +7,8 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_get_slice
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
-Searches for and returns a particular slice. A zero'd out [CF_Aabb](/math/cf_aabb.md) is returned if no match was found.
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
+Searches for and returns a particular slice. A zero'd out [CF_Aabb](/math/cf_aabb) is returned if no match was found.
 
 ```cpp
 CF_Aabb cf_sprite_get_slice(CF_Sprite* sprite, const char* name)

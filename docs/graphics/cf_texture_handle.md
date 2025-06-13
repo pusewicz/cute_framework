@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_texture_handle
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Returns an SDL_GPUTexture casted to a `uint64_t`.
 
 ```cpp
@@ -23,6 +20,6 @@ This is useful for e.g. rendering textures in an external system like Dear ImGui
 
 ## Related Pages
 
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
-  * [CF_Texture](/graphics/cf_texture.md)  
-  * [cf_make_texture](/graphics/cf_make_texture.md)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  
+  * [CF_Texture](/graphics/cf_texture)  
+  * [cf_make_texture](/graphics/cf_make_texture)  

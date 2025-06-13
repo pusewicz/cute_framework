@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_distance_sq
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the square distance of a point to a line segment.
 
 ```cpp
@@ -29,5 +26,5 @@ See [this article](https://randygaul.github.io/math/collision-detection/2014/07/
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [CF_Ray](/math/cf_ray.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [CF_Ray](/math/cf_ray)  

@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_ray_to_aabb
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns a raycast to an aabb.
 
 ```cpp
@@ -24,13 +21,13 @@ B | The Aabb.
 
 ## Return Value
 
-[CF_Raycast](/math/cf_raycast.md) results are placed here. See [CF_RayCast](/math/cf_raycast.md).
+[CF_Raycast](/math/cf_raycast) results are placed here. See [CF_RayCast](/math/cf_raycast).
 
 ## Related Pages
 
-  * [CF_Ray](/math/cf_ray.md)  
-  * [CF_Aabb](/math/cf_aabb.md)  
-  * [CF_Raycast](/math/cf_raycast.md)  
-  * [cf_ray_to_circle](/collision/cf_ray_to_circle.md)  
-  * [cf_ray_to_poly](/collision/cf_ray_to_poly.md)  
-  * [cf_ray_to_capsule](/collision/cf_ray_to_capsule.md)  
+  * [CF_Ray](/math/cf_ray)  
+  * [CF_Aabb](/math/cf_aabb)  
+  * [CF_Raycast](/math/cf_raycast)  
+  * [cf_ray_to_circle](/collision/cf_ray_to_circle)  
+  * [cf_ray_to_poly](/collision/cf_ray_to_poly)  
+  * [cf_ray_to_capsule](/collision/cf_ray_to_capsule)  

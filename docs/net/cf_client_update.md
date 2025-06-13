@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_client_update
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 Updates the client.
 
 ```cpp
@@ -19,12 +16,12 @@ void cf_client_update(CF_Client* client, double dt, uint64_t current_time);
 
 ## Remarks
 
-You should call this one per game loop after calling [cf_client_connect](/net/cf_client_connect.md).
+You should call this one per game loop after calling [cf_client_connect](/net/cf_client_connect).
 
 ## Related Pages
 
-  * [CF_Client](/net/cf_client.md)  
-  * [cf_make_client](/net/cf_make_client.md)  
-  * [cf_destroy_client](/net/cf_destroy_client.md)  
-  * [cf_client_connect](/net/cf_client_connect.md)  
-  * [cf_client_disconnect](/net/cf_client_disconnect.md)  
+  * [CF_Client](/net/cf_client)  
+  * [cf_make_client](/net/cf_make_client)  
+  * [cf_destroy_client](/net/cf_destroy_client)  
+  * [cf_client_connect](/net/cf_client_connect)  
+  * [cf_client_disconnect](/net/cf_client_disconnect)  

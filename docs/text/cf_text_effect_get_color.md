@@ -7,10 +7,7 @@ parent: text
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_text_effect_get_color
 
-Category: [text](/docs/text)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Returns the text parameter as a color.
 
 ```cpp
@@ -29,8 +26,8 @@ Returns the value of the text code parameter.
 
 ## Related Pages
 
-  * [CF_TextEffect](/text/cf_texteffect.md)  
-  * [CF_TextEffectFn](/text/cf_texteffectfn.md)  
-  * [cf_text_effect_register](/text/cf_text_effect_register.md)  
-  * [cf_text_effect_get_number](/text/cf_text_effect_get_number.md)  
-  * [cf_text_effect_get_string](/text/cf_text_effect_get_string.md)  
+  * [CF_TextEffect](/text/cf_texteffect)  
+  * [CF_TextEffectFn](/text/cf_texteffectfn)  
+  * [cf_text_effect_register](/text/cf_text_effect_register)  
+  * [cf_text_effect_get_number](/text/cf_text_effect_get_number)  
+  * [cf_text_effect_get_string](/text/cf_text_effect_get_string)  

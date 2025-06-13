@@ -7,10 +7,7 @@ parent: hash
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # hsisort
 
-Category: [hash](/docs/hash)  
-GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)  
----
-
+GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)
 Sorts the {key, item} pairs in the table by keys, where the keys are treated as C-strings (case ignored).
 
 ```cpp
@@ -23,14 +20,14 @@ h | The hashtable. Can be `NULL`. Needs to be a pointer to the type of items in 
 
 ## Remarks
 
-The keys and items returned by [hkeys](/hash/hkeys.md) and [hitems](/hash/hitems.md) will be sorted. Normally it's not valid to store strings as keys,
-since all keys are simply typecasted to `uint64_t`. However, if you use [sintern](/string/sintern.md) each unique string has a unique and
+The keys and items returned by [hkeys](/hash/hkeys) and [hitems](/hash/hitems) will be sorted. Normally it's not valid to store strings as keys,
+since all keys are simply typecasted to `uint64_t`. However, if you use [sintern](/string/sintern) each unique string has a unique and
 stable pointer, making them valid keys for hashtables. This is _not_ a stable sort.
 
 ## Related Pages
 
-  * [htbl](/hash/htbl.md)  
-  * [hswap](/hash/hswap.md)  
-  * [hsort](/hash/hsort.md)  
-  * [hssort](/hash/hssort.md)  
-  * [sintern](/string/sintern.md)  
+  * [htbl](/hash/htbl)  
+  * [hswap](/hash/hswap)  
+  * [hsort](/hash/hsort)  
+  * [hssort](/hash/hssort)  
+  * [sintern](/string/sintern)  

@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_get_offset_x
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Returns the sprite's local offset on the x-axis.
 
 ```cpp
@@ -19,7 +16,7 @@ float cf_sprite_get_offset_x(CF_Sprite* sprite)
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [cf_sprite_set_offset_y](/sprite/cf_sprite_set_offset_y.md)  
-  * [cf_sprite_get_offset_y](/sprite/cf_sprite_get_offset_y.md)  
-  * [cf_sprite_set_offset_x](/sprite/cf_sprite_set_offset_x.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [cf_sprite_set_offset_y](/sprite/cf_sprite_set_offset_y)  
+  * [cf_sprite_get_offset_y](/sprite/cf_sprite_get_offset_y)  
+  * [cf_sprite_set_offset_x](/sprite/cf_sprite_set_offset_x)  

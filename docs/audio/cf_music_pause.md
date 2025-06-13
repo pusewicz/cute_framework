@@ -7,10 +7,7 @@ parent: audio
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_music_pause
 
-Category: [audio](/docs/audio)  
-GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)  
----
-
+GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)
 Pauses the music.
 
 ```cpp
@@ -19,13 +16,13 @@ void cf_music_pause();
 
 ## Related Pages
 
-  * [cf_music_play](/audio/cf_music_play.md)  
-  * [cf_music_stop](/audio/cf_music_stop.md)  
-  * [cf_music_set_volume](/audio/cf_music_set_volume.md)  
-  * [cf_music_set_loop](/audio/cf_music_set_loop.md)  
-  * [cf_music_set_pitch](/audio/cf_music_set_pitch.md)  
-  * [cf_music_resume](/audio/cf_music_resume.md)  
-  * [cf_music_switch_to](/audio/cf_music_switch_to.md)  
-  * [cf_music_crossfade](/audio/cf_music_crossfade.md)  
-  * [cf_music_get_sample_index](/audio/cf_music_get_sample_index.md)  
-  * [cf_music_set_sample_index](/audio/cf_music_set_sample_index.md)  
+  * [cf_music_play](/audio/cf_music_play)  
+  * [cf_music_stop](/audio/cf_music_stop)  
+  * [cf_music_set_volume](/audio/cf_music_set_volume)  
+  * [cf_music_set_loop](/audio/cf_music_set_loop)  
+  * [cf_music_set_pitch](/audio/cf_music_set_pitch)  
+  * [cf_music_resume](/audio/cf_music_resume)  
+  * [cf_music_switch_to](/audio/cf_music_switch_to)  
+  * [cf_music_crossfade](/audio/cf_music_crossfade)  
+  * [cf_music_get_sample_index](/audio/cf_music_get_sample_index)  
+  * [cf_music_set_sample_index](/audio/cf_music_set_sample_index)  

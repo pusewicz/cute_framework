@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # ssplit_once
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Splits a string about the character `ch` one time, scanning from left-to-right.
 
 ```cpp
@@ -31,13 +28,13 @@ Returns the string to the left of `ch`.
 `s` will contain the string to the right of `ch`.
 Returns the string to the left of `ch`.
 If `ch` isn't found, simply returns `NULL` and does not modify `s`.
-You must call [sfree](/string/sfree.md) on the returned string.
+You must call [sfree](/string/sfree) on the returned string.
 
 This function is intended to be used in a loop, successively chopping off pieces of `s`.
-A much easier, but slightly slower, version of this function is [ssplit](/string/ssplit.md), which returns
+A much easier, but slightly slower, version of this function is [ssplit](/string/ssplit), which returns
 an array of strings.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [ssplit](/string/ssplit.md)  
+  * [sdyna](/string/sdyna)  
+  * [ssplit](/string/ssplit)  

@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sfmt
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Printf's into the string using the format string `fmt`.
 
 ```cpp
@@ -29,8 +26,8 @@ The string will be overwritten from the beginning. Will automatically adjust cap
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sset](/string/sset.md)  
-  * [sfmt_append](/string/sfmt_append.md)  
-  * [svfmt](/string/svfmt.md)  
-  * [svfmt_append](/string/svfmt_append.md)  
+  * [sdyna](/string/sdyna)  
+  * [sset](/string/sset)  
+  * [sfmt_append](/string/sfmt_append)  
+  * [svfmt](/string/svfmt)  
+  * [svfmt_append](/string/svfmt_append)  

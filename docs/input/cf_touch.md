@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Touch
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Represents a single touch event on the device.
 
 Struct Members | Description
@@ -22,5 +19,5 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [cf_touch_get](/input/cf_touch_get.md)  
-  * [cf_touch_get_all](/input/cf_touch_get_all.md)  
+  * [cf_touch_get](/input/cf_touch_get)  
+  * [cf_touch_get_all](/input/cf_touch_get_all)  

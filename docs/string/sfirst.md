@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sfirst
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Returns the first character in the string.
 
 ```cpp
@@ -27,8 +24,8 @@ Returns '\0' if `s` is `NULL`.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [spush](/string/spush.md)  
-  * [spop](/string/spop.md)  
-  * [sclear](/string/sclear.md)  
-  * [slast](/string/slast.md)  
+  * [sdyna](/string/sdyna)  
+  * [spush](/string/spush)  
+  * [spop](/string/spop)  
+  * [sclear](/string/sclear)  
+  * [slast](/string/slast)  

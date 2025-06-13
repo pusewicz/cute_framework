@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_commit
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Submits all previous draw commands to the GPU.
 
 ```cpp
@@ -19,11 +16,11 @@ void cf_commit();
 
 ## Remarks
 
-You must call this after calling [cf_apply_shader](/graphics/cf_apply_shader.md) to "complete" the rendering pass.
+You must call this after calling [cf_apply_shader](/graphics/cf_apply_shader) to "complete" the rendering pass.
 
 ## Related Pages
 
-  * [CF_Canvas](/graphics/cf_canvas.md)  
-  * [cf_apply_canvas](/graphics/cf_apply_canvas.md)  
-  * [cf_apply_mesh](/graphics/cf_apply_mesh.md)  
-  * [cf_apply_shader](/graphics/cf_apply_shader.md)  
+  * [CF_Canvas](/graphics/cf_canvas)  
+  * [cf_apply_canvas](/graphics/cf_apply_canvas)  
+  * [cf_apply_mesh](/graphics/cf_apply_mesh)  
+  * [cf_apply_shader](/graphics/cf_apply_shader)  

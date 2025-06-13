@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_clear_depth_stencil
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Sets the depth/stencil values used when clearing a canvas, if depth/stencil are enabled (see [CF_RenderState](/graphics/cf_renderstate.md)).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Sets the depth/stencil values used when clearing a canvas, if depth/stencil are enabled (see [CF_RenderState](/graphics/cf_renderstate)).
 
 ```cpp
 void cf_clear_depth_stencil(float depth, uint32_t stencil);
@@ -19,7 +16,7 @@ void cf_clear_depth_stencil(float depth, uint32_t stencil);
 
 ## Remarks
 
-This will get used when [cf_apply_canvas](/graphics/cf_apply_canvas.md) or when [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen.md) is called and `clear` parameter is true.
+This will get used when [cf_apply_canvas](/graphics/cf_apply_canvas) or when [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen) is called and `clear` parameter is true.
 
 ## Related Pages
 

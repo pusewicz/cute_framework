@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_get_scale_y
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Returns the sprite's scale on the y-axis.
 
 ```cpp
@@ -19,8 +16,8 @@ float cf_sprite_get_scale_y(CF_Sprite* sprite)
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [cf_sprite_get_scale_x](/sprite/cf_sprite_get_scale_x.md)  
-  * [cf_sprite_set_scale](/sprite/cf_sprite_set_scale.md)  
-  * [cf_sprite_set_scale_x](/sprite/cf_sprite_set_scale_x.md)  
-  * [cf_sprite_set_scale_y](/sprite/cf_sprite_set_scale_y.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [cf_sprite_get_scale_x](/sprite/cf_sprite_get_scale_x)  
+  * [cf_sprite_set_scale](/sprite/cf_sprite_set_scale)  
+  * [cf_sprite_set_scale_x](/sprite/cf_sprite_set_scale_x)  
+  * [cf_sprite_set_scale_y](/sprite/cf_sprite_set_scale_y)  

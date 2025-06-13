@@ -7,10 +7,7 @@ parent: audio
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_audio_load_wav_from_memory
 
-Category: [audio](/docs/audio)  
-GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)  
----
-
+GitHub: [cute_audio.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_audio.h)
 Loads a .wav audio file from memory.
 
 ```cpp
@@ -24,12 +21,12 @@ byte_count | The number of bytes in `memory`.
 
 ## Return Value
 
-Returns a pointer to [CF_Audio](/audio/cf_audio.md). Free it up with [cf_audio_destroy](/audio/cf_audio_destroy.md) when done.
+Returns a pointer to [CF_Audio](/audio/cf_audio). Free it up with [cf_audio_destroy](/audio/cf_audio_destroy) when done.
 
 ## Related Pages
 
-  * [CF_Audio](/audio/cf_audio.md)  
-  * [cf_audio_load_ogg](/audio/cf_audio_load_ogg.md)  
-  * [cf_audio_load_ogg_from_memory](/audio/cf_audio_load_ogg_from_memory.md)  
-  * [cf_audio_load_wav](/audio/cf_audio_load_wav.md)  
-  * [cf_audio_destroy](/audio/cf_audio_destroy.md)  
+  * [CF_Audio](/audio/cf_audio)  
+  * [cf_audio_load_ogg](/audio/cf_audio_load_ogg)  
+  * [cf_audio_load_ogg_from_memory](/audio/cf_audio_load_ogg_from_memory)  
+  * [cf_audio_load_wav](/audio/cf_audio_load_wav)  
+  * [cf_audio_destroy](/audio/cf_audio_destroy)  

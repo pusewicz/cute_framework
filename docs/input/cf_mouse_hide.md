@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mouse_hide
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 Hides or shows the mouse.
 
 ```cpp
@@ -19,5 +16,5 @@ void cf_mouse_hide(bool true_to_hide);
 
 ## Related Pages
 
-  * [cf_mouse_lock_inside_window](/input/cf_mouse_lock_inside_window.md)  
-  * [cf_mouse_hidden](/input/cf_mouse_hidden.md)  
+  * [cf_mouse_lock_inside_window](/input/cf_mouse_lock_inside_window)  
+  * [cf_mouse_hidden](/input/cf_mouse_hidden)  

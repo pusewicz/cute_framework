@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_joypad_power_level
 
-Category: [input](/docs/input)  
-GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)  
----
-
+GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)
 Returns the power level of the joypad.
 
 ```cpp
@@ -23,6 +20,6 @@ player_index | An index represeting the joypad for a particular player, starting
 
 ## Related Pages
 
-  * [CF_JoypadPowerLevel](/input/cf_joypadpowerlevel.md)  
-  * [cf_joypad_power_level_to_string](/input/cf_joypad_power_level_to_string.md)  
+  * [CF_JoypadPowerLevel](/input/cf_joypadpowerlevel)  
+  * [cf_joypad_power_level_to_string](/input/cf_joypad_power_level_to_string)  
   * CF_Joypad  

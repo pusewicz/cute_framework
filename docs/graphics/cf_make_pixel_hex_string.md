@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_pixel_hex_string
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
-Returns a [CF_Pixel](/graphics/cf_pixel.md) made from hex-value string, such as "#42f563" or "0x42f563FF".
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
+Returns a [CF_Pixel](/graphics/cf_pixel) made from hex-value string, such as "#42f563" or "0x42f563FF".
 
 ```cpp
 CF_Pixel cf_make_pixel_hex_string(const char* hex)
@@ -23,9 +20,9 @@ hex | A hex-value string, such as "#42f563" or "0x42f563FF".
 
 ## Related Pages
 
-  * [CF_Pixel](/graphics/cf_pixel.md)  
-  * [cf_make_pixel_rgb_f](/graphics/cf_make_pixel_rgb_f.md)  
-  * [cf_make_pixel_rgba_f](/graphics/cf_make_pixel_rgba_f.md)  
-  * [cf_make_pixel_rgb](/graphics/cf_make_pixel_rgb.md)  
-  * [cf_make_pixel_rgba](/graphics/cf_make_pixel_rgba.md)  
-  * [cf_make_pixel_hex](/graphics/cf_make_pixel_hex.md)  
+  * [CF_Pixel](/graphics/cf_pixel)  
+  * [cf_make_pixel_rgb_f](/graphics/cf_make_pixel_rgb_f)  
+  * [cf_make_pixel_rgba_f](/graphics/cf_make_pixel_rgba_f)  
+  * [cf_make_pixel_rgb](/graphics/cf_make_pixel_rgb)  
+  * [cf_make_pixel_rgba](/graphics/cf_make_pixel_rgba)  
+  * [cf_make_pixel_hex](/graphics/cf_make_pixel_hex)  

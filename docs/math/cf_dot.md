@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_dot
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the dot product of two vectors.
 
 ```cpp
@@ -19,8 +16,8 @@ float cf_dot(CF_V2 a, CF_V2 b)
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_add_v2](/math/cf_add_v2.md)  
-  * [cf_sub_v2](/math/cf_sub_v2.md)  
-  * [cf_div_v2_f](/math/cf_div_v2_f.md)  
-  * [cf_mul_v2_f](/math/cf_mul_v2_f.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_add_v2](/math/cf_add_v2)  
+  * [cf_sub_v2](/math/cf_sub_v2)  
+  * [cf_div_v2_f](/math/cf_div_v2_f)  
+  * [cf_mul_v2_f](/math/cf_mul_v2_f)  

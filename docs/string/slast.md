@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # slast
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Returns the last character in the string. Not the nul-byte.
 
 ```cpp
@@ -27,8 +24,8 @@ Returns '\0' if `s` is `NULL`.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [spush](/string/spush.md)  
-  * [spop](/string/spop.md)  
-  * [sfirst](/string/sfirst.md)  
-  * [sclear](/string/sclear.md)  
+  * [sdyna](/string/sdyna)  
+  * [spush](/string/spush)  
+  * [spop](/string/spop)  
+  * [sfirst](/string/sfirst)  
+  * [sclear](/string/sclear)  

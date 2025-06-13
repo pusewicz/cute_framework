@@ -7,11 +7,8 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_JType
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
-Describes the type of a [CF_JVal](/json/cf_jval.md).
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
+Describes the type of a [CF_JVal](/json/cf_jval).
 
 ## Values
 
@@ -28,6 +25,6 @@ JTYPE_OBJECT | A JSON Object.
 
 ## Related Pages
 
-  * [CF_JDoc](/json/cf_jdoc.md)  
-  * [CF_JVal](/json/cf_jval.md)  
-  * [cf_make_json](/json/cf_make_json.md)  
+  * [CF_JDoc](/json/cf_jdoc)  
+  * [CF_JVal](/json/cf_jval)  
+  * [cf_make_json](/json/cf_make_json)  

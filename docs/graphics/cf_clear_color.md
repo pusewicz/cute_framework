@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_clear_color
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Sets the color the app will use to clear the screen/canvases.
 
 ```cpp
@@ -20,4 +17,4 @@ void cf_clear_color(float red, float green, float blue, float alpha);
 ## Related Pages
 
   * cf_clear_screen  
-  * [cf_clear_depth_stencil](/graphics/cf_clear_depth_stencil.md)  
+  * [cf_clear_depth_stencil](/graphics/cf_clear_depth_stencil)  

@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_app
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Use this function to construct an instance of your application window and (optionally) initialize graphics.
 
 ```cpp
@@ -20,7 +17,7 @@ CF_Result cf_make_app(const char* window_title, CF_DisplayID display_id, int x, 
 Parameters | Description
 --- | ---
 window_title | The title of the window in utf8 encoding.
-display_index | The index of the display to spawn upon. Set this to zero for the primary display. See [cf_get_display_list](/app/cf_get_display_list.md).
+display_index | The index of the display to spawn upon. Set this to zero for the primary display. See [cf_get_display_list](/app/cf_get_display_list).
 x | The x position of the window.
 y | The y position of the window.
 w | The width of the window in pixels.
@@ -30,7 +27,7 @@ argv0 | The first argument passed to your main function in the `argv` parameter.
 
 ## Return Value
 
-Returns any errors on failure as a [CF_Result](/utility/cf_result.md).
+Returns any errors on failure as a [CF_Result](/utility/cf_result).
 
 ## Code Example
 
@@ -65,7 +62,7 @@ Parameters `w` and `h` are ignored if the window is initialized to fullscreen mo
 
 ## Related Pages
 
-  * [CF_AppOptionFlagBits](/app/cf_appoptionflagbits.md)  
-  * [cf_app_is_running](/app/cf_app_is_running.md)  
-  * [cf_app_signal_shutdown](/app/cf_app_signal_shutdown.md)  
-  * [cf_destroy_app](/app/cf_destroy_app.md)  
+  * [CF_AppOptionFlagBits](/app/cf_appoptionflagbits)  
+  * [cf_app_is_running](/app/cf_app_is_running)  
+  * [cf_app_signal_shutdown](/app/cf_app_signal_shutdown)  
+  * [cf_destroy_app](/app/cf_destroy_app)  

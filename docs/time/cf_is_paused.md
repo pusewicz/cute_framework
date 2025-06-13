@@ -7,10 +7,7 @@ parent: time
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_is_paused
 
-Category: [time](/docs/time)  
-GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)  
----
-
+GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)
 Returns true if the application is currently paused.
 
 ```cpp
@@ -19,10 +16,10 @@ bool cf_is_paused();
 
 ## Remarks
 
-Pause means from [cf_pause_for](/time/cf_pause_for.md) or [cf_pause_for_ticks](/time/cf_pause_for_ticks.md).
+Pause means from [cf_pause_for](/time/cf_pause_for) or [cf_pause_for_ticks](/time/cf_pause_for_ticks).
 
 ## Related Pages
 
-  * [CF_PAUSE_TIME_LEFT](/time/cf_pause_time_left.md)  
-  * [cf_pause_for_ticks](/time/cf_pause_for_ticks.md)  
-  * [cf_pause_for](/time/cf_pause_for.md)  
+  * [CF_PAUSE_TIME_LEFT](/time/cf_pause_time_left)  
+  * [cf_pause_for_ticks](/time/cf_pause_for_ticks)  
+  * [cf_pause_for](/time/cf_pause_for)  

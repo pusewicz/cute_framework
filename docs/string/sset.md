@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sset
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Copies the string `b` into string `a`.
 
 ```cpp
@@ -24,10 +21,10 @@ b | Source for copying.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sfmt](/string/sfmt.md)  
-  * [sfmt_append](/string/sfmt_append.md)  
-  * [svfmt](/string/svfmt.md)  
-  * [svfmt_append](/string/svfmt_append.md)  
-  * [smake](/string/smake.md)  
-  * [sdup](/string/sdup.md)  
+  * [sdyna](/string/sdyna)  
+  * [sfmt](/string/sfmt)  
+  * [sfmt_append](/string/sfmt_append)  
+  * [svfmt](/string/svfmt)  
+  * [svfmt_append](/string/svfmt_append)  
+  * [smake](/string/smake)  
+  * [sdup](/string/sdup)  

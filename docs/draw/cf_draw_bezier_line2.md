@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_bezier_line2
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Draws line segments over a cubic bezier line.
 
 ```cpp
@@ -28,7 +25,7 @@ iters | The number of lines used to draw the bezier spline.
 
 ## Related Pages
 
-  * [cf_draw_line](/draw/cf_draw_line.md)  
-  * [cf_draw_polyline](/draw/cf_draw_polyline.md)  
-  * [cf_draw_bezier_line](/draw/cf_draw_bezier_line.md)  
-  * [cf_draw_arrow](/draw/cf_draw_arrow.md)  
+  * [cf_draw_line](/draw/cf_draw_line)  
+  * [cf_draw_polyline](/draw/cf_draw_polyline)  
+  * [cf_draw_bezier_line](/draw/cf_draw_bezier_line)  
+  * [cf_draw_arrow](/draw/cf_draw_arrow)  

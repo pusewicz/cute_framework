@@ -7,10 +7,7 @@ parent: time
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_on_interval
 
-Category: [time](/docs/time)  
-GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)  
----
-
+GitHub: [cute_time.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_time.h)
 Returns true for one frame update each time an interval of seconds elapses.
 
 ```cpp
@@ -25,5 +22,5 @@ Simply place this within an if-statement!
 
 ## Related Pages
 
-  * [cf_on_timestamp](/time/cf_on_timestamp.md)  
-  * [cf_between_interval](/time/cf_between_interval.md)  
+  * [cf_on_timestamp](/time/cf_on_timestamp)  
+  * [cf_between_interval](/time/cf_between_interval)  

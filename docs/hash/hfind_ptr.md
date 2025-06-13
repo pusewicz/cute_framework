@@ -7,10 +7,7 @@ parent: hash
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # hfind_ptr
 
-Category: [hash](/docs/hash)  
-GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)  
----
-
+GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)
 Fetches a pointer to the item that `k` maps to.
 
 ```cpp
@@ -42,22 +39,22 @@ hfree(table);
 
 ## Remarks
 
-If you want to fetch an item by value, you can use [hget](/hash/hget.md) or [hfind](/hash/hfind.md). Does the same thing as [hget_ptr](/hash/hget_ptr.md).
+If you want to fetch an item by value, you can use [hget](/hash/hget) or [hfind](/hash/hfind). Does the same thing as [hget_ptr](/hash/hget_ptr).
 
 ## Related Pages
 
-  * [htbl](/hash/htbl.md)  
-  * [hset](/hash/hset.md)  
-  * [hadd](/hash/hadd.md)  
-  * [hget](/hash/hget.md)  
-  * [hfind](/hash/hfind.md)  
-  * [hget_ptr](/hash/hget_ptr.md)  
-  * [hfree](/hash/hfree.md)  
-  * [hhas](/hash/hhas.md)  
-  * [hdel](/hash/hdel.md)  
-  * [hclear](/hash/hclear.md)  
-  * [hkeys](/hash/hkeys.md)  
-  * [hitems](/hash/hitems.md)  
-  * [hswap](/hash/hswap.md)  
-  * [hsize](/hash/hsize.md)  
-  * [hcount](/hash/hcount.md)  
+  * [htbl](/hash/htbl)  
+  * [hset](/hash/hset)  
+  * [hadd](/hash/hadd)  
+  * [hget](/hash/hget)  
+  * [hfind](/hash/hfind)  
+  * [hget_ptr](/hash/hget_ptr)  
+  * [hfree](/hash/hfree)  
+  * [hhas](/hash/hhas)  
+  * [hdel](/hash/hdel)  
+  * [hclear](/hash/hclear)  
+  * [hkeys](/hash/hkeys)  
+  * [hitems](/hash/hitems)  
+  * [hswap](/hash/hswap)  
+  * [hsize](/hash/hsize)  
+  * [hcount](/hash/hcount)  

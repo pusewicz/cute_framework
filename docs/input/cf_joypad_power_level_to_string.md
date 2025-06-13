@@ -7,11 +7,8 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_joypad_power_level_to_string
 
-Category: [input](/docs/input)  
-GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)  
----
-
-Convert an enum [CF_JoypadPowerLevel](/input/cf_joypadpowerlevel.md) to a c-style string.
+GitHub: [cute_joypad.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_joypad.h)
+Convert an enum [CF_JoypadPowerLevel](/input/cf_joypadpowerlevel) to a c-style string.
 
 ```cpp
 const char* cf_joypad_power_level_to_string(CF_JoypadPowerLevel level)
@@ -23,6 +20,6 @@ state | The state to convert to a string.
 
 ## Related Pages
 
-  * [CF_JoypadPowerLevel](/input/cf_joypadpowerlevel.md)  
+  * [CF_JoypadPowerLevel](/input/cf_joypadpowerlevel)  
   * CF_Joypad  
-  * [cf_joypad_power_level](/input/cf_joypad_power_level.md)  
+  * [cf_joypad_power_level](/input/cf_joypad_power_level)  

@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_client_state_get
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Returns the [CF_ClientState](/net/cf_clientstate.md) of a [CF_Client](/net/cf_client.md).
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Returns the [CF_ClientState](/net/cf_clientstate) of a [CF_Client](/net/cf_client).
 
 ```cpp
 CF_ClientState cf_client_state_get(const CF_Client* client);
@@ -19,5 +16,5 @@ CF_ClientState cf_client_state_get(const CF_Client* client);
 
 ## Related Pages
 
-  * [CF_ClientState](/net/cf_clientstate.md)  
-  * [cf_client_state_to_string](/net/cf_client_state_to_string.md)  
+  * [CF_ClientState](/net/cf_clientstate)  
+  * [cf_client_state_to_string](/net/cf_client_state_to_string)  

@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_fs_read_entire_file_to_memory_and_nul_terminate
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Reads an entire file into a buffer of memory and returns it as a nul-terminated C string.
 
 ```cpp
@@ -24,10 +21,10 @@ size | If the file exists the size of the file is stored here.
 
 ## Remarks
 
-Call [cf_free](/allocator/cf_free.md) on it when done. [Virtual File System](https://randygaul.github.io/cute_framework/#/topics/virtual_file_system).
+Call [cf_free](/allocator/cf_free) on it when done. [Virtual File System](https://randygaul.github.io/cute_framework/#/topics/virtual_file_system).
 
 ## Related Pages
 
-  * [cf_fs_read_entire_file_to_memory](/file/cf_fs_read_entire_file_to_memory.md)  
+  * [cf_fs_read_entire_file_to_memory](/file/cf_fs_read_entire_file_to_memory)  
   * cf_fs_write_string_file  
-  * [cf_fs_write_entire_buffer_to_file](/file/cf_fs_write_entire_buffer_to_file.md)  
+  * [cf_fs_write_entire_buffer_to_file](/file/cf_fs_write_entire_buffer_to_file)  

@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # File Types
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 The various kinds of files that can be opened.
 
 ## Values
@@ -24,6 +21,6 @@ FILE_TYPE_OTHER | An unknown file type.
 
 ## Related Pages
 
-  * [CF_File](/file/cf_file.md)  
-  * [CF_Stat](/file/cf_stat.md)  
-  * [cf_file_type_to_string](/file/cf_file_type_to_string.md)  
+  * [CF_File](/file/cf_file)  
+  * [CF_Stat](/file/cf_stat)  
+  * [cf_file_type_to_string](/file/cf_file_type_to_string)  

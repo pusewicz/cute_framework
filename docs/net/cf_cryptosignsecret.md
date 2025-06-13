@@ -7,15 +7,12 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_CryptoSignSecret
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 One-half of a cryptographically secure keypair. This key must be kept secret and hidden with your servers.
 
 ## Related Pages
 
-  * [CF_CryptoKey](/net/cf_cryptokey.md)  
-  * [CF_CryptoSignPublic](/net/cf_cryptosignpublic.md)  
-  * [CF_ServerConfig](/net/cf_serverconfig.md)  
-  * [cf_crypto_sign_keygen](/net/cf_crypto_sign_keygen.md)  
+  * [CF_CryptoKey](/net/cf_cryptokey)  
+  * [CF_CryptoSignPublic](/net/cf_cryptosignpublic)  
+  * [CF_ServerConfig](/net/cf_serverconfig)  
+  * [cf_crypto_sign_keygen](/net/cf_crypto_sign_keygen)  

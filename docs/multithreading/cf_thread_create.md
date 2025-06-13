@@ -7,11 +7,8 @@ parent: multithreading
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_thread_create
 
-Category: [multithreading](/docs/multithreading)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
-Creates a new thread and runs it's thread function ([CF_ThreadFn](/multithreading/cf_threadfn.md)).
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
+Creates a new thread and runs it's thread function ([CF_ThreadFn](/multithreading/cf_threadfn)).
 
 ```cpp
 CF_Thread* cf_thread_create(CF_ThreadFn func, const char* name, void* udata);
@@ -25,7 +22,7 @@ udata | Can be `NULL`. This gets handed back to you in your `func`.
 
 ## Return Value
 
-Returns an opaque pointer to [CF_Thread](/multithreading/cf_thread.md).
+Returns an opaque pointer to [CF_Thread](/multithreading/cf_thread).
 
 ## Code Example
 
@@ -41,14 +38,14 @@ int MyThreadFn(void udata)
 
 ## Remarks
 
-Unless you call [cf_thread_detach](/multithreading/cf_thread_detach.md) you should call [cf_thread_wait](/multithreading/cf_thread_wait.md) from another thread to
+Unless you call [cf_thread_detach](/multithreading/cf_thread_detach) you should call [cf_thread_wait](/multithreading/cf_thread_wait) from another thread to
 clean up resources and get the thread's return value back. It is considered a leak otherwise.
 
 ## Related Pages
 
-  * [CF_Thread](/multithreading/cf_thread.md)  
-  * [CF_ThreadFn](/multithreading/cf_threadfn.md)  
-  * [cf_thread_wait](/multithreading/cf_thread_wait.md)  
-  * [cf_thread_detach](/multithreading/cf_thread_detach.md)  
-  * [cf_thread_get_id](/multithreading/cf_thread_get_id.md)  
-  * [cf_thread_id](/multithreading/cf_thread_id.md)  
+  * [CF_Thread](/multithreading/cf_thread)  
+  * [CF_ThreadFn](/multithreading/cf_threadfn)  
+  * [cf_thread_wait](/multithreading/cf_thread_wait)  
+  * [cf_thread_detach](/multithreading/cf_thread_detach)  
+  * [cf_thread_get_id](/multithreading/cf_thread_get_id)  
+  * [cf_thread_id](/multithreading/cf_thread_id)  

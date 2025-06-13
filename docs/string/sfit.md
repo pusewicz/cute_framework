@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sfit
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Ensures the capacity of the string is at least n+1 elements.
 
 ```cpp
@@ -28,6 +25,6 @@ Does not change the size/count of the string, or the len. This function is just 
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sclear](/string/sclear.md)  
-  * [scap](/string/scap.md)  
+  * [sdyna](/string/sdyna)  
+  * [sclear](/string/sclear)  
+  * [scap](/string/scap)  

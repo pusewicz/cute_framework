@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_greater_v2
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns true if `a.x > b.y` and `a.y > b.y`.
 
 ```cpp
@@ -19,9 +16,9 @@ int cf_greater_v2(CF_V2 a, CF_V2 b)
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_round](/math/cf_round.md)  
-  * [cf_lesser_v2](/math/cf_lesser_v2.md)  
-  * [cf_parallel](/math/cf_parallel.md)  
-  * [cf_lesser_equal_v2](/math/cf_lesser_equal_v2.md)  
-  * [cf_greater_equal_v2](/math/cf_greater_equal_v2.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_round](/math/cf_round)  
+  * [cf_lesser_v2](/math/cf_lesser_v2)  
+  * [cf_parallel](/math/cf_parallel)  
+  * [cf_lesser_equal_v2](/math/cf_lesser_equal_v2)  
+  * [cf_greater_equal_v2](/math/cf_greater_equal_v2)  

@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_blend_factor_string
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a [CF_BlendFactor](/graphics/cf_blendfactor.md) converted to a C string.
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a [CF_BlendFactor](/graphics/cf_blendfactor) converted to a C string.
 
 ```cpp
 const char* cf_blend_factor_string(CF_BlendFactor factor)
@@ -19,5 +16,5 @@ const char* cf_blend_factor_string(CF_BlendFactor factor)
 
 ## Related Pages
 
-  * [CF_BlendFactor](/graphics/cf_blendfactor.md)  
-  * [CF_BlendState](/graphics/cf_blendstate.md)  
+  * [CF_BlendFactor](/graphics/cf_blendfactor)  
+  * [CF_BlendState](/graphics/cf_blendstate)  

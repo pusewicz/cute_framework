@@ -7,11 +7,8 @@ parent: multithreading
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_destroy_cv
 
-Category: [multithreading](/docs/multithreading)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
-Destroys a [CF_ConditionVariable](/multithreading/cf_conditionvariable.md) created with [cf_make_cv](/multithreading/cf_make_cv.md).
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
+Destroys a [CF_ConditionVariable](/multithreading/cf_conditionvariable) created with [cf_make_cv](/multithreading/cf_make_cv).
 
 ```cpp
 void cf_destroy_cv(CF_ConditionVariable* cv);
@@ -23,8 +20,8 @@ cv | The condition variable.
 
 ## Related Pages
 
-  * [CF_ConditionVariable](/multithreading/cf_conditionvariable.md)  
-  * [cf_make_cv](/multithreading/cf_make_cv.md)  
-  * [cf_cv_wait](/multithreading/cf_cv_wait.md)  
-  * [cf_cv_wake_all](/multithreading/cf_cv_wake_all.md)  
-  * [cf_cv_wake_one](/multithreading/cf_cv_wake_one.md)  
+  * [CF_ConditionVariable](/multithreading/cf_conditionvariable)  
+  * [cf_make_cv](/multithreading/cf_make_cv)  
+  * [cf_cv_wait](/multithreading/cf_cv_wait)  
+  * [cf_cv_wake_all](/multithreading/cf_cv_wake_all)  
+  * [cf_cv_wake_one](/multithreading/cf_cv_wake_one)  

@@ -7,10 +7,7 @@ parent: png_cache
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_png_cache_get_animation_table
 
-Category: [png_cache](/docs/png_cache)  
-GitHub: [cute_png_cache.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_png_cache.h)  
----
-
+GitHub: [cute_png_cache.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_png_cache.h)
 Looks up an animation table within the png cache by name.
 
 ```cpp
@@ -23,12 +20,12 @@ sprite_name | A unique name for the animation table.
 
 ## Return Value
 
-Returns a hashtable of unique sprite names to [CF_Animation](/sprite/cf_animation.md)'s, see [cf_make_png_cache_sprite](/png_cache/cf_make_png_cache_sprite.md).
+Returns a hashtable of unique sprite names to [CF_Animation](/sprite/cf_animation)'s, see [cf_make_png_cache_sprite](/png_cache/cf_make_png_cache_sprite).
 
 ## Related Pages
 
-  * [CF_Png](/png_cache/cf_png.md)  
-  * [cf_png_cache_load](/png_cache/cf_png_cache_load.md)  
-  * [cf_make_png_cache_animation](/png_cache/cf_make_png_cache_animation.md)  
-  * [cf_make_png_cache_animation_table](/png_cache/cf_make_png_cache_animation_table.md)  
-  * [cf_make_png_cache_sprite](/png_cache/cf_make_png_cache_sprite.md)  
+  * [CF_Png](/png_cache/cf_png)  
+  * [cf_png_cache_load](/png_cache/cf_png_cache_load)  
+  * [cf_make_png_cache_animation](/png_cache/cf_make_png_cache_animation)  
+  * [cf_make_png_cache_animation_table](/png_cache/cf_make_png_cache_animation_table)  
+  * [cf_make_png_cache_sprite](/png_cache/cf_make_png_cache_sprite)  

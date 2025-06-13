@@ -7,19 +7,16 @@ parent: web
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_HttpsResponse
 
-Category: [web](/docs/web)  
-GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)  
----
-
+GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)
 Represents an [HTTPS response](https://www.ibm.com/docs/en/cics-ts/5.2?topic=protocol-http-responses).
 
 ## Remarks
 
-The response may be fetched from a [CF_HttpsRequest](/web/cf_httpsrequest.md) by calling [cf_https_response](/web/cf_https_response.md).
+The response may be fetched from a [CF_HttpsRequest](/web/cf_httpsrequest) by calling [cf_https_response](/web/cf_https_response).
 
 ## Related Pages
 
-  * [CF_HttpsRequest](/web/cf_httpsrequest.md)  
-  * [cf_https_response_content](/web/cf_https_response_content.md)  
-  * [cf_https_response](/web/cf_https_response.md)  
-  * [cf_https_response_find_header](/web/cf_https_response_find_header.md)  
+  * [CF_HttpsRequest](/web/cf_httpsrequest)  
+  * [cf_https_response_content](/web/cf_https_response_content)  
+  * [cf_https_response](/web/cf_https_response)  
+  * [cf_https_response_find_header](/web/cf_https_response_find_header)  

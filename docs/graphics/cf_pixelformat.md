@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_PixelFormat
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 The various supported pixel formats for GPU.
 
 ## Values
@@ -82,5 +79,5 @@ The `PIXEL_FORMAT_R8G8B8A8_UNORM` represents a safe default format.
 
 ## Related Pages
 
-  * [CF_PixelFormatOp](/graphics/cf_pixelformatop.md)  
-  * [cf_pixel_format_to_string](/graphics/cf_pixel_format_to_string.md)  
+  * [CF_PixelFormatOp](/graphics/cf_pixelformatop)  
+  * [cf_pixel_format_to_string](/graphics/cf_pixel_format_to_string)  

@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_push_antialias
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Pushes whether or not to apply antialiasing.
 
 ```cpp
@@ -28,5 +25,5 @@ but looks much smoother.
 
 ## Related Pages
 
-  * [cf_draw_peek_antialias](/draw/cf_draw_peek_antialias.md)  
-  * [cf_draw_pop_antialias](/draw/cf_draw_pop_antialias.md)  
+  * [cf_draw_peek_antialias](/draw/cf_draw_peek_antialias)  
+  * [cf_draw_pop_antialias](/draw/cf_draw_pop_antialias)  

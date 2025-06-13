@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_clipboard_set
 
-Category: [input](/docs/input)  
-GitHub: [cute_clipboard.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_clipboard.h)  
----
-
+GitHub: [cute_clipboard.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_clipboard.h)
 Sets a UTF-8 string of the clipboard contents.
 
 ```cpp
@@ -19,4 +16,4 @@ CF_Result cf_clipboard_set(const char* string);
 
 ## Related Pages
 
-  * [cf_clipboard_get](/input/cf_clipboard_get.md)  
+  * [cf_clipboard_get](/input/cf_clipboard_get)  

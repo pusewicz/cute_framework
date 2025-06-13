@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # scap
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Gets the capacity of the string.
 
 ```cpp
@@ -24,11 +21,11 @@ s | The string. Can be `NULL`.
 ## Remarks
 
 This is not the number of characters, but the size of the internal buffer. The capacity automatically grows as necessary, but
-you can use [sfit](/string/sfit.md) to ensure a minimum capacity manually, as an optimization.
+you can use [sfit](/string/sfit) to ensure a minimum capacity manually, as an optimization.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [slen](/string/slen.md)  
-  * [scount](/string/scount.md)  
-  * [sempty](/string/sempty.md)  
+  * [sdyna](/string/sdyna)  
+  * [slen](/string/slen)  
+  * [scount](/string/scount)  
+  * [sempty](/string/sempty)  

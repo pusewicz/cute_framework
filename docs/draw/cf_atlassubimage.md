@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_AtlasSubImage
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Represents a single sub-image within an atlas, defined by a uv coordinate pair.
 
 Struct Members | Description
@@ -22,5 +19,5 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [cf_make_premade_sprite](/draw/cf_make_premade_sprite.md)  
-  * [cf_register_premade_atlas](/draw/cf_register_premade_atlas.md)  
+  * [cf_make_premade_sprite](/draw/cf_make_premade_sprite)  
+  * [cf_register_premade_atlas](/draw/cf_register_premade_atlas)  

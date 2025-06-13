@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_assert_fn
 
-Category: [app](/docs/app)  
-GitHub: [cute_defines.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_defines.h)  
----
-
+GitHub: [cute_defines.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_defines.h)
 An assert handling function.
 
 ```cpp
@@ -26,4 +23,4 @@ line | The line number the assert came from.
 
 ## Related Pages
 
-  * [cf_set_assert_handler](/app/cf_set_assert_handler.md)  
+  * [cf_set_assert_handler](/app/cf_set_assert_handler)  

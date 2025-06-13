@@ -7,10 +7,7 @@ parent: input
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_KeyButton
 
-Category: [input](/docs/input)  
-GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)  
----
-
+GitHub: [cute_input.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_input.h)
 The keys.
 
 ## Values
@@ -257,5 +254,5 @@ KEY_COUNT | (null)
 
 ## Related Pages
 
-  * [cf_key_down](/input/cf_key_down.md)  
-  * [cf_key_button_to_string](/input/cf_key_button_to_string.md)  
+  * [cf_key_down](/input/cf_key_down)  
+  * [cf_key_button_to_string](/input/cf_key_button_to_string)  

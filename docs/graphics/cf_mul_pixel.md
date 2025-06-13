@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mul_pixel
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
-Multiplies a [CF_Pixel](/graphics/cf_pixel.md) by an unsigned 8-bit number.
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
+Multiplies a [CF_Pixel](/graphics/cf_pixel) by an unsigned 8-bit number.
 
 ```cpp
 CF_Pixel cf_mul_pixel(CF_Pixel a, uint8_t s)
@@ -24,8 +21,8 @@ b | An 8-bit value.
 
 ## Related Pages
 
-  * [cf_pixel_premultiply](/graphics/cf_pixel_premultiply.md)  
-  * [cf_div_pixel](/graphics/cf_div_pixel.md)  
-  * [cf_add_pixel](/graphics/cf_add_pixel.md)  
-  * [cf_sub_pixel](/graphics/cf_sub_pixel.md)  
-  * [cf_pixel_lerp](/graphics/cf_pixel_lerp.md)  
+  * [cf_pixel_premultiply](/graphics/cf_pixel_premultiply)  
+  * [cf_div_pixel](/graphics/cf_div_pixel)  
+  * [cf_add_pixel](/graphics/cf_add_pixel)  
+  * [cf_sub_pixel](/graphics/cf_sub_pixel)  
+  * [cf_pixel_lerp](/graphics/cf_pixel_lerp)  

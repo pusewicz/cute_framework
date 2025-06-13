@@ -7,10 +7,7 @@ parent: hash
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # hget
 
-Category: [hash](/docs/hash)  
-GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)  
----
-
+GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)
 Fetches the item that `k` maps to.
 
 ```cpp
@@ -42,23 +39,23 @@ hfree(table);
 ## Remarks
 
 Items are returned by value, not pointer. If the item doesn't exist a zero'd out item is instead returned. If you want to get a pointer
-(so you can see if it's `NULL` in case the item didn't exist, then use [hget_ptr](/hash/hget_ptr.md)). You can also call [hhas](/hash/hhas.md) for a bool. This function does
-the same as [hfind](/hash/hfind.md).
+(so you can see if it's `NULL` in case the item didn't exist, then use [hget_ptr](/hash/hget_ptr)). You can also call [hhas](/hash/hhas) for a bool. This function does
+the same as [hfind](/hash/hfind).
 
 ## Related Pages
 
-  * [htbl](/hash/htbl.md)  
-  * [hset](/hash/hset.md)  
-  * [hadd](/hash/hadd.md)  
-  * [hfree](/hash/hfree.md)  
-  * [hfind](/hash/hfind.md)  
-  * [hget_ptr](/hash/hget_ptr.md)  
-  * [hfind_ptr](/hash/hfind_ptr.md)  
-  * [hhas](/hash/hhas.md)  
-  * [hdel](/hash/hdel.md)  
-  * [hclear](/hash/hclear.md)  
-  * [hkeys](/hash/hkeys.md)  
-  * [hitems](/hash/hitems.md)  
-  * [hswap](/hash/hswap.md)  
-  * [hsize](/hash/hsize.md)  
-  * [hcount](/hash/hcount.md)  
+  * [htbl](/hash/htbl)  
+  * [hset](/hash/hset)  
+  * [hadd](/hash/hadd)  
+  * [hfree](/hash/hfree)  
+  * [hfind](/hash/hfind)  
+  * [hget_ptr](/hash/hget_ptr)  
+  * [hfind_ptr](/hash/hfind_ptr)  
+  * [hhas](/hash/hhas)  
+  * [hdel](/hash/hdel)  
+  * [hclear](/hash/hclear)  
+  * [hkeys](/hash/hkeys)  
+  * [hitems](/hash/hitems)  
+  * [hswap](/hash/hswap)  
+  * [hsize](/hash/hsize)  
+  * [hcount](/hash/hcount)  

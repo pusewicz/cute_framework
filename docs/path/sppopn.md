@@ -7,10 +7,7 @@ parent: path
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sppopn
 
-Category: [path](/docs/path)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Removes the rightmost n files or directories from the path.
 
 ```cpp
@@ -25,7 +22,7 @@ n | The number of files to pop from the directory path.
 ## Return Value
 
 If the string is not a dynamic string from CF's string API, a new string is returned. Otherwise the
-string is modified in-place. You must call [sfree](/string/sfree.md) if a new dynamic string is returned, when done.
+string is modified in-place. You must call [sfree](/string/sfree) if a new dynamic string is returned, when done.
 
 ## Remarks
 
@@ -33,12 +30,12 @@ string is modified in-place. You must call [sfree](/string/sfree.md) if a new dy
 
 ## Related Pages
 
-  * [spfname](/path/spfname.md)  
-  * [spfname_no_ext](/path/spfname_no_ext.md)  
-  * [spext](/path/spext.md)  
-  * [spext_equ](/path/spext_equ.md)  
-  * [sppop](/path/sppop.md)  
-  * [spnorm](/path/spnorm.md)  
-  * [spcompact](/path/spcompact.md)  
-  * [spdir_of](/path/spdir_of.md)  
-  * [sptop_of](/path/sptop_of.md)  
+  * [spfname](/path/spfname)  
+  * [spfname_no_ext](/path/spfname_no_ext)  
+  * [spext](/path/spext)  
+  * [spext_equ](/path/spext_equ)  
+  * [sppop](/path/sppop)  
+  * [spnorm](/path/spnorm)  
+  * [spcompact](/path/spcompact)  
+  * [spdir_of](/path/spdir_of)  
+  * [sptop_of](/path/sptop_of)  

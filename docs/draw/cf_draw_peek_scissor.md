@@ -7,11 +7,8 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_peek_scissor
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
-Returns the last [CF_Rect](/math/cf_rect.md) for the scissor box.
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
+Returns the last [CF_Rect](/math/cf_rect) for the scissor box.
 
 ```cpp
 CF_Rect cf_draw_peek_scissor();

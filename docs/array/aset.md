@@ -7,11 +7,8 @@ parent: array
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # aset
 
-Category: [array](/docs/array)  
-GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)  
----
-
-Copies the array b into array a. Will automatically fit a if needed with [afit](/array/afit.md).
+GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)
+Copies the array b into array a. Will automatically fit a if needed with [afit](/array/afit).
 
 ```cpp
 #define aset(a, b) cf_array_set(a, b)
@@ -28,18 +25,18 @@ Returns a pointer to `a`. `a` will automatically be reassigned to any new pointe
 
 ## Related Pages
 
-  * [dyna](/array/dyna.md)  
-  * [asize](/array/asize.md)  
-  * [acount](/array/acount.md)  
-  * [acap](/array/acap.md)  
-  * [afit](/array/afit.md)  
-  * [apush](/array/apush.md)  
-  * [apop](/array/apop.md)  
-  * [aend](/array/aend.md)  
-  * [alast](/array/alast.md)  
-  * [aclear](/array/aclear.md)  
-  * [afree](/array/afree.md)  
-  * [arev](/array/arev.md)  
-  * [ahash](/array/ahash.md)  
-  * [adel](/array/adel.md)  
-  * [astatic](/array/astatic.md)  
+  * [dyna](/array/dyna)  
+  * [asize](/array/asize)  
+  * [acount](/array/acount)  
+  * [acap](/array/acap)  
+  * [afit](/array/afit)  
+  * [apush](/array/apush)  
+  * [apop](/array/apop)  
+  * [aend](/array/aend)  
+  * [alast](/array/alast)  
+  * [aclear](/array/aclear)  
+  * [afree](/array/afree)  
+  * [arev](/array/arev)  
+  * [ahash](/array/ahash)  
+  * [adel](/array/adel)  
+  * [astatic](/array/astatic)  

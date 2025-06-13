@@ -7,11 +7,8 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_ray
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
-Returns an initialize [CF_Ray](/math/cf_ray.md).
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
+Returns an initialize [CF_Ray](/math/cf_ray).
 
 ```cpp
 CF_Ray cf_make_ray(CF_V2 start, CF_V2 direction_normalized, float length)
@@ -19,4 +16,4 @@ CF_Ray cf_make_ray(CF_V2 start, CF_V2 direction_normalized, float length)
 
 ## Related Pages
 
-  * [CF_Ray](/math/cf_ray.md)  
+  * [CF_Ray](/math/cf_ray)  

@@ -7,19 +7,16 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_RenderState
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 A bag of rendering related settings.
 
 Struct Members | Description
 --- | ---
-`CF_CullMode cull_mode` | Controls whether or not to cull triangles based on their winding order. See [CF_CullMode](/graphics/cf_cullmode.md).
-`CF_BlendState blend` | Controls how the GPU blends pixels together during compositing. See [CF_BlendState](/graphics/cf_blendstate.md).
-`CF_CompareFunction depth_compare` | Defines how to perform depth-testing. See [CF_CompareFunction](/graphics/cf_comparefunction.md).
+`CF_CullMode cull_mode` | Controls whether or not to cull triangles based on their winding order. See [CF_CullMode](/graphics/cf_cullmode).
+`CF_BlendState blend` | Controls how the GPU blends pixels together during compositing. See [CF_BlendState](/graphics/cf_blendstate).
+`CF_CompareFunction depth_compare` | Defines how to perform depth-testing. See [CF_CompareFunction](/graphics/cf_comparefunction).
 `bool depth_write_enabled` | Must be true to enable depth-testing and use of the depth buffer.
-`CF_StencilParams stencil` | Sets up how to perform (if at all) stencil testing. See [CF_StencilParams](/graphics/cf_stencilparams.md).
+`CF_StencilParams stencil` | Sets up how to perform (if at all) stencil testing. See [CF_StencilParams](/graphics/cf_stencilparams).
 `float depth_bias_constant_factor` | A scalar factor controlling the depth value added to each fragment.
 `float depth_bias_clamp` | The maximum depth bias of a fragment.
 `float depth_bias_slope_factor` | A scalar factor applied to a fragment's slope in depth calculations.
@@ -28,14 +25,14 @@ Struct Members | Description
 
 ## Remarks
 
-The [CF_RenderState](/graphics/cf_renderstate.md) is a big collection of various rendering settings, such as culling mode,
+The [CF_RenderState](/graphics/cf_renderstate) is a big collection of various rendering settings, such as culling mode,
 blending operations, depth and stencil settings, etc. Altering these on a material always means
 increasing your draw call count. It's best to try and set these once and leave them alone, though
 this is not always possible.
 
 ## Related Pages
 
-  * [CF_BlendState](/graphics/cf_blendstate.md)  
-  * [CF_CullMode](/graphics/cf_cullmode.md)  
-  * [CF_StencilParams](/graphics/cf_stencilparams.md)  
-  * [cf_material_set_render_state](/graphics/cf_material_set_render_state.md)  
+  * [CF_BlendState](/graphics/cf_blendstate)  
+  * [CF_CullMode](/graphics/cf_cullmode)  
+  * [CF_StencilParams](/graphics/cf_stencilparams)  
+  * [cf_material_set_render_state](/graphics/cf_material_set_render_state)  

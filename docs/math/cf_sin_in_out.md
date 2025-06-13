@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sin_in_out
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the sin ease of a float from 0.0f to 1.0f.
 
 ```cpp
@@ -23,5 +20,5 @@ Here is a great link to [visualize each easing function](https://easings.net/).
 
 ## Related Pages
 
-  * [cf_sin_in](/math/cf_sin_in.md)  
-  * [cf_sin_out](/math/cf_sin_out.md)  
+  * [cf_sin_in](/math/cf_sin_in)  
+  * [cf_sin_out](/math/cf_sin_out)  

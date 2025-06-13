@@ -7,13 +7,10 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Address
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 A network address.
 
 ## Related Pages
 
-  * [cf_address_init](/net/cf_address_init.md)  
+  * [cf_address_init](/net/cf_address_init)  
   * CF_AddressType  

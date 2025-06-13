@@ -7,17 +7,14 @@ parent: multithreading
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Threadpool
 
-Category: [multithreading](/docs/multithreading)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
 An opaque handle representing a threadpool.
 
 ## Related Pages
 
-  * [cf_threadpool_kick](/multithreading/cf_threadpool_kick.md)  
-  * [CF_TaskFn](/multithreading/cf_taskfn.md)  
-  * [cf_make_threadpool](/multithreading/cf_make_threadpool.md)  
-  * [cf_destroy_threadpool](/multithreading/cf_destroy_threadpool.md)  
-  * [cf_threadpool_add_task](/multithreading/cf_threadpool_add_task.md)  
-  * [cf_threadpool_kick_and_wait](/multithreading/cf_threadpool_kick_and_wait.md)  
+  * [cf_threadpool_kick](/multithreading/cf_threadpool_kick)  
+  * [CF_TaskFn](/multithreading/cf_taskfn)  
+  * [cf_make_threadpool](/multithreading/cf_make_threadpool)  
+  * [cf_destroy_threadpool](/multithreading/cf_destroy_threadpool)  
+  * [cf_threadpool_add_task](/multithreading/cf_threadpool_add_task)  
+  * [cf_threadpool_kick_and_wait](/multithreading/cf_threadpool_kick_and_wait)  

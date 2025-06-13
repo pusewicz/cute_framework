@@ -7,10 +7,7 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Arena
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
 A simple way to allocate memory without calling `malloc` too often.
 
 ## Remarks
@@ -19,6 +16,6 @@ Individual allocations cannot be free'd, instead the entire allocator can reset.
 
 ## Related Pages
 
-  * [cf_arena_init](/allocator/cf_arena_init.md)  
-  * [cf_arena_alloc](/allocator/cf_arena_alloc.md)  
-  * [cf_arena_reset](/allocator/cf_arena_reset.md)  
+  * [cf_arena_init](/allocator/cf_arena_init)  
+  * [cf_arena_alloc](/allocator/cf_arena_alloc)  
+  * [cf_arena_reset](/allocator/cf_arena_reset)  

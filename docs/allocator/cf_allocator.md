@@ -7,10 +7,7 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Allocator
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
 A simple way to allocate memory without calling `malloc` too often.
 
 Struct Members | Description
@@ -27,9 +24,9 @@ Individual allocations cannot be free'd, instead the entire allocator can reset.
 
 ## Related Pages
 
-  * [cf_realloc](/allocator/cf_realloc.md)  
-  * [cf_allocator_override](/allocator/cf_allocator_override.md)  
-  * [cf_allocator_restore_default](/allocator/cf_allocator_restore_default.md)  
-  * [cf_alloc](/allocator/cf_alloc.md)  
-  * [cf_free](/allocator/cf_free.md)  
-  * [cf_calloc](/allocator/cf_calloc.md)  
+  * [cf_realloc](/allocator/cf_realloc)  
+  * [cf_allocator_override](/allocator/cf_allocator_override)  
+  * [cf_allocator_restore_default](/allocator/cf_allocator_restore_default)  
+  * [cf_alloc](/allocator/cf_alloc)  
+  * [cf_free](/allocator/cf_free)  
+  * [cf_calloc](/allocator/cf_calloc)  

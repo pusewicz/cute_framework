@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_hull
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Computes 2D convex hull.
 
 ```cpp
@@ -33,4 +30,4 @@ Will not do anything if less than two verts supplied. If more than CF_POLY_MAX_V
 
 ## Related Pages
 
-  * [CF_Poly](/collision/cf_poly.md)  
+  * [CF_Poly](/collision/cf_poly)  

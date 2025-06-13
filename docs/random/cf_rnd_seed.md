@@ -7,11 +7,8 @@ parent: random
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_rnd_seed
 
-Category: [random](/docs/random)  
-GitHub: [cute_rnd.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_rnd.h)  
----
-
-Returns an initialized [CF_Rnd](/random/cf_rnd.md) based on an initial `seed` value.
+GitHub: [cute_rnd.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_rnd.h)
+Returns an initialized [CF_Rnd](/random/cf_rnd) based on an initial `seed` value.
 
 ```cpp
 CF_Rnd cf_rnd_seed(uint64_t seed);
@@ -28,5 +25,5 @@ deterministic way, so it's often important for many games to control or note whi
 
 ## Related Pages
 
-  * [CF_Rnd](/random/cf_rnd.md)  
-  * [cf_rnd](/random/cf_rnd.md)  
+  * [CF_Rnd](/random/cf_rnd)  
+  * [cf_rnd](/random/cf_rnd)  

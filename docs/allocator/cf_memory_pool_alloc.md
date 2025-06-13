@@ -7,11 +7,8 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_memory_pool_alloc
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
-Allocates a chunk of memory from the pool. The allocation size was determined by `element_size` in [cf_make_memory_pool](/allocator/cf_make_memory_pool.md).
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
+Allocates a chunk of memory from the pool. The allocation size was determined by `element_size` in [cf_make_memory_pool](/allocator/cf_make_memory_pool).
 
 ```cpp
 void* cf_memory_pool_alloc(CF_MemoryPool* pool);
@@ -27,6 +24,6 @@ Returns an aligned pointer of `size` bytes.
 
 ## Related Pages
 
-  * [cf_make_memory_pool](/allocator/cf_make_memory_pool.md)  
-  * [cf_destroy_memory_pool](/allocator/cf_destroy_memory_pool.md)  
-  * [cf_memory_pool_free](/allocator/cf_memory_pool_free.md)  
+  * [cf_make_memory_pool](/allocator/cf_make_memory_pool)  
+  * [cf_destroy_memory_pool](/allocator/cf_destroy_memory_pool)  
+  * [cf_memory_pool_free](/allocator/cf_memory_pool_free)  

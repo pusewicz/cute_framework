@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_texture
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a new [CF_Texture](/graphics/cf_texture.md).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a new [CF_Texture](/graphics/cf_texture).
 
 ```cpp
 CF_Texture cf_make_texture(CF_TextureParams texture_params);
@@ -19,15 +16,15 @@ CF_Texture cf_make_texture(CF_TextureParams texture_params);
 
 Parameters | Description
 --- | ---
-texture_params | The texture parameters as a [CF_TextureParams](/graphics/cf_textureparams.md).
+texture_params | The texture parameters as a [CF_TextureParams](/graphics/cf_textureparams).
 
 ## Return Value
 
-Free it up with [cf_destroy_texture](/graphics/cf_destroy_texture.md) when done.
+Free it up with [cf_destroy_texture](/graphics/cf_destroy_texture) when done.
 
 ## Related Pages
 
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
-  * [CF_Texture](/graphics/cf_texture.md)  
-  * [cf_texture_update](/graphics/cf_texture_update.md)  
-  * [cf_destroy_texture](/graphics/cf_destroy_texture.md)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  
+  * [CF_Texture](/graphics/cf_texture)  
+  * [cf_texture_update](/graphics/cf_texture_update)  
+  * [cf_destroy_texture](/graphics/cf_destroy_texture)  

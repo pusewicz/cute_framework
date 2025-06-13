@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_poly_to_poly
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns true if two polygons are intersecting.
 
 ```cpp
@@ -19,9 +16,9 @@ bool cf_poly_to_poly(const CF_Poly* A, const CF_Transform* ax, const CF_Poly* B,
 
 ## Remarks
 
-For information about _how_ two shapes are intersecting (and not just boolean result), see [cf_poly_to_poly_manifold](/collision/cf_poly_to_poly_manifold.md).
+For information about _how_ two shapes are intersecting (and not just boolean result), see [cf_poly_to_poly_manifold](/collision/cf_poly_to_poly_manifold).
 
 ## Related Pages
 
-  * [CF_Poly](/collision/cf_poly.md)  
-  * [cf_poly_to_poly_manifold](/collision/cf_poly_to_poly_manifold.md)  
+  * [CF_Poly](/collision/cf_poly)  
+  * [cf_poly_to_poly_manifold](/collision/cf_poly_to_poly_manifold)  

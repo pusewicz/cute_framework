@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_set_assert_handler
 
-Category: [app](/docs/app)  
-GitHub: [cute_defines.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_defines.h)  
----
-
+GitHub: [cute_defines.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_defines.h)
 Sets the application's default assert handler.
 
 ```cpp
@@ -19,4 +16,4 @@ void cf_set_assert_handler(cf_assert_fn* assert_fn);
 
 ## Related Pages
 
-  * [cf_assert_fn](/app/cf_assert_fn.md)  
+  * [cf_assert_fn](/app/cf_assert_fn)  

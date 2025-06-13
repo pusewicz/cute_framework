@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ShaderInputInfo
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_shader_bytecode.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_shader_bytecode.h)  
----
-
+GitHub: [cute_shader_bytecode.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_shader_bytecode.h)
 Information about an input of a vertex shader.
 
 Struct Members | Description
@@ -21,4 +18,4 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [CF_ShaderBytecode](/graphics/cf_shaderbytecode.md)  
+  * [CF_ShaderBytecode](/graphics/cf_shaderbytecode)  

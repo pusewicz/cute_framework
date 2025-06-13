@@ -7,10 +7,7 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_destroy_arena
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
 Free's up all resources used by the allocator.
 
 ```cpp
@@ -23,7 +20,7 @@ arena | The arena to free.
 
 ## Related Pages
 
-  * [cf_arena_init](/allocator/cf_arena_init.md)  
-  * [cf_arena_alloc](/allocator/cf_arena_alloc.md)  
-  * [cf_arena_reset](/allocator/cf_arena_reset.md)  
-  * [cf_arena_free](/allocator/cf_arena_free.md)  
+  * [cf_arena_init](/allocator/cf_arena_init)  
+  * [cf_arena_alloc](/allocator/cf_arena_alloc)  
+  * [cf_arena_reset](/allocator/cf_arena_reset)  
+  * [cf_arena_free](/allocator/cf_arena_free)  

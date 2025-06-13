@@ -7,10 +7,7 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_json_object_from_strings
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
 Creates a new json object from an array of key/val pairs as strings.
 
 ```cpp
@@ -19,6 +16,6 @@ CF_JVal cf_json_object_from_strings(CF_JDoc doc, const char** keys, const char**
 
 ## Related Pages
 
-  * [CF_JVal](/json/cf_jval.md)  
-  * [cf_json_object](/json/cf_json_object.md)  
-  * [cf_json_object_from_string_pairs](/json/cf_json_object_from_string_pairs.md)  
+  * [CF_JVal](/json/cf_jval)  
+  * [cf_json_object](/json/cf_json_object)  
+  * [cf_json_object_from_string_pairs](/json/cf_json_object_from_string_pairs)  

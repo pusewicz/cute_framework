@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_update
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Updates a sprite's animation.
 
 ```cpp
@@ -27,7 +24,7 @@ Call this once per frame.
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [cf_make_sprite](/sprite/cf_make_sprite.md)  
-  * [cf_sprite_pause](/sprite/cf_sprite_pause.md)  
-  * [cf_sprite_play](/sprite/cf_sprite_play.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [cf_make_sprite](/sprite/cf_make_sprite)  
+  * [cf_sprite_pause](/sprite/cf_sprite_pause)  
+  * [cf_sprite_play](/sprite/cf_sprite_play)  

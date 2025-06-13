@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # ssplit
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Splits a string about the character `ch`, scanning from left-to-right.
 
 ```cpp
@@ -24,7 +21,7 @@ ch | A character to split about.
 
 ## Return Value
 
-Returns a dynamic array of all delimited strings (see [dyna](/array/dyna.md)).
+Returns a dynamic array of all delimited strings (see [dyna](/array/dyna)).
 
 ## Code Example
 
@@ -51,9 +48,9 @@ afree(array_of_splits);
 
 ## Remarks
 
-`s` is not modified. You must call [sfree](/string/sfree.md) on the returned strings and [afree](/array/afree.md) on the returned array.
+`s` is not modified. You must call [sfree](/string/sfree) on the returned strings and [afree](/array/afree) on the returned array.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [ssplit_once](/string/ssplit_once.md)  
+  * [sdyna](/string/sdyna)  
+  * [ssplit_once](/string/ssplit_once)  

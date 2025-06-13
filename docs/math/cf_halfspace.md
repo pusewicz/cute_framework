@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Halfspace
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 2d plane, aka line.
 
 Struct Members | Description
@@ -20,8 +17,8 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [cf_intersect_halfspace](/math/cf_intersect_halfspace.md)  
-  * [cf_plane](/math/cf_plane.md)  
-  * [cf_origin](/math/cf_origin.md)  
-  * [cf_distance_hs](/math/cf_distance_hs.md)  
-  * [cf_project](/math/cf_project.md)  
+  * [cf_intersect_halfspace](/math/cf_intersect_halfspace)  
+  * [cf_plane](/math/cf_plane)  
+  * [cf_origin](/math/cf_origin)  
+  * [cf_distance_hs](/math/cf_distance_hs)  
+  * [cf_project](/math/cf_project)  

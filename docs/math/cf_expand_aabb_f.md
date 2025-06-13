@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_expand_aabb_f
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Expands an AABB (axis-aligned bounding box).
 
 ```cpp
@@ -23,6 +20,6 @@ CF_Aabb cf_expand_aabb_f(CF_Aabb aabb, float v)
 
 ## Related Pages
 
-  * [CF_Aabb](/math/cf_aabb.md)  
-  * [cf_make_aabb](/math/cf_make_aabb.md)  
-  * [cf_expand_aabb](/math/cf_expand_aabb.md)  
+  * [CF_Aabb](/math/cf_aabb)  
+  * [cf_make_aabb](/math/cf_make_aabb)  
+  * [cf_expand_aabb](/math/cf_expand_aabb)  

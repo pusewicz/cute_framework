@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ShaderStage
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Distinction between vertex and fragment shaders.
 
 ## Values
@@ -22,6 +19,6 @@ SHADER_STAGE_FRAGMENT | (null)
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [cf_shader_directory](/graphics/cf_shader_directory.md)  
-  * [cf_make_shader](/graphics/cf_make_shader.md)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [cf_shader_directory](/graphics/cf_shader_directory)  
+  * [cf_make_shader](/graphics/cf_make_shader)  

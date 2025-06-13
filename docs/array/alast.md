@@ -7,10 +7,7 @@ parent: array
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # alast
 
-Category: [array](/docs/array)  
-GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)  
----
-
+GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)
 Returns the last element in the array.
 
 ```cpp
@@ -23,18 +20,18 @@ a | The array. Can not be `NULL`.
 
 ## Related Pages
 
-  * [dyna](/array/dyna.md)  
-  * [asize](/array/asize.md)  
-  * [acount](/array/acount.md)  
-  * [acap](/array/acap.md)  
-  * [afit](/array/afit.md)  
-  * [apush](/array/apush.md)  
-  * [apop](/array/apop.md)  
-  * [aend](/array/aend.md)  
-  * [afree](/array/afree.md)  
-  * [aclear](/array/aclear.md)  
-  * [aset](/array/aset.md)  
-  * [arev](/array/arev.md)  
-  * [ahash](/array/ahash.md)  
-  * [adel](/array/adel.md)  
-  * [astatic](/array/astatic.md)  
+  * [dyna](/array/dyna)  
+  * [asize](/array/asize)  
+  * [acount](/array/acount)  
+  * [acap](/array/acap)  
+  * [afit](/array/afit)  
+  * [apush](/array/apush)  
+  * [apop](/array/apop)  
+  * [aend](/array/aend)  
+  * [afree](/array/afree)  
+  * [aclear](/array/aclear)  
+  * [aset](/array/aset)  
+  * [arev](/array/arev)  
+  * [ahash](/array/ahash)  
+  * [adel](/array/adel)  
+  * [astatic](/array/astatic)  

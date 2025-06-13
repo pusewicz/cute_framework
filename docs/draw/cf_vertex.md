@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Vertex
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 The full vertex layout CF uses just before sending verts to the GPU.
 
 Struct Members | Description
@@ -32,12 +29,12 @@ Struct Members | Description
 
 ## Remarks
 
-You may fill in vertices via callback by [cf_set_vertex_callback](/draw/cf_set_vertex_callback.md). See [CF_VertexFn](/draw/cf_vertexfn.md).
+You may fill in vertices via callback by [cf_set_vertex_callback](/draw/cf_set_vertex_callback). See [CF_VertexFn](/draw/cf_vertexfn).
 This is useful when you need to fill in unique `attributes` per-vertex, or modify any other
 bits of the vertex before rendering. This could be used to implement features like dynamically
 generated UV's for shape slicing, or complex lighting systems.
 
 ## Related Pages
 
-  * [cf_set_vertex_callback](/draw/cf_set_vertex_callback.md)  
-  * [CF_VertexFn](/draw/cf_vertexfn.md)  
+  * [cf_set_vertex_callback](/draw/cf_set_vertex_callback)  
+  * [CF_VertexFn](/draw/cf_vertexfn)  

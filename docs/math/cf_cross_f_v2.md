@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_cross_f_v2
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the 2D cross product of a scalar against a vector.
 
 ```cpp
@@ -19,9 +16,9 @@ CF_V2 cf_cross_f_v2(float a, CF_V2 b)
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_skew](/math/cf_skew.md)  
-  * [cf_cw90](/math/cf_cw90.md)  
-  * [cf_det2](/math/cf_det2.md)  
-  * [cf_cross](/math/cf_cross.md)  
-  * [cf_cross_v2_f](/math/cf_cross_v2_f.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_skew](/math/cf_skew)  
+  * [cf_cw90](/math/cf_cw90)  
+  * [cf_det2](/math/cf_det2)  
+  * [cf_cross](/math/cf_cross)  
+  * [cf_cross_v2_f](/math/cf_cross_v2_f)  

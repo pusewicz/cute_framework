@@ -7,10 +7,7 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_push
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
 Save a copy of this coordinate system.
 
 ```cpp
@@ -32,11 +29,11 @@ cf_draw_pop(); // Restore the prior coordinate system.
 
 ## Related Pages
 
-  * [cf_draw_TSR](/draw/cf_draw_tsr.md)  
-  * [cf_draw_pop](/draw/cf_draw_pop.md)  
-  * [cf_draw_peek](/draw/cf_draw_peek.md)  
-  * [cf_draw_translate](/draw/cf_draw_translate.md)  
-  * [cf_draw_transform](/draw/cf_draw_transform.md)  
-  * [cf_draw_translate](/draw/cf_draw_translate.md)  
-  * [cf_draw_scale](/draw/cf_draw_scale.md)  
-  * [cf_draw_rotate](/draw/cf_draw_rotate.md)  
+  * [cf_draw_TSR](/draw/cf_draw_tsr)  
+  * [cf_draw_pop](/draw/cf_draw_pop)  
+  * [cf_draw_peek](/draw/cf_draw_peek)  
+  * [cf_draw_translate](/draw/cf_draw_translate)  
+  * [cf_draw_transform](/draw/cf_draw_transform)  
+  * [cf_draw_translate](/draw/cf_draw_translate)  
+  * [cf_draw_scale](/draw/cf_draw_scale)  
+  * [cf_draw_rotate](/draw/cf_draw_rotate)  

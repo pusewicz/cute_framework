@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_len
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns length of a vector.
 
 ```cpp
@@ -19,7 +16,7 @@ float cf_len(CF_V2 a)
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_safe_norm](/math/cf_safe_norm.md)  
-  * [cf_distance](/math/cf_distance.md)  
-  * [cf_norm](/math/cf_norm.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_safe_norm](/math/cf_safe_norm)  
+  * [cf_distance](/math/cf_distance)  
+  * [cf_norm](/math/cf_norm)  

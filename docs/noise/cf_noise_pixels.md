@@ -7,10 +7,7 @@ parent: noise
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_noise_pixels
 
-Category: [noise](/docs/noise)  
-GitHub: [cute_noise.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_noise.h)  
----
-
+GitHub: [cute_noise.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_noise.h)
 Creates an image from noise.
 
 ```cpp
@@ -30,10 +27,10 @@ Returns a generated image filled with noise.
 
 ## Remarks
 
-The generated noise is quite simple -- you're probably looking for the more advanced [cf_noise_fbm_pixels](/noise/cf_noise_fbm_pixels.md), or [cf_noise_fbm_pixels_wrapped](/noise/cf_noise_fbm_pixels_wrapped.md).
+The generated noise is quite simple -- you're probably looking for the more advanced [cf_noise_fbm_pixels](/noise/cf_noise_fbm_pixels), or [cf_noise_fbm_pixels_wrapped](/noise/cf_noise_fbm_pixels_wrapped).
 
 ## Related Pages
 
-  * [cf_noise_fbm_pixels_wrapped](/noise/cf_noise_fbm_pixels_wrapped.md)  
-  * [cf_noise_pixels_wrapped](/noise/cf_noise_pixels_wrapped.md)  
-  * [cf_noise_fbm_pixels](/noise/cf_noise_fbm_pixels.md)  
+  * [cf_noise_fbm_pixels_wrapped](/noise/cf_noise_fbm_pixels_wrapped)  
+  * [cf_noise_pixels_wrapped](/noise/cf_noise_pixels_wrapped)  
+  * [cf_noise_fbm_pixels](/noise/cf_noise_fbm_pixels)  

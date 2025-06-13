@@ -7,16 +7,13 @@ parent: multithreading
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ConditionVariable
 
-Category: [multithreading](/docs/multithreading)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
 An opaque handle representing a condition variable.
 
 ## Related Pages
 
-  * [cf_cv_wait](/multithreading/cf_cv_wait.md)  
-  * [cf_make_cv](/multithreading/cf_make_cv.md)  
-  * [cf_destroy_cv](/multithreading/cf_destroy_cv.md)  
-  * [cf_cv_wake_all](/multithreading/cf_cv_wake_all.md)  
-  * [cf_cv_wake_one](/multithreading/cf_cv_wake_one.md)  
+  * [cf_cv_wait](/multithreading/cf_cv_wait)  
+  * [cf_make_cv](/multithreading/cf_make_cv)  
+  * [cf_destroy_cv](/multithreading/cf_destroy_cv)  
+  * [cf_cv_wake_all](/multithreading/cf_cv_wake_all)  
+  * [cf_cv_wake_one](/multithreading/cf_cv_wake_one)  

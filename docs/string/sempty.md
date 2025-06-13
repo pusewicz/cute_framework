@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sempty
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Returns whether or not the string is empty.
 
 ```cpp
@@ -27,7 +24,7 @@ Both "" and NULL count as empty.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [slen](/string/slen.md)  
-  * [scount](/string/scount.md)  
-  * [scap](/string/scap.md)  
+  * [sdyna](/string/sdyna)  
+  * [slen](/string/slen)  
+  * [scount](/string/scount)  
+  * [scap](/string/scap)  

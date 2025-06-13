@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_round
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the component-wise round of a vector.
 
 ```cpp
@@ -23,9 +20,9 @@ Rounding means clamping the float to the nearest whole integer value.
 
 ## Related Pages
 
-  * [CF_V2](/math/cf_v2.md)  
-  * [cf_lesser_v2](/math/cf_lesser_v2.md)  
-  * [cf_greater_v2](/math/cf_greater_v2.md)  
-  * [cf_lesser_equal_v2](/math/cf_lesser_equal_v2.md)  
-  * [cf_greater_equal_v2](/math/cf_greater_equal_v2.md)  
-  * [cf_parallel](/math/cf_parallel.md)  
+  * [CF_V2](/math/cf_v2)  
+  * [cf_lesser_v2](/math/cf_lesser_v2)  
+  * [cf_greater_v2](/math/cf_greater_v2)  
+  * [cf_lesser_equal_v2](/math/cf_lesser_equal_v2)  
+  * [cf_greater_equal_v2](/math/cf_greater_equal_v2)  
+  * [cf_parallel](/math/cf_parallel)  

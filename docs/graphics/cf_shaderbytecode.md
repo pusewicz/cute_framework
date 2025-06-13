@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ShaderBytecode
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_shader_bytecode.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_shader_bytecode.h)  
----
-
+GitHub: [cute_shader_bytecode.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_shader_bytecode.h)
 A SPIR-V shader bytecode blob.
 
 Struct Members | Description
@@ -21,10 +18,10 @@ Struct Members | Description
 
 ## Remarks
 
-This can be created either through [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode.md) or the `cute-shaderc` compiler.
+This can be created either through [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode) or the `cute-shaderc` compiler.
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [cf_make_shader_from_bytecode](/graphics/cf_make_shader_from_bytecode.md)  
-  * [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode.md)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [cf_make_shader_from_bytecode](/graphics/cf_make_shader_from_bytecode)  
+  * [cf_compile_shader_to_bytecode](/graphics/cf_compile_shader_to_bytecode)  

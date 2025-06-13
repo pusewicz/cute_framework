@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_canvas_defaults
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a good set of default values for a [CF_CanvasParams](/graphics/cf_canvasparams.md) to call [cf_make_canvas](/graphics/cf_make_canvas.md).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a good set of default values for a [CF_CanvasParams](/graphics/cf_canvasparams) to call [cf_make_canvas](/graphics/cf_make_canvas).
 
 ```cpp
 CF_CanvasParams cf_canvas_defaults(int w, int h);
@@ -19,8 +16,8 @@ CF_CanvasParams cf_canvas_defaults(int w, int h);
 
 ## Related Pages
 
-  * [CF_CanvasParams](/graphics/cf_canvasparams.md)  
-  * [cf_clear_color](/graphics/cf_clear_color.md)  
-  * [cf_make_canvas](/graphics/cf_make_canvas.md)  
-  * [cf_destroy_canvas](/graphics/cf_destroy_canvas.md)  
-  * [cf_apply_canvas](/graphics/cf_apply_canvas.md)  
+  * [CF_CanvasParams](/graphics/cf_canvasparams)  
+  * [cf_clear_color](/graphics/cf_clear_color)  
+  * [cf_make_canvas](/graphics/cf_make_canvas)  
+  * [cf_destroy_canvas](/graphics/cf_destroy_canvas)  
+  * [cf_apply_canvas](/graphics/cf_apply_canvas)  

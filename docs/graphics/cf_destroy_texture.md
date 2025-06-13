@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_destroy_texture
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Destroys a [CF_Texture](/graphics/cf_texture.md) created by [cf_make_texture](/graphics/cf_make_texture.md).
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Destroys a [CF_Texture](/graphics/cf_texture) created by [cf_make_texture](/graphics/cf_make_texture).
 
 ```cpp
 void cf_destroy_texture(CF_Texture texture);
@@ -23,7 +20,7 @@ texture | The texture.
 
 ## Related Pages
 
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
-  * [CF_Texture](/graphics/cf_texture.md)  
-  * [cf_make_texture](/graphics/cf_make_texture.md)  
-  * [cf_texture_update](/graphics/cf_texture_update.md)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  
+  * [CF_Texture](/graphics/cf_texture)  
+  * [cf_make_texture](/graphics/cf_make_texture)  
+  * [cf_texture_update](/graphics/cf_texture_update)  

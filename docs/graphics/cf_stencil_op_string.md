@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_stencil_op_string
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a [CF_StencilOp](/graphics/cf_stencilop.md) converted to a C string.
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a [CF_StencilOp](/graphics/cf_stencilop) converted to a C string.
 
 ```cpp
 const char* cf_stencil_op_string(CF_StencilOp op)
@@ -19,5 +16,5 @@ const char* cf_stencil_op_string(CF_StencilOp op)
 
 ## Related Pages
 
-  * [CF_StencilOp](/graphics/cf_stencilop.md)  
-  * [CF_StencilFunction](/graphics/cf_stencilfunction.md)  
+  * [CF_StencilOp](/graphics/cf_stencilop)  
+  * [CF_StencilFunction](/graphics/cf_stencilfunction)  

@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_animation_add_frame
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Adds a frame to an animation.
 
 ```cpp
@@ -24,13 +21,13 @@ frame | The frame.
 
 ## Remarks
 
-You can use this function to build your own animations in a custom manner. It's recommend to just use [cf_make_sprite](/sprite/cf_make_sprite.md), which
+You can use this function to build your own animations in a custom manner. It's recommend to just use [cf_make_sprite](/sprite/cf_make_sprite), which
 loads a full sprite out of a .ase file. But, this function provides another low-level option if desired.
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [CF_Animation](/sprite/cf_animation.md)  
-  * [CF_Frame](/sprite/cf_frame.md)  
-  * [dyna](/array/dyna.md)  
-  * [htbl](/hash/htbl.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [CF_Animation](/sprite/cf_animation)  
+  * [CF_Frame](/sprite/cf_frame)  
+  * [dyna](/array/dyna)  
+  * [htbl](/hash/htbl)  

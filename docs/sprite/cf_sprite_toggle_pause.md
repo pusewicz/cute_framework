@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_toggle_pause
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Toggles the sprite's pause state.
 
 ```cpp
@@ -23,8 +20,8 @@ sprite | The sprite.
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [cf_sprite_update](/sprite/cf_sprite_update.md)  
-  * [cf_sprite_play](/sprite/cf_sprite_play.md)  
-  * [cf_sprite_pause](/sprite/cf_sprite_pause.md)  
-  * [cf_sprite_unpause](/sprite/cf_sprite_unpause.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [cf_sprite_update](/sprite/cf_sprite_update)  
+  * [cf_sprite_play](/sprite/cf_sprite_play)  
+  * [cf_sprite_pause](/sprite/cf_sprite_pause)  
+  * [cf_sprite_unpause](/sprite/cf_sprite_unpause)  

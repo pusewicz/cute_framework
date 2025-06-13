@@ -7,11 +7,8 @@ parent: utility
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_guid
 
-Category: [utility](/docs/utility)  
-GitHub: [cute_guid.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_guid.h)  
----
-
-Returns a new [CF_Guid](/utility/cf_guid.md).
+GitHub: [cute_guid.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_guid.h)
+Returns a new [CF_Guid](/utility/cf_guid).
 
 ```cpp
 CF_Guid cf_make_guid();
@@ -23,5 +20,5 @@ The bytes are generated in a cryptographically secure way.
 
 ## Related Pages
 
-  * [CF_Guid](/utility/cf_guid.md)  
-  * [cf_guid_equal](/utility/cf_guid_equal.md)  
+  * [CF_Guid](/utility/cf_guid)  
+  * [cf_guid_equal](/utility/cf_guid_equal)  

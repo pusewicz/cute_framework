@@ -7,10 +7,7 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_haptic_rumble_supported
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
 Checks to see if a simple sine/leftright haptic can be supported on the device.
 
 ```cpp
@@ -27,7 +24,7 @@ Creates a set of decent parameters to play a rumbling effect in an easy to use w
 
 ## Related Pages
 
-  * [CF_Haptic](/haptic/cf_haptic.md)  
-  * [cf_haptic_open](/haptic/cf_haptic_open.md)  
-  * [cf_haptic_rumble_stop](/haptic/cf_haptic_rumble_stop.md)  
-  * [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play.md)  
+  * [CF_Haptic](/haptic/cf_haptic)  
+  * [cf_haptic_open](/haptic/cf_haptic_open)  
+  * [cf_haptic_rumble_stop](/haptic/cf_haptic_rumble_stop)  
+  * [cf_haptic_rumble_play](/haptic/cf_haptic_rumble_play)  

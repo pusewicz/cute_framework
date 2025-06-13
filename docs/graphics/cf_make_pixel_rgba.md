@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_pixel_rgba
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
-Returns a [CF_Pixel](/graphics/cf_pixel.md) made from RGB char inputs.
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
+Returns a [CF_Pixel](/graphics/cf_pixel) made from RGB char inputs.
 
 ```cpp
 CF_Pixel cf_make_pixel_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
@@ -26,9 +23,9 @@ a | The alpha component from 0 to 255.
 
 ## Related Pages
 
-  * [CF_Pixel](/graphics/cf_pixel.md)  
-  * [cf_make_pixel_rgb_f](/graphics/cf_make_pixel_rgb_f.md)  
-  * [cf_make_pixel_rgba_f](/graphics/cf_make_pixel_rgba_f.md)  
-  * [cf_make_pixel_rgb](/graphics/cf_make_pixel_rgb.md)  
-  * [cf_make_pixel_hex_string](/graphics/cf_make_pixel_hex_string.md)  
-  * [cf_make_pixel_hex](/graphics/cf_make_pixel_hex.md)  
+  * [CF_Pixel](/graphics/cf_pixel)  
+  * [cf_make_pixel_rgb_f](/graphics/cf_make_pixel_rgb_f)  
+  * [cf_make_pixel_rgba_f](/graphics/cf_make_pixel_rgba_f)  
+  * [cf_make_pixel_rgb](/graphics/cf_make_pixel_rgb)  
+  * [cf_make_pixel_hex_string](/graphics/cf_make_pixel_hex_string)  
+  * [cf_make_pixel_hex](/graphics/cf_make_pixel_hex)  

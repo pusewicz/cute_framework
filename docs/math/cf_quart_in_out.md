@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_quart_in_out
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the quartic ease of a float from 0.0f to 1.0f.
 
 ```cpp
@@ -23,5 +20,5 @@ Here is a great link to [visualize each easing function](https://easings.net/).
 
 ## Related Pages
 
-  * [cf_quart_in](/math/cf_quart_in.md)  
-  * [cf_quart_out](/math/cf_quart_out.md)  
+  * [cf_quart_in](/math/cf_quart_in)  
+  * [cf_quart_out](/math/cf_quart_out)  

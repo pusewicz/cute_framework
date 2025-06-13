@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_client
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 Returns a new client.
 
 ```cpp
@@ -25,7 +22,7 @@ use_ipv6 | Whether or not the socket should turn on ipv6. Some users will not ha
 
 ## Related Pages
 
-  * [CF_Client](/net/cf_client.md)  
-  * [cf_generate_connect_token](/net/cf_generate_connect_token.md)  
-  * [cf_destroy_client](/net/cf_destroy_client.md)  
-  * [cf_client_connect](/net/cf_client_connect.md)  
+  * [CF_Client](/net/cf_client)  
+  * [cf_generate_connect_token](/net/cf_generate_connect_token)  
+  * [cf_destroy_client](/net/cf_destroy_client)  
+  * [cf_client_connect](/net/cf_client_connect)  

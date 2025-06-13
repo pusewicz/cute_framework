@@ -7,10 +7,7 @@ parent: collision
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Capsule
 
-Category: [collision](/docs/collision)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 A capsule shape.
 
 Struct Members | Description
@@ -25,12 +22,12 @@ It's like a shrink-wrap of 2 circles connected by a rod.
 
 ## Related Pages
 
-  * [cf_capsule_to_poly_manifold](/collision/cf_capsule_to_poly_manifold.md)  
-  * [cf_circle_to_capsule](/collision/cf_circle_to_capsule.md)  
-  * [cf_aabb_to_capsule](/collision/cf_aabb_to_capsule.md)  
-  * [cf_capsule_to_capsule](/collision/cf_capsule_to_capsule.md)  
-  * [cf_capsule_to_poly](/collision/cf_capsule_to_poly.md)  
-  * [cf_ray_to_capsule](/collision/cf_ray_to_capsule.md)  
-  * [cf_circle_to_capsule_manifold](/collision/cf_circle_to_capsule_manifold.md)  
-  * [cf_aabb_to_capsule_manifold](/collision/cf_aabb_to_capsule_manifold.md)  
-  * [cf_capsule_to_capsule_manifold](/collision/cf_capsule_to_capsule_manifold.md)  
+  * [cf_capsule_to_poly_manifold](/collision/cf_capsule_to_poly_manifold)  
+  * [cf_circle_to_capsule](/collision/cf_circle_to_capsule)  
+  * [cf_aabb_to_capsule](/collision/cf_aabb_to_capsule)  
+  * [cf_capsule_to_capsule](/collision/cf_capsule_to_capsule)  
+  * [cf_capsule_to_poly](/collision/cf_capsule_to_poly)  
+  * [cf_ray_to_capsule](/collision/cf_ray_to_capsule)  
+  * [cf_circle_to_capsule_manifold](/collision/cf_circle_to_capsule_manifold)  
+  * [cf_aabb_to_capsule_manifold](/collision/cf_aabb_to_capsule_manifold)  
+  * [cf_capsule_to_capsule_manifold](/collision/cf_capsule_to_capsule_manifold)  

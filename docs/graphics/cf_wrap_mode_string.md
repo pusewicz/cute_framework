@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_wrap_mode_string
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a [CF_WrapMode](/graphics/cf_wrapmode.md) converted to a C string.
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a [CF_WrapMode](/graphics/cf_wrapmode) converted to a C string.
 
 ```cpp
 const char* cf_wrap_mode_string(CF_WrapMode mode)
@@ -19,5 +16,5 @@ const char* cf_wrap_mode_string(CF_WrapMode mode)
 
 ## Related Pages
 
-  * [CF_WrapMode](/graphics/cf_wrapmode.md)  
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
+  * [CF_WrapMode](/graphics/cf_wrapmode)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  

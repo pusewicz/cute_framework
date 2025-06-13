@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Color
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
 16-byte value with 0.0f to 1.0f components, representing an RGBA (red green blue alpha) color.
 
 Struct Members | Description
@@ -22,4 +19,4 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [CF_Pixel](/graphics/cf_pixel.md)  
+  * [CF_Pixel](/graphics/cf_pixel)  

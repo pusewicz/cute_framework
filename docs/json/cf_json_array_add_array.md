@@ -7,10 +7,7 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_json_array_add_array
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
 Creates a new array and adds it to the end of a json array.
 
 ```cpp
@@ -23,6 +20,6 @@ Returns the newly added array.
 
 ## Related Pages
 
-  * [CF_JVal](/json/cf_jval.md)  
-  * [cf_json_array_add](/json/cf_json_array_add.md)  
-  * [cf_json_object_add](/json/cf_json_object_add.md)  
+  * [CF_JVal](/json/cf_jval)  
+  * [cf_json_array_add](/json/cf_json_array_add)  
+  * [cf_json_object_add](/json/cf_json_object_add)  

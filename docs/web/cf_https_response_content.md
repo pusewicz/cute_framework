@@ -7,10 +7,7 @@ parent: web
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_https_response_content
 
-Category: [web](/docs/web)  
-GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)  
----
-
+GitHub: [cute_https.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_https.h)
 Returns the content of the response as a string.
 
 ```cpp
@@ -19,5 +16,5 @@ char* cf_https_response_content(CF_HttpsResponse response);
 
 ## Related Pages
 
-  * [CF_HttpsResponse](/web/cf_httpsresponse.md)  
-  * [cf_https_response_content_length](/web/cf_https_response_content_length.md)  
+  * [CF_HttpsResponse](/web/cf_httpsresponse)  
+  * [cf_https_response_content_length](/web/cf_https_response_content_length)  

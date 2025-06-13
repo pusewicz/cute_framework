@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Sprite
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 A sprite represents a drawable entity, made of 2D animations/images.
 
 Struct Members | Description
@@ -18,11 +15,11 @@ Struct Members | Description
 `const char* name` | The name of the sprite.
 `int w` | Width of the sprite in pixels.
 `int h` | Height of the sprite in pixels.
-`CF_V2 scale` | Scale factor for the sprite when drawing. Default of `(1, 1)`. See [cf_draw_sprite](/draw/cf_draw_sprite.md).
+`CF_V2 scale` | Scale factor for the sprite when drawing. Default of `(1, 1)`. See [cf_draw_sprite](/draw/cf_draw_sprite).
 `CF_V2 offset` | A local offset/origin for the sprite when drawing. Defaults to `(0, 0)`.
 `dyna CF_V2* pivots` | A local pivot (offset) per-frame. This value comes from an aseprite slice on a particular frame if the `pivot` box is checked. Make sure to only have one pivot per frame when authoring your .ase file or they will overwrite each other upon loading.
-`dyna const CF_SpriteSlice* slices` | All the [CF_SpriteSlice](/sprite/cf_spriteslice.md)'s in the sprite. These get loaded from the .ase file.
-`float opacity` | An opacity value for the entire sprite. Default of 1.0f. See [cf_draw_sprite](/draw/cf_draw_sprite.md).
+`dyna const CF_SpriteSlice* slices` | All the [CF_SpriteSlice](/sprite/cf_spriteslice)'s in the sprite. These get loaded from the .ase file.
+`float opacity` | An opacity value for the entire sprite. Default of 1.0f. See [cf_draw_sprite](/draw/cf_draw_sprite).
 `int frame_index` | The current frame within `animation` to display.
 `int loop_count` | The number of times this sprite has completed an animation.
 `float play_speed_multiplier` | A speed multiplier for updating frames. Default of 1.0f.
@@ -30,19 +27,19 @@ Struct Members | Description
 `bool loop` | Whether or not to loop animations.
 `float t` | The current elapsed time within a frame of animation.
 `uint64_t easy_sprite_id` | For internal use only.
-`CF_PlayDirection play_direction` | Controls the animation play direction. This gets set each time [cf_sprite_play](/sprite/cf_sprite_play.md) is called to the animation's play direction. You may override this member yourself after calling [cf_sprite_play](/sprite/cf_sprite_play.md).
-`const CF_Animation* animation` | A pointer to the current animation to display, from within the set `animations`. See [CF_Animation](/sprite/cf_animation.md).
-`htbl const CF_Animation** animations` | The set of named animations for this sprite. See [CF_Animation](/sprite/cf_animation.md) and [htbl](/hash/htbl.md).
-`CF_Transform transform` | An optional transform for rendering within a particular space. See [CF_Transform](/math/cf_transform.md).
+`CF_PlayDirection play_direction` | Controls the animation play direction. This gets set each time [cf_sprite_play](/sprite/cf_sprite_play) is called to the animation's play direction. You may override this member yourself after calling [cf_sprite_play](/sprite/cf_sprite_play).
+`const CF_Animation* animation` | A pointer to the current animation to display, from within the set `animations`. See [CF_Animation](/sprite/cf_animation).
+`htbl const CF_Animation** animations` | The set of named animations for this sprite. See [CF_Animation](/sprite/cf_animation) and [htbl](/hash/htbl).
+`CF_Transform transform` | An optional transform for rendering within a particular space. See [CF_Transform](/math/cf_transform).
 
 ## Remarks
 
-Sprites can be drawn by [cf_draw_sprite](/draw/cf_draw_sprite.md). Since sprites are [plain old data POD](https://stackoverflow.com/questions/146452/what-are-pod-types-in-c) you may create one on the stack anywhere
+Sprites can be drawn by [cf_draw_sprite](/draw/cf_draw_sprite). Since sprites are [plain old data POD](https://stackoverflow.com/questions/146452/what-are-pod-types-in-c) you may create one on the stack anywhere
 and freely copy it around. In C++ you may simply draw via `sprite.draw()`.
 
 ## Related Pages
 
-  * [CF_Frame](/sprite/cf_frame.md)  
-  * [CF_Animation](/sprite/cf_animation.md)  
-  * [cf_make_sprite](/sprite/cf_make_sprite.md)  
+  * [CF_Frame](/sprite/cf_frame)  
+  * [CF_Animation](/sprite/cf_animation)  
+  * [cf_make_sprite](/sprite/cf_make_sprite)  
   * cf_make_easy_sprite  

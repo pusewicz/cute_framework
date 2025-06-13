@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mesh_update_vertex_data
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Overwrites the vertex data of a mesh.
 
 ```cpp
@@ -25,6 +22,6 @@ count | Number of vertices in `data`.
 
 ## Related Pages
 
-  * [CF_Mesh](/graphics/cf_mesh.md)  
-  * [cf_make_mesh](/graphics/cf_make_mesh.md)  
-  * [cf_destroy_mesh](/graphics/cf_destroy_mesh.md)  
+  * [CF_Mesh](/graphics/cf_mesh)  
+  * [cf_make_mesh](/graphics/cf_make_mesh)  
+  * [cf_destroy_mesh](/graphics/cf_destroy_mesh)  

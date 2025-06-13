@@ -7,11 +7,8 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_server_config_defaults
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
-Returns a good set of default parameters for [cf_make_server](/net/cf_make_server.md).
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
+Returns a good set of default parameters for [cf_make_server](/net/cf_make_server).
 
 ```cpp
 CF_ServerConfig cf_server_config_defaults()
@@ -19,5 +16,5 @@ CF_ServerConfig cf_server_config_defaults()
 
 ## Related Pages
 
-  * [CF_ServerConfig](/net/cf_serverconfig.md)  
-  * [cf_make_server](/net/cf_make_server.md)  
+  * [CF_ServerConfig](/net/cf_serverconfig)  
+  * [cf_make_server](/net/cf_make_server)  

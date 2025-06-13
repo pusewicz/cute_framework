@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_shader_on_changed
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Reports when a shader within the shader directory (see [cf_shader_directory](/graphics/cf_shader_directory.md)) changes on-disk.
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Reports when a shader within the shader directory (see [cf_shader_directory](/graphics/cf_shader_directory)) changes on-disk.
 
 ```cpp
 void cf_shader_on_changed(void (*on_changed_fn)(const char* path, void* udata), void* udata);
@@ -25,12 +22,12 @@ udata | An optional `void` passed back to you whenever `on_changed_fn` is called
 ## Remarks
 
 This is an optional function intended to help facilitate runtime shader reloading during development.
-Callbacks are issued when [cf_app_update](/app/cf_app_update.md) is called.
+Callbacks are issued when [cf_app_update](/app/cf_app_update) is called.
 
 ## Related Pages
 
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [cf_make_shader](/graphics/cf_make_shader.md)  
-  * [cf_destroy_shader](/graphics/cf_destroy_shader.md)  
-  * [cf_apply_shader](/graphics/cf_apply_shader.md)  
-  * [CF_Material](/graphics/cf_material.md)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [cf_make_shader](/graphics/cf_make_shader)  
+  * [cf_destroy_shader](/graphics/cf_destroy_shader)  
+  * [cf_apply_shader](/graphics/cf_apply_shader)  
+  * [CF_Material](/graphics/cf_material)  

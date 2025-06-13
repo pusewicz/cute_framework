@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Circle
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 A circle.
 
 Struct Members | Description
@@ -20,12 +17,12 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [cf_ray_to_circle](/collision/cf_ray_to_circle.md)  
-  * [cf_circle_to_circle](/collision/cf_circle_to_circle.md)  
-  * [cf_circle_to_aabb](/collision/cf_circle_to_aabb.md)  
-  * [cf_circle_to_capsule](/collision/cf_circle_to_capsule.md)  
-  * [cf_circle_to_poly](/collision/cf_circle_to_poly.md)  
-  * [cf_circle_to_circle_manifold](/collision/cf_circle_to_circle_manifold.md)  
-  * [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold.md)  
-  * [cf_circle_to_capsule_manifold](/collision/cf_circle_to_capsule_manifold.md)  
-  * [cf_circle_to_poly_manifold](/collision/cf_circle_to_poly_manifold.md)  
+  * [cf_ray_to_circle](/collision/cf_ray_to_circle)  
+  * [cf_circle_to_circle](/collision/cf_circle_to_circle)  
+  * [cf_circle_to_aabb](/collision/cf_circle_to_aabb)  
+  * [cf_circle_to_capsule](/collision/cf_circle_to_capsule)  
+  * [cf_circle_to_poly](/collision/cf_circle_to_poly)  
+  * [cf_circle_to_circle_manifold](/collision/cf_circle_to_circle_manifold)  
+  * [cf_circle_to_aabb_manifold](/collision/cf_circle_to_aabb_manifold)  
+  * [cf_circle_to_capsule_manifold](/collision/cf_circle_to_capsule_manifold)  
+  * [cf_circle_to_poly_manifold](/collision/cf_circle_to_poly_manifold)  

@@ -7,10 +7,7 @@ parent: hash
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # hswap
 
-Category: [hash](/docs/hash)  
-GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)  
----
-
+GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)
 Swaps internal ordering of two {key, item} pairs without ruining the hashing.
 
 ```cpp
@@ -45,21 +42,21 @@ Use this for e.g. implementing a priority queue on top of the hash table.
 
 ## Related Pages
 
-  * [htbl](/hash/htbl.md)  
-  * [hset](/hash/hset.md)  
-  * [hadd](/hash/hadd.md)  
-  * [hget](/hash/hget.md)  
-  * [hfind](/hash/hfind.md)  
-  * [hget_ptr](/hash/hget_ptr.md)  
-  * [hfind_ptr](/hash/hfind_ptr.md)  
-  * [hhas](/hash/hhas.md)  
-  * [hdel](/hash/hdel.md)  
-  * [hclear](/hash/hclear.md)  
-  * [hkeys](/hash/hkeys.md)  
-  * [hitems](/hash/hitems.md)  
-  * [hsisort](/hash/hsisort.md)  
-  * [hsize](/hash/hsize.md)  
-  * [hcount](/hash/hcount.md)  
-  * [hfree](/hash/hfree.md)  
-  * [hsort](/hash/hsort.md)  
-  * [hssort](/hash/hssort.md)  
+  * [htbl](/hash/htbl)  
+  * [hset](/hash/hset)  
+  * [hadd](/hash/hadd)  
+  * [hget](/hash/hget)  
+  * [hfind](/hash/hfind)  
+  * [hget_ptr](/hash/hget_ptr)  
+  * [hfind_ptr](/hash/hfind_ptr)  
+  * [hhas](/hash/hhas)  
+  * [hdel](/hash/hdel)  
+  * [hclear](/hash/hclear)  
+  * [hkeys](/hash/hkeys)  
+  * [hitems](/hash/hitems)  
+  * [hsisort](/hash/hsisort)  
+  * [hsize](/hash/hsize)  
+  * [hcount](/hash/hcount)  
+  * [hfree](/hash/hfree)  
+  * [hsort](/hash/hsort)  
+  * [hssort](/hash/hssort)  

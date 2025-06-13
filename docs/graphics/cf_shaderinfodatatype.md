@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_ShaderInfoDataType
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_shader_bytecode.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_shader_bytecode.h)  
----
-
+GitHub: [cute_shader_bytecode.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_shader_bytecode.h)
 Data types of shader elements.
 
 ## Values
@@ -34,5 +31,5 @@ SHADER_INFO_TYPE_MAT4 | (null)
 
 ## Related Pages
 
-  * [CF_ShaderInputInfo](/graphics/cf_shaderinputinfo.md)  
-  * [CF_ShaderUniformMemberInfo](/graphics/cf_shaderuniformmemberinfo.md)  
+  * [CF_ShaderInputInfo](/graphics/cf_shaderinputinfo)  
+  * [CF_ShaderUniformMemberInfo](/graphics/cf_shaderuniformmemberinfo)  

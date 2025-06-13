@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_decode_UTF8
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Decodes a single UTF8 character from the string as a UTF32 codepoint.
 
 ```cpp
@@ -47,5 +44,5 @@ represents a single UTF8 character. If the decoded codepoint is invalid then the
 
 ## Related Pages
 
-  * [sappend_UTF8](/string/sappend_utf8.md)  
-  * [cf_decode_UTF16](/string/cf_decode_utf16.md)  
+  * [sappend_UTF8](/string/sappend_utf8)  
+  * [cf_decode_UTF16](/string/cf_decode_utf16)  

@@ -7,10 +7,7 @@ parent: array
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # adel
 
-Category: [array](/docs/array)  
-GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)  
----
-
+GitHub: [cute_array.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_array.h)
 Performs an unordered removal of the element at index i.
 
 ```cpp
@@ -29,18 +26,18 @@ operation, but does not preserve order of the array.
 
 ## Related Pages
 
-  * [dyna](/array/dyna.md)  
-  * [asize](/array/asize.md)  
-  * [acount](/array/acount.md)  
-  * [acap](/array/acap.md)  
-  * [afit](/array/afit.md)  
-  * [apush](/array/apush.md)  
-  * [apop](/array/apop.md)  
-  * [aend](/array/aend.md)  
-  * [alast](/array/alast.md)  
-  * [aclear](/array/aclear.md)  
-  * [aset](/array/aset.md)  
-  * [arev](/array/arev.md)  
-  * [ahash](/array/ahash.md)  
-  * [afree](/array/afree.md)  
-  * [astatic](/array/astatic.md)  
+  * [dyna](/array/dyna)  
+  * [asize](/array/asize)  
+  * [acount](/array/acount)  
+  * [acap](/array/acap)  
+  * [afit](/array/afit)  
+  * [apush](/array/apush)  
+  * [apop](/array/apop)  
+  * [aend](/array/aend)  
+  * [alast](/array/alast)  
+  * [aclear](/array/aclear)  
+  * [aset](/array/aset)  
+  * [arev](/array/arev)  
+  * [ahash](/array/ahash)  
+  * [afree](/array/afree)  
+  * [astatic](/array/astatic)  

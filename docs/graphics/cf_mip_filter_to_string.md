@@ -7,11 +7,8 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mip_filter_to_string
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
-Returns a [CF_MipFilter](/graphics/cf_mipfilter.md) converted to a C string.
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
+Returns a [CF_MipFilter](/graphics/cf_mipfilter) converted to a C string.
 
 ```cpp
 const char* cf_mip_filter_to_string(CF_MipFilter filter)
@@ -19,5 +16,5 @@ const char* cf_mip_filter_to_string(CF_MipFilter filter)
 
 ## Related Pages
 
-  * [CF_MipFilter](/graphics/cf_mipfilter.md)  
-  * [CF_TextureParams](/graphics/cf_textureparams.md)  
+  * [CF_MipFilter](/graphics/cf_mipfilter)  
+  * [CF_TextureParams](/graphics/cf_textureparams)  

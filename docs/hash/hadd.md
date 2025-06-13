@@ -7,10 +7,7 @@ parent: hash
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # hadd
 
-Category: [hash](/docs/hash)  
-GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)  
----
-
+GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)
 Add's a {key, item} pair.
 
 ```cpp
@@ -42,24 +39,24 @@ hfree(table);
 
 ## Remarks
 
-This function works the same as [hset](/hash/hset.md). If the item already exists in the table, it's simply updated to a new value.
+This function works the same as [hset](/hash/hset). If the item already exists in the table, it's simply updated to a new value.
 The pointer returned is not stable. Internally the table can be resized, invalidating _all_ pointers to any elements
 within the table. Therefor, no items may store pointers to themselves or other items. Indices however, are totally fine.
 
 ## Related Pages
 
-  * [htbl](/hash/htbl.md)  
-  * [hset](/hash/hset.md)  
-  * [hfree](/hash/hfree.md)  
-  * [hget](/hash/hget.md)  
-  * [hfind](/hash/hfind.md)  
-  * [hget_ptr](/hash/hget_ptr.md)  
-  * [hfind_ptr](/hash/hfind_ptr.md)  
-  * [hhas](/hash/hhas.md)  
-  * [hdel](/hash/hdel.md)  
-  * [hclear](/hash/hclear.md)  
-  * [hkeys](/hash/hkeys.md)  
-  * [hitems](/hash/hitems.md)  
-  * [hswap](/hash/hswap.md)  
-  * [hsize](/hash/hsize.md)  
-  * [hcount](/hash/hcount.md)  
+  * [htbl](/hash/htbl)  
+  * [hset](/hash/hset)  
+  * [hfree](/hash/hfree)  
+  * [hget](/hash/hget)  
+  * [hfind](/hash/hfind)  
+  * [hget_ptr](/hash/hget_ptr)  
+  * [hfind_ptr](/hash/hfind_ptr)  
+  * [hhas](/hash/hhas)  
+  * [hdel](/hash/hdel)  
+  * [hclear](/hash/hclear)  
+  * [hkeys](/hash/hkeys)  
+  * [hitems](/hash/hitems)  
+  * [hswap](/hash/hswap)  
+  * [hsize](/hash/hsize)  
+  * [hcount](/hash/hcount)  

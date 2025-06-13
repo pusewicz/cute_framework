@@ -7,10 +7,7 @@ parent: noise
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_noise_fbm_pixels_wrapped
 
-Category: [noise](/docs/noise)  
-GitHub: [cute_noise.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_noise.h)  
----
-
+GitHub: [cute_noise.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_noise.h)
 Creates an image from noise using fractal brownian motion, that can also animate in a loop, and tiles seamlessly.
 
 ```cpp
@@ -34,7 +31,7 @@ Returns a generated image filled with noise.
 ## Remarks
 
 The generated image can be animated over a loop, and tiles seamlessly in the x-y directions. To control the animation
-pass in a float starting at 0, and incremented with [CF_DELTA_TIME](/time/cf_delta_time.md) each game tick. This will loop the animation
+pass in a float starting at 0, and incremented with [CF_DELTA_TIME](/time/cf_delta_time) each game tick. This will loop the animation
 over a one-second period. You can divide your accumulated time by a frequency to set a number of seconds to loop over.
 
 If you want the animation to move faster without adjusting the loop time, then adjust `time_amplitude`. This scales how
@@ -42,6 +39,6 @@ much the animation will evolve over time. Higher values will have faster and mor
 
 ## Related Pages
 
-  * [cf_noise_pixels](/noise/cf_noise_pixels.md)  
-  * [cf_noise_pixels_wrapped](/noise/cf_noise_pixels_wrapped.md)  
-  * [cf_noise_fbm_pixels](/noise/cf_noise_fbm_pixels.md)  
+  * [cf_noise_pixels](/noise/cf_noise_pixels)  
+  * [cf_noise_pixels_wrapped](/noise/cf_noise_pixels_wrapped)  
+  * [cf_noise_fbm_pixels](/noise/cf_noise_fbm_pixels)  

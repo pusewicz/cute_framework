@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_set_title
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Sets the application' true fullscreen mode's title.
 
 ```cpp
@@ -19,7 +16,7 @@ void cf_app_set_title(const char* title);
 
 ## Related Pages
 
-  * [cf_app_set_windowed_mode](/app/cf_app_set_windowed_mode.md)  
-  * [cf_app_set_borderless_fullscreen_mode](/app/cf_app_set_borderless_fullscreen_mode.md)  
-  * [cf_app_set_fullscreen_mode](/app/cf_app_set_fullscreen_mode.md)  
-  * [cf_app_set_icon](/app/cf_app_set_icon.md)  
+  * [cf_app_set_windowed_mode](/app/cf_app_set_windowed_mode)  
+  * [cf_app_set_borderless_fullscreen_mode](/app/cf_app_set_borderless_fullscreen_mode)  
+  * [cf_app_set_fullscreen_mode](/app/cf_app_set_fullscreen_mode)  
+  * [cf_app_set_icon](/app/cf_app_set_icon)  

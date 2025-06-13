@@ -7,10 +7,7 @@ parent: haptic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_HapticType
 
-Category: [haptic](/docs/haptic)  
-GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)  
----
-
+GitHub: [cute_haptics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_haptics.h)
 Various types of supported haptic effects.
 
 ## Values
@@ -24,8 +21,8 @@ HAPTIC_TYPE_RAMP | A ramp over time rumble haptic.
 
 ## Related Pages
 
-  * [cf_haptic_type_to_string](/haptic/cf_haptic_type_to_string.md)  
-  * [CF_HapticData](/haptic/cf_hapticdata.md)  
-  * [CF_HapticLeftRight](/haptic/cf_hapticleftright.md)  
-  * [CF_HapticPeriodic](/haptic/cf_hapticperiodic.md)  
-  * [CF_HapticRamp](/haptic/cf_hapticramp.md)  
+  * [cf_haptic_type_to_string](/haptic/cf_haptic_type_to_string)  
+  * [CF_HapticData](/haptic/cf_hapticdata)  
+  * [CF_HapticLeftRight](/haptic/cf_hapticleftright)  
+  * [CF_HapticPeriodic](/haptic/cf_hapticperiodic)  
+  * [CF_HapticRamp](/haptic/cf_hapticramp)  

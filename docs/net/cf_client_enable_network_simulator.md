@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_client_enable_network_simulator
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 Turns on the network simulator for a client.
 
 ```cpp
@@ -27,4 +24,4 @@ duplicate_chance | Number from [0,1] representing the chance to duplicate a pack
 
 ## Related Pages
 
-  * [CF_Client](/net/cf_client.md)  
+  * [CF_Client](/net/cf_client)  

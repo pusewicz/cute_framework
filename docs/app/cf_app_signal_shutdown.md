@@ -7,11 +7,8 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_signal_shutdown
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
-Call this to end your main-loop; makes [cf_app_is_running](/app/cf_app_is_running.md) return false.
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
+Call this to end your main-loop; makes [cf_app_is_running](/app/cf_app_is_running) return false.
 
 ```cpp
 void cf_app_signal_shutdown();
@@ -49,6 +46,6 @@ int main(int argc, const char argv)
 
 ## Related Pages
 
-  * [cf_make_app](/app/cf_make_app.md)  
-  * [cf_destroy_app](/app/cf_destroy_app.md)  
-  * [cf_app_is_running](/app/cf_app_is_running.md)  
+  * [cf_make_app](/app/cf_make_app)  
+  * [cf_destroy_app](/app/cf_destroy_app)  
+  * [cf_app_is_running](/app/cf_app_is_running)  

@@ -7,10 +7,7 @@ parent: file
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_file_type_to_string
 
-Category: [file](/docs/file)  
-GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)  
----
-
+GitHub: [cute_file_system.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_file_system.h)
 Returns a `CF_FileType` converted to a c-string.
 
 ```cpp
@@ -19,5 +16,5 @@ const char* cf_file_type_to_string(CF_FileType type)
 
 ## Related Pages
 
-  * [CF_File](/file/cf_file.md)  
-  * [CF_Stat](/file/cf_stat.md)  
+  * [CF_File](/file/cf_file)  
+  * [CF_Stat](/file/cf_stat)  

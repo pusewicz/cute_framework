@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_CONNECT_TOKEN_SIZE
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 The size of a single connect token.
 
 ```cpp
@@ -19,6 +16,6 @@ The size of a single connect token.
 
 ## Related Pages
 
-  * [cf_client_connect](/net/cf_client_connect.md)  
-  * [CF_CONNECT_TOKEN_USER_DATA_SIZE](/net/cf_connect_token_user_data_size.md)  
-  * [cf_generate_connect_token](/net/cf_generate_connect_token.md)  
+  * [cf_client_connect](/net/cf_client_connect)  
+  * [CF_CONNECT_TOKEN_USER_DATA_SIZE](/net/cf_connect_token_user_data_size)  
+  * [cf_generate_connect_token](/net/cf_generate_connect_token)  

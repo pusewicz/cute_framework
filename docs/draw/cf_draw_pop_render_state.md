@@ -7,11 +7,8 @@ parent: draw
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_draw_pop_render_state
 
-Category: [draw](/docs/draw)  
-GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)  
----
-
-Pops and returns the last [CF_RenderState](/graphics/cf_renderstate.md).
+GitHub: [cute_draw.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_draw.h)
+Pops and returns the last [CF_RenderState](/graphics/cf_renderstate).
 
 ```cpp
 CF_RenderState cf_draw_pop_render_state();
@@ -19,11 +16,11 @@ CF_RenderState cf_draw_pop_render_state();
 
 ## Related Pages
 
-  * [CF_RenderState](/graphics/cf_renderstate.md)  
+  * [CF_RenderState](/graphics/cf_renderstate)  
   * cf_draw_filter  
-  * [cf_draw_push_viewport](/draw/cf_draw_push_viewport.md)  
-  * [cf_draw_push_scissor](/draw/cf_draw_push_scissor.md)  
-  * [cf_draw_push_render_state](/draw/cf_draw_push_render_state.md)  
-  * [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen.md)  
-  * [cf_draw_peek_render_state](/draw/cf_draw_peek_render_state.md)  
-  * [cf_render_to](/draw/cf_render_to.md)  
+  * [cf_draw_push_viewport](/draw/cf_draw_push_viewport)  
+  * [cf_draw_push_scissor](/draw/cf_draw_push_scissor)  
+  * [cf_draw_push_render_state](/draw/cf_draw_push_render_state)  
+  * [cf_app_draw_onto_screen](/app/cf_app_draw_onto_screen)  
+  * [cf_draw_peek_render_state](/draw/cf_draw_peek_render_state)  
+  * [cf_render_to](/draw/cf_render_to)  

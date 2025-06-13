@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_add_color
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)  
----
-
+GitHub: [cute_color.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_color.h)
 Returns two colors added together.
 
 ```cpp
@@ -24,16 +21,16 @@ b | The second color.
 
 ## Related Pages
 
-  * [CF_Color](/graphics/cf_color.md)  
-  * [cf_mul_color](/graphics/cf_mul_color.md)  
-  * [cf_mul_color2](/graphics/cf_mul_color2.md)  
-  * [cf_div_color](/graphics/cf_div_color.md)  
-  * [cf_color_premultiply](/graphics/cf_color_premultiply.md)  
-  * [cf_sub_color](/graphics/cf_sub_color.md)  
-  * [cf_abs_color](/graphics/cf_abs_color.md)  
-  * [cf_fract_color](/graphics/cf_fract_color.md)  
-  * [cf_splat_color](/graphics/cf_splat_color.md)  
-  * [cf_mod_color](/graphics/cf_mod_color.md)  
-  * [cf_clamp_color](/graphics/cf_clamp_color.md)  
-  * [cf_clamp_color01](/graphics/cf_clamp_color01.md)  
-  * [cf_color_lerp](/graphics/cf_color_lerp.md)  
+  * [CF_Color](/graphics/cf_color)  
+  * [cf_mul_color](/graphics/cf_mul_color)  
+  * [cf_mul_color2](/graphics/cf_mul_color2)  
+  * [cf_div_color](/graphics/cf_div_color)  
+  * [cf_color_premultiply](/graphics/cf_color_premultiply)  
+  * [cf_sub_color](/graphics/cf_sub_color)  
+  * [cf_abs_color](/graphics/cf_abs_color)  
+  * [cf_fract_color](/graphics/cf_fract_color)  
+  * [cf_splat_color](/graphics/cf_splat_color)  
+  * [cf_mod_color](/graphics/cf_mod_color)  
+  * [cf_clamp_color](/graphics/cf_clamp_color)  
+  * [cf_clamp_color01](/graphics/cf_clamp_color01)  
+  * [cf_color_lerp](/graphics/cf_color_lerp)  

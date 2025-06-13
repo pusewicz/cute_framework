@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_display_count
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Returns the number of displays on the system.
 
 ```cpp
@@ -23,12 +20,12 @@ Inidices >= 0 and < the return value are valid display indices.
 
 ## Related Pages
 
-  * [cf_make_app](/app/cf_make_app.md)  
-  * [cf_display_orientation](/app/cf_display_orientation.md)  
-  * [cf_display_x](/app/cf_display_x.md)  
-  * [cf_display_y](/app/cf_display_y.md)  
-  * [cf_display_width](/app/cf_display_width.md)  
-  * [cf_display_height](/app/cf_display_height.md)  
-  * [cf_display_refresh_rate](/app/cf_display_refresh_rate.md)  
-  * [cf_display_bounds](/app/cf_display_bounds.md)  
-  * [cf_display_name](/app/cf_display_name.md)  
+  * [cf_make_app](/app/cf_make_app)  
+  * [cf_display_orientation](/app/cf_display_orientation)  
+  * [cf_display_x](/app/cf_display_x)  
+  * [cf_display_y](/app/cf_display_y)  
+  * [cf_display_width](/app/cf_display_width)  
+  * [cf_display_height](/app/cf_display_height)  
+  * [cf_display_refresh_rate](/app/cf_display_refresh_rate)  
+  * [cf_display_bounds](/app/cf_display_bounds)  
+  * [cf_display_name](/app/cf_display_name)  

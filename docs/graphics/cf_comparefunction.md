@@ -7,10 +7,7 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_CompareFunction
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 Compare operations available for depth/stencil.
 
 ## Values
@@ -28,6 +25,6 @@ COMPARE_FUNCTION_GREATER_THAN_OR_EQUAL | >=
 
 ## Related Pages
 
-  * [CF_StencilFunction](/graphics/cf_stencilfunction.md)  
-  * [cf_compare_function_string](/graphics/cf_compare_function_string.md)  
-  * [CF_StencilOp](/graphics/cf_stencilop.md)  
+  * [CF_StencilFunction](/graphics/cf_stencilfunction)  
+  * [cf_compare_function_string](/graphics/cf_compare_function_string)  
+  * [CF_StencilOp](/graphics/cf_stencilop)  

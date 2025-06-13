@@ -7,10 +7,7 @@ parent: coroutine
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_make_coroutine
 
-Category: [coroutine](/docs/coroutine)  
-GitHub: [cute_coroutine.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_coroutine.h)  
----
-
+GitHub: [cute_coroutine.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_coroutine.h)
 Sets up the entry point for a coroutine to start.
 
 ```cpp
@@ -21,28 +18,28 @@ Parameters | Description
 --- | ---
 fn | The entry point (function) the coroutine runs.
 stack_size | The size of the coroutine's stack to call functions and make local variables, the default is about 57344 bytes.
-udata | Can be `NULL`. Gets handed back to you when [cf_coroutine_get_udata](/coroutine/cf_coroutine_get_udata.md) is called.
+udata | Can be `NULL`. Gets handed back to you when [cf_coroutine_get_udata](/coroutine/cf_coroutine_get_udata) is called.
 
 ## Remarks
 
-The coroutine starts in a `COROUTINE_STATE_SUSPENDED`, and won't run until [cf_coroutine_resume](/coroutine/cf_coroutine_resume.md) is first called. Free up the
-coroutine with [cf_destroy_coroutine](/coroutine/cf_destroy_coroutine.md) when done. See [CF_Coroutine](/coroutine/cf_coroutine.md) for some more details. IMPORTANT NOTE: You should beef
+The coroutine starts in a `COROUTINE_STATE_SUSPENDED`, and won't run until [cf_coroutine_resume](/coroutine/cf_coroutine_resume) is first called. Free up the
+coroutine with [cf_destroy_coroutine](/coroutine/cf_destroy_coroutine) when done. See [CF_Coroutine](/coroutine/cf_coroutine) for some more details. IMPORTANT NOTE: You should beef
 up the stack_size to 1 or 2 MB (you may use e.g. `CF_MB  2`) if you wish to call into APIs such as DirectX. A variety of APIs
 and libraries out there have very deep or complex call stacks -- so the default size may cause stack overflows in such cases.
 
 ## Related Pages
 
-  * [CF_Coroutine](/coroutine/cf_coroutine.md)  
-  * [CF_CoroutineFn](/coroutine/cf_coroutinefn.md)  
-  * [CF_CoroutineState](/coroutine/cf_coroutinestate.md)  
-  * [cf_coroutine_currently_running](/coroutine/cf_coroutine_currently_running.md)  
-  * [cf_destroy_coroutine](/coroutine/cf_destroy_coroutine.md)  
-  * [cf_coroutine_state_to_string](/coroutine/cf_coroutine_state_to_string.md)  
-  * [cf_coroutine_resume](/coroutine/cf_coroutine_resume.md)  
-  * [cf_coroutine_yield](/coroutine/cf_coroutine_yield.md)  
-  * [cf_coroutine_state](/coroutine/cf_coroutine_state.md)  
-  * [cf_coroutine_get_udata](/coroutine/cf_coroutine_get_udata.md)  
-  * [cf_coroutine_push](/coroutine/cf_coroutine_push.md)  
-  * [cf_coroutine_pop](/coroutine/cf_coroutine_pop.md)  
-  * [cf_coroutine_bytes_pushed](/coroutine/cf_coroutine_bytes_pushed.md)  
-  * [cf_coroutine_space_remaining](/coroutine/cf_coroutine_space_remaining.md)  
+  * [CF_Coroutine](/coroutine/cf_coroutine)  
+  * [CF_CoroutineFn](/coroutine/cf_coroutinefn)  
+  * [CF_CoroutineState](/coroutine/cf_coroutinestate)  
+  * [cf_coroutine_currently_running](/coroutine/cf_coroutine_currently_running)  
+  * [cf_destroy_coroutine](/coroutine/cf_destroy_coroutine)  
+  * [cf_coroutine_state_to_string](/coroutine/cf_coroutine_state_to_string)  
+  * [cf_coroutine_resume](/coroutine/cf_coroutine_resume)  
+  * [cf_coroutine_yield](/coroutine/cf_coroutine_yield)  
+  * [cf_coroutine_state](/coroutine/cf_coroutine_state)  
+  * [cf_coroutine_get_udata](/coroutine/cf_coroutine_get_udata)  
+  * [cf_coroutine_push](/coroutine/cf_coroutine_push)  
+  * [cf_coroutine_pop](/coroutine/cf_coroutine_pop)  
+  * [cf_coroutine_bytes_pushed](/coroutine/cf_coroutine_bytes_pushed)  
+  * [cf_coroutine_space_remaining](/coroutine/cf_coroutine_space_remaining)  

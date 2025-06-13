@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # scat_range
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Appends a range of characters from string b onto the end of a.
 
 ```cpp
@@ -24,13 +21,13 @@ b | Used to append onto `a`.
 
 ## Remarks
 
-You can technically do this with [sfmt](/string/sfmt.md), but this function is optimized much faster. Does the same thing as [sappend_range](/string/sappend_range.md).
+You can technically do this with [sfmt](/string/sfmt), but this function is optimized much faster. Does the same thing as [sappend_range](/string/sappend_range).
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sappend](/string/sappend.md)  
-  * [scat](/string/scat.md)  
-  * [sappend_range](/string/sappend_range.md)  
-  * [sfmt_append](/string/sfmt_append.md)  
-  * [sfmt](/string/sfmt.md)  
+  * [sdyna](/string/sdyna)  
+  * [sappend](/string/sappend)  
+  * [scat](/string/scat)  
+  * [sappend_range](/string/sappend_range)  
+  * [sfmt_append](/string/sfmt_append)  
+  * [sfmt](/string/sfmt)  

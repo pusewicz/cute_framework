@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # suint
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Converts a uint64_t to a string and assigns `s` to it.
 
 ```cpp
@@ -24,15 +21,15 @@ uint | The value to convert.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [sint](/string/sint.md)  
-  * [stobool](/string/stobool.md)  
-  * [sfloat](/string/sfloat.md)  
-  * [sdouble](/string/sdouble.md)  
-  * [shex](/string/shex.md)  
-  * [sbool](/string/sbool.md)  
+  * [sdyna](/string/sdyna)  
+  * [sint](/string/sint)  
+  * [stobool](/string/stobool)  
+  * [sfloat](/string/sfloat)  
+  * [sdouble](/string/sdouble)  
+  * [shex](/string/shex)  
+  * [sbool](/string/sbool)  
   * stint  
-  * [stouint](/string/stouint.md)  
-  * [stofloat](/string/stofloat.md)  
-  * [stodouble](/string/stodouble.md)  
-  * [stohex](/string/stohex.md)  
+  * [stouint](/string/stouint)  
+  * [stofloat](/string/stofloat)  
+  * [stodouble](/string/stodouble)  
+  * [stohex](/string/stohex)  

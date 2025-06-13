@@ -7,10 +7,7 @@ parent: hash
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # hdel
 
-Category: [hash](/docs/hash)  
-GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)  
----
-
+GitHub: [cute_hashtable.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_hashtable.h)
 Removes an item from the table.
 
 ```cpp
@@ -39,18 +36,18 @@ Asserts if the item does not exist.
 
 ## Related Pages
 
-  * [htbl](/hash/htbl.md)  
-  * [hset](/hash/hset.md)  
-  * [hadd](/hash/hadd.md)  
-  * [hget](/hash/hget.md)  
-  * [hfind](/hash/hfind.md)  
-  * [hget_ptr](/hash/hget_ptr.md)  
-  * [hfind_ptr](/hash/hfind_ptr.md)  
-  * [hhas](/hash/hhas.md)  
-  * [hfree](/hash/hfree.md)  
-  * [hclear](/hash/hclear.md)  
-  * [hkeys](/hash/hkeys.md)  
-  * [hitems](/hash/hitems.md)  
-  * [hswap](/hash/hswap.md)  
-  * [hsize](/hash/hsize.md)  
-  * [hcount](/hash/hcount.md)  
+  * [htbl](/hash/htbl)  
+  * [hset](/hash/hset)  
+  * [hadd](/hash/hadd)  
+  * [hget](/hash/hget)  
+  * [hfind](/hash/hfind)  
+  * [hget_ptr](/hash/hget_ptr)  
+  * [hfind_ptr](/hash/hfind_ptr)  
+  * [hhas](/hash/hhas)  
+  * [hfree](/hash/hfree)  
+  * [hclear](/hash/hclear)  
+  * [hkeys](/hash/hkeys)  
+  * [hitems](/hash/hitems)  
+  * [hswap](/hash/hswap)  
+  * [hsize](/hash/hsize)  
+  * [hcount](/hash/hcount)  

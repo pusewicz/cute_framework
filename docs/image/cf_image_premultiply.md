@@ -7,10 +7,7 @@ parent: image
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_image_premultiply
 
-Category: [image](/docs/image)  
-GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)  
----
-
+GitHub: [cute_image.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_image.h)
 Premultiplies the alpha component of each pixel with the RGB color components.
 
 ```cpp
@@ -28,4 +25,4 @@ Here is a good resource for learning about [premultiplied alpha](https://iquilez
 
 ## Related Pages
 
-  * [CF_Image](/image/cf_image.md)  
+  * [CF_Image](/image/cf_image)  

@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_sprite_animation_interpolant
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Returns a value from 0 to 1 representing how far along the animation has played.
 
 ```cpp
@@ -27,10 +24,10 @@ sprite | The sprite.
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [CF_Frame](/sprite/cf_frame.md)  
-  * [CF_Animation](/sprite/cf_animation.md)  
-  * [cf_sprite_frame_count](/sprite/cf_sprite_frame_count.md)  
-  * [cf_sprite_current_frame](/sprite/cf_sprite_current_frame.md)  
-  * [cf_sprite_frame_delay](/sprite/cf_sprite_frame_delay.md)  
-  * [cf_sprite_animation_delay](/sprite/cf_sprite_animation_delay.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [CF_Frame](/sprite/cf_frame)  
+  * [CF_Animation](/sprite/cf_animation)  
+  * [cf_sprite_frame_count](/sprite/cf_sprite_frame_count)  
+  * [cf_sprite_current_frame](/sprite/cf_sprite_current_frame)  
+  * [cf_sprite_frame_delay](/sprite/cf_sprite_frame_delay)  
+  * [cf_sprite_animation_delay](/sprite/cf_sprite_animation_delay)  

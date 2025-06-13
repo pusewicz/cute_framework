@@ -7,11 +7,8 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_mul_tf
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
-Returns a the composition of multiplying two [CF_Transform](/math/cf_transform.md)s.
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
+Returns a the composition of multiplying two [CF_Transform](/math/cf_transform)s.
 
 ```cpp
 CF_Transform cf_mul_tf(CF_Transform a, CF_Transform b)
@@ -19,9 +16,9 @@ CF_Transform cf_mul_tf(CF_Transform a, CF_Transform b)
 
 ## Related Pages
 
-  * [CF_Transform](/math/cf_transform.md)  
-  * [cf_make_transform](/math/cf_make_transform.md)  
-  * [cf_make_transform_TR](/math/cf_make_transform_tr.md)  
-  * [cf_mul_tf_v2](/math/cf_mul_tf_v2.md)  
-  * [cf_mulT_tf_v2](/math/cf_mult_tf_v2.md)  
-  * [cf_mulT_tf](/math/cf_mult_tf.md)  
+  * [CF_Transform](/math/cf_transform)  
+  * [cf_make_transform](/math/cf_make_transform)  
+  * [cf_make_transform_TR](/math/cf_make_transform_tr)  
+  * [cf_mul_tf_v2](/math/cf_mul_tf_v2)  
+  * [cf_mulT_tf_v2](/math/cf_mult_tf_v2)  
+  * [cf_mulT_tf](/math/cf_mult_tf)  

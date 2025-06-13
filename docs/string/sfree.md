@@ -7,10 +7,7 @@ parent: string
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # sfree
 
-Category: [string](/docs/string)  
-GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)  
----
-
+GitHub: [cute_string.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_string.h)
 Frees up all resources used by the string and sets it to `NULL`.
 
 ```cpp
@@ -23,8 +20,8 @@ s | The string. Can be `NULL`.
 
 ## Related Pages
 
-  * [sdyna](/string/sdyna.md)  
-  * [spush](/string/spush.md)  
-  * [spop](/string/spop.md)  
-  * [sfit](/string/sfit.md)  
-  * [sset](/string/sset.md)  
+  * [sdyna](/string/sdyna)  
+  * [spush](/string/spush)  
+  * [spop](/string/spop)  
+  * [sfit](/string/sfit)  
+  * [sset](/string/sset)  

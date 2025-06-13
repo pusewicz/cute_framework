@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_project
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Projects a point onto the surface of the plane.
 
 ```cpp
@@ -19,10 +16,10 @@ CF_V2 cf_project(CF_Halfspace h, CF_V2 p)
 
 ## Related Pages
 
-  * [CF_Halfspace](/math/cf_halfspace.md)  
-  * [cf_plane](/math/cf_plane.md)  
-  * [cf_origin](/math/cf_origin.md)  
-  * [cf_distance_hs](/math/cf_distance_hs.md)  
-  * [cf_intersect_halfspace](/math/cf_intersect_halfspace.md)  
-  * [cf_mul_tf_hs](/math/cf_mul_tf_hs.md)  
-  * [cf_mulT_tf_hs](/math/cf_mult_tf_hs.md)  
+  * [CF_Halfspace](/math/cf_halfspace)  
+  * [cf_plane](/math/cf_plane)  
+  * [cf_origin](/math/cf_origin)  
+  * [cf_distance_hs](/math/cf_distance_hs)  
+  * [cf_intersect_halfspace](/math/cf_intersect_halfspace)  
+  * [cf_mul_tf_hs](/math/cf_mul_tf_hs)  
+  * [cf_mulT_tf_hs](/math/cf_mult_tf_hs)  

@@ -7,10 +7,7 @@ parent: multithreading
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_thread_get_id
 
-Category: [multithreading](/docs/multithreading)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
 Returns the unique id of a thread.
 
 ```cpp
@@ -23,9 +20,9 @@ thread | The thread.
 
 ## Related Pages
 
-  * [CF_Thread](/multithreading/cf_thread.md)  
-  * [CF_ThreadFn](/multithreading/cf_threadfn.md)  
-  * [cf_thread_create](/multithreading/cf_thread_create.md)  
-  * [cf_thread_detach](/multithreading/cf_thread_detach.md)  
-  * [cf_thread_wait](/multithreading/cf_thread_wait.md)  
-  * [cf_thread_id](/multithreading/cf_thread_id.md)  
+  * [CF_Thread](/multithreading/cf_thread)  
+  * [CF_ThreadFn](/multithreading/cf_threadfn)  
+  * [cf_thread_create](/multithreading/cf_thread_create)  
+  * [cf_thread_detach](/multithreading/cf_thread_detach)  
+  * [cf_thread_wait](/multithreading/cf_thread_wait)  
+  * [cf_thread_id](/multithreading/cf_thread_id)  

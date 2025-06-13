@@ -7,11 +7,8 @@ parent: png_cache
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_png_cache_load
 
-Category: [png_cache](/docs/png_cache)  
-GitHub: [cute_png_cache.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_png_cache.h)  
----
-
-Returns an image [CF_Png](/png_cache/cf_png.md) from the cache.
+GitHub: [cute_png_cache.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_png_cache.h)
+Returns an image [CF_Png](/png_cache/cf_png) from the cache.
 
 ```cpp
 CF_Result cf_png_cache_load(const char* png_path, CF_Png* png /*= NULL*/);
@@ -23,7 +20,7 @@ If it does not exist in the cache, it is loaded from disk and placed into the ca
 
 ## Related Pages
 
-  * [CF_Png](/png_cache/cf_png.md)  
-  * [cf_png_defaults](/png_cache/cf_png_defaults.md)  
-  * [cf_make_png_cache_sprite](/png_cache/cf_make_png_cache_sprite.md)  
-  * [cf_make_png_cache_animation](/png_cache/cf_make_png_cache_animation.md)  
+  * [CF_Png](/png_cache/cf_png)  
+  * [cf_png_defaults](/png_cache/cf_png_defaults)  
+  * [cf_make_png_cache_sprite](/png_cache/cf_make_png_cache_sprite)  
+  * [cf_make_png_cache_animation](/png_cache/cf_make_png_cache_animation)  

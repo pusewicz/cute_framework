@@ -7,10 +7,7 @@ parent: math
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_width
 
-Category: [math](/docs/math)  
-GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)  
----
-
+GitHub: [cute_math.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_math.h)
 Returns the width of an AABB (axis-aligned bounding box).
 
 ```cpp
@@ -19,10 +16,10 @@ float cf_width(CF_Aabb bb)
 
 ## Related Pages
 
-  * [CF_Aabb](/math/cf_aabb.md)  
-  * [cf_make_aabb](/math/cf_make_aabb.md)  
-  * [cf_extents](/math/cf_extents.md)  
-  * [cf_height](/math/cf_height.md)  
-  * [cf_half_width](/math/cf_half_width.md)  
-  * [cf_half_height](/math/cf_half_height.md)  
-  * [cf_half_extents](/math/cf_half_extents.md)  
+  * [CF_Aabb](/math/cf_aabb)  
+  * [cf_make_aabb](/math/cf_make_aabb)  
+  * [cf_extents](/math/cf_extents)  
+  * [cf_height](/math/cf_height)  
+  * [cf_half_width](/math/cf_half_width)  
+  * [cf_half_height](/math/cf_half_height)  
+  * [cf_half_extents](/math/cf_half_extents)  

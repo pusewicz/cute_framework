@@ -7,14 +7,11 @@ parent: json
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_JVal
 
-Category: [json](/docs/json)  
-GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)  
----
-
+GitHub: [cute_json.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_json.h)
 Represents a single json value, such an integer or array.
 
 ## Related Pages
 
-  * [CF_JDoc](/json/cf_jdoc.md)  
-  * [CF_JType](/json/cf_jtype.md)  
-  * [cf_make_json](/json/cf_make_json.md)  
+  * [CF_JDoc](/json/cf_jdoc)  
+  * [CF_JType](/json/cf_jtype)  
+  * [cf_make_json](/json/cf_make_json)  

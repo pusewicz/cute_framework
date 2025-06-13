@@ -7,10 +7,7 @@ parent: allocator
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_realloc
 
-Category: [allocator](/docs/allocator)  
-GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)  
----
-
+GitHub: [cute_alloc.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_alloc.h)
 Reallocates a block of memory to a new size.
 
 ```cpp
@@ -19,14 +16,14 @@ void* cf_realloc(void* ptr, size_t size);
 
 ## Remarks
 
-You must reassign your old pointer! Generally this is more efficient than calling `cf_malloc`, [cf_free](/allocator/cf_free.md), and
+You must reassign your old pointer! Generally this is more efficient than calling `cf_malloc`, [cf_free](/allocator/cf_free), and
 `CF_MEMCPY` yourself. Though, this is not a concern for most games.
 
 ## Related Pages
 
-  * [CF_Allocator](/allocator/cf_allocator.md)  
-  * [cf_allocator_override](/allocator/cf_allocator_override.md)  
-  * [cf_allocator_restore_default](/allocator/cf_allocator_restore_default.md)  
-  * [cf_alloc](/allocator/cf_alloc.md)  
-  * [cf_free](/allocator/cf_free.md)  
-  * [cf_calloc](/allocator/cf_calloc.md)  
+  * [CF_Allocator](/allocator/cf_allocator)  
+  * [cf_allocator_override](/allocator/cf_allocator_override)  
+  * [cf_allocator_restore_default](/allocator/cf_allocator_restore_default)  
+  * [cf_alloc](/allocator/cf_alloc)  
+  * [cf_free](/allocator/cf_free)  
+  * [cf_calloc](/allocator/cf_calloc)  

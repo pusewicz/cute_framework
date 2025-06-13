@@ -7,10 +7,7 @@ parent: atomic
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_atomic_zero
 
-Category: [atomic](/docs/atomic)  
-GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)  
----
-
+GitHub: [cute_multithreading.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_multithreading.h)
 Returns an atomic integer of value zero.
 
 ```cpp
@@ -23,10 +20,10 @@ Atomics are an advanced topic. You've been warned!
 
 ## Related Pages
 
-  * [cf_atomic_ptr_cas](/atomic/cf_atomic_ptr_cas.md)  
-  * [cf_atomic_add](/atomic/cf_atomic_add.md)  
-  * [cf_atomic_set](/atomic/cf_atomic_set.md)  
-  * [cf_atomic_get](/atomic/cf_atomic_get.md)  
-  * [cf_atomic_cas](/atomic/cf_atomic_cas.md)  
-  * [cf_atomic_ptr_set](/atomic/cf_atomic_ptr_set.md)  
-  * [cf_atomic_ptr_get](/atomic/cf_atomic_ptr_get.md)  
+  * [cf_atomic_ptr_cas](/atomic/cf_atomic_ptr_cas)  
+  * [cf_atomic_add](/atomic/cf_atomic_add)  
+  * [cf_atomic_set](/atomic/cf_atomic_set)  
+  * [cf_atomic_get](/atomic/cf_atomic_get)  
+  * [cf_atomic_cas](/atomic/cf_atomic_cas)  
+  * [cf_atomic_ptr_set](/atomic/cf_atomic_ptr_set)  
+  * [cf_atomic_ptr_get](/atomic/cf_atomic_ptr_get)  

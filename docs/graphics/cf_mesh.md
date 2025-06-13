@@ -7,25 +7,22 @@ parent: graphics
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Mesh
 
-Category: [graphics](/docs/graphics)  
-GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)  
----
-
+GitHub: [cute_graphics.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_graphics.h)
 An opaque handle representing a mesh.
 
 ## Remarks
 
 A mesh is a container of triangles, along with optional indices. After a mesh
 is created the layout of the vertices in memory must be described. We use an array of
-[CF_VertexAttribute](/graphics/cf_vertexattribute.md) to define how the GPU will interpret the vertices we send it.
+[CF_VertexAttribute](/graphics/cf_vertexattribute) to define how the GPU will interpret the vertices we send it.
 
 ## Related Pages
 
-  * [CF_Texture](/graphics/cf_texture.md)  
-  * [CF_Canvas](/graphics/cf_canvas.md)  
-  * [CF_Material](/graphics/cf_material.md)  
-  * [CF_Shader](/graphics/cf_shader.md)  
-  * [cf_make_mesh](/graphics/cf_make_mesh.md)  
-  * [cf_destroy_mesh](/graphics/cf_destroy_mesh.md)  
-  * [cf_mesh_update_vertex_data](/graphics/cf_mesh_update_vertex_data.md)  
-  * [cf_apply_mesh](/graphics/cf_apply_mesh.md)  
+  * [CF_Texture](/graphics/cf_texture)  
+  * [CF_Canvas](/graphics/cf_canvas)  
+  * [CF_Material](/graphics/cf_material)  
+  * [CF_Shader](/graphics/cf_shader)  
+  * [cf_make_mesh](/graphics/cf_make_mesh)  
+  * [cf_destroy_mesh](/graphics/cf_destroy_mesh)  
+  * [cf_mesh_update_vertex_data](/graphics/cf_mesh_update_vertex_data)  
+  * [cf_apply_mesh](/graphics/cf_apply_mesh)  

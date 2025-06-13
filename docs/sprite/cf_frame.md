@@ -7,10 +7,7 @@ parent: sprite
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # CF_Frame
 
-Category: [sprite](/docs/sprite)  
-GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)  
----
-
+GitHub: [cute_sprite.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_sprite.h)
 Represents one frame of animation within a sprite.
 
 Struct Members | Description
@@ -20,5 +17,5 @@ Struct Members | Description
 
 ## Related Pages
 
-  * [CF_Sprite](/sprite/cf_sprite.md)  
-  * [CF_Animation](/sprite/cf_animation.md)  
+  * [CF_Sprite](/sprite/cf_sprite)  
+  * [CF_Animation](/sprite/cf_animation)  

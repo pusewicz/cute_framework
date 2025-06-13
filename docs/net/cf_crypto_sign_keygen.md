@@ -7,10 +7,7 @@ parent: net
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_crypto_sign_keygen
 
-Category: [net](/docs/net)  
-GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)  
----
-
+GitHub: [cute_networking.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_networking.h)
 Generates a cryptographically secure keypair, used for facilitating connect tokens.
 
 ```cpp
@@ -24,6 +21,6 @@ secret_key | The secret key of the keypair. Keep this safe and hidden within you
 
 ## Related Pages
 
-  * [CF_CryptoKey](/net/cf_cryptokey.md)  
-  * [cf_crypto_generate_key](/net/cf_crypto_generate_key.md)  
-  * [cf_generate_connect_token](/net/cf_generate_connect_token.md)  
+  * [CF_CryptoKey](/net/cf_cryptokey)  
+  * [cf_crypto_generate_key](/net/cf_crypto_generate_key)  
+  * [cf_generate_connect_token](/net/cf_generate_connect_token)  

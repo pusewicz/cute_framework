@@ -7,10 +7,7 @@ parent: app
 [//]: # (See: https://github.com/RandyGaul/cute_framework/blob/master/samples/docs_parser.cpp)
 # cf_app_power_info
 
-Category: [app](/docs/app)  
-GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)  
----
-
+GitHub: [cute_app.h](https://github.com/RandyGaul/cute_framework/blob/master/include/cute_app.h)
 Fetches detailed power info about the application.
 
 ```cpp
@@ -19,10 +16,10 @@ CF_PowerInfo cf_app_power_info();
 
 ## Return Value
 
-Returns a [CF_PowerInfo](/app/cf_powerinfo.md) struct.
+Returns a [CF_PowerInfo](/app/cf_powerinfo) struct.
 
 ## Related Pages
 
-  * [CF_PowerInfo](/app/cf_powerinfo.md)  
-  * [cf_power_state_to_string](/app/cf_power_state_to_string.md)  
-  * [CF_PowerState](/app/cf_powerstate.md)  
+  * [CF_PowerInfo](/app/cf_powerinfo)  
+  * [cf_power_state_to_string](/app/cf_power_state_to_string)  
+  * [CF_PowerState](/app/cf_powerstate)  
