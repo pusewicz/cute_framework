@@ -81,7 +81,6 @@ nav:
       - Drawing: topics/drawing.md
       - Transforms: topics/camera.md
       - Debug/Tools UI: topics/dear_imgui.md
-      - Topics: topics/index.md
       - Allocators: topics/allocator.md
       - Atomics: topics/atomics.md
       - Audio: topics/audio.md
