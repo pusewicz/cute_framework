@@ -71,7 +71,6 @@ not_in_nav: |
   /utility/*.md
   /web/*.md
 
-# Navigation
 nav:
   - Home: index.md
   - Getting Started: getting_started.md
