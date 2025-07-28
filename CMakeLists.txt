@@ -340,6 +340,14 @@ else()
 	endif()
 endif()
 target_include_directories(cute PUBLIC ${SDL3_INCLUDE_DIRS})
+FetchContent_Declare(
+	box2d
+	URL https://github.com/erincatto/box2d/archive/refs/tags/v3.1.1.zip
+	DOWNLOAD_EXTRACT_TIMESTAMP ON
+)
+FetchContent_MakeAvailable(box2d)
+target_include_directories(cute PUBLIC ${box2d_SOURCE_DIR}/include)
+message(STATUS "Box2D include dir: ${box2d_SOURCE_DIR}/include")
 
 if (CF_RUNTIME_SHADER_COMPILATION OR CF_CUTE_SHADERC)
 	# glslang for shader compilation.
