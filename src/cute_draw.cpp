@@ -3335,7 +3335,8 @@ static void s_process_command(CF_Canvas canvas, CF_Command* cmd, CF_Command* nex
 			next->render_state == cmd->render_state &&
 			next->scissor == cmd->scissor &&
 			next->shader == cmd->shader &&
-			next->viewport == cmd->viewport
+			next->viewport == cmd->viewport &&
+			next->layer == cmd->layer
 		)) {
 			same = false;
 		}
