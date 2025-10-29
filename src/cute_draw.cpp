@@ -106,10 +106,10 @@ void cf_get_pixels(SPRITEBATCH_U64 image_id, void* buffer, int bytes_to_fill, vo
 		// These are handled externally by the user, so spritebatch should never ask for pixels.
 		// It's assumed premade atlases are generated properly externally.
 		CF_ASSERT(!"This should never be hit -- Invalid image_id sent to spritebatch.");
-		CF_MEMSET(buffer, 0, sizeof(bytes_to_fill));
+		CF_MEMSET(buffer, 0, bytes_to_fill);
 	} else {
 		CF_ASSERT(!"Invalid image_id when attempting to fetch pixels.");
-		CF_MEMSET(buffer, 0, sizeof(bytes_to_fill));
+		CF_MEMSET(buffer, 0, bytes_to_fill);
 	}
 }
 
@@ -3317,25 +3317,42 @@ static void s_process_command(CF_Canvas canvas, CF_Command* cmd, CF_Command* nex
 		spritebatch_push(&s_draw->sb, cmd->items[j]);
 	}
 
+	// Find the next command with drawable items for batch merging.
+	// Skip over commands that were created for state changes (like shader pop) but have no geometry.
+	// This allows proper batching of sprites with identical state.
+	CF_Command* next_drawable = next;
+	while (next_drawable && !next_drawable->items.count() && !next_drawable->is_canvas) {
+		int next_index = (int)(next_drawable - s_draw->cmds.data()) + 1;
+		if (next_index >= s_draw->cmds.count()) {
+			next_drawable = NULL;
+			break;
+		}
+		next_drawable = &s_draw->cmds[next_index];
+	}
+	// Only compare against commands with drawable items for merging.
+	if (next_drawable && next_drawable->is_canvas) {
+		next_drawable = NULL;
+	}
+
 	// Merge with the next command if identical.
 	bool same = true;
-	if (next) {
-		if (next->u.size != cmd->u.size) {
+	if (next_drawable) {
+		if (next_drawable->u.size != cmd->u.size) {
 			same = false;
-		} else if (next->u.type != cmd->u.type) {
+		} else if (next_drawable->u.type != cmd->u.type) {
 			same = false;
-		} else if (next->u.texture.id != cmd->u.texture.id) {
+		} else if (next_drawable->u.texture.id != cmd->u.texture.id) {
 			same = false;
-		} else if (next->u.name != cmd->u.name) {
+		} else if (next_drawable->u.name != cmd->u.name) {
 			same = false;
-		} else if (CF_MEMCMP(next->u.data, cmd->u.data, next->u.size)) {
+		} else if (next_drawable->u.size > 0 && CF_MEMCMP(next_drawable->u.data, cmd->u.data, next_drawable->u.size)) {
 			same = false;
 		} else if (!(
-			next->alpha_discard == cmd->alpha_discard &&
-			next->render_state == cmd->render_state &&
-			next->scissor == cmd->scissor &&
-			next->shader == cmd->shader &&
-			next->viewport == cmd->viewport
+			next_drawable->alpha_discard == cmd->alpha_discard &&
+			next_drawable->render_state == cmd->render_state &&
+			next_drawable->scissor == cmd->scissor &&
+			next_drawable->shader == cmd->shader &&
+			next_drawable->viewport == cmd->viewport
 		)) {
 			same = false;
 		}
@@ -3370,18 +3387,7 @@ void cf_render_layers_to(CF_Canvas canvas, int layer_lo, int layer_hi, bool clea
 	for (int i = 0; i < count; ++i) {
 		s_draw->cmd_index = i;
 		CF_Command* cmd = &s_draw->cmds[i];
-
-		// Find next non-empty command for batch merging.
-		// Skip over empty commands that were created by state changes (like shader pop)
-		// to allow proper batching of sprites with identical state.
-		CF_Command* next = NULL;
-		for (int j = i + 1; j < count; ++j) {
-			if (s_draw->cmds[j].items.count() > 0) {
-				next = &s_draw->cmds[j];
-				break;
-			}
-		}
-
+		CF_Command* next = i + 1 == count ? NULL : s_draw->cmds + (i + 1);
 		if (cmd->layer >= layer_lo && cmd->layer <= layer_hi) {
 			s_process_command(canvas, cmd, next, clear);
 		} else if (cmd->layer > layer_hi) {
