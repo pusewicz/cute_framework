@@ -1,0 +1,23 @@
+// Cute Framework Module Map for Swift Interoperability
+//
+// This module map allows Swift to import the Cute Framework C API.
+// The accompanying CuteFramework.apinotes file provides Swift-friendly naming.
+//
+// Usage in Swift:
+//   import CuteFramework
+//
+// Build with:
+//   -fmodules
+//   -fapinotes-modules
+//   -fapi-notes-swift-version=5
+
+module CuteFramework {
+    // Main umbrella header that includes all public APIs
+    umbrella header "cute.h"
+
+    export *
+    module * { export * }
+
+    // Link against the cute framework library
+    link "cute"
+}

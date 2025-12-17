@@ -1,0 +1,844 @@
+# Cute Framework API Notes for Swift Interoperability
+# https://clang.llvm.org/docs/APINotes.html
+#
+# This file provides Swift-friendly annotations for the Cute Framework C API.
+# Place this file alongside the module map or in the framework's Headers directory.
+#
+# To use with Clang:
+#   -fapinotes-modules
+#   -fapi-notes-swift-version=5
+#
+# The annotations here:
+#   - Remove CF_/cf_ prefixes for cleaner Swift names
+#   - Add nullability information
+#   - Rename factory functions to Swift initializer style
+#   - Group related APIs logically
+
+Name: CuteFramework
+SwiftInferImportAsMember: true
+
+# =============================================================================
+# TAGS (Structs, Enums, Unions)
+# =============================================================================
+
+Tags:
+
+# -----------------------------------------------------------------------------
+# Math Types
+# -----------------------------------------------------------------------------
+
+- Name: CF_V2
+  SwiftName: Vector2
+
+- Name: CF_V3
+  SwiftName: Vector3
+
+- Name: CF_V4
+  SwiftName: Vector4
+
+- Name: CF_M2x2
+  SwiftName: Matrix2x2
+
+- Name: CF_M3x2
+  SwiftName: Matrix3x2
+
+- Name: CF_SinCos
+  SwiftName: SinCos
+
+- Name: CF_Transform
+  SwiftName: Transform2D
+
+- Name: CF_Halfspace
+  SwiftName: Halfspace
+
+- Name: CF_Ray
+  SwiftName: Ray
+
+- Name: CF_Raycast
+  SwiftName: RaycastResult
+
+- Name: CF_Circle
+  SwiftName: Circle
+
+- Name: CF_Aabb
+  SwiftName: AABB
+
+- Name: CF_Rect
+  SwiftName: Rect
+
+- Name: CF_Poly
+  SwiftName: Polygon
+
+- Name: CF_Capsule
+  SwiftName: Capsule
+
+# -----------------------------------------------------------------------------
+# Color Types
+# -----------------------------------------------------------------------------
+
+- Name: CF_Color
+  SwiftName: Color
+
+- Name: CF_Pixel
+  SwiftName: Pixel
+
+# -----------------------------------------------------------------------------
+# Result/Error Types
+# -----------------------------------------------------------------------------
+
+- Name: CF_Result
+  SwiftName: Result
+
+- Name: CF_PowerInfo
+  SwiftName: PowerInfo
+
+# -----------------------------------------------------------------------------
+# Graphics Handle Types
+# -----------------------------------------------------------------------------
+
+- Name: CF_Texture
+  SwiftName: Texture
+
+- Name: CF_Canvas
+  SwiftName: Canvas
+
+- Name: CF_Mesh
+  SwiftName: Mesh
+
+- Name: CF_Material
+  SwiftName: Material
+
+- Name: CF_Shader
+  SwiftName: Shader
+
+- Name: CF_RenderState
+  SwiftName: RenderState
+
+# -----------------------------------------------------------------------------
+# Audio Types
+# -----------------------------------------------------------------------------
+
+- Name: CF_Sound
+  SwiftName: Sound
+
+- Name: CF_Audio
+  SwiftName: Audio
+
+- Name: CF_SoundParams
+  SwiftName: SoundParams
+
+# -----------------------------------------------------------------------------
+# Sprite/Animation Types
+# -----------------------------------------------------------------------------
+
+- Name: CF_Sprite
+  SwiftName: Sprite
+
+- Name: CF_Animation
+  SwiftName: Animation
+
+- Name: CF_Frame
+  SwiftName: Frame
+
+# -----------------------------------------------------------------------------
+# Image Types
+# -----------------------------------------------------------------------------
+
+- Name: CF_Image
+  SwiftName: Image
+
+# -----------------------------------------------------------------------------
+# Memory Types
+# -----------------------------------------------------------------------------
+
+- Name: CF_Arena
+  SwiftName: Arena
+
+- Name: CF_MemoryPool
+  SwiftName: MemoryPool
+
+- Name: CF_Allocator
+  SwiftName: Allocator
+
+# -----------------------------------------------------------------------------
+# Enums
+# -----------------------------------------------------------------------------
+
+- Name: CF_DisplayOrientation
+  SwiftName: DisplayOrientation
+
+- Name: CF_AppOptionFlagBits
+  SwiftName: AppOptions
+
+- Name: CF_PowerState
+  SwiftName: PowerState
+
+- Name: CF_MessageBoxType
+  SwiftName: MessageBoxType
+
+- Name: CF_MSAA
+  SwiftName: MSAA
+
+- Name: CF_BackendType
+  SwiftName: BackendType
+
+- Name: CF_MouseButton
+  SwiftName: MouseButton
+
+- Name: CF_KeyButton
+  SwiftName: KeyButton
+
+- Name: CF_PixelFormat
+  SwiftName: PixelFormat
+
+- Name: CF_Filter
+  SwiftName: TextureFilter
+
+- Name: CF_WrapMode
+  SwiftName: WrapMode
+
+- Name: CF_BlendOp
+  SwiftName: BlendOp
+
+- Name: CF_BlendFactor
+  SwiftName: BlendFactor
+
+- Name: CF_CompareFunction
+  SwiftName: CompareFunction
+
+- Name: CF_StencilOp
+  SwiftName: StencilOp
+
+- Name: CF_CullMode
+  SwiftName: CullMode
+
+- Name: CF_VertexFormat
+  SwiftName: VertexFormat
+
+- Name: CF_UniformType
+  SwiftName: UniformType
+
+# =============================================================================
+# ENUMERATORS (Enum Cases)
+# =============================================================================
+
+Enumerators:
+
+# Display Orientation
+- Name: CF_DISPLAY_ORIENTATION_UNKNOWN
+  SwiftName: unknown
+- Name: CF_DISPLAY_ORIENTATION_LANDSCAPE
+  SwiftName: landscape
+- Name: CF_DISPLAY_ORIENTATION_LANDSCAPE_FLIPPED
+  SwiftName: landscapeFlipped
+- Name: CF_DISPLAY_ORIENTATION_PORTRAIT
+  SwiftName: portrait
+- Name: CF_DISPLAY_ORIENTATION_PORTRAIT_FLIPPED
+  SwiftName: portraitFlipped
+
+# App Options
+- Name: CF_APP_OPTIONS_NO_GFX_BIT
+  SwiftName: noGraphics
+- Name: CF_APP_OPTIONS_FULLSCREEN_BIT
+  SwiftName: fullscreen
+- Name: CF_APP_OPTIONS_RESIZABLE_BIT
+  SwiftName: resizable
+- Name: CF_APP_OPTIONS_HIDDEN_BIT
+  SwiftName: hidden
+- Name: CF_APP_OPTIONS_WINDOW_POS_CENTERED_BIT
+  SwiftName: centered
+- Name: CF_APP_OPTIONS_FILE_SYSTEM_DONT_DEFAULT_MOUNT_BIT
+  SwiftName: noDefaultMount
+- Name: CF_APP_OPTIONS_NO_AUDIO_BIT
+  SwiftName: noAudio
+- Name: CF_APP_OPTIONS_GFX_D3D11_BIT
+  SwiftName: d3d11
+- Name: CF_APP_OPTIONS_GFX_D3D12_BIT
+  SwiftName: d3d12
+- Name: CF_APP_OPTIONS_GFX_METAL_BIT
+  SwiftName: metal
+- Name: CF_APP_OPTIONS_GFX_VULKAN_BIT
+  SwiftName: vulkan
+- Name: CF_APP_OPTIONS_GFX_OPENGL_BIT
+  SwiftName: opengl
+- Name: CF_APP_OPTIONS_GFX_DEBUG_BIT
+  SwiftName: debugGraphics
+
+# Power State
+- Name: CF_POWER_STATE_ERROR
+  SwiftName: error
+- Name: CF_POWER_STATE_UNKNOWN
+  SwiftName: unknown
+- Name: CF_POWER_STATE_ON_BATTERY
+  SwiftName: onBattery
+- Name: CF_POWER_STATE_NO_BATTERY
+  SwiftName: noBattery
+- Name: CF_POWER_STATE_CHARGING
+  SwiftName: charging
+- Name: CF_POWER_STATE_CHARGED
+  SwiftName: charged
+
+# Message Box Type
+- Name: CF_MESSAGE_BOX_TYPE_ERROR
+  SwiftName: error
+- Name: CF_MESSAGE_BOX_TYPE_WARNING
+  SwiftName: warning
+- Name: CF_MESSAGE_BOX_TYPE_INFORMATION
+  SwiftName: information
+
+# MSAA
+- Name: CF_MSAA_NONE
+  SwiftName: none
+- Name: CF_MSAA_2X
+  SwiftName: x2
+- Name: CF_MSAA_4X
+  SwiftName: x4
+- Name: CF_MSAA_8X
+  SwiftName: x8
+
+# Result codes
+- Name: CF_RESULT_SUCCESS
+  SwiftName: success
+- Name: CF_RESULT_ERROR
+  SwiftName: failure
+
+# =============================================================================
+# FUNCTIONS
+# =============================================================================
+
+Functions:
+
+# -----------------------------------------------------------------------------
+# App - Lifecycle
+# -----------------------------------------------------------------------------
+
+- Name: cf_make_app
+  SwiftName: App.make(title:displayID:x:y:width:height:options:argv0:)
+  NullabilityOfRet: N
+  Parameters:
+  - Position: 0
+    Nullability: N
+  - Position: 7
+    Nullability: O
+
+- Name: cf_destroy_app
+  SwiftName: App.destroy()
+
+- Name: cf_app_is_running
+  SwiftName: App.isRunning()
+
+- Name: cf_app_signal_shutdown
+  SwiftName: App.signalShutdown()
+
+- Name: cf_app_update
+  SwiftName: App.update(onUpdate:)
+  Parameters:
+  - Position: 0
+    Nullability: O
+
+- Name: cf_app_draw_onto_screen
+  SwiftName: App.drawOntoScreen(clear:)
+
+# -----------------------------------------------------------------------------
+# App - Display
+# -----------------------------------------------------------------------------
+
+- Name: cf_default_display
+  SwiftName: Display.default()
+
+- Name: cf_display_count
+  SwiftName: Display.count()
+
+- Name: cf_get_display_list
+  SwiftName: Display.list()
+  NullabilityOfRet: O
+
+- Name: cf_free_display_list
+  SwiftName: Display.freeList(_:)
+  Parameters:
+  - Position: 0
+    Nullability: N
+
+- Name: cf_display_x
+  SwiftName: Display.x(of:)
+
+- Name: cf_display_y
+  SwiftName: Display.y(of:)
+
+- Name: cf_display_width
+  SwiftName: Display.width(of:)
+
+- Name: cf_display_height
+  SwiftName: Display.height(of:)
+
+- Name: cf_display_refresh_rate
+  SwiftName: Display.refreshRate(of:)
+
+- Name: cf_display_bounds
+  SwiftName: Display.bounds(of:)
+
+- Name: cf_display_name
+  SwiftName: Display.name(of:)
+  NullabilityOfRet: O
+
+- Name: cf_display_orientation
+  SwiftName: Display.orientation(of:)
+
+# -----------------------------------------------------------------------------
+# App - Window
+# -----------------------------------------------------------------------------
+
+- Name: cf_app_get_size
+  SwiftName: App.getSize(width:height:)
+
+- Name: cf_app_get_width
+  SwiftName: App.width()
+
+- Name: cf_app_get_height
+  SwiftName: App.height()
+
+- Name: cf_app_set_size
+  SwiftName: App.setSize(width:height:)
+
+- Name: cf_app_get_position
+  SwiftName: App.getPosition(x:y:)
+
+- Name: cf_app_set_position
+  SwiftName: App.setPosition(x:y:)
+
+- Name: cf_app_center_window
+  SwiftName: App.centerWindow()
+
+- Name: cf_app_show_window
+  SwiftName: App.showWindow()
+
+- Name: cf_app_get_dpi_scale
+  SwiftName: App.dpiScale()
+
+- Name: cf_app_dpi_scale_was_changed
+  SwiftName: App.dpiScaleWasChanged()
+
+- Name: cf_app_set_title
+  SwiftName: App.setTitle(_:)
+  Parameters:
+  - Position: 0
+    Nullability: N
+
+- Name: cf_app_set_icon
+  SwiftName: App.setIcon(path:)
+  Parameters:
+  - Position: 0
+    Nullability: N
+
+# -----------------------------------------------------------------------------
+# App - Window State
+# -----------------------------------------------------------------------------
+
+- Name: cf_app_was_resized
+  SwiftName: App.wasResized()
+
+- Name: cf_app_was_moved
+  SwiftName: App.wasMoved()
+
+- Name: cf_app_lost_focus
+  SwiftName: App.lostFocus()
+
+- Name: cf_app_gained_focus
+  SwiftName: App.gainedFocus()
+
+- Name: cf_app_has_focus
+  SwiftName: App.hasFocus()
+
+- Name: cf_app_was_minimized
+  SwiftName: App.wasMinimized()
+
+- Name: cf_app_was_maximized
+  SwiftName: App.wasMaximized()
+
+- Name: cf_app_minimized
+  SwiftName: App.isMinimized()
+
+- Name: cf_app_maximized
+  SwiftName: App.isMaximized()
+
+- Name: cf_app_was_restored
+  SwiftName: App.wasRestored()
+
+- Name: cf_app_request_attention
+  SwiftName: App.requestAttention()
+
+- Name: cf_app_request_attention_continuously
+  SwiftName: App.requestAttentionContinuously()
+
+- Name: cf_app_request_attention_cancel
+  SwiftName: App.cancelAttentionRequest()
+
+# -----------------------------------------------------------------------------
+# App - Mouse
+# -----------------------------------------------------------------------------
+
+- Name: cf_app_mouse_entered
+  SwiftName: App.mouseEntered()
+
+- Name: cf_app_mouse_exited
+  SwiftName: App.mouseExited()
+
+- Name: cf_app_mouse_inside
+  SwiftName: App.mouseInside()
+
+# -----------------------------------------------------------------------------
+# App - Graphics
+# -----------------------------------------------------------------------------
+
+- Name: cf_app_get_canvas
+  SwiftName: App.canvas()
+
+- Name: cf_app_set_canvas_size
+  SwiftName: App.setCanvasSize(width:height:)
+
+- Name: cf_app_get_canvas_width
+  SwiftName: App.canvasWidth()
+
+- Name: cf_app_get_canvas_height
+  SwiftName: App.canvasHeight()
+
+- Name: cf_app_set_vsync
+  SwiftName: App.setVsync(enabled:)
+
+- Name: cf_app_set_vsync_mailbox
+  SwiftName: App.setVsyncMailbox(enabled:)
+
+- Name: cf_app_get_vsync
+  SwiftName: App.vsyncEnabled()
+
+- Name: cf_app_set_msaa
+  SwiftName: App.setMSAA(sampleCount:)
+
+- Name: cf_app_set_windowed_mode
+  SwiftName: App.setWindowedMode()
+
+- Name: cf_app_set_borderless_fullscreen_mode
+  SwiftName: App.setBorderlessFullscreenMode()
+
+- Name: cf_app_set_fullscreen_mode
+  SwiftName: App.setFullscreenMode()
+
+# -----------------------------------------------------------------------------
+# App - Misc
+# -----------------------------------------------------------------------------
+
+- Name: cf_app_get_framerate
+  SwiftName: App.framerate()
+
+- Name: cf_app_get_smoothed_framerate
+  SwiftName: App.smoothedFramerate()
+
+- Name: cf_app_power_info
+  SwiftName: App.powerInfo()
+
+- Name: cf_app_init_imgui
+  SwiftName: App.initImGui()
+  NullabilityOfRet: O
+
+# -----------------------------------------------------------------------------
+# Result/Error
+# -----------------------------------------------------------------------------
+
+- Name: cf_is_error
+  SwiftName: Result.isError(self:)
+
+- Name: cf_result_error
+  SwiftName: Result.error(details:)
+  Parameters:
+  - Position: 0
+    Nullability: O
+
+- Name: cf_result_success
+  SwiftName: Result.success()
+
+# -----------------------------------------------------------------------------
+# Message Box
+# -----------------------------------------------------------------------------
+
+- Name: cf_message_box
+  SwiftName: messageBox(type:title:text:)
+  Parameters:
+  - Position: 1
+    Nullability: N
+  - Position: 2
+    Nullability: N
+
+# -----------------------------------------------------------------------------
+# Color Factory Functions
+# -----------------------------------------------------------------------------
+
+- Name: cf_make_color_rgb_f
+  SwiftName: Color.init(r:g:b:)
+
+- Name: cf_make_color_rgba_f
+  SwiftName: Color.init(r:g:b:a:)
+
+- Name: cf_make_color_rgb
+  SwiftName: Color.init(red:green:blue:)
+
+- Name: cf_make_color_rgba
+  SwiftName: Color.init(red:green:blue:alpha:)
+
+- Name: cf_make_color_hex
+  SwiftName: Color.init(hex:)
+
+- Name: cf_make_color_hex2
+  SwiftName: Color.init(hex:alpha:)
+
+- Name: cf_make_color_hex_string
+  SwiftName: Color.init(hexString:)
+  Parameters:
+  - Position: 0
+    Nullability: N
+
+# -----------------------------------------------------------------------------
+# Color Operations
+# -----------------------------------------------------------------------------
+
+- Name: cf_mul_color
+  SwiftName: Color.multiplied(self:by:)
+
+- Name: cf_mul_color2
+  SwiftName: Color.multiplied(self:with:)
+
+- Name: cf_div_color
+  SwiftName: Color.divided(self:by:)
+
+- Name: cf_add_color
+  SwiftName: Color.added(self:to:)
+
+- Name: cf_sub_color
+  SwiftName: Color.subtracted(self:by:)
+
+- Name: cf_abs_color
+  SwiftName: Color.abs(self:)
+
+- Name: cf_fract_color
+  SwiftName: Color.fract(self:)
+
+- Name: cf_splat_color
+  SwiftName: Color.splat(_:)
+
+- Name: cf_mod_color
+  SwiftName: Color.mod(self:by:)
+
+- Name: cf_clamp_color
+  SwiftName: Color.clamped(self:lo:hi:)
+
+- Name: cf_clamp_color01
+  SwiftName: Color.clamped01(self:)
+
+- Name: cf_color_lerp
+  SwiftName: Color.lerp(_:to:t:)
+
+- Name: cf_color_premultiply
+  SwiftName: Color.premultiplied(self:)
+
+- Name: cf_rgb_to_hsv
+  SwiftName: Color.toHSV(self:)
+
+- Name: cf_hsv_to_rgb
+  SwiftName: Color.toRGB(self:)
+
+- Name: cf_hue
+  SwiftName: Color.hue(base:tint:)
+
+- Name: cf_overlay_color
+  SwiftName: Color.overlay(base:blend:)
+
+- Name: cf_softlight_color
+  SwiftName: Color.softlight(base:blend:)
+
+# -----------------------------------------------------------------------------
+# Color Conversion
+# -----------------------------------------------------------------------------
+
+- Name: cf_color_to_pixel
+  SwiftName: Color.toPixel(self:)
+
+- Name: cf_color_to_int_rgb
+  SwiftName: Color.toIntRGB(self:)
+
+- Name: cf_color_to_int_rgba
+  SwiftName: Color.toIntRGBA(self:)
+
+- Name: cf_color_to_string
+  SwiftName: Color.toString(self:)
+  NullabilityOfRet: O
+
+# -----------------------------------------------------------------------------
+# Color Constants
+# -----------------------------------------------------------------------------
+
+- Name: cf_color_invisible
+  SwiftName: Color.invisible()
+
+- Name: cf_color_clear
+  SwiftName: Color.clear()
+
+- Name: cf_color_black
+  SwiftName: Color.black()
+
+- Name: cf_color_white
+  SwiftName: Color.white()
+
+- Name: cf_color_red
+  SwiftName: Color.red()
+
+- Name: cf_color_green
+  SwiftName: Color.green()
+
+- Name: cf_color_blue
+  SwiftName: Color.blue()
+
+- Name: cf_color_yellow
+  SwiftName: Color.yellow()
+
+- Name: cf_color_orange
+  SwiftName: Color.orange()
+
+- Name: cf_color_purple
+  SwiftName: Color.purple()
+
+- Name: cf_color_grey
+  SwiftName: Color.grey()
+
+- Name: cf_color_cyan
+  SwiftName: Color.cyan()
+
+- Name: cf_color_magenta
+  SwiftName: Color.magenta()
+
+- Name: cf_color_brown
+  SwiftName: Color.brown()
+
+# -----------------------------------------------------------------------------
+# Pixel Factory Functions
+# -----------------------------------------------------------------------------
+
+- Name: cf_make_pixel_rgb_f
+  SwiftName: Pixel.init(r:g:b:)
+
+- Name: cf_make_pixel_rgba_f
+  SwiftName: Pixel.init(r:g:b:a:)
+
+- Name: cf_make_pixel_rgb
+  SwiftName: Pixel.init(red:green:blue:)
+
+- Name: cf_make_pixel_rgba
+  SwiftName: Pixel.init(red:green:blue:alpha:)
+
+- Name: cf_make_pixel_hex
+  SwiftName: Pixel.init(hex:)
+
+- Name: cf_make_pixel_hex_string
+  SwiftName: Pixel.init(hexString:)
+  Parameters:
+  - Position: 0
+    Nullability: N
+
+# -----------------------------------------------------------------------------
+# Pixel Operations
+# -----------------------------------------------------------------------------
+
+- Name: cf_mul_pixel
+  SwiftName: Pixel.multiplied(self:by:)
+
+- Name: cf_div_pixel
+  SwiftName: Pixel.divided(self:by:)
+
+- Name: cf_add_pixel
+  SwiftName: Pixel.added(self:to:)
+
+- Name: cf_sub_pixel
+  SwiftName: Pixel.subtracted(self:by:)
+
+- Name: cf_pixel_lerp
+  SwiftName: Pixel.lerp(_:to:t:)
+
+- Name: cf_pixel_premultiply
+  SwiftName: Pixel.premultiplied(self:)
+
+# -----------------------------------------------------------------------------
+# Pixel Conversion
+# -----------------------------------------------------------------------------
+
+- Name: cf_pixel_to_color
+  SwiftName: Pixel.toColor(self:)
+
+- Name: cf_pixel_to_int_rgb
+  SwiftName: Pixel.toIntRGB(self:)
+
+- Name: cf_pixel_to_int_rgba
+  SwiftName: Pixel.toIntRGBA(self:)
+
+- Name: cf_pixel_to_string
+  SwiftName: Pixel.toString(self:)
+  NullabilityOfRet: O
+
+# -----------------------------------------------------------------------------
+# Pixel Constants
+# -----------------------------------------------------------------------------
+
+- Name: cf_pixel_invisible
+  SwiftName: Pixel.invisible()
+
+- Name: cf_pixel_clear
+  SwiftName: Pixel.clear()
+
+- Name: cf_pixel_black
+  SwiftName: Pixel.black()
+
+- Name: cf_pixel_white
+  SwiftName: Pixel.white()
+
+- Name: cf_pixel_red
+  SwiftName: Pixel.red()
+
+- Name: cf_pixel_green
+  SwiftName: Pixel.green()
+
+- Name: cf_pixel_blue
+  SwiftName: Pixel.blue()
+
+- Name: cf_pixel_yellow
+  SwiftName: Pixel.yellow()
+
+- Name: cf_pixel_orange
+  SwiftName: Pixel.orange()
+
+- Name: cf_pixel_purple
+  SwiftName: Pixel.purple()
+
+- Name: cf_pixel_grey
+  SwiftName: Pixel.grey()
+
+- Name: cf_pixel_cyan
+  SwiftName: Pixel.cyan()
+
+- Name: cf_pixel_magenta
+  SwiftName: Pixel.magenta()
+
+- Name: cf_pixel_brown
+  SwiftName: Pixel.brown()
+
+# -----------------------------------------------------------------------------
+# Enum to String Converters (marked private, use CustomStringConvertible instead)
+# -----------------------------------------------------------------------------
+
+- Name: cf_display_orientation_to_string
+  SwiftPrivate: true
+
+- Name: cf_power_state_to_string
+  SwiftPrivate: true
+
+- Name: cf_message_box_type_to_string
+  SwiftPrivate: true
+
+- Name: cf_msaa_string
+  SwiftPrivate: true
