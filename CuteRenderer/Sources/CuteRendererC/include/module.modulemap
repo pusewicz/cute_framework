@@ -1,0 +1,4 @@
+module CuteRendererC {
+    header "CuteRendererC.h"
+    export *
+}
