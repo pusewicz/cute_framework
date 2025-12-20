@@ -1,3 +1,5 @@
+import CSDL3
+
 /// A vertex used by the drawing system.
 ///
 /// Contains all data needed to render shapes and sprites with SDF-based antialiasing.
@@ -9,10 +11,11 @@ public struct DrawVertex: Hashable, Sendable {
     public var transformedPosition: Vector2
 
     /// Number of shape vertices (for SDF).
-    public var shapeVertexCount: Int
+    public var shapeVertexCount: Int32
 
-    /// Shape vertices for SDF rendering.
-    public var shapeVertices: (Vector2, Vector2, Vector2, Vector2, Vector2, Vector2, Vector2, Vector2)
+    /// Shape vertices for SDF rendering (max 8).
+    public var shape0, shape1, shape2, shape3: Vector2
+    public var shape4, shape5, shape6, shape7: Vector2
 
     /// UV coordinates.
     public var uv: Vector2
@@ -27,7 +30,7 @@ public struct DrawVertex: Hashable, Sendable {
     public var stroke: Float
 
     /// Antialiasing factor.
-    public var antialias: Float
+    public var aa: Float
 
     /// Shape type.
     public var type: UInt8
@@ -38,71 +41,48 @@ public struct DrawVertex: Hashable, Sendable {
     /// Whether shape is filled.
     public var fill: UInt8
 
-    /// Unused padding.
-    public var unused: UInt8
+    /// Padding.
+    public var _pad: UInt8
 
     /// Custom attributes for shaders.
     public var attributes: Color
 
-    /// Creates a draw vertex.
-    public init(
-        position: Vector2 = .zero,
-        transformedPosition: Vector2 = .zero,
-        uv: Vector2 = .zero,
-        color: Pixel = .white
-    ) {
-        self.position = position
-        self.transformedPosition = transformedPosition
+    /// Creates a draw vertex with default values.
+    public init() {
+        self.position = .zero
+        self.transformedPosition = .zero
         self.shapeVertexCount = 0
-        self.shapeVertices = (.zero, .zero, .zero, .zero, .zero, .zero, .zero, .zero)
-        self.uv = uv
-        self.color = color
+        self.shape0 = .zero; self.shape1 = .zero; self.shape2 = .zero; self.shape3 = .zero
+        self.shape4 = .zero; self.shape5 = .zero; self.shape6 = .zero; self.shape7 = .zero
+        self.uv = .zero
+        self.color = .white
         self.radius = 0
         self.stroke = 0
-        self.antialias = 1.5
+        self.aa = 1.5
         self.type = 0
         self.alpha = 255
         self.fill = 1
-        self.unused = 0
+        self._pad = 0
         self.attributes = .clear
     }
 }
 
-/// A callback for modifying vertices before rendering.
-public typealias VertexCallback = ([DrawVertex]) -> [DrawVertex]
-
-/// The drawing context manages state for 2D rendering.
+/// The drawing context manages state for 2D rendering using SDL3 GPU.
 ///
 /// Use the shared `Draw` instance to draw shapes, sprites, and text.
 /// All drawing operations are batched and rendered when ``flush()`` is called.
-///
-/// ## Topics
-///
-/// ### Getting the Draw Context
-/// - ``shared``
-///
-/// ### State Stack
-/// - ``pushColor(_:)``
-/// - ``popColor()``
-/// - ``pushLayer(_:)``
-/// - ``popLayer()``
-/// - ``pushAntialias(_:)``
-/// - ``popAntialias()``
-///
-/// ### Drawing Shapes
-/// - ``quad(_:thickness:chubbiness:)``
-/// - ``quadFill(_:chubbiness:)``
-/// - ``circle(center:radius:thickness:)``
-/// - ``circleFill(center:radius:)``
-/// - ``line(from:to:thickness:)``
-/// - ``triangle(_:_:_:thickness:chubbiness:)``
-/// - ``triangleFill(_:_:_:chubbiness:)``
-///
-/// ### Rendering
-/// - ``flush()``
-public final class DrawContext: @unchecked Sendable {
-    /// The shared draw context.
-    public static let shared = DrawContext()
+public final class Renderer: @unchecked Sendable {
+    /// The SDL GPU device.
+    public private(set) var device: OpaquePointer?
+
+    /// The SDL window.
+    public private(set) var window: OpaquePointer?
+
+    /// Current command buffer.
+    public private(set) var commandBuffer: OpaquePointer?
+
+    /// Current render pass.
+    public private(set) var renderPass: OpaquePointer?
 
     // MARK: - State Stacks
 
@@ -111,23 +91,114 @@ public final class DrawContext: @unchecked Sendable {
     private var antialiasStack: [Bool] = [true]
     private var antialiasScaleStack: [Float] = [1.5]
     private var attributeStack: [Color] = [.clear]
-    private var shaderStack: [Shader?] = [nil]
-    private var scissorStack: [Rect?] = [nil]
-    private var viewportStack: [Rect?] = [nil]
 
     /// Current camera transform.
     public var camera: Matrix3x2 = .identity
 
-    /// Current canvas to draw to.
-    public var canvas: Canvas?
+    /// The shared renderer instance.
+    public static let shared = Renderer()
 
     private init() {}
+
+    // MARK: - Initialization
+
+    /// Initializes the renderer with an SDL window.
+    /// - Parameter window: The SDL_Window pointer.
+    /// - Returns: True if initialization succeeded.
+    @discardableResult
+    public func initialize(window: OpaquePointer) -> Bool {
+        self.window = window
+
+        // Create GPU device
+        self.device = SDL_CreateGPUDevice(
+            SDL_GPU_SHADERFORMAT_SPIRV | SDL_GPU_SHADERFORMAT_DXIL | SDL_GPU_SHADERFORMAT_MSL,
+            true, // debug mode
+            nil
+        )
+
+        guard let device = self.device else {
+            return false
+        }
+
+        // Claim the window
+        guard SDL_ClaimWindowForGPUDevice(device, window) else {
+            SDL_DestroyGPUDevice(device)
+            self.device = nil
+            return false
+        }
+
+        return true
+    }
+
+    /// Shuts down the renderer.
+    public func shutdown() {
+        if let device = device {
+            SDL_DestroyGPUDevice(device)
+        }
+        device = nil
+        window = nil
+    }
+
+    // MARK: - Frame Management
+
+    /// Begins a new frame.
+    /// - Returns: True if the frame can be rendered.
+    public func beginFrame() -> Bool {
+        guard let device = device else { return false }
+
+        commandBuffer = SDL_AcquireGPUCommandBuffer(device)
+        return commandBuffer != nil
+    }
+
+    /// Begins rendering to the swapchain.
+    /// - Parameter clearColor: Optional clear color.
+    /// - Returns: True if rendering began successfully.
+    public func beginSwapchainRenderPass(clearColor: Color? = nil) -> Bool {
+        guard let commandBuffer = commandBuffer, let window = window else { return false }
+
+        var swapchainTexture: OpaquePointer?
+        guard SDL_WaitAndAcquireGPUSwapchainTexture(commandBuffer, window, &swapchainTexture, nil, nil),
+              let texture = swapchainTexture else {
+            return false
+        }
+
+        var colorTarget = SDL_GPUColorTargetInfo()
+        colorTarget.texture = texture
+        colorTarget.load_op = clearColor != nil ? SDL_GPU_LOADOP_CLEAR : SDL_GPU_LOADOP_LOAD
+        colorTarget.store_op = SDL_GPU_STOREOP_STORE
+
+        if let clear = clearColor {
+            colorTarget.clear_color = clear.sdlColor
+        }
+
+        renderPass = withUnsafePointer(to: &colorTarget) { ptr in
+            SDL_BeginGPURenderPass(commandBuffer, ptr, 1, nil)
+        }
+
+        return renderPass != nil
+    }
+
+    /// Ends the current render pass.
+    public func endRenderPass() {
+        if let renderPass = renderPass {
+            SDL_EndGPURenderPass(renderPass)
+        }
+        renderPass = nil
+    }
+
+    /// Ends the frame and submits to GPU.
+    public func endFrame() {
+        if let commandBuffer = commandBuffer {
+            SDL_SubmitGPUCommandBuffer(commandBuffer)
+        }
+        commandBuffer = nil
+    }
 
     // MARK: - Color State
 
     /// The current drawing color.
     public var color: Color {
-        return colorStack.last ?? .white
+        colorStack.last ?? .white
     }
 
     /// Pushes a color onto the stack.
@@ -137,23 +208,18 @@ public final class DrawContext: @unchecked Sendable {
         return color
     }
 
-    /// Pops the color stack and returns the popped value.
+    /// Pops the color stack.
     @discardableResult
     public func popColor() -> Color {
         guard colorStack.count > 1 else { return colorStack.first ?? .white }
         return colorStack.removeLast()
     }
 
-    /// Returns the current color without modifying the stack.
-    public func peekColor() -> Color {
-        return colorStack.last ?? .white
-    }
-
     // MARK: - Layer State
 
     /// The current drawing layer.
     public var layer: Int {
-        return layerStack.last ?? 0
+        layerStack.last ?? 0
     }
 
     /// Pushes a layer onto the stack.
@@ -170,16 +236,11 @@ public final class DrawContext: @unchecked Sendable {
         return layerStack.removeLast()
     }
 
-    /// Returns the current layer.
-    public func peekLayer() -> Int {
-        return layerStack.last ?? 0
-    }
-
     // MARK: - Antialias State
 
     /// Whether antialiasing is enabled.
     public var antialias: Bool {
-        return antialiasStack.last ?? true
+        antialiasStack.last ?? true
     }
 
     /// Pushes antialias state onto the stack.
@@ -198,7 +259,7 @@ public final class DrawContext: @unchecked Sendable {
 
     /// The antialias scale factor.
     public var antialiasScale: Float {
-        return antialiasScaleStack.last ?? 1.5
+        antialiasScaleStack.last ?? 1.5
     }
 
     /// Pushes antialias scale onto the stack.
@@ -219,7 +280,7 @@ public final class DrawContext: @unchecked Sendable {
 
     /// The current vertex attributes.
     public var vertexAttributes: Color {
-        return attributeStack.last ?? .clear
+        attributeStack.last ?? .clear
     }
 
     /// Pushes vertex attributes onto the stack.
@@ -229,12 +290,6 @@ public final class DrawContext: @unchecked Sendable {
         return attributes
     }
 
-    /// Pushes vertex attributes onto the stack.
-    @discardableResult
-    public func pushVertexAttributes(r: Float, g: Float, b: Float, a: Float) -> Color {
-        return pushVertexAttributes(Color(r: r, g: g, b: b, a: a))
-    }
-
     /// Pops the vertex attributes stack.
     @discardableResult
     public func popVertexAttributes() -> Color {
@@ -242,88 +297,7 @@ public final class DrawContext: @unchecked Sendable {
         return attributeStack.removeLast()
     }
 
-    // MARK: - Shader State
-
-    /// The current custom shader (nil = default).
-    public var shader: Shader? {
-        return shaderStack.last ?? nil
-    }
-
-    /// Pushes a shader onto the stack.
-    public func pushShader(_ shader: Shader?) {
-        shaderStack.append(shader)
-    }
-
-    /// Pops the shader stack.
-    @discardableResult
-    public func popShader() -> Shader? {
-        guard shaderStack.count > 1 else { return shaderStack.first ?? nil }
-        return shaderStack.removeLast()
-    }
-
-    // MARK: - Scissor State
-
-    /// The current scissor rect (nil = no scissor).
-    public var scissor: Rect? {
-        return scissorStack.last ?? nil
-    }
-
-    /// Pushes a scissor rect onto the stack.
-    public func pushScissor(_ rect: Rect) {
-        scissorStack.append(rect)
-    }
-
-    /// Pushes a disabled scissor onto the stack.
-    public func pushScissorOff() {
-        scissorStack.append(nil)
-    }
-
-    /// Pops the scissor stack.
-    @discardableResult
-    public func popScissor() -> Rect? {
-        guard scissorStack.count > 1 else { return scissorStack.first ?? nil }
-        return scissorStack.removeLast()
-    }
-
-    // MARK: - Viewport State
-
-    /// The current viewport (nil = full canvas).
-    public var viewport: Rect? {
-        return viewportStack.last ?? nil
-    }
-
-    /// Pushes a viewport onto the stack.
-    public func pushViewport(_ rect: Rect) {
-        viewportStack.append(rect)
-    }
-
-    /// Pushes a default viewport onto the stack.
-    public func pushViewportOff() {
-        viewportStack.append(nil)
-    }
-
-    /// Pops the viewport stack.
-    @discardableResult
-    public func popViewport() -> Rect? {
-        guard viewportStack.count > 1 else { return viewportStack.first ?? nil }
-        return viewportStack.removeLast()
-    }
-
-    // MARK: - Vertex Callback
-
-    private var vertexCallback: VertexCallback?
-
-    /// Sets a callback for modifying vertices before rendering.
-    public func setVertexCallback(_ callback: VertexCallback?) {
-        self.vertexCallback = callback
-    }
-
-    // MARK: - Rendering
-
-    /// Flushes all pending draw commands to the GPU.
-    public func flush() {
-        // In real implementation, this would batch and render all pending draws
-    }
+    // MARK: - Reset
 
     /// Resets all state to defaults.
     public func reset() {
@@ -332,11 +306,11 @@ public final class DrawContext: @unchecked Sendable {
         antialiasStack = [true]
         antialiasScaleStack = [1.5]
         attributeStack = [.clear]
-        shaderStack = [nil]
-        scissorStack = [nil]
-        viewportStack = [nil]
         camera = .identity
-        canvas = nil
-        vertexCallback = nil
     }
 }
+
+// MARK: - Global Accessor
+
+/// The global renderer instance.
+public var Draw: Renderer { Renderer.shared }

@@ -409,27 +409,27 @@ public struct Sprite: Hashable, Sendable {
     }
 }
 
-// MARK: - DrawContext Sprite Extension
+// MARK: - Renderer Sprite Extension
 
-extension DrawContext {
+extension Renderer {
     /// Draws a sprite.
     public func sprite(_ sprite: Sprite) {
-        // In real implementation, this would queue a sprite draw
+        // TODO: Queue sprite draw command for batching
     }
 
     /// Draws a sprite using 9-slice scaling.
     public func sprite9Slice(_ sprite: Sprite) {
-        // In real implementation, this would queue a 9-slice draw
+        // TODO: Queue 9-slice draw command for batching
     }
 
     /// Draws a sprite using tiled 9-slice.
     public func sprite9SliceTiled(_ sprite: Sprite) {
-        // In real implementation, this would queue a tiled 9-slice draw
+        // TODO: Queue tiled 9-slice draw command for batching
     }
 
     /// Prefetches a sprite without drawing.
     public func prefetch(_ sprite: Sprite) {
-        // In real implementation, this would ensure the sprite is loaded
+        // TODO: Ensure the sprite texture is loaded
     }
 }
 

@@ -1,20 +1,20 @@
 # CuteRenderer
 
-A Swift 2D rendering library extracted from [Cute Framework](https://github.com/RandyGaul/cute_framework), providing sprite and shape rendering capabilities with SDL3 GPU backend support.
+A thin Swift wrapper over SDL3 GPU for 2D rendering, inspired by [Cute Framework](https://github.com/RandyGaul/cute_framework).
 
 ## Features
 
-- **High-level 2D Drawing API**: Draw shapes (quads, circles, capsules, triangles, lines, polygons) with SDF-based antialiasing
-- **Sprite System**: Full animation support with Aseprite file compatibility, 9-slice rendering
-- **Push/Pop State Management**: Manage colors, layers, shaders, scissors, and viewports with stack-based state
-- **Low-level Graphics API**: Direct access to textures, canvases, shaders, materials, and meshes
-- **Swift-native API**: Clean Swift API with API notes for seamless C interop
+- **Direct SDL3 GPU Access**: Use SDL3 GPU types directly from Swift with convenient extensions
+- **High-level 2D Drawing API**: Draw shapes with SDF-based antialiasing
+- **Sprite System**: Animation support with Aseprite compatibility
+- **Push/Pop State Management**: Manage colors, layers, and transforms with stack-based state
+- **Zero Abstraction Cost**: SDL3 types used directly, no intermediate wrapper classes
 
 ## Requirements
 
 - Swift 5.9+
-- macOS 14+, iOS 17+, tvOS 17+, or visionOS 1+
-- SDL3 (for GPU backend)
+- macOS 14+, iOS 17+, or tvOS 17+
+- SDL3 (installed via Homebrew or system package manager)
 
 ## Installation
 
@@ -26,72 +26,100 @@ dependencies: [
 ]
 ```
 
+Make sure SDL3 is installed:
+```bash
+# macOS
+brew install sdl3
+
+# Ubuntu/Debian
+apt install libsdl3-dev
+```
+
 ## Quick Start
 
 ```swift
 import CuteRenderer
 
-// Initialize the renderer
-CuteRenderer.initialize()
+// Initialize with an SDL window
+let renderer = Renderer.shared
+renderer.initialize(window: mySDLWindow)
 
-// Drawing shapes
-Draw.pushColor(.red)
-Draw.circleFill(center: Vector2(x: 100, y: 100), radius: 50)
-Draw.line(from: Vector2(x: 0, y: 0), to: Vector2(x: 200, y: 200), thickness: 2)
-Draw.popColor()
+// Frame loop
+if renderer.beginFrame() {
+    if renderer.beginSwapchainRenderPass(clearColor: .black) {
+        // Draw shapes
+        renderer.pushColor(.red)
+        renderer.circleFill(center: Vector2(x: 100, y: 100), radius: 50)
+        renderer.line(from: .zero, to: Vector2(x: 200, y: 200), thickness: 2)
+        renderer.popColor()
 
-// Drawing sprites
-if var sprite = Sprite.fromAseprite(path: "player.ase") {
-    sprite.play("walk")
-    sprite.update(deltaTime: 1.0/60.0)
-    sprite.draw()
+        // Draw sprites
+        if var sprite = Sprite.fromAseprite(path: "player.ase") {
+            sprite.play("walk")
+            sprite.update(deltaTime: 1.0/60.0)
+            renderer.sprite(sprite)
+        }
+
+        renderer.endRenderPass()
+    }
+    renderer.endFrame()
 }
-
-// Flush to GPU
-Draw.flush()
 ```
 
 ## Architecture
 
-### Math Types
-- `Vector2` - 2D vector
-- `SinCos` - Precomputed rotation
-- `Transform` - Position and rotation
-- `Matrix3x2` - Full 2D transformation with scale
-- `AABB` - Axis-aligned bounding box
-- `Circle`, `Capsule`, `Ray` - Geometric primitives
+### Using SDL3 Directly
 
-### Color Types
-- `Color` - Float RGBA (0-1)
-- `Pixel` - Byte RGBA (0-255)
-
-### Graphics Types
-- `Texture` - GPU texture with various pixel formats
-- `Canvas` - Render target for off-screen rendering
-- `Shader` - GLSL vertex and fragment shader programs
-- `Material` - Shader uniforms and texture bindings
-- `Mesh` - Vertex and index buffers
-
-### Draw API
-- Push/pop state stacks (color, layer, antialias, shader, scissor, viewport)
-- Shape drawing (quad, circle, capsule, triangle, line, polyline, polygon)
-- Sprite drawing with animation support
-
-### Sprite System
-- Animation frames with timing
-- Multiple animations per sprite
-- Play directions (forwards, backwards, pingpong)
-- 9-slice rendering for UI
-
-## C API Bridge
-
-CuteRenderer includes a C API bridge (`CuteRendererC`) for integrating with native SDL3 GPU code. API notes provide Swift-friendly naming:
+CuteRenderer exposes SDL3 GPU types directly. You can use SDL3 functions alongside the Swift API:
 
 ```swift
-// C function: cr_draw_circle(center, radius, thickness)
-// Swift becomes: CuteDraw.circle(center:radius:thickness:)
+import CuteRenderer  // Also exports CSDL3
+
+// Create textures using SDL3
+let texture = SDL_CreateGPUTexture(renderer.device, &textureInfo)
+
+// Use Swift extensions for convenience
+let texture2 = renderer.device?.createTexture(width: 256, height: 256)
 ```
+
+### Math Types
+- `Vector2` - 2D vector with operators and geometric functions
+- `SinCos` - Precomputed sin/cos for efficient rotation
+- `Transform` - Position + rotation (no scale)
+- `Matrix3x2` - Full 2D transformation with scale
+- `AABB`, `Circle`, `Capsule`, `Ray`, `Rect` - Geometric primitives
+
+### Color Types
+- `Color` - Float RGBA (0-1) with HSV conversion and blending
+- `Pixel` - Byte RGBA (0-255) for texture data
+
+### Renderer
+The `Renderer` class wraps SDL3 GPU device and provides:
+- Frame management (`beginFrame`, `endFrame`)
+- Render pass control (`beginSwapchainRenderPass`, `endRenderPass`)
+- State stacks (color, layer, antialias, vertex attributes)
+- Shape drawing (quad, circle, capsule, triangle, line, polyline, polygon, bezier, arrow)
+- Sprite drawing with animation
+
+### SDL3 Extensions
+Swift extensions on SDL3 types for convenience:
+```swift
+// SDL_FColor from Color
+let sdlColor = myColor.sdlColor
+
+// Vector2 from SDL_FPoint
+let vec = Vector2(sdlPoint)
+
+// AABB from SDL_FRect
+let box = AABB(sdlRect)
+```
+
+### Sprite System
+- `Sprite` - Drawable with texture, animation, and transform
+- `Animation` - Named sequence of frames with timing
+- `PlayDirection` - forwards, backwards, pingpong
+- 9-slice rendering for UI elements
 
 ## License
 
-This library is based on Cute Framework, which is dual-licensed under zlib and Unlicense.
+Inspired by Cute Framework, dual-licensed under zlib and Unlicense.
