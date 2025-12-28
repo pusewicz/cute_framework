@@ -65,10 +65,10 @@ set_target_properties(cf_renderer PROPERTIES
 
 # Examples
 if(CFR_BUILD_EXAMPLES)
-	add_executable(simple_triangle examples/simple_triangle.c)
-	target_link_libraries(simple_triangle PRIVATE cf_renderer SDL3::SDL3)
+	add_executable(simple_drawing examples/simple_drawing.c)
+	target_link_libraries(simple_drawing PRIVATE cf_renderer SDL3::SDL3)
 	
-	set_target_properties(simple_triangle PROPERTIES
+	set_target_properties(simple_drawing PROPERTIES
 		RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 	)
 endif()

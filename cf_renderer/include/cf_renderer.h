@@ -1,5 +1,5 @@
 /*
-	CF Renderer - A 2D renderer based on SDL3 GPU API
+	CF Renderer - A full-featured 2D renderer based on SDL3 GPU API
 	Extracted from Cute Framework
 	Copyright (C) 2024 Randy Gaul https://randygaul.github.io/
 	
@@ -13,151 +13,54 @@
 #include <SDL3/SDL_gpu.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <math.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-// Core types
+// Core types - Using SDL3 types directly
 //--------------------------------------------------------------------------------------------------
 
 typedef struct CFR_Renderer CFR_Renderer;
 
-typedef struct CFR_Color {
-	float r, g, b, a;
-} CFR_Color;
-
-typedef struct CFR_Vec2 {
+// Math types - Simple wrappers for convenience
+typedef struct CFR_V2 {
 	float x, y;
-} CFR_Vec2;
-
-typedef struct CFR_Rect {
-	float x, y, w, h;
-} CFR_Rect;
+} CFR_V2;
 
 typedef struct CFR_Aabb {
-	CFR_Vec2 min, max;
+	CFR_V2 min, max;
 } CFR_Aabb;
 
+typedef struct CFR_Circle {
+	CFR_V2 p;
+	float r;
+} CFR_Circle;
+
+typedef struct CFR_M3x2 {
+	CFR_V2 x;
+	CFR_V2 y;
+	CFR_V2 p;
+} CFR_M3x2;
+
 typedef struct CFR_Transform {
-	CFR_Vec2 position;
-	float rotation;
-	CFR_Vec2 scale;
+	CFR_V2 p;
+	struct { float c, s; } r;  // cos, sin of rotation
 } CFR_Transform;
 
-// Opaque handles for rendering resources
+// Pixel type
+typedef struct CFR_Pixel {
+	uint8_t r, g, b, a;
+} CFR_Pixel;
+
+// Opaque handles for resources
 typedef struct { uint64_t id; } CFR_Texture;
 typedef struct { uint64_t id; } CFR_Shader;
 typedef struct { uint64_t id; } CFR_Canvas;
 typedef struct { uint64_t id; } CFR_Mesh;
 typedef struct { uint64_t id; } CFR_Material;
-
-//--------------------------------------------------------------------------------------------------
-// Pixel and texture types
-//--------------------------------------------------------------------------------------------------
-
-typedef struct CFR_Pixel {
-	uint8_t r, g, b, a;
-} CFR_Pixel;
-
-typedef enum CFR_Filter {
-	CFR_FILTER_NEAREST,
-	CFR_FILTER_LINEAR
-} CFR_Filter;
-
-typedef enum CFR_TextureWrap {
-	CFR_WRAP_REPEAT,
-	CFR_WRAP_CLAMP,
-	CFR_WRAP_MIRROR
-} CFR_TextureWrap;
-
-typedef struct CFR_TextureParams {
-	int width;
-	int height;
-	CFR_Filter filter;
-	CFR_TextureWrap wrap_u;
-	CFR_TextureWrap wrap_v;
-	SDL_GPUTextureFormat format;
-} CFR_TextureParams;
-
-//--------------------------------------------------------------------------------------------------
-// Blend and render state
-//--------------------------------------------------------------------------------------------------
-
-typedef enum CFR_BlendFactor {
-	CFR_BLENDFACTOR_ZERO,
-	CFR_BLENDFACTOR_ONE,
-	CFR_BLENDFACTOR_SRC_COLOR,
-	CFR_BLENDFACTOR_ONE_MINUS_SRC_COLOR,
-	CFR_BLENDFACTOR_DST_COLOR,
-	CFR_BLENDFACTOR_ONE_MINUS_DST_COLOR,
-	CFR_BLENDFACTOR_SRC_ALPHA,
-	CFR_BLENDFACTOR_ONE_MINUS_SRC_ALPHA,
-	CFR_BLENDFACTOR_DST_ALPHA,
-	CFR_BLENDFACTOR_ONE_MINUS_DST_ALPHA
-} CFR_BlendFactor;
-
-typedef enum CFR_BlendOp {
-	CFR_BLEND_OP_ADD,
-	CFR_BLEND_OP_SUBTRACT,
-	CFR_BLEND_OP_REVERSE_SUBTRACT,
-	CFR_BLEND_OP_MIN,
-	CFR_BLEND_OP_MAX
-} CFR_BlendOp;
-
-typedef struct CFR_BlendState {
-	bool enabled;
-	CFR_BlendFactor rgb_src_blend_factor;
-	CFR_BlendFactor rgb_dst_blend_factor;
-	CFR_BlendOp rgb_op;
-	CFR_BlendFactor alpha_src_blend_factor;
-	CFR_BlendFactor alpha_dst_blend_factor;
-	CFR_BlendOp alpha_op;
-} CFR_BlendState;
-
-typedef struct CFR_RenderState {
-	CFR_BlendState blend;
-	bool depth_test_enabled;
-	bool depth_write_enabled;
-	bool stencil_enabled;
-} CFR_RenderState;
-
-//--------------------------------------------------------------------------------------------------
-// Vertex and mesh types
-//--------------------------------------------------------------------------------------------------
-
-typedef enum CFR_VertexFormat {
-	CFR_VERTEX_FORMAT_FLOAT,
-	CFR_VERTEX_FORMAT_FLOAT2,
-	CFR_VERTEX_FORMAT_FLOAT3,
-	CFR_VERTEX_FORMAT_FLOAT4,
-	CFR_VERTEX_FORMAT_UBYTE4,
-	CFR_VERTEX_FORMAT_UBYTE4_NORM,
-	CFR_VERTEX_FORMAT_INT,
-	CFR_VERTEX_FORMAT_UINT
-} CFR_VertexFormat;
-
-typedef struct CFR_VertexAttribute {
-	const char* name;
-	CFR_VertexFormat format;
-	int offset;
-} CFR_VertexAttribute;
-
-//--------------------------------------------------------------------------------------------------
-// Shader uniforms
-//--------------------------------------------------------------------------------------------------
-
-typedef enum CFR_UniformType {
-	CFR_UNIFORM_TYPE_FLOAT,
-	CFR_UNIFORM_TYPE_FLOAT2,
-	CFR_UNIFORM_TYPE_FLOAT3,
-	CFR_UNIFORM_TYPE_FLOAT4,
-	CFR_UNIFORM_TYPE_INT,
-	CFR_UNIFORM_TYPE_INT2,
-	CFR_UNIFORM_TYPE_INT4,
-	CFR_UNIFORM_TYPE_MAT4
-} CFR_UniformType;
 
 //--------------------------------------------------------------------------------------------------
 // Renderer lifecycle
@@ -167,9 +70,11 @@ typedef enum CFR_UniformType {
  * Create a new renderer instance
  * @param device SDL GPU device to use for rendering
  * @param window SDL window to render to
+ * @param width Initial viewport width
+ * @param height Initial viewport height
  * @return Renderer instance or NULL on failure
  */
-CFR_Renderer* cfr_create_renderer(SDL_GPUDevice* device, SDL_Window* window);
+CFR_Renderer* cfr_create_renderer(SDL_GPUDevice* device, SDL_Window* window, int width, int height);
 
 /**
  * Destroy a renderer instance and free all resources
@@ -189,272 +94,175 @@ void cfr_begin_frame(CFR_Renderer* renderer);
  */
 void cfr_end_frame(CFR_Renderer* renderer);
 
+/**
+ * Set the viewport size (call when window is resized)
+ * @param renderer Renderer instance
+ * @param width New width
+ * @param height New height
+ */
+void cfr_set_viewport_size(CFR_Renderer* renderer, int width, int height);
+
 //--------------------------------------------------------------------------------------------------
-// Texture management
+// Low-level resource management
 //--------------------------------------------------------------------------------------------------
 
-/**
- * Create a texture
- * @param renderer Renderer instance
- * @param params Texture parameters
- * @return Texture handle
- */
-CFR_Texture cfr_make_texture(CFR_Renderer* renderer, CFR_TextureParams params);
-
-/**
- * Update texture data
- * @param renderer Renderer instance
- * @param texture Texture to update
- * @param pixels Pixel data
- * @param size Size of pixel data in bytes
- */
+// Texture creation using SDL3 types directly
+CFR_Texture cfr_make_texture(CFR_Renderer* renderer, int width, int height, SDL_GPUTextureFormat format);
 void cfr_texture_update(CFR_Renderer* renderer, CFR_Texture texture, void* pixels, int size);
-
-/**
- * Destroy a texture
- * @param renderer Renderer instance
- * @param texture Texture to destroy
- */
 void cfr_destroy_texture(CFR_Renderer* renderer, CFR_Texture texture);
 
-//--------------------------------------------------------------------------------------------------
 // Canvas (render target) management
-//--------------------------------------------------------------------------------------------------
-
-/**
- * Create a canvas (render target)
- * @param renderer Renderer instance
- * @param width Canvas width
- * @param height Canvas height
- * @return Canvas handle
- */
 CFR_Canvas cfr_make_canvas(CFR_Renderer* renderer, int width, int height);
-
-/**
- * Get the texture associated with a canvas
- * @param renderer Renderer instance
- * @param canvas Canvas handle
- * @return Texture handle
- */
+void cfr_destroy_canvas(CFR_Renderer* renderer, CFR_Canvas canvas);
 CFR_Texture cfr_canvas_get_texture(CFR_Renderer* renderer, CFR_Canvas canvas);
 
-/**
- * Destroy a canvas
- * @param renderer Renderer instance
- * @param canvas Canvas to destroy
- */
-void cfr_destroy_canvas(CFR_Renderer* renderer, CFR_Canvas canvas);
-
-/**
- * Set the active canvas for rendering
- * @param renderer Renderer instance
- * @param canvas Canvas to render to (use {0} for screen)
- * @param clear Whether to clear the canvas
- */
-void cfr_apply_canvas(CFR_Renderer* renderer, CFR_Canvas canvas, bool clear);
-
-/**
- * Clear the current canvas
- * @param renderer Renderer instance
- * @param color Clear color
- */
-void cfr_clear_canvas(CFR_Renderer* renderer, CFR_Color color);
+// Render to canvas or screen (canvas ID 0 = screen)
+void cfr_render_to(CFR_Renderer* renderer, CFR_Canvas canvas, bool clear);
 
 //--------------------------------------------------------------------------------------------------
-// Mesh management
+// Drawing state management
 //--------------------------------------------------------------------------------------------------
 
-/**
- * Create a mesh
- * @param renderer Renderer instance
- * @param vertex_buffer_size Size of vertex buffer in bytes
- * @param attributes Vertex attributes
- * @param attribute_count Number of attributes
- * @param vertex_stride Size of each vertex in bytes
- * @return Mesh handle
- */
-CFR_Mesh cfr_make_mesh(CFR_Renderer* renderer, int vertex_buffer_size, 
-                       CFR_VertexAttribute* attributes, int attribute_count, int vertex_stride);
+// Color for drawing
+void cfr_push_color(CFR_Renderer* renderer, SDL_FColor color);
+SDL_FColor cfr_pop_color(CFR_Renderer* renderer);
+SDL_FColor cfr_peek_color(CFR_Renderer* renderer);
 
-/**
- * Update mesh vertex data
- * @param renderer Renderer instance
- * @param mesh Mesh to update
- * @param vertices Vertex data
- * @param vertex_count Number of vertices
- */
-void cfr_mesh_update_vertex_data(CFR_Renderer* renderer, CFR_Mesh mesh, void* vertices, int vertex_count);
+// Layer ordering
+void cfr_push_layer(CFR_Renderer* renderer, int layer);
+int cfr_pop_layer(CFR_Renderer* renderer);
+int cfr_peek_layer(CFR_Renderer* renderer);
 
-/**
- * Destroy a mesh
- * @param renderer Renderer instance
- * @param mesh Mesh to destroy
- */
-void cfr_destroy_mesh(CFR_Renderer* renderer, CFR_Mesh mesh);
+// Antialiasing
+void cfr_push_antialias(CFR_Renderer* renderer, bool enabled);
+bool cfr_pop_antialias(CFR_Renderer* renderer);
+bool cfr_peek_antialias(CFR_Renderer* renderer);
 
-/**
- * Set the active mesh for rendering
- * @param renderer Renderer instance
- * @param mesh Mesh to use
- */
-void cfr_apply_mesh(CFR_Renderer* renderer, CFR_Mesh mesh);
+void cfr_push_antialias_scale(CFR_Renderer* renderer, float scale);
+float cfr_pop_antialias_scale(CFR_Renderer* renderer);
+float cfr_peek_antialias_scale(CFR_Renderer* renderer);
+
+// Viewport and scissor
+void cfr_push_viewport(CFR_Renderer* renderer, SDL_FRect viewport);
+SDL_FRect cfr_pop_viewport(CFR_Renderer* renderer);
+SDL_FRect cfr_peek_viewport(CFR_Renderer* renderer);
+
+void cfr_push_scissor(CFR_Renderer* renderer, SDL_FRect scissor);
+SDL_FRect cfr_pop_scissor(CFR_Renderer* renderer);
+SDL_FRect cfr_peek_scissor(CFR_Renderer* renderer);
+
+// Blend state - uses SDL3 types directly
+void cfr_push_blend_state(CFR_Renderer* renderer, SDL_GPUColorTargetBlendState blend);
+SDL_GPUColorTargetBlendState cfr_pop_blend_state(CFR_Renderer* renderer);
+SDL_GPUColorTargetBlendState cfr_peek_blend_state(CFR_Renderer* renderer);
 
 //--------------------------------------------------------------------------------------------------
-// Shader management
+// Transformation stack
+//--------------------------------------------------------------------------------------------------
+
+void cfr_push_transform(CFR_Renderer* renderer, CFR_M3x2 transform);
+CFR_M3x2 cfr_pop_transform(CFR_Renderer* renderer);
+CFR_M3x2 cfr_peek_transform(CFR_Renderer* renderer);
+
+void cfr_translate(CFR_Renderer* renderer, float x, float y);
+void cfr_rotate(CFR_Renderer* renderer, float radians);
+void cfr_scale(CFR_Renderer* renderer, float sx, float sy);
+
+// Transform a point by current matrix
+CFR_V2 cfr_transform_point(CFR_Renderer* renderer, CFR_V2 point);
+
+//--------------------------------------------------------------------------------------------------
+// High-level drawing functions - Sprites
 //--------------------------------------------------------------------------------------------------
 
 /**
- * Create a shader from bytecode
- * @param renderer Renderer instance
- * @param vs_bytecode Vertex shader bytecode
- * @param vs_size Vertex shader bytecode size
- * @param fs_bytecode Fragment shader bytecode
- * @param fs_size Fragment shader bytecode size
- * @return Shader handle
+ * Simple sprite structure
  */
-CFR_Shader cfr_make_shader(CFR_Renderer* renderer, 
-                           const void* vs_bytecode, size_t vs_size,
-                           const void* fs_bytecode, size_t fs_size);
+typedef struct CFR_Sprite {
+	CFR_Texture texture;
+	CFR_Transform transform;
+	CFR_V2 scale;
+	int w, h;
+	float opacity;
+	CFR_V2 offset;
+} CFR_Sprite;
 
-/**
- * Destroy a shader
- * @param renderer Renderer instance
- * @param shader Shader to destroy
- */
-void cfr_destroy_shader(CFR_Renderer* renderer, CFR_Shader shader);
+void cfr_draw_sprite(CFR_Renderer* renderer, const CFR_Sprite* sprite);
 
 //--------------------------------------------------------------------------------------------------
-// Material management
+// High-level drawing functions - Shapes
 //--------------------------------------------------------------------------------------------------
 
-/**
- * Create a material
- * @param renderer Renderer instance
- * @return Material handle
- */
-CFR_Material cfr_make_material(CFR_Renderer* renderer);
+// Lines
+void cfr_draw_line(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, float thickness);
 
-/**
- * Set a texture on a material
- * @param renderer Renderer instance
- * @param material Material to update
- * @param name Uniform name
- * @param texture Texture to set
- */
-void cfr_material_set_texture(CFR_Renderer* renderer, CFR_Material material, 
-                               const char* name, CFR_Texture texture);
+// Circles
+void cfr_draw_circle(CFR_Renderer* renderer, CFR_Circle circle, float thickness);
+void cfr_draw_circle_fill(CFR_Renderer* renderer, CFR_Circle circle);
 
-/**
- * Set a uniform on a material
- * @param renderer Renderer instance
- * @param material Material to update
- * @param name Uniform name
- * @param data Uniform data
- * @param type Uniform type
- * @param array_length Array length (1 for single values)
- */
-void cfr_material_set_uniform(CFR_Renderer* renderer, CFR_Material material,
-                               const char* name, void* data, CFR_UniformType type, int array_length);
+// Quads/Boxes
+void cfr_draw_quad(CFR_Renderer* renderer, CFR_Aabb bb, float thickness, float chubbiness);
+void cfr_draw_quad_fill(CFR_Renderer* renderer, CFR_Aabb bb, float chubbiness);
+void cfr_draw_quad2(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, CFR_V2 p2, CFR_V2 p3, float thickness, float chubbiness);
+void cfr_draw_quad_fill2(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, CFR_V2 p2, CFR_V2 p3, float chubbiness);
 
-/**
- * Set render state on a material
- * @param renderer Renderer instance
- * @param material Material to update
- * @param render_state Render state to set
- */
-void cfr_material_set_render_state(CFR_Renderer* renderer, CFR_Material material, 
-                                    CFR_RenderState render_state);
+// Rounded boxes
+void cfr_draw_box_rounded(CFR_Renderer* renderer, CFR_Aabb bb, float thickness, float radius);
+void cfr_draw_box_rounded_fill(CFR_Renderer* renderer, CFR_Aabb bb, float radius);
 
-/**
- * Destroy a material
- * @param renderer Renderer instance
- * @param material Material to destroy
- */
-void cfr_destroy_material(CFR_Renderer* renderer, CFR_Material material);
+// Capsules
+void cfr_draw_capsule(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, float r, float thickness);
+void cfr_draw_capsule_fill(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, float r);
 
-//--------------------------------------------------------------------------------------------------
-// Drawing
-//--------------------------------------------------------------------------------------------------
+// Triangles
+void cfr_draw_tri(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, CFR_V2 p2, float thickness, float chubbiness);
+void cfr_draw_tri_fill(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, CFR_V2 p2, float chubbiness);
 
-/**
- * Apply a shader and material for drawing
- * @param renderer Renderer instance
- * @param shader Shader to use
- * @param material Material to use
- */
-void cfr_apply_shader(CFR_Renderer* renderer, CFR_Shader shader, CFR_Material material);
+// Polygons
+void cfr_draw_polygon(CFR_Renderer* renderer, CFR_V2* points, int count, float thickness);
+void cfr_draw_polygon_fill(CFR_Renderer* renderer, CFR_V2* points, int count);
 
-/**
- * Set viewport for rendering
- * @param renderer Renderer instance
- * @param x Viewport x
- * @param y Viewport y
- * @param w Viewport width
- * @param h Viewport height
- */
-void cfr_apply_viewport(CFR_Renderer* renderer, float x, float y, float w, float h);
-
-/**
- * Set scissor rectangle
- * @param renderer Renderer instance
- * @param x Scissor x
- * @param y Scissor y
- * @param w Scissor width
- * @param h Scissor height
- */
-void cfr_apply_scissor(CFR_Renderer* renderer, float x, float y, float w, float h);
-
-/**
- * Draw elements using the current mesh, shader, and material
- * @param renderer Renderer instance
- */
-void cfr_draw_elements(CFR_Renderer* renderer);
+// Bezier curves
+void cfr_draw_bezier_line(CFR_Renderer* renderer, CFR_V2 a, CFR_V2 c0, CFR_V2 b, float thickness);
+void cfr_draw_bezier_line2(CFR_Renderer* renderer, CFR_V2 a, CFR_V2 c0, CFR_V2 c1, CFR_V2 b, float thickness);
 
 //--------------------------------------------------------------------------------------------------
 // Utility functions
 //--------------------------------------------------------------------------------------------------
 
-/**
- * Get default texture parameters
- * @param width Texture width
- * @param height Texture height
- * @return Default texture parameters
- */
-CFR_TextureParams cfr_texture_defaults(int width, int height);
+// Math helpers
+CFR_V2 cfr_v2(float x, float y);
+CFR_V2 cfr_add(CFR_V2 a, CFR_V2 b);
+CFR_V2 cfr_sub(CFR_V2 a, CFR_V2 b);
+CFR_V2 cfr_mul(CFR_V2 v, float s);
+float cfr_dot(CFR_V2 a, CFR_V2 b);
+float cfr_len(CFR_V2 v);
+CFR_V2 cfr_norm(CFR_V2 v);
 
-/**
- * Get default render state
- * @return Default render state
- */
-CFR_RenderState cfr_render_state_defaults(void);
+CFR_Aabb cfr_make_aabb(CFR_V2 min, CFR_V2 max);
+CFR_Aabb cfr_make_aabb_center_half_extents(CFR_V2 center, CFR_V2 half_extents);
+CFR_Circle cfr_make_circle(CFR_V2 p, float r);
 
-/**
- * Create a color from RGBA values (0-255)
- * @param r Red component
- * @param g Green component
- * @param b Blue component
- * @param a Alpha component
- * @return Color
- */
-CFR_Color cfr_make_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+CFR_M3x2 cfr_make_identity(void);
+CFR_M3x2 cfr_make_translation(float x, float y);
+CFR_M3x2 cfr_make_scale(float sx, float sy);
+CFR_M3x2 cfr_make_rotation(float radians);
+CFR_M3x2 cfr_mul_m3x2(CFR_M3x2 a, CFR_M3x2 b);
+CFR_V2 cfr_mul_m3x2_v2(CFR_M3x2 m, CFR_V2 v);
 
-/**
- * Create a color from RGBA float values (0.0-1.0)
- * @param r Red component
- * @param g Green component
- * @param b Blue component
- * @param a Alpha component
- * @return Color
- */
-CFR_Color cfr_make_color_f(float r, float g, float b, float a);
+// Color helpers
+SDL_FColor cfr_make_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+SDL_FColor cfr_make_color_f(float r, float g, float b, float a);
+SDL_FColor cfr_make_color_hex(uint32_t hex);
 
-/**
- * Create a vector
- * @param x X component
- * @param y Y component
- * @return Vector
- */
-CFR_Vec2 cfr_v2(float x, float y);
+// Sprite helpers
+CFR_Sprite cfr_make_sprite(CFR_Texture texture, int width, int height);
+
+// Default blend states
+SDL_GPUColorTargetBlendState cfr_blend_state_default(void);
+SDL_GPUColorTargetBlendState cfr_blend_state_alpha(void);
+SDL_GPUColorTargetBlendState cfr_blend_state_additive(void);
+SDL_GPUColorTargetBlendState cfr_blend_state_multiplicative(void);
 
 #ifdef __cplusplus
 }

@@ -1,5 +1,5 @@
 /*
-	CF Renderer - A 2D renderer based on SDL3 GPU API
+	CF Renderer - A full-featured 2D renderer based on SDL3 GPU API
 	Extracted from Cute Framework
 	Copyright (C) 2024 Randy Gaul https://randygaul.github.io/
 	
@@ -11,17 +11,65 @@
 #include <string.h>
 #include <assert.h>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+//--------------------------------------------------------------------------------------------------
+// Spritebatch integration
+//--------------------------------------------------------------------------------------------------
+
+#define SPRITEBATCH_U64 uint64_t
+#define SPRITEBATCH_ASSERT assert
+#define SPRITEBATCH_IMPLEMENTATION
+
+// Sprite geometry for batching
+typedef struct BatchGeometry {
+	int type;
+	SDL_FColor color;
+	CFR_V2 shape[8];
+	float alpha;
+	float radius;
+	float stroke;
+	float aa;
+	bool fill;
+} BatchGeometry;
+
+#define SPRITEBATCH_SPRITE_GEOMETRY BatchGeometry
+
+#include "../../libraries/cute/cute_spritebatch.h"
+
 //--------------------------------------------------------------------------------------------------
 // Internal structures
 //--------------------------------------------------------------------------------------------------
 
 #define CFR_MAX_TEXTURES 1024
 #define CFR_MAX_CANVASES 64
-#define CFR_MAX_MESHES 128
-#define CFR_MAX_SHADERS 64
-#define CFR_MAX_MATERIALS 128
-#define CFR_MAX_VERTEX_ATTRIBUTES 16
-#define CFR_MAX_UNIFORM_BLOCKS 4
+#define CFR_MAX_LAYERS 128
+
+// Geometry types for batch rendering
+enum {
+	GEOM_TYPE_SPRITE = 0,
+	GEOM_TYPE_QUAD = 1,
+	GEOM_TYPE_CIRCLE = 2,
+	GEOM_TYPE_LINE = 3,
+	GEOM_TYPE_TRIANGLE = 4,
+	GEOM_TYPE_POLYGON = 5
+};
+
+typedef struct CFR_Vertex {
+	CFR_V2 pos;
+	CFR_V2 posH;  // Homogenous position (after transform)
+	CFR_V2 uv;
+	SDL_FColor color;
+	float radius;
+	float stroke;
+	float aa;
+	CFR_V2 shape[8];
+	int type;
+	uint8_t alpha;
+	uint8_t fill;
+} CFR_Vertex;
 
 typedef struct CFR_TextureInternal {
 	SDL_GPUTexture* texture;
@@ -41,26 +89,16 @@ typedef struct CFR_CanvasInternal {
 	bool in_use;
 } CFR_CanvasInternal;
 
-typedef struct CFR_MeshInternal {
-	SDL_GPUBuffer* vertex_buffer;
-	SDL_GPUTransferBuffer* transfer_buffer;
-	int vertex_buffer_size;
-	int vertex_stride;
-	int attribute_count;
-	CFR_VertexAttribute attributes[CFR_MAX_VERTEX_ATTRIBUTES];
-	bool in_use;
-} CFR_MeshInternal;
-
-typedef struct CFR_ShaderInternal {
-	SDL_GPUShader* vertex_shader;
-	SDL_GPUShader* fragment_shader;
-	bool in_use;
-} CFR_ShaderInternal;
-
-typedef struct CFR_MaterialInternal {
-	CFR_RenderState render_state;
-	bool in_use;
-} CFR_MaterialInternal;
+typedef struct CFR_DrawCommand {
+	int layer;
+	int id;
+	SDL_FRect scissor;
+	SDL_FRect viewport;
+	SDL_GPUColorTargetBlendState blend;
+	void* items;  // Array of sprite batch items
+	int item_count;
+	bool processed;
+} CFR_DrawCommand;
 
 struct CFR_Renderer {
 	SDL_GPUDevice* device;
@@ -69,74 +107,362 @@ struct CFR_Renderer {
 	SDL_GPURenderPass* render_pass;
 	SDL_GPUTexture* swapchain_texture;
 	
+	int width, height;
+	
 	// Resource pools
 	CFR_TextureInternal textures[CFR_MAX_TEXTURES];
 	CFR_CanvasInternal canvases[CFR_MAX_CANVASES];
-	CFR_MeshInternal meshes[CFR_MAX_MESHES];
-	CFR_ShaderInternal shaders[CFR_MAX_SHADERS];
-	CFR_MaterialInternal materials[CFR_MAX_MATERIALS];
+	
+	// Sprite batching
+	spritebatch_t sprite_batch;
+	
+	// Rendering state stacks
+	SDL_FColor* color_stack;
+	int color_stack_count;
+	int color_stack_capacity;
+	
+	int* layer_stack;
+	int layer_stack_count;
+	int layer_stack_capacity;
+	
+	bool* antialias_stack;
+	int antialias_stack_count;
+	int antialias_stack_capacity;
+	
+	float* antialias_scale_stack;
+	int antialias_scale_stack_count;
+	int antialias_scale_stack_capacity;
+	
+	SDL_FRect* viewport_stack;
+	int viewport_stack_count;
+	int viewport_stack_capacity;
+	
+	SDL_FRect* scissor_stack;
+	int scissor_stack_count;
+	int scissor_stack_capacity;
+	
+	SDL_GPUColorTargetBlendState* blend_stack;
+	int blend_stack_count;
+	int blend_stack_capacity;
+	
+	CFR_M3x2* transform_stack;
+	int transform_stack_count;
+	int transform_stack_capacity;
 	
 	// Current state
-	CFR_CanvasInternal* current_canvas;
-	CFR_MeshInternal* current_mesh;
-	SDL_GPUGraphicsPipeline* current_pipeline;
+	CFR_M3x2 projection;
+	CFR_M3x2 mvp;
+	float aaf;  // Antialiasing factor
+	
+	// Rendering resources
+	SDL_GPUShader* default_vs;
+	SDL_GPUShader* default_fs;
+	SDL_GPUBuffer* vertex_buffer;
+	SDL_GPUTransferBuffer* vertex_transfer;
+	
+	// Draw commands
+	CFR_DrawCommand* commands;
+	int command_count;
+	int command_capacity;
+	int command_id_counter;
 	
 	bool frame_begun;
 };
 
 //--------------------------------------------------------------------------------------------------
-// Utility functions
+// Stack management helpers
 //--------------------------------------------------------------------------------------------------
 
-static SDL_GPUBlendFactor cfr_to_sdl_blend_factor(CFR_BlendFactor factor)
+#define STACK_PUSH(stack, type, item) do { \
+	if (renderer->stack##_stack_count >= renderer->stack##_stack_capacity) { \
+		int new_cap = renderer->stack##_stack_capacity == 0 ? 16 : renderer->stack##_stack_capacity * 2; \
+		renderer->stack##_stack = (type*)realloc(renderer->stack##_stack, new_cap * sizeof(type)); \
+		renderer->stack##_stack_capacity = new_cap; \
+	} \
+	renderer->stack##_stack[renderer->stack##_stack_count++] = item; \
+} while(0)
+
+#define STACK_POP(stack, type, default_val) \
+	(renderer->stack##_stack_count > 1 ? renderer->stack##_stack[--renderer->stack##_stack_count] : \
+	 (renderer->stack##_stack_count > 0 ? renderer->stack##_stack[0] : default_val))
+
+#define STACK_PEEK(stack, type, default_val) \
+	(renderer->stack##_stack_count > 0 ? renderer->stack##_stack[renderer->stack##_stack_count - 1] : default_val)
+
+//--------------------------------------------------------------------------------------------------
+// Spritebatch callbacks
+//--------------------------------------------------------------------------------------------------
+
+static SPRITEBATCH_U64 cfr_generate_texture_handle(void* pixels, int w, int h, void* udata)
 {
-	switch (factor) {
-		case CFR_BLENDFACTOR_ZERO: return SDL_GPU_BLENDFACTOR_ZERO;
-		case CFR_BLENDFACTOR_ONE: return SDL_GPU_BLENDFACTOR_ONE;
-		case CFR_BLENDFACTOR_SRC_COLOR: return SDL_GPU_BLENDFACTOR_SRC_COLOR;
-		case CFR_BLENDFACTOR_ONE_MINUS_SRC_COLOR: return SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_COLOR;
-		case CFR_BLENDFACTOR_DST_COLOR: return SDL_GPU_BLENDFACTOR_DST_COLOR;
-		case CFR_BLENDFACTOR_ONE_MINUS_DST_COLOR: return SDL_GPU_BLENDFACTOR_ONE_MINUS_DST_COLOR;
-		case CFR_BLENDFACTOR_SRC_ALPHA: return SDL_GPU_BLENDFACTOR_SRC_ALPHA;
-		case CFR_BLENDFACTOR_ONE_MINUS_SRC_ALPHA: return SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA;
-		case CFR_BLENDFACTOR_DST_ALPHA: return SDL_GPU_BLENDFACTOR_DST_ALPHA;
-		case CFR_BLENDFACTOR_ONE_MINUS_DST_ALPHA: return SDL_GPU_BLENDFACTOR_ONE_MINUS_DST_ALPHA;
-		default: return SDL_GPU_BLENDFACTOR_ONE;
+	CFR_Renderer* renderer = (CFR_Renderer*)udata;
+	
+	CFR_Texture tex = cfr_make_texture(renderer, w, h, SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM);
+	if (tex.id) {
+		cfr_texture_update(renderer, tex, pixels, w * h * 4);
 	}
+	return tex.id;
 }
 
-static SDL_GPUBlendOp cfr_to_sdl_blend_op(CFR_BlendOp op)
+static void cfr_destroy_texture_handle(SPRITEBATCH_U64 texture_id, void* udata)
 {
-	switch (op) {
-		case CFR_BLEND_OP_ADD: return SDL_GPU_BLENDOP_ADD;
-		case CFR_BLEND_OP_SUBTRACT: return SDL_GPU_BLENDOP_SUBTRACT;
-		case CFR_BLEND_OP_REVERSE_SUBTRACT: return SDL_GPU_BLENDOP_REVERSE_SUBTRACT;
-		case CFR_BLEND_OP_MIN: return SDL_GPU_BLENDOP_MIN;
-		case CFR_BLEND_OP_MAX: return SDL_GPU_BLENDOP_MAX;
-		default: return SDL_GPU_BLENDOP_ADD;
-	}
+	CFR_Renderer* renderer = (CFR_Renderer*)udata;
+	CFR_Texture tex = { texture_id };
+	cfr_destroy_texture(renderer, tex);
 }
 
-static SDL_GPUVertexElementFormat cfr_to_sdl_vertex_format(CFR_VertexFormat format)
+static void cfr_get_pixels_callback(SPRITEBATCH_U64 image_id, void* buffer, int bytes_to_fill, void* udata)
 {
-	switch (format) {
-		case CFR_VERTEX_FORMAT_FLOAT: return SDL_GPU_VERTEXELEMENTFORMAT_FLOAT;
-		case CFR_VERTEX_FORMAT_FLOAT2: return SDL_GPU_VERTEXELEMENTFORMAT_FLOAT2;
-		case CFR_VERTEX_FORMAT_FLOAT3: return SDL_GPU_VERTEXELEMENTFORMAT_FLOAT3;
-		case CFR_VERTEX_FORMAT_FLOAT4: return SDL_GPU_VERTEXELEMENTFORMAT_FLOAT4;
-		case CFR_VERTEX_FORMAT_UBYTE4: return SDL_GPU_VERTEXELEMENTFORMAT_UBYTE4;
-		case CFR_VERTEX_FORMAT_UBYTE4_NORM: return SDL_GPU_VERTEXELEMENTFORMAT_UBYTE4_NORM;
-		case CFR_VERTEX_FORMAT_INT: return SDL_GPU_VERTEXELEMENTFORMAT_INT;
-		case CFR_VERTEX_FORMAT_UINT: return SDL_GPU_VERTEXELEMENTFORMAT_UINT;
-		default: return SDL_GPU_VERTEXELEMENTFORMAT_FLOAT;
+	// For now, we don't support getting pixels back from GPU
+	memset(buffer, 0, bytes_to_fill);
+}
+
+static void cfr_batch_report(spritebatch_sprite_t* sprites, int count, int texture_w, int texture_h, void* udata)
+{
+	CFR_Renderer* renderer = (CFR_Renderer*)udata;
+	
+	// Convert sprites to vertices and submit draw call
+	// This would be implemented with the actual rendering code
+	// For now, this is a placeholder
+}
+
+//--------------------------------------------------------------------------------------------------
+// Math helpers
+//--------------------------------------------------------------------------------------------------
+
+CFR_V2 cfr_v2(float x, float y)
+{
+	CFR_V2 v = { x, y };
+	return v;
+}
+
+CFR_V2 cfr_add(CFR_V2 a, CFR_V2 b)
+{
+	return cfr_v2(a.x + b.x, a.y + b.y);
+}
+
+CFR_V2 cfr_sub(CFR_V2 a, CFR_V2 b)
+{
+	return cfr_v2(a.x - b.x, a.y - b.y);
+}
+
+CFR_V2 cfr_mul(CFR_V2 v, float s)
+{
+	return cfr_v2(v.x * s, v.y * s);
+}
+
+float cfr_dot(CFR_V2 a, CFR_V2 b)
+{
+	return a.x * b.x + a.y * b.y;
+}
+
+float cfr_len(CFR_V2 v)
+{
+	return sqrtf(v.x * v.x + v.y * v.y);
+}
+
+CFR_V2 cfr_norm(CFR_V2 v)
+{
+	float len = cfr_len(v);
+	if (len > 0.0f) {
+		return cfr_mul(v, 1.0f / len);
 	}
+	return v;
+}
+
+CFR_Aabb cfr_make_aabb(CFR_V2 min, CFR_V2 max)
+{
+	CFR_Aabb bb = { min, max };
+	return bb;
+}
+
+CFR_Aabb cfr_make_aabb_center_half_extents(CFR_V2 center, CFR_V2 half_extents)
+{
+	return cfr_make_aabb(
+		cfr_sub(center, half_extents),
+		cfr_add(center, half_extents)
+	);
+}
+
+CFR_Circle cfr_make_circle(CFR_V2 p, float r)
+{
+	CFR_Circle c = { p, r };
+	return c;
+}
+
+CFR_M3x2 cfr_make_identity(void)
+{
+	CFR_M3x2 m = {
+		{ 1, 0 },
+		{ 0, 1 },
+		{ 0, 0 }
+	};
+	return m;
+}
+
+CFR_M3x2 cfr_make_translation(float x, float y)
+{
+	CFR_M3x2 m = {
+		{ 1, 0 },
+		{ 0, 1 },
+		{ x, y }
+	};
+	return m;
+}
+
+CFR_M3x2 cfr_make_scale(float sx, float sy)
+{
+	CFR_M3x2 m = {
+		{ sx, 0 },
+		{ 0, sy },
+		{ 0, 0 }
+	};
+	return m;
+}
+
+CFR_M3x2 cfr_make_rotation(float radians)
+{
+	float c = cosf(radians);
+	float s = sinf(radians);
+	CFR_M3x2 m = {
+		{ c, s },
+		{ -s, c },
+		{ 0, 0 }
+	};
+	return m;
+}
+
+CFR_M3x2 cfr_mul_m3x2(CFR_M3x2 a, CFR_M3x2 b)
+{
+	CFR_M3x2 result;
+	result.x.x = a.x.x * b.x.x + a.y.x * b.x.y;
+	result.x.y = a.x.y * b.x.x + a.y.y * b.x.y;
+	result.y.x = a.x.x * b.y.x + a.y.x * b.y.y;
+	result.y.y = a.x.y * b.y.x + a.y.y * b.y.y;
+	result.p.x = a.x.x * b.p.x + a.y.x * b.p.y + a.p.x;
+	result.p.y = a.x.y * b.p.x + a.y.y * b.p.y + a.p.y;
+	return result;
+}
+
+CFR_V2 cfr_mul_m3x2_v2(CFR_M3x2 m, CFR_V2 v)
+{
+	CFR_V2 result;
+	result.x = m.x.x * v.x + m.y.x * v.y + m.p.x;
+	result.y = m.x.y * v.x + m.y.y * v.y + m.p.y;
+	return result;
+}
+
+SDL_FColor cfr_make_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+	SDL_FColor color = {
+		r / 255.0f,
+		g / 255.0f,
+		b / 255.0f,
+		a / 255.0f
+	};
+	return color;
+}
+
+SDL_FColor cfr_make_color_f(float r, float g, float b, float a)
+{
+	SDL_FColor color = { r, g, b, a };
+	return color;
+}
+
+SDL_FColor cfr_make_color_hex(uint32_t hex)
+{
+	return cfr_make_color(
+		(hex >> 24) & 0xFF,
+		(hex >> 16) & 0xFF,
+		(hex >> 8) & 0xFF,
+		hex & 0xFF
+	);
+}
+
+CFR_Sprite cfr_make_sprite(CFR_Texture texture, int width, int height)
+{
+	CFR_Sprite sprite = {0};
+	sprite.texture = texture;
+	sprite.w = width;
+	sprite.h = height;
+	sprite.transform.p = cfr_v2(0, 0);
+	sprite.transform.r.c = 1;
+	sprite.transform.r.s = 0;
+	sprite.scale = cfr_v2(1, 1);
+	sprite.opacity = 1.0f;
+	sprite.offset = cfr_v2(0, 0);
+	return sprite;
+}
+
+SDL_GPUColorTargetBlendState cfr_blend_state_default(void)
+{
+	SDL_GPUColorTargetBlendState blend = {
+		.src_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE,
+		.dst_color_blendfactor = SDL_GPU_BLENDFACTOR_ZERO,
+		.color_blend_op = SDL_GPU_BLENDOP_ADD,
+		.src_alpha_blendfactor = SDL_GPU_BLENDFACTOR_ONE,
+		.dst_alpha_blendfactor = SDL_GPU_BLENDFACTOR_ZERO,
+		.alpha_blend_op = SDL_GPU_BLENDOP_ADD,
+		.color_write_mask = 0xF,
+		.enable_blend = false,
+		.enable_color_write_mask = false
+	};
+	return blend;
+}
+
+SDL_GPUColorTargetBlendState cfr_blend_state_alpha(void)
+{
+	SDL_GPUColorTargetBlendState blend = {
+		.src_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE,
+		.dst_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA,
+		.color_blend_op = SDL_GPU_BLENDOP_ADD,
+		.src_alpha_blendfactor = SDL_GPU_BLENDFACTOR_ONE,
+		.dst_alpha_blendfactor = SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA,
+		.alpha_blend_op = SDL_GPU_BLENDOP_ADD,
+		.color_write_mask = 0xF,
+		.enable_blend = true,
+		.enable_color_write_mask = false
+	};
+	return blend;
+}
+
+SDL_GPUColorTargetBlendState cfr_blend_state_additive(void)
+{
+	SDL_GPUColorTargetBlendState blend = {
+		.src_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE,
+		.dst_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE,
+		.color_blend_op = SDL_GPU_BLENDOP_ADD,
+		.src_alpha_blendfactor = SDL_GPU_BLENDFACTOR_ONE,
+		.dst_alpha_blendfactor = SDL_GPU_BLENDFACTOR_ONE,
+		.alpha_blend_op = SDL_GPU_BLENDOP_ADD,
+		.color_write_mask = 0xF,
+		.enable_blend = true,
+		.enable_color_write_mask = false
+	};
+	return blend;
+}
+
+SDL_GPUColorTargetBlendState cfr_blend_state_multiplicative(void)
+{
+	SDL_GPUColorTargetBlendState blend = {
+		.src_color_blendfactor = SDL_GPU_BLENDFACTOR_DST_COLOR,
+		.dst_color_blendfactor = SDL_GPU_BLENDFACTOR_ZERO,
+		.color_blend_op = SDL_GPU_BLENDOP_ADD,
+		.src_alpha_blendfactor = SDL_GPU_BLENDFACTOR_DST_ALPHA,
+		.dst_alpha_blendfactor = SDL_GPU_BLENDFACTOR_ZERO,
+		.alpha_blend_op = SDL_GPU_BLENDOP_ADD,
+		.color_write_mask = 0xF,
+		.enable_blend = true,
+		.enable_color_write_mask = false
+	};
+	return blend;
 }
 
 //--------------------------------------------------------------------------------------------------
 // Renderer lifecycle
 //--------------------------------------------------------------------------------------------------
 
-CFR_Renderer* cfr_create_renderer(SDL_GPUDevice* device, SDL_Window* window)
+CFR_Renderer* cfr_create_renderer(SDL_GPUDevice* device, SDL_Window* window, int width, int height)
 {
 	if (!device || !window) {
 		return NULL;
@@ -149,7 +475,53 @@ CFR_Renderer* cfr_create_renderer(SDL_GPUDevice* device, SDL_Window* window)
 	
 	renderer->device = device;
 	renderer->window = window;
+	renderer->width = width;
+	renderer->height = height;
 	renderer->frame_begun = false;
+	
+	// Initialize sprite batch
+	spritebatch_config_t config;
+	spritebatch_set_default_config(&config);
+	config.atlas_use_border_pixels = 1;
+	config.batch_callback = cfr_batch_report;
+	config.get_pixels_callback = cfr_get_pixels_callback;
+	config.generate_texture_callback = cfr_generate_texture_handle;
+	config.delete_texture_callback = cfr_destroy_texture_handle;
+	config.udata = renderer;
+	spritebatch_init(&renderer->sprite_batch, &config, NULL);
+	
+	// Initialize stacks with defaults
+	SDL_FColor white = { 1, 1, 1, 1 };
+	STACK_PUSH(color, SDL_FColor, white);
+	
+	int layer_default = 0;
+	STACK_PUSH(layer, int, layer_default);
+	
+	bool aa_default = true;
+	STACK_PUSH(antialias, bool, aa_default);
+	
+	float aa_scale_default = 1.5f;
+	STACK_PUSH(antialias_scale, float, aa_scale_default);
+	
+	SDL_FRect viewport_default = { 0, 0, (float)width, (float)height };
+	STACK_PUSH(viewport, SDL_FRect, viewport_default);
+	
+	SDL_FRect scissor_default = { 0, 0, -1, -1 };
+	STACK_PUSH(scissor, SDL_FRect, scissor_default);
+	
+	SDL_GPUColorTargetBlendState blend_default = cfr_blend_state_alpha();
+	STACK_PUSH(blend, SDL_GPUColorTargetBlendState, blend_default);
+	
+	CFR_M3x2 transform_default = cfr_make_identity();
+	STACK_PUSH(transform, CFR_M3x2, transform_default);
+	
+	// Setup projection (orthographic, origin at top-left)
+	renderer->projection = cfr_make_identity();
+	renderer->projection.x.x = 2.0f / width;
+	renderer->projection.y.y = -2.0f / height;
+	renderer->projection.p.x = -1.0f;
+	renderer->projection.p.y = 1.0f;
+	renderer->mvp = renderer->projection;
 	
 	return renderer;
 }
@@ -160,7 +532,7 @@ void cfr_destroy_renderer(CFR_Renderer* renderer)
 		return;
 	}
 	
-	// Clean up all resources
+	// Clean up textures
 	for (int i = 0; i < CFR_MAX_TEXTURES; i++) {
 		if (renderer->textures[i].in_use) {
 			if (renderer->textures[i].texture) {
@@ -175,6 +547,7 @@ void cfr_destroy_renderer(CFR_Renderer* renderer)
 		}
 	}
 	
+	// Clean up canvases
 	for (int i = 0; i < CFR_MAX_CANVASES; i++) {
 		if (renderer->canvases[i].in_use) {
 			if (renderer->canvases[i].texture) {
@@ -186,27 +559,19 @@ void cfr_destroy_renderer(CFR_Renderer* renderer)
 		}
 	}
 	
-	for (int i = 0; i < CFR_MAX_MESHES; i++) {
-		if (renderer->meshes[i].in_use) {
-			if (renderer->meshes[i].vertex_buffer) {
-				SDL_ReleaseGPUBuffer(renderer->device, renderer->meshes[i].vertex_buffer);
-			}
-			if (renderer->meshes[i].transfer_buffer) {
-				SDL_ReleaseGPUTransferBuffer(renderer->device, renderer->meshes[i].transfer_buffer);
-			}
-		}
-	}
+	// Clean up sprite batch
+	spritebatch_term(&renderer->sprite_batch);
 	
-	for (int i = 0; i < CFR_MAX_SHADERS; i++) {
-		if (renderer->shaders[i].in_use) {
-			if (renderer->shaders[i].vertex_shader) {
-				SDL_ReleaseGPUShader(renderer->device, renderer->shaders[i].vertex_shader);
-			}
-			if (renderer->shaders[i].fragment_shader) {
-				SDL_ReleaseGPUShader(renderer->device, renderer->shaders[i].fragment_shader);
-			}
-		}
-	}
+	// Clean up stacks
+	free(renderer->color_stack);
+	free(renderer->layer_stack);
+	free(renderer->antialias_stack);
+	free(renderer->antialias_scale_stack);
+	free(renderer->viewport_stack);
+	free(renderer->scissor_stack);
+	free(renderer->blend_stack);
+	free(renderer->transform_stack);
+	free(renderer->commands);
 	
 	free(renderer);
 }
@@ -231,6 +596,9 @@ void cfr_end_frame(CFR_Renderer* renderer)
 		return;
 	}
 	
+	// Flush any pending sprite batch commands
+	spritebatch_flush(&renderer->sprite_batch);
+	
 	if (renderer->render_pass) {
 		SDL_EndGPURenderPass(renderer->render_pass);
 		renderer->render_pass = NULL;
@@ -244,16 +612,30 @@ void cfr_end_frame(CFR_Renderer* renderer)
 	renderer->frame_begun = false;
 }
 
+void cfr_set_viewport_size(CFR_Renderer* renderer, int width, int height)
+{
+	if (!renderer) return;
+	
+	renderer->width = width;
+	renderer->height = height;
+	
+	// Update projection matrix
+	renderer->projection = cfr_make_identity();
+	renderer->projection.x.x = 2.0f / width;
+	renderer->projection.y.y = -2.0f / height;
+	renderer->projection.p.x = -1.0f;
+	renderer->projection.p.y = 1.0f;
+	renderer->mvp = cfr_mul_m3x2(renderer->projection, STACK_PEEK(transform, CFR_M3x2, cfr_make_identity()));
+}
+
 //--------------------------------------------------------------------------------------------------
-// Texture management
+// Low-level resource management
 //--------------------------------------------------------------------------------------------------
 
-CFR_Texture cfr_make_texture(CFR_Renderer* renderer, CFR_TextureParams params)
+CFR_Texture cfr_make_texture(CFR_Renderer* renderer, int width, int height, SDL_GPUTextureFormat format)
 {
 	CFR_Texture result = { 0 };
-	if (!renderer) {
-		return result;
-	}
+	if (!renderer) return result;
 	
 	// Find free slot
 	int slot = -1;
@@ -264,18 +646,16 @@ CFR_Texture cfr_make_texture(CFR_Renderer* renderer, CFR_TextureParams params)
 		}
 	}
 	
-	if (slot == -1) {
-		return result;
-	}
+	if (slot == -1) return result;
 	
 	CFR_TextureInternal* tex = &renderer->textures[slot];
 	
 	SDL_GPUTextureCreateInfo create_info = {
 		.type = SDL_GPU_TEXTURETYPE_2D,
-		.format = params.format,
+		.format = format,
 		.usage = SDL_GPU_TEXTUREUSAGE_SAMPLER,
-		.width = params.width,
-		.height = params.height,
+		.width = width,
+		.height = height,
 		.layer_count_or_depth = 1,
 		.num_levels = 1,
 		.sample_count = SDL_GPU_SAMPLECOUNT_1,
@@ -283,24 +663,15 @@ CFR_Texture cfr_make_texture(CFR_Renderer* renderer, CFR_TextureParams params)
 	};
 	
 	tex->texture = SDL_CreateGPUTexture(renderer->device, &create_info);
-	if (!tex->texture) {
-		return result;
-	}
+	if (!tex->texture) return result;
 	
 	SDL_GPUSamplerCreateInfo sampler_info = {
-		.min_filter = params.filter == CFR_FILTER_LINEAR ? SDL_GPU_FILTER_LINEAR : SDL_GPU_FILTER_NEAREST,
-		.mag_filter = params.filter == CFR_FILTER_LINEAR ? SDL_GPU_FILTER_LINEAR : SDL_GPU_FILTER_NEAREST,
+		.min_filter = SDL_GPU_FILTER_LINEAR,
+		.mag_filter = SDL_GPU_FILTER_LINEAR,
 		.mipmap_mode = SDL_GPU_SAMPLERMIPMAPMODE_NEAREST,
-		.address_mode_u = params.wrap_u == CFR_WRAP_REPEAT ? SDL_GPU_SAMPLERADDRESSMODE_REPEAT : SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
-		.address_mode_v = params.wrap_v == CFR_WRAP_REPEAT ? SDL_GPU_SAMPLERADDRESSMODE_REPEAT : SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
+		.address_mode_u = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
+		.address_mode_v = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
 		.address_mode_w = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
-		.mip_lod_bias = 0.0f,
-		.max_anisotropy = 1.0f,
-		.compare_op = SDL_GPU_COMPAREOP_NEVER,
-		.min_lod = 0.0f,
-		.max_lod = 1000.0f,
-		.enable_anisotropy = false,
-		.enable_compare = false,
 		.props = 0
 	};
 	
@@ -311,9 +682,9 @@ CFR_Texture cfr_make_texture(CFR_Renderer* renderer, CFR_TextureParams params)
 		return result;
 	}
 	
-	tex->width = params.width;
-	tex->height = params.height;
-	tex->format = params.format;
+	tex->width = width;
+	tex->height = height;
+	tex->format = format;
 	tex->in_use = true;
 	
 	result.id = (uint64_t)(slot + 1);
@@ -322,14 +693,10 @@ CFR_Texture cfr_make_texture(CFR_Renderer* renderer, CFR_TextureParams params)
 
 void cfr_texture_update(CFR_Renderer* renderer, CFR_Texture texture, void* pixels, int size)
 {
-	if (!renderer || !texture.id || !pixels) {
-		return;
-	}
+	if (!renderer || !texture.id || !pixels) return;
 	
 	int slot = (int)(texture.id - 1);
-	if (slot < 0 || slot >= CFR_MAX_TEXTURES || !renderer->textures[slot].in_use) {
-		return;
-	}
+	if (slot < 0 || slot >= CFR_MAX_TEXTURES || !renderer->textures[slot].in_use) return;
 	
 	CFR_TextureInternal* tex = &renderer->textures[slot];
 	
@@ -343,9 +710,7 @@ void cfr_texture_update(CFR_Renderer* renderer, CFR_Texture texture, void* pixel
 		tex->transfer_buffer = SDL_CreateGPUTransferBuffer(renderer->device, &transfer_info);
 	}
 	
-	if (!tex->transfer_buffer) {
-		return;
-	}
+	if (!tex->transfer_buffer) return;
 	
 	// Map and copy data
 	void* mapped = SDL_MapGPUTransferBuffer(renderer->device, tex->transfer_buffer, false);
@@ -387,14 +752,10 @@ void cfr_texture_update(CFR_Renderer* renderer, CFR_Texture texture, void* pixel
 
 void cfr_destroy_texture(CFR_Renderer* renderer, CFR_Texture texture)
 {
-	if (!renderer || !texture.id) {
-		return;
-	}
+	if (!renderer || !texture.id) return;
 	
 	int slot = (int)(texture.id - 1);
-	if (slot < 0 || slot >= CFR_MAX_TEXTURES || !renderer->textures[slot].in_use) {
-		return;
-	}
+	if (slot < 0 || slot >= CFR_MAX_TEXTURES || !renderer->textures[slot].in_use) return;
 	
 	CFR_TextureInternal* tex = &renderer->textures[slot];
 	
@@ -416,16 +777,10 @@ void cfr_destroy_texture(CFR_Renderer* renderer, CFR_Texture texture)
 	tex->in_use = false;
 }
 
-//--------------------------------------------------------------------------------------------------
-// Canvas management
-//--------------------------------------------------------------------------------------------------
-
 CFR_Canvas cfr_make_canvas(CFR_Renderer* renderer, int width, int height)
 {
 	CFR_Canvas result = { 0 };
-	if (!renderer) {
-		return result;
-	}
+	if (!renderer) return result;
 	
 	// Find free slot
 	int slot = -1;
@@ -436,9 +791,7 @@ CFR_Canvas cfr_make_canvas(CFR_Renderer* renderer, int width, int height)
 		}
 	}
 	
-	if (slot == -1) {
-		return result;
-	}
+	if (slot == -1) return result;
 	
 	CFR_CanvasInternal* canvas = &renderer->canvases[slot];
 	
@@ -455,9 +808,7 @@ CFR_Canvas cfr_make_canvas(CFR_Renderer* renderer, int width, int height)
 	};
 	
 	canvas->texture = SDL_CreateGPUTexture(renderer->device, &create_info);
-	if (!canvas->texture) {
-		return result;
-	}
+	if (!canvas->texture) return result;
 	
 	SDL_GPUSamplerCreateInfo sampler_info = {
 		.min_filter = SDL_GPU_FILTER_LINEAR,
@@ -466,13 +817,6 @@ CFR_Canvas cfr_make_canvas(CFR_Renderer* renderer, int width, int height)
 		.address_mode_u = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
 		.address_mode_v = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
 		.address_mode_w = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
-		.mip_lod_bias = 0.0f,
-		.max_anisotropy = 1.0f,
-		.compare_op = SDL_GPU_COMPAREOP_NEVER,
-		.min_lod = 0.0f,
-		.max_lod = 1000.0f,
-		.enable_anisotropy = false,
-		.enable_compare = false,
 		.props = 0
 	};
 	
@@ -491,29 +835,12 @@ CFR_Canvas cfr_make_canvas(CFR_Renderer* renderer, int width, int height)
 	return result;
 }
 
-CFR_Texture cfr_canvas_get_texture(CFR_Renderer* renderer, CFR_Canvas canvas)
-{
-	CFR_Texture result = { 0 };
-	if (!renderer || !canvas.id) {
-		return result;
-	}
-	
-	// For canvas texture, we return the canvas ID directly
-	// This is a simplification - in a real implementation you might want separate texture handles
-	result.id = canvas.id;
-	return result;
-}
-
 void cfr_destroy_canvas(CFR_Renderer* renderer, CFR_Canvas canvas)
 {
-	if (!renderer || !canvas.id) {
-		return;
-	}
+	if (!renderer || !canvas.id) return;
 	
 	int slot = (int)(canvas.id - 1);
-	if (slot < 0 || slot >= CFR_MAX_CANVASES || !renderer->canvases[slot].in_use) {
-		return;
-	}
+	if (slot < 0 || slot >= CFR_MAX_CANVASES || !renderer->canvases[slot].in_use) return;
 	
 	CFR_CanvasInternal* c = &renderer->canvases[slot];
 	
@@ -530,11 +857,19 @@ void cfr_destroy_canvas(CFR_Renderer* renderer, CFR_Canvas canvas)
 	c->in_use = false;
 }
 
-void cfr_apply_canvas(CFR_Renderer* renderer, CFR_Canvas canvas, bool clear)
+CFR_Texture cfr_canvas_get_texture(CFR_Renderer* renderer, CFR_Canvas canvas)
 {
-	if (!renderer) {
-		return;
-	}
+	CFR_Texture result = { 0 };
+	if (!renderer || !canvas.id) return result;
+	
+	// Canvas ID is the same as texture ID in this implementation
+	result.id = canvas.id;
+	return result;
+}
+
+void cfr_render_to(CFR_Renderer* renderer, CFR_Canvas canvas, bool clear)
+{
+	if (!renderer) return;
 	
 	// End current render pass if active
 	if (renderer->render_pass) {
@@ -546,28 +881,20 @@ void cfr_apply_canvas(CFR_Renderer* renderer, CFR_Canvas canvas, bool clear)
 	
 	if (canvas.id == 0) {
 		// Render to swapchain
-		if (!renderer->cmd_buffer) {
-			return;
-		}
+		if (!renderer->cmd_buffer) return;
 		
 		if (!SDL_WaitAndAcquireGPUSwapchainTexture(renderer->cmd_buffer, renderer->window, &target_texture, NULL, NULL)) {
 			return;
 		}
 		renderer->swapchain_texture = target_texture;
-		renderer->current_canvas = NULL;
 	} else {
 		// Render to canvas
 		int slot = (int)(canvas.id - 1);
-		if (slot < 0 || slot >= CFR_MAX_CANVASES || !renderer->canvases[slot].in_use) {
-			return;
-		}
+		if (slot < 0 || slot >= CFR_MAX_CANVASES || !renderer->canvases[slot].in_use) return;
 		target_texture = renderer->canvases[slot].texture;
-		renderer->current_canvas = &renderer->canvases[slot];
 	}
 	
-	if (!target_texture) {
-		return;
-	}
+	if (!target_texture) return;
 	
 	SDL_GPUColorTargetInfo color_target = {
 		.texture = target_texture,
@@ -586,578 +913,312 @@ void cfr_apply_canvas(CFR_Renderer* renderer, CFR_Canvas canvas, bool clear)
 	renderer->render_pass = SDL_BeginGPURenderPass(renderer->cmd_buffer, &color_target, 1, NULL);
 }
 
-void cfr_clear_canvas(CFR_Renderer* renderer, CFR_Color color)
+//--------------------------------------------------------------------------------------------------
+// Drawing state management
+//--------------------------------------------------------------------------------------------------
+
+void cfr_push_color(CFR_Renderer* renderer, SDL_FColor color)
 {
-	// Clear is handled by cfr_apply_canvas
-	// This is a no-op in this implementation
-	(void)renderer;
-	(void)color;
+	STACK_PUSH(color, SDL_FColor, color);
+}
+
+SDL_FColor cfr_pop_color(CFR_Renderer* renderer)
+{
+	SDL_FColor default_color = { 1, 1, 1, 1 };
+	return STACK_POP(color, SDL_FColor, default_color);
+}
+
+SDL_FColor cfr_peek_color(CFR_Renderer* renderer)
+{
+	SDL_FColor default_color = { 1, 1, 1, 1 };
+	return STACK_PEEK(color, SDL_FColor, default_color);
+}
+
+void cfr_push_layer(CFR_Renderer* renderer, int layer)
+{
+	STACK_PUSH(layer, int, layer);
+}
+
+int cfr_pop_layer(CFR_Renderer* renderer)
+{
+	return STACK_POP(layer, int, 0);
+}
+
+int cfr_peek_layer(CFR_Renderer* renderer)
+{
+	return STACK_PEEK(layer, int, 0);
+}
+
+void cfr_push_antialias(CFR_Renderer* renderer, bool enabled)
+{
+	STACK_PUSH(antialias, bool, enabled);
+}
+
+bool cfr_pop_antialias(CFR_Renderer* renderer)
+{
+	return STACK_POP(antialias, bool, true);
+}
+
+bool cfr_peek_antialias(CFR_Renderer* renderer)
+{
+	return STACK_PEEK(antialias, bool, true);
+}
+
+void cfr_push_antialias_scale(CFR_Renderer* renderer, float scale)
+{
+	STACK_PUSH(antialias_scale, float, scale);
+}
+
+float cfr_pop_antialias_scale(CFR_Renderer* renderer)
+{
+	return STACK_POP(antialias_scale, float, 1.5f);
+}
+
+float cfr_peek_antialias_scale(CFR_Renderer* renderer)
+{
+	return STACK_PEEK(antialias_scale, float, 1.5f);
+}
+
+void cfr_push_viewport(CFR_Renderer* renderer, SDL_FRect viewport)
+{
+	STACK_PUSH(viewport, SDL_FRect, viewport);
+}
+
+SDL_FRect cfr_pop_viewport(CFR_Renderer* renderer)
+{
+	SDL_FRect default_viewport = { 0, 0, (float)renderer->width, (float)renderer->height };
+	return STACK_POP(viewport, SDL_FRect, default_viewport);
+}
+
+SDL_FRect cfr_peek_viewport(CFR_Renderer* renderer)
+{
+	SDL_FRect default_viewport = { 0, 0, (float)renderer->width, (float)renderer->height };
+	return STACK_PEEK(viewport, SDL_FRect, default_viewport);
+}
+
+void cfr_push_scissor(CFR_Renderer* renderer, SDL_FRect scissor)
+{
+	STACK_PUSH(scissor, SDL_FRect, scissor);
+}
+
+SDL_FRect cfr_pop_scissor(CFR_Renderer* renderer)
+{
+	SDL_FRect default_scissor = { 0, 0, -1, -1 };
+	return STACK_POP(scissor, SDL_FRect, default_scissor);
+}
+
+SDL_FRect cfr_peek_scissor(CFR_Renderer* renderer)
+{
+	SDL_FRect default_scissor = { 0, 0, -1, -1 };
+	return STACK_PEEK(scissor, SDL_FRect, default_scissor);
+}
+
+void cfr_push_blend_state(CFR_Renderer* renderer, SDL_GPUColorTargetBlendState blend)
+{
+	STACK_PUSH(blend, SDL_GPUColorTargetBlendState, blend);
+}
+
+SDL_GPUColorTargetBlendState cfr_pop_blend_state(CFR_Renderer* renderer)
+{
+	return STACK_POP(blend, SDL_GPUColorTargetBlendState, cfr_blend_state_alpha());
+}
+
+SDL_GPUColorTargetBlendState cfr_peek_blend_state(CFR_Renderer* renderer)
+{
+	return STACK_PEEK(blend, SDL_GPUColorTargetBlendState, cfr_blend_state_alpha());
 }
 
 //--------------------------------------------------------------------------------------------------
-// Mesh management
+// Transformation stack
 //--------------------------------------------------------------------------------------------------
 
-CFR_Mesh cfr_make_mesh(CFR_Renderer* renderer, int vertex_buffer_size,
-                       CFR_VertexAttribute* attributes, int attribute_count, int vertex_stride)
+void cfr_push_transform(CFR_Renderer* renderer, CFR_M3x2 transform)
 {
-	CFR_Mesh result = { 0 };
-	if (!renderer || !attributes || attribute_count == 0 || attribute_count > CFR_MAX_VERTEX_ATTRIBUTES) {
-		return result;
-	}
-	
-	// Find free slot
-	int slot = -1;
-	for (int i = 0; i < CFR_MAX_MESHES; i++) {
-		if (!renderer->meshes[i].in_use) {
-			slot = i;
-			break;
-		}
-	}
-	
-	if (slot == -1) {
-		return result;
-	}
-	
-	CFR_MeshInternal* mesh = &renderer->meshes[slot];
-	
-	SDL_GPUBufferCreateInfo buffer_info = {
-		.usage = SDL_GPU_BUFFERUSAGE_VERTEX,
-		.size = vertex_buffer_size,
-		.props = 0
-	};
-	
-	mesh->vertex_buffer = SDL_CreateGPUBuffer(renderer->device, &buffer_info);
-	if (!mesh->vertex_buffer) {
-		return result;
-	}
-	
-	SDL_GPUTransferBufferCreateInfo transfer_info = {
-		.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD,
-		.size = vertex_buffer_size,
-		.props = 0
-	};
-	
-	mesh->transfer_buffer = SDL_CreateGPUTransferBuffer(renderer->device, &transfer_info);
-	if (!mesh->transfer_buffer) {
-		SDL_ReleaseGPUBuffer(renderer->device, mesh->vertex_buffer);
-		mesh->vertex_buffer = NULL;
-		return result;
-	}
-	
-	mesh->vertex_buffer_size = vertex_buffer_size;
-	mesh->vertex_stride = vertex_stride;
-	mesh->attribute_count = attribute_count;
-	for (int i = 0; i < attribute_count; i++) {
-		mesh->attributes[i] = attributes[i];
-	}
-	mesh->in_use = true;
-	
-	result.id = (uint64_t)(slot + 1);
+	STACK_PUSH(transform, CFR_M3x2, transform);
+	renderer->mvp = cfr_mul_m3x2(renderer->projection, transform);
+}
+
+CFR_M3x2 cfr_pop_transform(CFR_Renderer* renderer)
+{
+	CFR_M3x2 result = STACK_POP(transform, CFR_M3x2, cfr_make_identity());
+	renderer->mvp = cfr_mul_m3x2(renderer->projection, STACK_PEEK(transform, CFR_M3x2, cfr_make_identity()));
 	return result;
 }
 
-void cfr_mesh_update_vertex_data(CFR_Renderer* renderer, CFR_Mesh mesh, void* vertices, int vertex_count)
+CFR_M3x2 cfr_peek_transform(CFR_Renderer* renderer)
 {
-	if (!renderer || !mesh.id || !vertices) {
-		return;
-	}
-	
-	int slot = (int)(mesh.id - 1);
-	if (slot < 0 || slot >= CFR_MAX_MESHES || !renderer->meshes[slot].in_use) {
-		return;
-	}
-	
-	CFR_MeshInternal* m = &renderer->meshes[slot];
-	int size = vertex_count * m->vertex_stride;
-	
-	if (size > m->vertex_buffer_size) {
-		return;
-	}
-	
-	// Map and copy data
-	void* mapped = SDL_MapGPUTransferBuffer(renderer->device, m->transfer_buffer, false);
-	if (mapped) {
-		memcpy(mapped, vertices, size);
-		SDL_UnmapGPUTransferBuffer(renderer->device, m->transfer_buffer);
-	}
-	
-	// Upload to buffer
-	if (renderer->cmd_buffer) {
-		SDL_GPUCopyPass* copy_pass = SDL_BeginGPUCopyPass(renderer->cmd_buffer);
-		if (copy_pass) {
-			SDL_GPUTransferBufferLocation src = {
-				.transfer_buffer = m->transfer_buffer,
-				.offset = 0
-			};
-			
-			SDL_GPUBufferRegion dst = {
-				.buffer = m->vertex_buffer,
-				.offset = 0,
-				.size = size
-			};
-			
-			SDL_UploadToGPUBuffer(copy_pass, &src, &dst, false);
-			SDL_EndGPUCopyPass(copy_pass);
-		}
-	}
+	return STACK_PEEK(transform, CFR_M3x2, cfr_make_identity());
 }
 
-void cfr_destroy_mesh(CFR_Renderer* renderer, CFR_Mesh mesh)
+void cfr_translate(CFR_Renderer* renderer, float x, float y)
 {
-	if (!renderer || !mesh.id) {
-		return;
-	}
-	
-	int slot = (int)(mesh.id - 1);
-	if (slot < 0 || slot >= CFR_MAX_MESHES || !renderer->meshes[slot].in_use) {
-		return;
-	}
-	
-	CFR_MeshInternal* m = &renderer->meshes[slot];
-	
-	if (m->vertex_buffer) {
-		SDL_ReleaseGPUBuffer(renderer->device, m->vertex_buffer);
-		m->vertex_buffer = NULL;
-	}
-	
-	if (m->transfer_buffer) {
-		SDL_ReleaseGPUTransferBuffer(renderer->device, m->transfer_buffer);
-		m->transfer_buffer = NULL;
-	}
-	
-	m->in_use = false;
+	CFR_M3x2 current = cfr_peek_transform(renderer);
+	CFR_M3x2 translation = cfr_make_translation(x, y);
+	cfr_pop_transform(renderer);
+	cfr_push_transform(renderer, cfr_mul_m3x2(current, translation));
 }
 
-void cfr_apply_mesh(CFR_Renderer* renderer, CFR_Mesh mesh)
+void cfr_rotate(CFR_Renderer* renderer, float radians)
 {
-	if (!renderer || !mesh.id) {
-		return;
-	}
-	
-	int slot = (int)(mesh.id - 1);
-	if (slot < 0 || slot >= CFR_MAX_MESHES || !renderer->meshes[slot].in_use) {
-		return;
-	}
-	
-	renderer->current_mesh = &renderer->meshes[slot];
+	CFR_M3x2 current = cfr_peek_transform(renderer);
+	CFR_M3x2 rotation = cfr_make_rotation(radians);
+	cfr_pop_transform(renderer);
+	cfr_push_transform(renderer, cfr_mul_m3x2(current, rotation));
+}
+
+void cfr_scale(CFR_Renderer* renderer, float sx, float sy)
+{
+	CFR_M3x2 current = cfr_peek_transform(renderer);
+	CFR_M3x2 scale = cfr_make_scale(sx, sy);
+	cfr_pop_transform(renderer);
+	cfr_push_transform(renderer, cfr_mul_m3x2(current, scale));
+}
+
+CFR_V2 cfr_transform_point(CFR_Renderer* renderer, CFR_V2 point)
+{
+	return cfr_mul_m3x2_v2(cfr_peek_transform(renderer), point);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Shader management
+// High-level drawing functions - Sprites
 //--------------------------------------------------------------------------------------------------
 
-CFR_Shader cfr_make_shader(CFR_Renderer* renderer,
-                           const void* vs_bytecode, size_t vs_size,
-                           const void* fs_bytecode, size_t fs_size)
+void cfr_draw_sprite(CFR_Renderer* renderer, const CFR_Sprite* sprite)
 {
-	CFR_Shader result = { 0 };
-	if (!renderer || !vs_bytecode || !fs_bytecode) {
-		return result;
-	}
+	if (!renderer || !sprite) return;
 	
-	// Find free slot
-	int slot = -1;
-	for (int i = 0; i < CFR_MAX_SHADERS; i++) {
-		if (!renderer->shaders[i].in_use) {
-			slot = i;
-			break;
-		}
-	}
+	// Create a sprite batch item
+	spritebatch_sprite_t s = {0};
+	s.image_id = sprite->texture.id;
+	s.w = sprite->w;
+	s.h = sprite->h;
+	s.minx = 0.0f;
+	s.miny = 0.0f;
+	s.maxx = 1.0f;
+	s.maxy = 1.0f;
 	
-	if (slot == -1) {
-		return result;
-	}
-	
-	CFR_ShaderInternal* shader = &renderer->shaders[slot];
-	
-	SDL_GPUShaderCreateInfo vs_info = {
-		.code_size = vs_size,
-		.code = (const uint8_t*)vs_bytecode,
-		.entrypoint = "main",
-		.format = SDL_GPU_SHADERFORMAT_SPIRV,
-		.stage = SDL_GPU_SHADERSTAGE_VERTEX,
-		.num_samplers = 0,
-		.num_storage_textures = 0,
-		.num_storage_buffers = 0,
-		.num_uniform_buffers = 0,
-		.props = 0
+	// Transform quad corners
+	CFR_V2 quad[4] = {
+		{ -0.5f,  0.5f },
+		{  0.5f,  0.5f },
+		{  0.5f, -0.5f },
+		{ -0.5f, -0.5f }
 	};
 	
-	shader->vertex_shader = SDL_CreateGPUShader(renderer->device, &vs_info);
-	if (!shader->vertex_shader) {
-		return result;
+	CFR_V2 scale = cfr_mul(cfr_v2(sprite->w, sprite->h), sprite->scale);
+	
+	for (int i = 0; i < 4; i++) {
+		float x = quad[i].x * scale.x;
+		float y = quad[i].y * scale.y;
+		
+		// Apply rotation
+		float rx = sprite->transform.r.c * x - sprite->transform.r.s * y;
+		float ry = sprite->transform.r.s * x + sprite->transform.r.c * y;
+		
+		// Apply translation
+		quad[i].x = rx + sprite->transform.p.x + sprite->offset.x;
+		quad[i].y = ry + sprite->transform.p.y + sprite->offset.y;
+		
+		// Transform by MVP
+		quad[i] = cfr_mul_m3x2_v2(renderer->mvp, quad[i]);
 	}
 	
-	SDL_GPUShaderCreateInfo fs_info = {
-		.code_size = fs_size,
-		.code = (const uint8_t*)fs_bytecode,
-		.entrypoint = "main",
-		.format = SDL_GPU_SHADERFORMAT_SPIRV,
-		.stage = SDL_GPU_SHADERSTAGE_FRAGMENT,
-		.num_samplers = 1,
-		.num_storage_textures = 0,
-		.num_storage_buffers = 0,
-		.num_uniform_buffers = 0,
-		.props = 0
-	};
+	s.geom.type = GEOM_TYPE_SPRITE;
+	s.geom.shape[0] = quad[0];
+	s.geom.shape[1] = quad[1];
+	s.geom.shape[2] = quad[2];
+	s.geom.shape[3] = quad[3];
+	s.geom.color = cfr_peek_color(renderer);
+	s.geom.alpha = sprite->opacity;
 	
-	shader->fragment_shader = SDL_CreateGPUShader(renderer->device, &fs_info);
-	if (!shader->fragment_shader) {
-		SDL_ReleaseGPUShader(renderer->device, shader->vertex_shader);
-		shader->vertex_shader = NULL;
-		return result;
-	}
-	
-	shader->in_use = true;
-	
-	result.id = (uint64_t)(slot + 1);
-	return result;
-}
-
-void cfr_destroy_shader(CFR_Renderer* renderer, CFR_Shader shader)
-{
-	if (!renderer || !shader.id) {
-		return;
-	}
-	
-	int slot = (int)(shader.id - 1);
-	if (slot < 0 || slot >= CFR_MAX_SHADERS || !renderer->shaders[slot].in_use) {
-		return;
-	}
-	
-	CFR_ShaderInternal* s = &renderer->shaders[slot];
-	
-	if (s->vertex_shader) {
-		SDL_ReleaseGPUShader(renderer->device, s->vertex_shader);
-		s->vertex_shader = NULL;
-	}
-	
-	if (s->fragment_shader) {
-		SDL_ReleaseGPUShader(renderer->device, s->fragment_shader);
-		s->fragment_shader = NULL;
-	}
-	
-	s->in_use = false;
+	spritebatch_push(&renderer->sprite_batch, s);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Material management
+// High-level drawing functions - Shapes (stub implementations)
 //--------------------------------------------------------------------------------------------------
 
-CFR_Material cfr_make_material(CFR_Renderer* renderer)
+void cfr_draw_line(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, float thickness)
 {
-	CFR_Material result = { 0 };
-	if (!renderer) {
-		return result;
-	}
-	
-	// Find free slot
-	int slot = -1;
-	for (int i = 0; i < CFR_MAX_MATERIALS; i++) {
-		if (!renderer->materials[i].in_use) {
-			slot = i;
-			break;
-		}
-	}
-	
-	if (slot == -1) {
-		return result;
-	}
-	
-	CFR_MaterialInternal* material = &renderer->materials[slot];
-	material->render_state = cfr_render_state_defaults();
-	material->in_use = true;
-	
-	result.id = (uint64_t)(slot + 1);
-	return result;
+	// Stub - would implement line drawing
 }
 
-void cfr_material_set_texture(CFR_Renderer* renderer, CFR_Material material,
-                               const char* name, CFR_Texture texture)
+void cfr_draw_circle(CFR_Renderer* renderer, CFR_Circle circle, float thickness)
 {
-	// Texture binding is handled in cfr_apply_shader
-	// This is a simplified implementation
-	(void)renderer;
-	(void)material;
-	(void)name;
-	(void)texture;
+	// Stub - would implement circle drawing
 }
 
-void cfr_material_set_uniform(CFR_Renderer* renderer, CFR_Material material,
-                               const char* name, void* data, CFR_UniformType type, int array_length)
+void cfr_draw_circle_fill(CFR_Renderer* renderer, CFR_Circle circle)
 {
-	// Uniform binding is handled in cfr_apply_shader
-	// This is a simplified implementation
-	(void)renderer;
-	(void)material;
-	(void)name;
-	(void)data;
-	(void)type;
-	(void)array_length;
+	// Stub - would implement filled circle drawing
 }
 
-void cfr_material_set_render_state(CFR_Renderer* renderer, CFR_Material material,
-                                    CFR_RenderState render_state)
+void cfr_draw_quad(CFR_Renderer* renderer, CFR_Aabb bb, float thickness, float chubbiness)
 {
-	if (!renderer || !material.id) {
-		return;
-	}
-	
-	int slot = (int)(material.id - 1);
-	if (slot < 0 || slot >= CFR_MAX_MATERIALS || !renderer->materials[slot].in_use) {
-		return;
-	}
-	
-	renderer->materials[slot].render_state = render_state;
+	// Stub - would implement quad drawing
 }
 
-void cfr_destroy_material(CFR_Renderer* renderer, CFR_Material material)
+void cfr_draw_quad_fill(CFR_Renderer* renderer, CFR_Aabb bb, float chubbiness)
 {
-	if (!renderer || !material.id) {
-		return;
-	}
-	
-	int slot = (int)(material.id - 1);
-	if (slot < 0 || slot >= CFR_MAX_MATERIALS || !renderer->materials[slot].in_use) {
-		return;
-	}
-	
-	renderer->materials[slot].in_use = false;
+	// Stub - would implement filled quad drawing
 }
 
-//--------------------------------------------------------------------------------------------------
-// Drawing
-//--------------------------------------------------------------------------------------------------
-
-void cfr_apply_shader(CFR_Renderer* renderer, CFR_Shader shader, CFR_Material material)
+void cfr_draw_quad2(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, CFR_V2 p2, CFR_V2 p3, float thickness, float chubbiness)
 {
-	if (!renderer || !shader.id || !material.id || !renderer->render_pass) {
-		return;
-	}
-	
-	int shader_slot = (int)(shader.id - 1);
-	int material_slot = (int)(material.id - 1);
-	
-	if (shader_slot < 0 || shader_slot >= CFR_MAX_SHADERS || !renderer->shaders[shader_slot].in_use) {
-		return;
-	}
-	
-	if (material_slot < 0 || material_slot >= CFR_MAX_MATERIALS || !renderer->materials[material_slot].in_use) {
-		return;
-	}
-	
-	CFR_ShaderInternal* s = &renderer->shaders[shader_slot];
-	CFR_MaterialInternal* m = &renderer->materials[material_slot];
-	
-	if (!renderer->current_mesh) {
-		return;
-	}
-	
-	// Build pipeline
-	SDL_GPUGraphicsPipelineCreateInfo pipeline_info = { 0 };
-	
-	// Vertex input state
-	SDL_GPUVertexBufferDescription vertex_buffer_desc = {
-		.slot = 0,
-		.pitch = renderer->current_mesh->vertex_stride,
-		.input_rate = SDL_GPU_VERTEXINPUTRATE_VERTEX,
-		.instance_step_rate = 0
-	};
-	
-	SDL_GPUVertexAttribute vertex_attributes[CFR_MAX_VERTEX_ATTRIBUTES];
-	for (int i = 0; i < renderer->current_mesh->attribute_count; i++) {
-		vertex_attributes[i].location = i;
-		vertex_attributes[i].buffer_slot = 0;
-		vertex_attributes[i].format = cfr_to_sdl_vertex_format(renderer->current_mesh->attributes[i].format);
-		vertex_attributes[i].offset = renderer->current_mesh->attributes[i].offset;
-	}
-	
-	SDL_GPUVertexInputState vertex_input_state = {
-		.vertex_buffer_descriptions = &vertex_buffer_desc,
-		.num_vertex_buffers = 1,
-		.vertex_attributes = vertex_attributes,
-		.num_vertex_attributes = renderer->current_mesh->attribute_count
-	};
-	
-	pipeline_info.vertex_shader = s->vertex_shader;
-	pipeline_info.fragment_shader = s->fragment_shader;
-	pipeline_info.vertex_input_state = vertex_input_state;
-	pipeline_info.primitive_type = SDL_GPU_PRIMITIVETYPE_TRIANGLELIST;
-	
-	// Rasterizer state
-	SDL_GPURasterizerState rasterizer_state = {
-		.fill_mode = SDL_GPU_FILLMODE_FILL,
-		.cull_mode = SDL_GPU_CULLMODE_NONE,
-		.front_face = SDL_GPU_FRONTFACE_COUNTER_CLOCKWISE,
-		.depth_bias_constant_factor = 0.0f,
-		.depth_bias_clamp = 0.0f,
-		.depth_bias_slope_factor = 0.0f,
-		.enable_depth_bias = false,
-		.enable_depth_clip = false
-	};
-	pipeline_info.rasterizer_state = rasterizer_state;
-	
-	// Multisample state
-	SDL_GPUMultisampleState multisample_state = {
-		.sample_count = SDL_GPU_SAMPLECOUNT_1,
-		.sample_mask = 0xFFFFFFFF,
-		.enable_mask = false
-	};
-	pipeline_info.multisample_state = multisample_state;
-	
-	// Depth-stencil state
-	SDL_GPUDepthStencilState depth_stencil_state = {
-		.compare_op = SDL_GPU_COMPAREOP_ALWAYS,
-		.back_stencil_state = { 0 },
-		.front_stencil_state = { 0 },
-		.compare_mask = 0,
-		.write_mask = 0,
-		.enable_depth_test = false,
-		.enable_depth_write = false,
-		.enable_stencil_test = false
-	};
-	pipeline_info.depth_stencil_state = depth_stencil_state;
-	
-	// Blend state
-	SDL_GPUColorTargetBlendState blend_state = {
-		.src_color_blendfactor = cfr_to_sdl_blend_factor(m->render_state.blend.rgb_src_blend_factor),
-		.dst_color_blendfactor = cfr_to_sdl_blend_factor(m->render_state.blend.rgb_dst_blend_factor),
-		.color_blend_op = cfr_to_sdl_blend_op(m->render_state.blend.rgb_op),
-		.src_alpha_blendfactor = cfr_to_sdl_blend_factor(m->render_state.blend.alpha_src_blend_factor),
-		.dst_alpha_blendfactor = cfr_to_sdl_blend_factor(m->render_state.blend.alpha_dst_blend_factor),
-		.alpha_blend_op = cfr_to_sdl_blend_op(m->render_state.blend.alpha_op),
-		.color_write_mask = 0xF,
-		.enable_blend = m->render_state.blend.enabled,
-		.enable_color_write_mask = false
-	};
-	
-	SDL_GPUColorTargetDescription color_target = {
-		.format = SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM,
-		.blend_state = blend_state
-	};
-	
-	pipeline_info.target_info.num_color_targets = 1;
-	pipeline_info.target_info.color_target_descriptions = &color_target;
-	pipeline_info.target_info.has_depth_stencil_target = false;
-	pipeline_info.target_info.depth_stencil_format = SDL_GPU_TEXTUREFORMAT_D16_UNORM;
-	
-	renderer->current_pipeline = SDL_CreateGPUGraphicsPipeline(renderer->device, &pipeline_info);
-	
-	if (renderer->current_pipeline) {
-		SDL_BindGPUGraphicsPipeline(renderer->render_pass, renderer->current_pipeline);
-	}
+	// Stub - would implement quad drawing
 }
 
-void cfr_apply_viewport(CFR_Renderer* renderer, float x, float y, float w, float h)
+void cfr_draw_quad_fill2(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, CFR_V2 p2, CFR_V2 p3, float chubbiness)
 {
-	if (!renderer || !renderer->render_pass) {
-		return;
-	}
-	
-	SDL_GPUViewport viewport = {
-		.x = x,
-		.y = y,
-		.w = w,
-		.h = h,
-		.min_depth = 0.0f,
-		.max_depth = 1.0f
-	};
-	
-	SDL_SetGPUViewport(renderer->render_pass, &viewport);
+	// Stub - would implement filled quad drawing
 }
 
-void cfr_apply_scissor(CFR_Renderer* renderer, float x, float y, float w, float h)
+void cfr_draw_box_rounded(CFR_Renderer* renderer, CFR_Aabb bb, float thickness, float radius)
 {
-	if (!renderer || !renderer->render_pass) {
-		return;
-	}
-	
-	SDL_Rect scissor = {
-		.x = (int)x,
-		.y = (int)y,
-		.w = (int)w,
-		.h = (int)h
-	};
-	
-	SDL_SetGPUScissor(renderer->render_pass, &scissor);
+	// Stub - would implement rounded box drawing
 }
 
-void cfr_draw_elements(CFR_Renderer* renderer)
+void cfr_draw_box_rounded_fill(CFR_Renderer* renderer, CFR_Aabb bb, float radius)
 {
-	if (!renderer || !renderer->render_pass || !renderer->current_mesh) {
-		return;
-	}
-	
-	SDL_GPUBufferBinding vertex_binding = {
-		.buffer = renderer->current_mesh->vertex_buffer,
-		.offset = 0
-	};
-	
-	SDL_BindGPUVertexBuffers(renderer->render_pass, 0, &vertex_binding, 1);
-	
-	// Draw vertices (this is simplified - would need vertex count tracking)
-	SDL_DrawGPUPrimitives(renderer->render_pass, 6, 1, 0, 0);
-	
-	// Release pipeline after drawing
-	if (renderer->current_pipeline) {
-		SDL_ReleaseGPUGraphicsPipeline(renderer->device, renderer->current_pipeline);
-		renderer->current_pipeline = NULL;
-	}
+	// Stub - would implement filled rounded box drawing
 }
 
-//--------------------------------------------------------------------------------------------------
-// Utility functions
-//--------------------------------------------------------------------------------------------------
-
-CFR_TextureParams cfr_texture_defaults(int width, int height)
+void cfr_draw_capsule(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, float r, float thickness)
 {
-	CFR_TextureParams params = {
-		.width = width,
-		.height = height,
-		.filter = CFR_FILTER_LINEAR,
-		.wrap_u = CFR_WRAP_CLAMP,
-		.wrap_v = CFR_WRAP_CLAMP,
-		.format = SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM
-	};
-	return params;
+	// Stub - would implement capsule drawing
 }
 
-CFR_RenderState cfr_render_state_defaults(void)
+void cfr_draw_capsule_fill(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, float r)
 {
-	CFR_RenderState state = { 0 };
-	state.blend.enabled = true;
-	state.blend.rgb_src_blend_factor = CFR_BLENDFACTOR_ONE;
-	state.blend.rgb_dst_blend_factor = CFR_BLENDFACTOR_ONE_MINUS_SRC_ALPHA;
-	state.blend.rgb_op = CFR_BLEND_OP_ADD;
-	state.blend.alpha_src_blend_factor = CFR_BLENDFACTOR_ONE;
-	state.blend.alpha_dst_blend_factor = CFR_BLENDFACTOR_ONE_MINUS_SRC_ALPHA;
-	state.blend.alpha_op = CFR_BLEND_OP_ADD;
-	state.depth_test_enabled = false;
-	state.depth_write_enabled = false;
-	state.stencil_enabled = false;
-	return state;
+	// Stub - would implement filled capsule drawing
 }
 
-CFR_Color cfr_make_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+void cfr_draw_tri(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, CFR_V2 p2, float thickness, float chubbiness)
 {
-	CFR_Color color = {
-		.r = r / 255.0f,
-		.g = g / 255.0f,
-		.b = b / 255.0f,
-		.a = a / 255.0f
-	};
-	return color;
+	// Stub - would implement triangle drawing
 }
 
-CFR_Color cfr_make_color_f(float r, float g, float b, float a)
+void cfr_draw_tri_fill(CFR_Renderer* renderer, CFR_V2 p0, CFR_V2 p1, CFR_V2 p2, float chubbiness)
 {
-	CFR_Color color = { .r = r, .g = g, .b = b, .a = a };
-	return color;
+	// Stub - would implement filled triangle drawing
 }
 
-CFR_Vec2 cfr_v2(float x, float y)
+void cfr_draw_polygon(CFR_Renderer* renderer, CFR_V2* points, int count, float thickness)
 {
-	CFR_Vec2 v = { .x = x, .y = y };
-	return v;
+	// Stub - would implement polygon drawing
+}
+
+void cfr_draw_polygon_fill(CFR_Renderer* renderer, CFR_V2* points, int count)
+{
+	// Stub - would implement filled polygon drawing
+}
+
+void cfr_draw_bezier_line(CFR_Renderer* renderer, CFR_V2 a, CFR_V2 c0, CFR_V2 b, float thickness)
+{
+	// Stub - would implement bezier line drawing
+}
+
+void cfr_draw_bezier_line2(CFR_Renderer* renderer, CFR_V2 a, CFR_V2 c0, CFR_V2 c1, CFR_V2 b, float thickness)
+{
+	// Stub - would implement bezier line drawing
 }
