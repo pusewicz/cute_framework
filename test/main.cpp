@@ -40,8 +40,10 @@ TEST_SUITE(test_string);
 TEST_SUITE(test_json);
 TEST_SUITE(test_markups);
 TEST_SUITE(test_math);
+TEST_SUITE(test_routine);
 extern "C" {
 TEST_SUITE(test_math_c);
+TEST_SUITE(test_routine_c);
 }
 
 #include <SDL3/SDL.h>
@@ -82,6 +84,8 @@ int main(int argc, char* argv[])
 	RUN_TEST_SUITE(test_markups);
 	RUN_TEST_SUITE(test_math);
 	RUN_TEST_SUITE(test_math_c);
+	RUN_TEST_SUITE(test_routine);
+	RUN_TEST_SUITE(test_routine_c);
 
 	pu_print_stats();
 	return pu_test_failed();

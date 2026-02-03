@@ -16,6 +16,8 @@ set(CF_TEST_SRCS
 	test_markups.cpp
 	test_math.cpp
 	test_math.c
+	test_routine.cpp
+	test_routine.c
 )
 set(CF_TEST_HDRS test_harness.h)
 
