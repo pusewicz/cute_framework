@@ -79,6 +79,7 @@ add_sample(9_slice 9_slice.c)
 add_sample(clay_ui_animations clay_ui_animations.c)
 add_sample(basic_camera basic_camera.c)
 add_sample(imgui_texture imgui_texture.c)
+add_sample(bunnymark bunnymark.cpp)
 
 # Pre-compile shaders for certain samples.
 if (CF_CUTE_SHADERC)
@@ -108,6 +109,7 @@ endif()
 if (EMSCRIPTEN)
 	target_link_options(waves PRIVATE --preload-file "${CMAKE_CURRENT_SOURCE_DIR}/waves_data@/waves_data")
 	target_link_options(spaceshooter PRIVATE --preload-file "${CMAKE_CURRENT_SOURCE_DIR}/spaceshooter_data@/spaceshooter_data")
+	target_link_options(bunnymark PRIVATE --preload-file "${CMAKE_CURRENT_SOURCE_DIR}/bunnymark_data@/bunnymark_data")
 endif ()
 
 # Copy over some folders for certain samples.
@@ -118,3 +120,4 @@ add_custom_command(TARGET import_spritesheet PRE_BUILD COMMAND ${CMAKE_COMMAND} 
 add_custom_command(TARGET pivot PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/pivot_data $<TARGET_FILE_DIR:pivot>/pivot_data)
 add_custom_command(TARGET scratch PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/../assets/CF_Logo_Pixel.png $<TARGET_FILE_DIR:scratch>/app_icon.png)
 add_custom_command(TARGET 9_slice PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/9_slice_data $<TARGET_FILE_DIR:9_slice>/9_slice_data)
+add_custom_command(TARGET bunnymark PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/bunnymark_data $<TARGET_FILE_DIR:bunnymark>/bunnymark_data)
