@@ -457,7 +457,8 @@ struct spritebatch_t
 	int sprite_count;
 	int sprite_capacity;
 	spritebatch_sprite_t* sprites;
-	spritebatch_sprite_t* sprites_scratch;
+	int* sort_indices;
+	int* sort_scratch;
 
 	int key_buffer_count;
 	int key_buffer_capacity;
@@ -796,7 +797,7 @@ static void spritebatch_map_swap(spritebatch_map_t* map, int index_a, int index_
 
 #include <stdbool.h>
 
-bool sprite_batch_internal_use_scratch_buffer(spritebatch_t* sb)
+bool sprite_batch_internal_use_sort_indices(spritebatch_t* sb)
 {
 	return sb->sprites_sorter_callback == 0;
 }
@@ -844,16 +845,18 @@ int spritebatch_init(spritebatch_t* sb, spritebatch_config_t* config, void* udat
 	sb->sprite_capacity = 1024;
 	sb->sprites = (spritebatch_sprite_t*)SPRITEBATCH_MALLOC(sizeof(spritebatch_sprite_t) * sb->sprite_capacity, sb->mem_ctx);
 
-	sb->sprites_scratch = 0;
-	if (sprite_batch_internal_use_scratch_buffer(sb))
+	sb->sort_indices = 0;
+	sb->sort_scratch = 0;
+	if (sprite_batch_internal_use_sort_indices(sb))
 	{
-		sb->sprites_scratch = (spritebatch_sprite_t*)SPRITEBATCH_MALLOC(sizeof(spritebatch_sprite_t) * sb->sprite_capacity, sb->mem_ctx);
+		sb->sort_indices = (int*)SPRITEBATCH_MALLOC(sizeof(int) * sb->sprite_capacity, sb->mem_ctx);
+		sb->sort_scratch = (int*)SPRITEBATCH_MALLOC(sizeof(int) * sb->sprite_capacity, sb->mem_ctx);
 	}
 	if (!sb->sprites) return 1;
 
-	if (sprite_batch_internal_use_scratch_buffer(sb))
+	if (sprite_batch_internal_use_sort_indices(sb))
 	{
-		if (!sb->sprites_scratch) return 1;
+		if (!sb->sort_indices || !sb->sort_scratch) return 1;
 	}
 
 	// initialize key buffer (for marking hash table entries for deletion)
@@ -879,9 +882,13 @@ void spritebatch_term(spritebatch_t* sb)
 {
 	SPRITEBATCH_FREE(sb->input_buffer, sb->mem_ctx);
 	SPRITEBATCH_FREE(sb->sprites, sb->mem_ctx);
-	if (sb->sprites_scratch)
+	if (sb->sort_indices)
 	{
-		SPRITEBATCH_FREE(sb->sprites_scratch, sb->mem_ctx);
+		SPRITEBATCH_FREE(sb->sort_indices, sb->mem_ctx);
+	}
+	if (sb->sort_scratch)
+	{
+		SPRITEBATCH_FREE(sb->sort_scratch, sb->mem_ctx);
 	}
 	SPRITEBATCH_FREE(sb->key_buffer, sb->mem_ctx);
 	SPRITEBATCH_FREE(sb->pixel_buffer, sb->mem_ctx);
@@ -1066,11 +1073,15 @@ static int spritebatch_internal_sprite_less_than_or_equal(spritebatch_sprite_t* 
 	return a->texture_id <= b->texture_id;
 }
 
-void spritebatch_internal_merge_sort_iteration(spritebatch_sprite_t* a, int lo, int split, int hi, spritebatch_sprite_t* b)
+// Index-based merge sort: sorts an array of indices instead of full sprite structs.
+// The comparison reads from the sprites array using the indices, but only moves
+// 4-byte ints during the sort instead of ~300-byte sprite structs.
+
+static void spritebatch_internal_index_merge_iteration(const spritebatch_sprite_t* sprites, int* a, int lo, int split, int hi, int* b)
 {
 	int i = lo, j = split;
 	for (int k = lo; k < hi; k++) {
-		if (i < split && (j >= hi || spritebatch_internal_sprite_less_than_or_equal(a + i, a + j))) {
+		if (i < split && (j >= hi || spritebatch_internal_sprite_less_than_or_equal((spritebatch_sprite_t*)&sprites[a[i]], (spritebatch_sprite_t*)&sprites[a[j]]))) {
 			b[k] = a[i];
 			i = i + 1;
 		} else {
@@ -1080,25 +1091,57 @@ void spritebatch_internal_merge_sort_iteration(spritebatch_sprite_t* a, int lo, 
 	}
 }
 
-void spritebatch_internal_merge_sort_recurse(spritebatch_sprite_t* b, int lo, int hi, spritebatch_sprite_t* a)
+static void spritebatch_internal_index_merge_sort_recurse(const spritebatch_sprite_t* sprites, int* b, int lo, int hi, int* a)
 {
 	if (hi - lo <= 1) return;
 	int split = (lo + hi) / 2;
-	spritebatch_internal_merge_sort_recurse(a, lo,  split, b);
-	spritebatch_internal_merge_sort_recurse(a, split, hi, b);
-	spritebatch_internal_merge_sort_iteration(b, lo, split, hi, a);
+	spritebatch_internal_index_merge_sort_recurse(sprites, a, lo,  split, b);
+	spritebatch_internal_index_merge_sort_recurse(sprites, a, split, hi, b);
+	spritebatch_internal_index_merge_iteration(sprites, b, lo, split, hi, a);
 }
 
-void spritebatch_internal_merge_sort(spritebatch_sprite_t* a, spritebatch_sprite_t* b, int n)
+// Permute the sprites array in-place according to the sorted index array.
+// After this call, sprites[0..n-1] are in the order specified by indices[0..n-1].
+// The indices array is modified (used as visited markers) during the permutation.
+static void spritebatch_internal_permute_sprites(spritebatch_sprite_t* sprites, int* indices, int n)
 {
-	SPRITEBATCH_MEMCPY(b, a, sizeof(spritebatch_sprite_t) * n);
-	spritebatch_internal_merge_sort_recurse(b, 0, n, a);
+	for (int i = 0; i < n; ++i) {
+		if (indices[i] == i) continue;
+
+		spritebatch_sprite_t temp = sprites[i];
+		int j = i;
+		while (indices[j] != i) {
+			int next = indices[j];
+			sprites[j] = sprites[next];
+			indices[j] = j;
+			j = next;
+		}
+		sprites[j] = temp;
+		indices[j] = j;
+	}
+}
+
+void spritebatch_internal_merge_sort(spritebatch_sprite_t* sprites, int* indices, int* scratch, int n)
+{
+	if (n <= 0) return;
+
+	// Initialize indices to identity permutation.
+	for (int i = 0; i < n; ++i) indices[i] = i;
+
+	// Copy indices to scratch (merge sort needs two buffers).
+	SPRITEBATCH_MEMCPY(scratch, indices, sizeof(int) * n);
+
+	// Sort the indices.
+	spritebatch_internal_index_merge_sort_recurse(sprites, scratch, 0, n, indices);
+
+	// Apply the permutation to reorder sprites in-place.
+	spritebatch_internal_permute_sprites(sprites, indices, n);
 }
 
 void spritebatch_internal_sort_sprites(spritebatch_t* sb)
 {
 	if (sb->sprites_sorter_callback) sb->sprites_sorter_callback(sb->sprites, sb->sprite_count);
-	else spritebatch_internal_merge_sort(sb->sprites, sb->sprites_scratch, sb->sprite_count);
+	else spritebatch_internal_merge_sort(sb->sprites, sb->sort_indices, sb->sort_scratch, sb->sprite_count);
 }
 
 static inline void spritebatch_internal_get_pixels(spritebatch_t* sb, SPRITEBATCH_U64 image_id, int w, int h)
@@ -1277,14 +1320,19 @@ int spritebatch_internal_push_sprite(spritebatch_t* sb, spritebatch_internal_spr
 			sb->sprites = (spritebatch_sprite_t*)new_data;
 			sb->sprite_capacity = new_capacity;
 
-			if (sb->sprites_scratch)
+			if (sb->sort_indices)
 			{
-				SPRITEBATCH_FREE(sb->sprites_scratch, sb->mem_ctx);
+				SPRITEBATCH_FREE(sb->sort_indices, sb->mem_ctx);
+			}
+			if (sb->sort_scratch)
+			{
+				SPRITEBATCH_FREE(sb->sort_scratch, sb->mem_ctx);
 			}
 
-			if (sprite_batch_internal_use_scratch_buffer(sb))
+			if (sprite_batch_internal_use_sort_indices(sb))
 			{
-				sb->sprites_scratch = (spritebatch_sprite_t*)SPRITEBATCH_MALLOC(sizeof(spritebatch_sprite_t) * new_capacity, sb->mem_ctx);
+				sb->sort_indices = (int*)SPRITEBATCH_MALLOC(sizeof(int) * new_capacity, sb->mem_ctx);
+				sb->sort_scratch = (int*)SPRITEBATCH_MALLOC(sizeof(int) * new_capacity, sb->mem_ctx);
 			}
 		}
 		sb->sprites[sb->sprite_count++] = sprite;
