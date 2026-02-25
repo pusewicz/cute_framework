@@ -28,9 +28,8 @@ set_target_properties(tests PROPERTIES
 	RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 
-# Spritebatch sort benchmark (standalone executable).
+# Spritebatch sort benchmark (standalone executable, does not use the cute library).
 add_executable(bench_spritebatch_sort bench_spritebatch_sort.cpp)
-target_link_libraries(bench_spritebatch_sort PRIVATE cute)
 target_include_directories(bench_spritebatch_sort PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src)
 set_target_properties(bench_spritebatch_sort PROPERTIES
 	RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}

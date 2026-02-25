@@ -555,6 +555,8 @@ struct spritebatch_t
 #ifndef SPRITEBATCH_IMPLEMENTATION_ONCE
 #define SPRITEBATCH_IMPLEMENTATION_ONCE
 
+#include <stdbool.h>
+
 // spritebatch_map implementation
 
 static unsigned spritebatch_map_pow2ceil(unsigned v)
@@ -795,9 +797,7 @@ static void spritebatch_map_swap(spritebatch_map_t* map, int index_a, int index_
 	map->slots[slot_b].item_index = index_a;
 }
 
-#include <stdbool.h>
-
-bool sprite_batch_internal_use_sort_indices(spritebatch_t* sb)
+static bool sprite_batch_internal_use_sort_indices(spritebatch_t* sb)
 {
 	return sb->sprites_sorter_callback == 0;
 }
@@ -1067,7 +1067,7 @@ spritebatch_sprite_t spritebatch_fetch(spritebatch_t* sb, SPRITEBATCH_U64 image_
 	return s;
 }
 
-static int spritebatch_internal_sprite_less_than_or_equal(spritebatch_sprite_t* a, spritebatch_sprite_t* b)
+static int spritebatch_internal_sprite_less_than_or_equal(const spritebatch_sprite_t* a, const spritebatch_sprite_t* b)
 {
 	if (a->sort_bits < b->sort_bits) return 1;
 	return a->texture_id <= b->texture_id;
@@ -1081,7 +1081,7 @@ static void spritebatch_internal_index_merge_iteration(const spritebatch_sprite_
 {
 	int i = lo, j = split;
 	for (int k = lo; k < hi; k++) {
-		if (i < split && (j >= hi || spritebatch_internal_sprite_less_than_or_equal((spritebatch_sprite_t*)&sprites[a[i]], (spritebatch_sprite_t*)&sprites[a[j]]))) {
+		if (i < split && (j >= hi || spritebatch_internal_sprite_less_than_or_equal(&sprites[a[i]], &sprites[a[j]]))) {
 			b[k] = a[i];
 			i = i + 1;
 		} else {
