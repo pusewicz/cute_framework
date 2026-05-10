@@ -31,8 +31,20 @@
 #endif
 
 #include <pico/pico_unit.h>
+#include <stdio.h>
 
 #define CHECK(x)         REQUIRE(!(x))
 #define CHECK_POINTER(x) REQUIRE(x)
+
+/* Runs `test_fp` unless `skip` is true. When skipping, prints a "Skipped:"
+   line so the omission is visible in test output and easy to grep. */
+#define RUN_TEST_CASE_UNLESS(skip, test_fp) \
+	do { \
+		if (skip) { \
+			printf("Skipped: %s\n", #test_fp); \
+		} else { \
+			RUN_TEST_CASE(test_fp); \
+		} \
+	} while (0)
 
 #endif // TEST_HARNESS_H

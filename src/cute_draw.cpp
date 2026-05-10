@@ -2265,6 +2265,11 @@ static String s_parse_code_name(CF_CodeParseState* s)
 	return name;
 }
 
+static bool s_is_name_terminator(int cp)
+{
+	return cp <= 0 || cp == '=' || cp == '>' || cp == '/' || s_is_space(cp);
+}
+
 static bool s_is_hex_alphanum(int ch)
 {
 	switch (ch) {
@@ -2390,21 +2395,28 @@ static void s_parse_code(CF_CodeParseState* s)
 	bool finish = s->try_next('/');
 	bool first = true;
 	while (!s->done()) {
-		const char* name = sintern(s_parse_code_name(s).c_str());
+		String raw_name = s_parse_code_name(s);
+		const char* name = raw_name.empty() ? NULL : sintern(raw_name.c_str());
 		if (first) {
 			first = false;
 			code.effect_name = name;
-			code.fn = app->text_effect_fns.find(name);
+			CF_TextEffectFn** fn_ptr = name ? app->text_effect_fns.try_find(name) : NULL;
+			code.fn = fn_ptr ? *fn_ptr : NULL;
 		}
 		if (s->try_next('=')) {
 			CF_TextCodeVal val = s_parse_code_val(s);
-			code.params.insert(name, val);
+			if (name) {
+				code.params.insert(name, val);
+			}
 		}
 		if (s->try_next('>')) {
 			break;
 		}
 	}
 	code.index_in_string = s->glyph_count;
+	if (!code.effect_name || !code.fn) {
+		return;
+	}
 	if (finish) {
 		bool success = s->text_state->parse_finish(code.effect_name, code.index_in_string);
 		CF_UNUSED(success);
@@ -2500,12 +2512,77 @@ static bool s_text_fx_gradient(CF_TextEffect* fx_ptr)
 	return true;
 }
 
+// Decides whether a '<' encountered at top level introduces genuine markup.
+// `cursor` points to the char after '<'. `end` is the input end. Returns
+// true only when the next token is the name of a registered text effect AND
+// a matching '>' exists before EOF. Bounded side effect: on accept, the
+// candidate name is interned, but only after passing the registered-effects
+// check, so garbage cannot pollute the intern table.
+static bool s_lookahead_is_markup(const char* cursor, const char* end)
+{
+	auto skip_ws = [&](const char*& p) {
+		while (p < end) {
+			int cp;
+			const char* next = cf_string_decode_UTF8(p, &cp);
+			if (!s_is_space(cp)) break;
+			p = next;
+		}
+	};
+
+	skip_ws(cursor);
+	if (cursor >= end) return false;
+
+	// Optional leading '/' for close tags like </wave>.
+	if (*cursor == '/') {
+		++cursor;
+		skip_ws(cursor);
+		if (cursor >= end) return false;
+	}
+
+	// Read the name token using the same stop set as s_parse_code_name.
+	const char* name_start = cursor;
+	while (cursor < end) {
+		int cp;
+		const char* next = cf_string_decode_UTF8(cursor, &cp);
+		if (s_is_name_terminator(cp)) break;
+		cursor = next;
+	}
+	size_t name_len = (size_t)(cursor - name_start);
+	if (name_len == 0 || name_len >= 128) return false;
+
+	// Confirm a closing '>' exists before EOF. Quoted strings may contain '>'.
+	const char* scan = cursor;
+	bool found_close = false;
+	while (scan < end) {
+		char c = *scan;
+		if (c == '"') {
+			++scan;
+			while (scan < end && *scan != '"') {
+				if (*scan == '/' && scan + 1 < end && scan[1] == '"') scan += 2;
+				else ++scan;
+			}
+			if (scan < end) ++scan;
+			continue;
+		}
+		if (c == '>') { found_close = true; break; }
+		if (c == '<') return false;
+		++scan;
+	}
+	if (!found_close) return false;
+
+	char buf[128];
+	CF_MEMCPY(buf, name_start, name_len);
+	buf[name_len] = '\0';
+	const char* interned = sintern(buf);
+	return app->text_effect_fns.try_find(interned) != NULL;
+}
+
 static void s_parse_codes(CF_ParsedTextState* text_state, const char* text)
 {
-	// Register built-in text effects.
-	static bool init = false;
-	if (!init) {
-		init = true;
+	// Register built-in text effects on this app if absent. A destroy/recreate
+	// cycle leaves the new app's effect map empty, so we re-register lazily
+	// rather than relying on a process-global init guard.
+	if (!app->text_effect_fns.try_find(sintern("color"))) {
 		text_effect_register("color", s_text_fx_color);
 		text_effect_register("shake", s_text_fx_shake);
 		text_effect_register("fade", s_text_fx_fade);
@@ -2523,8 +2600,14 @@ static void s_parse_codes(CF_ParsedTextState* text_state, const char* text)
 		int cp = s->next(false);
 		if (cp == '/' && s->try_next('<', false)) {
 			s->append('<');
+		} else if (cp == '/' && s->try_next('>', false)) {
+			s->append('>');
 		} else if (cp == '<') {
-			s_parse_code(s);
+			if (s_lookahead_is_markup(s->in, s->end)) {
+				s_parse_code(s);
+			} else {
+				s->append('<');
+			}
 		} else {
 			s->append(cp);
 		}

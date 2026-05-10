@@ -920,6 +920,11 @@ CF_API uint64_t CF_CALL cf_peek_text_id(void);
  *           `cf_text_effect_register` on registering a custom-made text effect. See `cf_text_effect_register` for a big list of built-in text effects
  *           that work out-of-the-box. Members of this struct that can be mutated freely within a custom text effect are noted with "User-modifiable"
  *           in their description.
+ *
+ *           Only `<...>` blocks whose name matches a registered effect (see `cf_text_effect_register`) are parsed as markup. Any other `<` is
+ *           rendered as a literal character, so strings like `"Price < $100"` or `"a > b"` are safe to draw without escaping. Use `/<` to escape a
+ *           literal `<` even when followed by a registered effect name (e.g. `"/<wave>"` renders the text `<wave>` verbatim) and `/>` to escape a
+ *           literal `>`.
  * @related  CF_TextEffect CF_TextEffectFn cf_text_effect_register
  */
 typedef struct CF_TextEffect
