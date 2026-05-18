@@ -465,13 +465,18 @@ typedef enum CF_TextureUsageBits
  * @enum     CF_Filter
  * @category graphics
  * @brief    Filtering options for how to access `CF_Texture` data on the GPU.
- * @related  CF_Filter cf_filter_to_string CF_TextureParams
+ * @related  CF_Filter cf_filter_to_string CF_TextureParams CF_DrawFilterMode cf_draw_push_filter
  */
 #define CF_FILTER_DEFS \
-	/* @entry Nearest-neighbor filtering. Good for pixel art. */             \
-	CF_ENUM(FILTER_NEAREST, 0)                                               \
-	/* @entry Linear (bilinear) filtering. A good general purpose option. */ \
-	CF_ENUM(FILTER_LINEAR,  1)                                               \
+	/* @entry Nearest-neighbor filtering. Good for pixel art. */                                                  \
+	CF_ENUM(FILTER_NEAREST,  0)                                                                                   \
+	/* @entry Linear (bilinear) filtering. A good general purpose option. */                                      \
+	CF_ENUM(FILTER_LINEAR,   1)                                                                                   \
+	/* @entry SDL3-style pixel-art upscaling. Shader-based fwidth-adaptive smoothstep filter on top of hardware  \
+	          linear. To take effect when drawing, pair with `cf_draw_push_filter(CF_DRAW_FILTER_PIXELART)`.      \
+	          Conceptually equivalent to `CF_DRAW_FILTER_SMOOTH` — both are antialiased nearest filters,         \
+	          differing only in the transition curve (linear vs smoothstep). See `CF_DrawFilterMode`. */          \
+	CF_ENUM(FILTER_PIXELART, 2)                                                                                   \
 	/* @end */
 
 typedef enum CF_Filter

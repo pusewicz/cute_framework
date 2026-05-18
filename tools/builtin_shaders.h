@@ -287,6 +287,35 @@ vec2 smooth_uv(vec2 uv, vec2 texture_size)
 }
 )";
 
+// Pixel-art upscaling filter, ported from SDL3's SDL_SCALEMODE_PIXELART (zlib license).
+// Reference: SDL3 src/render/gpu/shaders/texture_advanced.frag.hlsl, GetPixelArtUV().
+//
+// Relationship to smooth_uv() above:
+// Both filters implement the same idea — antialiased nearest-neighbor sampling. Each
+// snaps the sampled position to the nearest texel center, then blends across a band
+// exactly one screen pixel wide centered on each texel boundary. They differ only in
+// the shape of the transition curve inside that band:
+//
+//   smooth_uv():   linear ramp via clamp((pixel - seam) / fwidth(pixel), -0.5, 0.5)
+//   pixelart_uv(): cubic ease-in/out via smoothstep(1 - box_size, 1, fract(tx))
+//
+// The visual difference is small at typical scales — smoothstep has zero derivative at
+// the endpoints so the edges of the snap region join more softly, but both produce the
+// "crisp pixel art at non-integer scale" effect. CF historically shipped smooth_uv as
+// CF_DRAW_FILTER_SMOOTH (the runtime default); pixelart_uv exists so users who expect
+// SDL3-name parity can opt into the SDL3 curve. If you're choosing between them, either
+// is fine — pick on aesthetic preference or by matching whichever rendering pipeline
+// you're porting from.
+static const char* s_pixelart_uv = R"(
+vec2 pixelart_uv(vec2 uv, vec2 texture_size, vec2 texel_size)
+{
+	vec2 box_size = clamp(fwidth(uv) * texture_size, vec2(1e-5), vec2(1.0));
+	vec2 tx = uv * texture_size - 0.5 * box_size;
+	vec2 tx_offset = smoothstep(vec2(1.0) - box_size, vec2(1.0), fract(tx));
+	return (floor(tx) + 0.5 + tx_offset) * texel_size;
+}
+)";
+
 // Stub function. This gets replaced by injected user-shader code via #include.
 static const char* s_shader_stub = R"(
 vec4 shader(vec4 color, ShaderParams params)
@@ -361,7 +390,7 @@ layout (set = 2, binding = 0) uniform sampler2D u_image;
 layout (set = 3, binding = 0) uniform uniform_block {
 	vec2 u_texture_size;
 	int u_alpha_discard;
-	int u_use_smooth_uv;
+	int u_filter_mode;
 };
 
 // Used only for polygon SDF.
@@ -384,6 +413,7 @@ vec2 screen_uv;
 #include "blend.shd"
 #include "gamma.shd"
 #include "smooth_uv.shd"
+#include "pixelart_uv.shd"
 #include "distance.shd"
 
 struct ShaderParams
@@ -421,8 +451,20 @@ void main()
 
 	// Traditional sprite/text/tri cases.
 	vec4 c = vec4(0);
-	vec2 uv = u_use_smooth_uv == 0 ? smooth_uv(v_uv, u_texture_size) : v_uv;
-	vec4 tex_c = de_gamma(texture(u_image, uv));
+	// u_filter_mode mirrors CF_DrawFilterMode: 0 nearest, 1 linear, 2 smooth, 3 pixelart.
+	// NEAREST/LINEAR are handled by the bound sampler; SMOOTH/PIXELART warp the UV.
+	vec2 texel_size = vec2(1.0) / u_texture_size;
+	vec2 uv;
+	vec4 tex_c;
+	if (u_filter_mode == 3) {
+		uv = pixelart_uv(v_uv, u_texture_size, texel_size);
+		// Pass through the original gradients so hardware LOD selection uses the
+		// pre-snapped UV — matches SDL3's SampleGrad in texture_advanced.frag.hlsl.
+		tex_c = de_gamma(textureGrad(u_image, uv, dFdx(v_uv), dFdy(v_uv)));
+	} else {
+		uv = (u_filter_mode == 2) ? smooth_uv(v_uv, u_texture_size) : v_uv;
+		tex_c = de_gamma(texture(u_image, uv));
+	}
 	c = is_sprite ? gamma(tex_c) : c;
 	c = is_text ? v_col * tex_c.a : c;
 	c = is_tri ? v_col : c;
@@ -501,9 +543,11 @@ layout (set = 2, binding = 0) uniform sampler2D u_image;
 layout (set = 3, binding = 0) uniform uniform_block {
 	vec2 u_texture_size;
 	int u_alpha_discard;
+	int u_filter_mode;
 };
 
 #include "smooth_uv.shd"
+#include "pixelart_uv.shd"
 
 vec2 pos;
 vec2 screen_uv;
@@ -521,7 +565,16 @@ struct ShaderParams
 #include "shader_stub.shd"
 
 void main() {
-	vec4 color = texture(u_image, smooth_uv(v_uv, u_texture_size));
+	vec2 texel_size = vec2(1.0) / u_texture_size;
+	vec4 color;
+	if (u_filter_mode == 3) {
+		vec2 uv = pixelart_uv(v_uv, u_texture_size, texel_size);
+		color = textureGrad(u_image, uv, dFdx(v_uv), dFdy(v_uv));
+	} else if (u_filter_mode == 2) {
+		color = texture(u_image, smooth_uv(v_uv, u_texture_size));
+	} else {
+		color = texture(u_image, v_uv);
+	}
 	pos = v_pos;
 	screen_uv = (v_posH + vec2(1,-1)) * 0.5 * vec2(1,-1);
 	ShaderParams sp;
@@ -547,6 +600,7 @@ static CF_ShaderCompilerFile s_builtin_includes[] = {
 	{ "gamma.shd", s_gamma },
 	{ "distance.shd", s_distance },
 	{ "smooth_uv.shd", s_smooth_uv },
+	{ "pixelart_uv.shd", s_pixelart_uv },
 	{ "blend.shd", s_blend },
 };
 

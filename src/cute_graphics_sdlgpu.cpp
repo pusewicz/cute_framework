@@ -397,6 +397,7 @@ static inline SDL_GPUFilter s_wrap(CF_Filter filter)
 	default: return SDL_GPU_FILTER_LINEAR;
 	case CF_FILTER_NEAREST: return SDL_GPU_FILTER_NEAREST;
 	case CF_FILTER_LINEAR: return SDL_GPU_FILTER_LINEAR;
+	case CF_FILTER_PIXELART: return SDL_GPU_FILTER_LINEAR;
 	}
 }
 

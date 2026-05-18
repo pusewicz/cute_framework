@@ -24,8 +24,9 @@
 static inline GLenum s_wrap(CF_Filter f)
 {
 	switch (f) { default:
-	case CF_FILTER_NEAREST: return GL_NEAREST;
-	case CF_FILTER_LINEAR:  return GL_LINEAR;
+	case CF_FILTER_NEAREST:  return GL_NEAREST;
+	case CF_FILTER_LINEAR:   return GL_LINEAR;
+	case CF_FILTER_PIXELART: return GL_LINEAR;
 	}
 }
 

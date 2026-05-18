@@ -380,9 +380,10 @@ static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_
 	cf_material_set_uniform_fs(s_draw->material, "u_texel_size", &u_texel_size, CF_UNIFORM_TYPE_FLOAT2, 1);
 	int alpha_discard = cmd.alpha_discard == 0.0f ? 0 : 1;
 	cf_material_set_uniform_fs(s_draw->material, "u_alpha_discard", &alpha_discard, CF_UNIFORM_TYPE_INT, 1);
-	// u_use_smooth_uv: 0 = apply shader smooth_uv function, 1 = use plain v_uv (hardware filtering only)
-	int use_smooth_uv = cmd.filter_mode == CF_DRAW_FILTER_SMOOTH ? 0 : 1;
-	cf_material_set_uniform_fs(s_draw->material, "u_use_smooth_uv", &use_smooth_uv, CF_UNIFORM_TYPE_INT, 1);
+	// u_filter_mode mirrors CF_DrawFilterMode (0 nearest, 1 linear, 2 smooth, 3 pixelart).
+	// NEAREST/LINEAR are realized by the sampler swap below; SMOOTH/PIXELART warp UVs in the shader.
+	int filter_mode = (int)cmd.filter_mode;
+	cf_material_set_uniform_fs(s_draw->material, "u_filter_mode", &filter_mode, CF_UNIFORM_TYPE_INT, 1);
 
 	// Apply render state.
 	cf_material_set_render_state(s_draw->material, cmd.render_state);
@@ -3402,9 +3403,10 @@ void static s_blit(CF_Command* cmd, CF_Canvas src, CF_Canvas dst, bool clear_dst
 	cf_material_set_uniform_fs(s_draw->material, "u_texture_size", &canvas_dims, CF_UNIFORM_TYPE_FLOAT2, 1);
 	int alpha_discard = cmd->alpha_discard == 0.0f ? 0 : 1;
 	cf_material_set_uniform_fs(s_draw->material, "u_alpha_discard", &alpha_discard, CF_UNIFORM_TYPE_INT, 1);
-	// u_use_smooth_uv: 0 = apply shader smooth_uv function, 1 = use plain v_uv (hardware filtering only)
-	int use_smooth_uv = cmd->filter_mode == CF_DRAW_FILTER_SMOOTH ? 0 : 1;
-	cf_material_set_uniform_fs(s_draw->material, "u_use_smooth_uv", &use_smooth_uv, CF_UNIFORM_TYPE_INT, 1);
+	// u_filter_mode mirrors CF_DrawFilterMode (0 nearest, 1 linear, 2 smooth, 3 pixelart).
+	// NEAREST/LINEAR are realized by the sampler swap below; SMOOTH/PIXELART warp UVs in the shader.
+	int filter_mode = (int)cmd->filter_mode;
+	cf_material_set_uniform_fs(s_draw->material, "u_filter_mode", &filter_mode, CF_UNIFORM_TYPE_INT, 1);
 
 	// Apply render state.
 	cf_material_set_render_state(s_draw->material, cmd->render_state);

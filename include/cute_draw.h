@@ -1417,11 +1417,18 @@ CF_API bool CF_CALL cf_draw_peek_alpha_discard(void);
  */
 #define CF_DRAW_FILTER_MODE_DEFS \
 	/* @entry Nearest-neighbor filtering. Good for pixel art. Uses hardware nearest. */                             \
-	CF_ENUM(DRAW_FILTER_NEAREST, 0)                                                                                 \
+	CF_ENUM(DRAW_FILTER_NEAREST,  0)                                                                                \
 	/* @entry Linear (bilinear) filtering. Uses hardware linear. */                                                 \
-	CF_ENUM(DRAW_FILTER_LINEAR,  1)                                                                                 \
+	CF_ENUM(DRAW_FILTER_LINEAR,   1)                                                                                \
 	/* @entry Smooth filtering. Uses hardware linear combined with a shader-based smooth UV interpolation. */       \
-	CF_ENUM(DRAW_FILTER_SMOOTH,  2)                                                                                 \
+	CF_ENUM(DRAW_FILTER_SMOOTH,   2)                                                                                \
+	/* @entry SDL3-style pixel-art upscaling. Ported from SDL3's SDL_SCALEMODE_PIXELART (zlib-licensed).            \
+	          Conceptually equivalent to `CF_DRAW_FILTER_SMOOTH`: both implement antialiased nearest-neighbor       \
+	          sampling that snaps to texel centers and blends across a 1-screen-pixel-wide band at each texel       \
+	          boundary. The only difference is the transition curve: SMOOTH uses a linear ramp, PIXELART uses       \
+	          smoothstep (cubic). Visual difference is subtle at typical scales — pick whichever name fits your    \
+	          mental model. PIXELART exists primarily for users porting from SDL3 who expect the name. */           \
+	CF_ENUM(DRAW_FILTER_PIXELART, 3)                                                                                \
 	/* @end */
 
 typedef enum CF_DrawFilterMode
@@ -1453,6 +1460,8 @@ CF_INLINE const char* cf_draw_filter_mode_to_string(CF_DrawFilterMode mode) {
  * @param    mode       The filter mode to use. See `CF_DrawFilterMode`.
  * @remarks  NEAREST uses hardware nearest-neighbor filtering, good for pixel art. LINEAR uses hardware bilinear filtering.
  *           SMOOTH uses hardware linear combined with shader-based smooth UV interpolation for high quality upscaling.
+ *           PIXELART is a port of SDL3's SDL_SCALEMODE_PIXELART: hardware linear plus an fwidth-adaptive smoothstep UV
+ *           filter that gives crisper pixel-art upscaling than LINEAR/SMOOTH at non-integer scales.
  * @related  CF_DrawFilterMode cf_draw_push_filter cf_draw_pop_filter cf_draw_peek_filter
  */
 CF_API void CF_CALL cf_draw_push_filter(CF_DrawFilterMode mode);
