@@ -120,30 +120,34 @@ When contributing to Cute Framework, follow these established coding conventions
 
 ### Building the Project
 ```bash
-# Standard build (debug)
-cmake -B build/debug -S . -DCMAKE_BUILD_TYPE=Debug
-cmake --build build/debug
+# Standard build (debug) - build/ is a flat directory, not build/debug or build/release
+cmake -B build -S . -DCMAKE_BUILD_TYPE=Debug
+cmake --build build
 
-# Release build
-cmake -B build/release -S . -DCMAKE_BUILD_TYPE=Release
-cmake --build build/release
+# Release build (use a separate dir if you want debug and release side by side)
+cmake -B build-release -S . -DCMAKE_BUILD_TYPE=Release
+cmake --build build-release
 
 # Web build (Emscripten)
-emcmake cmake -B build/web -S .
-cmake --build build/web
+emcmake cmake -B build-emscripten -S .
+cmake --build build-emscripten
 
 # Build with specific options
 cmake -B build -S . \
   -DCF_FRAMEWORK_STATIC=ON \
   -DCF_RUNTIME_SHADER_COMPILATION=ON \
   -DCF_CUTE_SHADERC=ON
+
+# Fast path: build only the library (skips samples/tests/tools)
+cmake --build build --target cute
+# Produces lib/libcute.a
 ```
 
 ### Running Tests
 ```bash
 # Build and run all tests
-cmake --build build/debug
-./build/debug/tests
+cmake --build build
+./build/tests
 
 # The test executable uses pico_unit framework
 # Test files are in test/ directory with pattern test_*.cpp
@@ -152,8 +156,8 @@ cmake --build build/debug
 ### Building Samples
 ```bash
 # Samples are automatically built with the main project
-# Run a specific sample
-./build/debug/[sample_name]
+# Run a specific sample (binary names are the sample dir name, no separator)
+./build/basicsprite
 
 # Key sample programs (40+ available):
 # Basic: hello_triangle, basic_sprite, basic_input, basic_networking
@@ -161,8 +165,19 @@ cmake --build build/debug
 # Effects: metaballs, waves, fluid_sim, water, particles
 # Games: spaceshooter, platformer, tetris
 # ImGui: imgui, imgui_custom_font, imgui_backend
-# Tools: docs_parser (generates API documentation)
+# Tools: docsparser (generates API documentation, source in tools/docs_parser.c)
 ```
+
+### Gotchas
+- **`clangd` can't resolve some includes**: `ckit.h`, `cute_net.h`, `cute_sync.h` live in
+  `libraries/cute/` and clangd frequently fails to index them even though the CMake build is fine.
+  Don't trust clangd diagnostics for these headers over an actual build.
+- **Pre-existing warnings**: `cute_tls.h` has known enum-comparison warnings that predate any change
+  you're making — they are not something you introduced.
+- **X-macro enums**: many headers define enums via an `X`-macro pattern (e.g. `CF_*_DEFS`) so adding
+  an enum value usually means updating one `#define ... X(...)` list, not a switch/case everywhere.
+- **`cute_defines.h`**: included by nearly every header; it's the natural home for a new
+  cross-cutting macro/utility rather than adding a new include everywhere.
 
 ## Architecture Overview
 
@@ -171,7 +186,7 @@ cmake --build build/debug
 **Graphics Pipeline**:
 - SDL_gpu-based renderer
 - OpenGL ES 3 renderer for web builds using Emscripten
-- Shader system supports runtime compilation via cute_shader/ subsystem
+- Shader system supports runtime compilation via the tools/ shader compiler (cute_shader.cpp/.h, cute_shaderc.cpp)
 - Bytecode generation for cross-platform shader support
 
 **Component Structure**:
@@ -179,7 +194,8 @@ cmake --build build/debug
 - `src/internal/cute_*_internal.h` - Internal implementation headers
 - `include/cute_*.h` - Public API headers
 - Single header entry point: `include/cute.h`
-- `libraries/` - External vendored dependencies (imgui, minicoro, stb, etc.
+- `libraries/` - External vendored dependencies (cimgui, imgui, glad, stb, etc.); single-header
+  cute libs (ckit.h, cute_net.h, cute_sync.h, cute_aseprite.h, etc.) live in `libraries/cute/`
 
 **Rendering Architecture**:
 - Mesh system with vertex attributes (CF_MeshInternal)
@@ -205,9 +221,11 @@ Platform detection happens in CMakeLists.txt:30-55, with specific build configur
 **External Libraries** (in libraries/):
 - SDL3 (fetched via CMake)
 - SDL3_shadercross (shader cross-compilation)
-- PhysicsFS (virtual filesystem)
-- imgui (immediate mode GUI)
+- PhysicsFS (virtual filesystem; CMake-fetched for the Emscripten build only, not vendored)
+- imgui / cimgui (immediate mode GUI + C bindings)
 - glad (OpenGL loader)
+- `libraries/cute/` - single-header cute libs: ckit.h, cute_net.h, cute_sync.h, cute_aseprite.h,
+  cute_c2.h, cute_png.h, cute_sound.h, cute_spritebatch.h, cute_tls.h
 
 **Internal Libraries** (in src/internal/):
 - yyjson (JSON parsing)
@@ -215,11 +233,11 @@ Platform detection happens in CMakeLists.txt:30-55, with specific build configur
 
 ### Shader System
 
-The framework has a sophisticated shader compilation pipeline:
+The framework has a sophisticated shader compilation pipeline, implemented in `tools/`:
 - Runtime compilation support (when CF_RUNTIME_SHADER_COMPILATION=ON)
-- Offline compiler tool (cute-shaderc)
+- Offline compiler tool (cute-shaderc, source in tools/cute_shaderc.cpp)
 - Cross-platform bytecode generation
-- Builtin shaders in src/cute_shader/builtin_shaders.h
+- Builtin shaders in tools/builtin_shaders.h
 - Bytecode cache in src/data/builtin_shaders_bytecode.h
 
 ### File Organization
@@ -230,14 +248,13 @@ cute_framework/
 ├── include/              # Public API headers (42 files)
 │   ├── cute.h           # Single header entry point (includes all)
 │   └── cute_*.h         # Individual subsystem headers
-├── src/                 # Implementation files (37 C++ files)
+├── src/                 # Implementation files (33 .cpp files)
 │   ├── cute_*.cpp       # Core framework components
-│   ├── internal/        # Internal implementation headers
-│   └── cute_shader/     # Shader compilation system
-├── libraries/           # External dependencies
-│   ├── dear_bindings/   # ImGui with SDL3 backend
-│   ├── physfs/          # Virtual filesystem
-│   └── [various single-header libs]
+│   ├── internal/        # Internal implementation headers (.h/.c/.m)
+│   └── data/            # Generated/vendored data (e.g. builtin_shaders_bytecode.h)
+├── libraries/           # External dependencies (cimgui, imgui, glad, dxc, stb, etc.)
+│   └── cute/            # Single-header cute libs (ckit.h, cute_net.h, cute_sync.h, etc.)
+├── tools/               # Dev tools: shader compiler, docs_parser, sample-page generator
 ├── samples/             # 40+ example programs
 ├── test/                # Unit tests (15+ modules using pico_unit)
 ├── docs/                # MkDocs documentation source
@@ -249,15 +266,15 @@ cute_framework/
 **Key Configuration Files**:
 - `CMakeLists.txt:30-55` - Platform detection and configuration
 - `mkdocs.yml` - Documentation site configuration
-- `msvc2022.cmd` - Windows Visual Studio build helper
+- `msvc2026.cmd` - Windows Visual Studio build helper
 - `web.cmd` - Emscripten web build helper
 
 ### Documentation
 
 **Building Documentation**:
 ```bash
-# Generate API reference
-./build/debug/docs_parser
+# Generate API reference (binary is docsparser, source in tools/docs_parser.c)
+./build/docsparser
 
 # Serve documentation locally
 mkdocs serve
@@ -266,7 +283,7 @@ mkdocs serve
 mkdocs build
 ```
 
-The API reference is available in the docs/ directory, when run using mkdocs and the docs_parser binary.
+The API reference is available in the docs/ directory, when run using mkdocs and the docsparser binary.
 Full documentation is available at https://randygaul.github.io/cute_framework/api_reference/.
 
 ### Testing
@@ -279,7 +296,7 @@ Full documentation is available at https://randygaul.github.io/cute_framework/ap
 
 ```bash
 # Run all tests
-./build/debug/tests
+./build/tests
 
 # Tests are automatically built with the project
 # Test results are printed to console with pass/fail status
