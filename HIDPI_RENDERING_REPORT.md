@@ -15,7 +15,7 @@ The practical result on any HiDPI display (Apple Retina, Windows/Linux fractiona
 - **Everything is rendered at low resolution and then magnified.** A 2× Retina display throws away ~75% of its available resolution.
 - **Text is blurry.** Glyphs are rasterized by `stb_truetype` at the *logical* font size and then stretched, so a 20 px font is rasterized at 20 px and displayed across ~40 physical pixels.
 - **Shape anti-aliasing is done in the wrong space.** The SDF anti-alias edge is computed as "one logical pixel" and then magnified, so edges are ~2 physical pixels of blur instead of a crisp 1-pixel transition.
-- **The public API is self-contradictory** about whether sizes are in "pixels" or "points," and the exposed `dpi_scale` value is informational only — nothing in the renderer consumes it.
+- **The public API is self-contradictory** about whether sizes are in "pixels" or "points," and the exposed `dpi_scale` value is informational only, returns the wrong quantity for rendering, and is consumed by nothing — a premature API best **removed** until the renderer needs it (§7.4).
 
 None of this is catastrophic — CF apps *run* correctly and are fully interactive — but on HiDPI hardware they look noticeably soft compared to native or DPI-aware peers. This report documents the root causes, the specific bugs, and a staged plan to fix them.
 
@@ -41,7 +41,9 @@ This means SDL gives the window a backbuffer whose **pixel** size is `logical_si
 app->dpi_scale = SDL_GetWindowDisplayScale(app->window);
 ```
 
-`SDL_GetWindowDisplayScale()` returns the OS's *suggested content/UI scale* for the display the window is on. This is **not** the same quantity as `SDL_GetWindowPixelDensity()`, which is the actual ratio between the pixel backbuffer and the logical window size. On integer-scaled macOS Retina they usually coincide (both 2.0), but on **Windows at 150%** or **Wayland fractional scaling** they can diverge. CF stores and exposes the display scale but would need the *pixel density* to correctly size a framebuffer — so even the one DPI number CF exposes is the wrong one for rendering purposes.
+`SDL_GetWindowDisplayScale()` returns the OS's *suggested content/UI scale* for the display the window is on. This is **not** the same quantity as `SDL_GetWindowPixelDensity()`, which is the actual ratio between the pixel backbuffer and the logical window size (`display_scale ≈ pixel_density × display_content_scale`). On integer-scaled macOS Retina they coincide (both 2.0), but whenever the display's content scale is not 1 they diverge, and the display scale then *overshoots* the true backbuffer ratio. CF stores and exposes the display scale but would need the *pixel density* to correctly size a framebuffer — so the one DPI number CF exposes is the wrong one for rendering purposes.
+
+Crucially, `dpi_scale` currently feeds **nothing internal** — it is written on create and on display-scale-change, and handed straight back to the user via `cf_app_get_dpi_scale()`. The `dpi_scale_prev` field is written but never read at all. So this is not an active miscalculation today; it is a *premature, unused public API* that also makes a semantic promise ("pixels") the framework does not keep. See §7.4 for the recommendation to remove it rather than rework it in place.
 
 ### 2.3 The offscreen canvas is created in *logical* units
 
@@ -208,7 +210,7 @@ So the entire shape pipeline lives in logical space and inherits the same magnif
 | # | Issue | Location | Impact |
 |---|-------|----------|--------|
 | B1 | Upscale filter differs by backend: **NEAREST** on SDL_GPU vs **LINEAR** on GLES | `cute_graphics_sdlgpu.cpp:874`, `cute_graphics_gles.cpp:736` | Same app looks different (blocky vs blurry) depending on backend. Neither is "correct" — the real fix removes the upscale. |
-| B2 | `dpi_scale` uses `SDL_GetWindowDisplayScale` (content scale) not `SDL_GetWindowPixelDensity` (backbuffer ratio) | `cute_app.cpp:320`, `cute_input.cpp:558` | The exposed number can disagree with the actual framebuffer size on fractional-scaling platforms. |
+| B2 | `dpi_scale` uses `SDL_GetWindowDisplayScale` (content scale) not `SDL_GetWindowPixelDensity` (backbuffer ratio), is exposed as public API, yet feeds nothing internal (`dpi_scale_prev` is never even read) | `cute_app.cpp:320-321`, `cute_input.cpp:558`, `cute_app_internal.h:83-85` | Premature/unused public getter that returns the wrong quantity for rendering. Recommend removing it (§7.4) rather than reworking it in place. |
 | B3 | API doc says window size is "in pixels," but the values are logical points on HiDPI | `include/cute_app.h:367`, `:377`, `:385` | Misleads users doing their own pixel-space math; latent because points==pixels at 1×. |
 | B4 | Touch coordinates scaled by `app->w/h` with acknowledged uncertainty | `cute_input.cpp:674-691` (`// NOTE: Probably wrong for high-DPI.`) | Touch mapping may be off on HiDPI mobile; already flagged in-source. |
 | B5 | Docs advise "most of the time you should ignore dpi" and there is no worked example of a DPI-aware app | `include/cute_app.h:399-409` | Users have no guidance and no clean path to sharp rendering. |
@@ -280,13 +282,15 @@ void CF_Draw::set_aaf() {
 }
 ```
 
-### 7.4 Fix 4 — Correct the DPI API & documentation
+### 7.4 Fix 4 — Remove the premature DPI API; reintroduce correctly only when the renderer needs it
 
-- Distinguish two concepts publicly:
-  - `cf_app_get_dpi_scale()` — OS content/UI scale (keep, for users who want to scale UI).
-  - `cf_app_get_pixel_scale()` *(new)* — backbuffer-to-logical ratio, the value the renderer uses.
-- Fix the header docs on `cf_app_get_size/width/height` to say **logical points** (or add pixel-size accessors) so `include/cute_app.h:367` etc. match reality.
-- Resolve the touch-coordinate `NOTE: Probably wrong for high-DPI` (`cute_input.cpp:674-691`) now that a defined pixel/point relationship exists.
+The current `dpi_scale` getters return the wrong quantity for rendering, are consumed by nothing internal, and promise "pixels" the framework doesn't deliver. Rather than quietly change what a public function returns (which would break users who read it as a UI scale), the cleaner move is to **remove it now and add the right thing later**:
+
+- **Delete the public surface**: `cf_app_get_dpi_scale()` / `cf_app_dpi_scale_was_changed()` (`cute_app.h:409, 417`), their C++ inline aliases (`cute_app.h:903-904`), and the two `@function` doc blocks. This is a public API break, but there are **no in-tree dependents** (no sample, test, or engine code calls it), so it is about as low-risk as an API removal gets.
+- **Strip the dead internal state**: `dpi_scale`, `dpi_scale_prev`, `dpi_scale_was_changed` (`cute_app_internal.h:83-85`) and the `SDL_GetWindowDisplayScale` plumbing (`cute_app.cpp:320-321`, `cute_input.cpp:479, 558`). Keeping write-only fields "for later" is exactly how `dpi_scale_prev` already rotted into never-read state. It is trivial to reconstruct from git history when needed.
+- **Keep** the forced `SDL_WINDOW_HIGH_PIXEL_DENSITY` flag (`cute_app.cpp:284`) — that governs backbuffer creation, not this getter.
+- **Reintroduce when the renderer actually consumes it** (i.e. alongside Fix 1): add an internal `pixel_scale` from `SDL_GetWindowPixelDensity()` used to size the canvas and rasterize glyphs, and only *then* expose a public `cf_app_get_pixel_scale()` once its semantics are proven and stable. If a UI-scale value is genuinely wanted later, it can come back as a clearly-named `cf_app_get_content_scale()` — distinct from the pixel ratio.
+- **Separately**, fix the header docs on `cf_app_get_size/width/height` to say **logical points** (or add pixel-size accessors) so `include/cute_app.h:367` etc. match reality, and resolve the touch-coordinate `NOTE: Probably wrong for high-DPI` (`cute_input.cpp:674-691`) once a defined pixel/point relationship exists. These are independent of removing the DPI getter.
 
 ### 7.5 Fix 5 — Make the two backends consistent
 
@@ -301,7 +305,7 @@ Whatever residual upscale remains (e.g. for the intentional low-res-canvas case)
 - **Per-monitor DPI stress test.** A CI/manual test that drags a window across monitors of different scales and asserts the canvas resizes and fonts re-rasterize.
 - **Optional automatic canvas resize on window resize**, gated behind an app option, for apps that want the internal resolution to always track the window.
 - **Signed-distance-field (SDF) font atlas** as a longer-term option: resolution-independent glyphs would make text sharp at any scale/zoom without per-DPI re-rasterization, and would also fix the "blurry when the camera zooms in" case that is the moral equivalent of the DPI problem.
-- **Expose `cf_app_get_pixel_scale()` and a `CF_APP_OPTIONS_NO_HIGH_DPI_BIT`** so users can opt out of the forced `SDL_WINDOW_HIGH_PIXEL_DENSITY` (`cute_app.cpp:284`) when they explicitly want logical-resolution rendering.
+- **Add a `CF_APP_OPTIONS_NO_HIGH_DPI_BIT`** so users can opt out of the forced `SDL_WINDOW_HIGH_PIXEL_DENSITY` (`cute_app.cpp:284`) when they explicitly want logical-resolution rendering. Once Fix 1 lands and an internal `pixel_scale` exists, a public `cf_app_get_pixel_scale()` can be exposed — but only then, per §7.4, rather than shipping an unused getter ahead of need.
 
 ---
 
@@ -312,7 +316,7 @@ Whatever residual upscale remains (e.g. for the intentional low-res-canvas case)
 | **P0** | §7.1 Physical-resolution canvas + logical projection | Medium | Medium (touches camera/coordinate mapping) | Removes the entire upscale-blur class; sharpens *everything* |
 | **P0** | §7.2 DPI-scaled glyph rasterization + cache key | Medium | Low | Crisp text |
 | **P1** | §7.3 Physical-space anti-alias factor | Low | Low | Crisp shape edges |
-| **P1** | §7.4 API/doc correction (`pixel_scale`, size semantics, touch) | Low | Low | Correctness & clarity |
+| **P1** | §7.4 Remove premature DPI API; fix size-semantics docs & touch mapping | Low | Low (API break, but no in-tree dependents) | Removes dead/misleading surface; correctness & clarity |
 | **P2** | §7.5 Consistent upscale filter policy | Low | Low | Backend parity |
 | **P2** | §8 Sample + topic doc + SDF fonts | Medium–High | Low | Discoverability & long-term quality |
 
