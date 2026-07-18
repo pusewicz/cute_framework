@@ -120,74 +120,73 @@ static CF_INLINE float s_intersect(float a, float b, float u0, float u1, float p
 	return u0 + (u1 - u0) * (da / (da - db));
 }
 
+static void s_defrag_and_flush()
+{
+	if (!s_draw->delay_defrag) {
+		spritebatch_defrag(&s_draw->sb);
+	}
+	spritebatch_flush(&s_draw->sb);
+}
+
+static void s_draw_report_submit(spritebatch_sprite_t* sprites, int texture_w, int texture_h, CF_Vertex* verts, int vert_count);
+
 static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_w, int texture_h, void* udata)
 {
 	CF_UNUSED(udata);
 	int vert_count = 0;
 	s_draw->verts.ensure_count(count * 6);
 	CF_Vertex* verts = s_draw->verts.data();
-	CF_MEMSET(verts, 0, sizeof(CF_Vertex) * count * 6);
+
+	// Each case below builds a zero-initialized template vertex, fills in the
+	// fields it uses, and stores every output vertex exactly once. Fields a case
+	// does not set are guaranteed zero (the same contract the old blanket memset
+	// over the whole buffer provided, without the extra full pass).
+
+	// Both a quad's two triangles, as indices into box/boxH (or shape for sprites):
+	// TL(0), BL(3), TR(1) / TR(1), BL(3), BR(2).
+	static const int s_quad_corner[6] = { 0, 3, 1, 1, 3, 2 };
 
 	for (int i = 0; i < count; ++i) {
 		spritebatch_sprite_t* s = sprites + i;
-		BatchGeometry geom = s->geom;
+		const BatchGeometry& geom = *s->geom.g;
 		CF_Vertex* out = verts + vert_count;
-
-		v2 quad[6] = {
-			geom.box[0],
-			geom.box[3],
-			geom.box[1],
-			geom.box[1],
-			geom.box[3],
-			geom.box[2],
-		};
-
-		v2 quadH[6] = {
-			geom.boxH[0],
-			geom.boxH[3],
-			geom.boxH[1],
-			geom.boxH[1],
-			geom.boxH[3],
-			geom.boxH[2],
-		};
 
 		switch (geom.type) {
 		case BATCH_GEOMETRY_TYPE_TRI:
 		{
-			for (int i = 0; i < 3; ++i) {
-				out[i].color = s->geom.use_tri_colors ? s->geom.tri_colors[i] : s->geom.color;
-				out[i].radius = 0;
-				out[i].stroke = 0;
-				out[i].type = VA_TYPE_TRIANGLE;
-				out[i].alpha = s->geom.alpha;
-				out[i].fill = 1.0f;
-				out[i].aa = 0;
-				out[i].attributes = s->geom.use_tri_attributes ? s->geom.tri_attributes[i] : geom.user_params;
+			CF_Vertex v = { };
+			v.type = VA_TYPE_TRIANGLE;
+			v.alpha = geom.alpha;
+			v.fill = 1.0f;
+			for (int j = 0; j < 3; ++j) {
+				v.color = geom.use_tri_colors ? geom.tri_colors[j] : geom.color;
+				v.attributes = geom.use_tri_attributes ? geom.tri_attributes[j] : geom.user_params;
+				v.posH = geom.shape[j];
+				out[j] = v;
 			}
-
-			out[0].posH = geom.shape[0];
-			out[1].posH = geom.shape[1];
-			out[2].posH = geom.shape[2];
 
 			vert_count += 3;
 		}	break;
 
 		case BATCH_GEOMETRY_TYPE_TRI_SDF:
 		{
-			for (int i = 0; i < 6; ++i) {
-				out[i].p = quad[i];
-				out[i].posH = quadH[i];
-				out[i].shape[0] = geom.shape[0];
-				out[i].shape[1] = geom.shape[1];
-				out[i].shape[2] = geom.shape[2];
-				out[i].color = s->geom.color;
-				out[i].radius = s->geom.radius;
-				out[i].stroke = s->geom.stroke;
-				out[i].aa = s->geom.aa;
-				out[i].type = VA_TYPE_TRIANGLE_SDF;
-				out[i].alpha = s->geom.alpha;
-				out[i].fill = s->geom.fill ? 1.0f : 0.0f;
-				out[i].attributes = geom.user_params;
+			CF_Vertex v = { };
+			v.shape[0] = geom.shape[0];
+			v.shape[1] = geom.shape[1];
+			v.shape[2] = geom.shape[2];
+			v.color = geom.color;
+			v.radius = geom.radius;
+			v.stroke = geom.stroke;
+			v.aa = geom.aa;
+			v.type = VA_TYPE_TRIANGLE_SDF;
+			v.alpha = geom.alpha;
+			v.fill = geom.fill ? 1.0f : 0.0f;
+			v.attributes = geom.user_params;
+			for (int j = 0; j < 6; ++j) {
+				int c = s_quad_corner[j];
+				v.p = geom.box[c];
+				v.posH = geom.boxH[c];
+				out[j] = v;
 			}
 
 			vert_count += 6;
@@ -195,93 +194,59 @@ static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_
 
 		case BATCH_GEOMETRY_TYPE_QUAD:
 		{
-			for (int i = 0; i < 6; ++i) {
-				out[i].shape[0] = geom.shape[0];
-				out[i].shape[1] = geom.shape[1];
-				out[i].shape[2] = geom.shape[2];
-				out[i].color = s->geom.color;
-				out[i].radius = s->geom.radius;
-				out[i].stroke = s->geom.stroke;
-				out[i].aa = s->geom.aa;
-				out[i].type = VA_TYPE_BOX;
-				out[i].alpha = s->geom.alpha;
-				out[i].fill = s->geom.fill ? 1.0f : 0.0f;
-				out[i].attributes = geom.user_params;
+			CF_Vertex v = { };
+			v.shape[0] = geom.shape[0];
+			v.shape[1] = geom.shape[1];
+			v.shape[2] = geom.shape[2];
+			v.color = geom.color;
+			v.radius = geom.radius;
+			v.stroke = geom.stroke;
+			v.aa = geom.aa;
+			v.type = VA_TYPE_BOX;
+			v.alpha = geom.alpha;
+			v.fill = geom.fill ? 1.0f : 0.0f;
+			v.attributes = geom.user_params;
+			for (int j = 0; j < 6; ++j) {
+				int c = s_quad_corner[j];
+				v.p = geom.box[c];
+				v.posH = geom.boxH[c];
+				out[j] = v;
 			}
 
-			out[0].p = quad[0];
-			out[1].p = quad[1];
-			out[2].p = quad[2];
-			out[3].p = quad[3];
-			out[4].p = quad[4];
-			out[5].p = quad[5];
-
-			out[0].posH = quadH[0];
-			out[1].posH = quadH[1];
-			out[2].posH = quadH[2];
-			out[3].posH = quadH[3];
-			out[4].posH = quadH[4];
-			out[5].posH = quadH[5];
-		
 			vert_count += 6;
 		}	break;
 
 		case BATCH_GEOMETRY_TYPE_SPRITE:
 		{
-			for (int i = 0; i < 6; ++i) {
-				out[i].alpha = s->geom.alpha;
-				if (s->geom.is_sprite) {
-					out[i].type = VA_TYPE_SPRITE;
-				} else if (s->geom.is_text) {
-					out[i].type = VA_TYPE_TEXT;
-				} else {
-					CF_ASSERT(false);
-				}
-				out[i].attributes = geom.user_params;
-				out[i].uv_bounds[0] = s->minx;
-				out[i].uv_bounds[1] = s->maxy; // y-flip.
-				out[i].uv_bounds[2] = s->maxx;
-				out[i].uv_bounds[3] = s->miny; // y-flip.
-			}
-
-			// Per-vertex colors: text uses per-corner text_colors, sprites use flat color.
-			// shape[0]=TL, shape[1]=TR, shape[2]=BR, shape[3]=BL
-			// Triangle 1: TL(0), BL(3), TR(1)  Triangle 2: TR(1), BL(3), BR(2)
-			if (s->geom.is_text) {
-				CF_Pixel *tc = s->geom.text_colors;
-				out[0].color = tc[0]; // TL
-				out[1].color = tc[3]; // BL
-				out[2].color = tc[1]; // TR
-				out[3].color = tc[1]; // TR
-				out[4].color = tc[3]; // BL
-				out[5].color = tc[2]; // BR
+			CF_Vertex v = { };
+			v.alpha = geom.alpha;
+			if (geom.is_sprite) {
+				v.type = VA_TYPE_SPRITE;
+			} else if (geom.is_text) {
+				v.type = VA_TYPE_TEXT;
 			} else {
-				for (int i = 0; i < 6; ++i) out[i].color = s->geom.color;
+				CF_ASSERT(false);
 			}
+			v.attributes = geom.user_params;
+			v.uv_bounds[0] = s->minx;
+			v.uv_bounds[1] = s->maxy; // y-flip.
+			v.uv_bounds[2] = s->maxx;
+			v.uv_bounds[3] = s->miny; // y-flip.
+			v.color = geom.color;
 
-			out[0].posH = geom.shape[0];
-			out[0].uv.x = s->minx;
-			out[0].uv.y = s->maxy;
-
-			out[1].posH = geom.shape[3];
-			out[1].uv.x = s->minx;
-			out[1].uv.y = s->miny;
-
-			out[2].posH = geom.shape[1];
-			out[2].uv.x = s->maxx;
-			out[2].uv.y = s->maxy;
-
-			out[3].posH = geom.shape[1];
-			out[3].uv.x = s->maxx;
-			out[3].uv.y = s->maxy;
-
-			out[4].posH = geom.shape[3];
-			out[4].uv.x = s->minx;
-			out[4].uv.y = s->miny;
-
-			out[5].posH = geom.shape[2];
-			out[5].uv.x = s->maxx;
-			out[5].uv.y = s->miny;
+			// Corner uv per output vertex; the corner order matches s_quad_corner
+			// where shape[0]=TL, shape[1]=TR, shape[2]=BR, shape[3]=BL.
+			const float us[4] = { s->minx, s->maxx, s->maxx, s->minx };
+			const float vs[4] = { s->maxy, s->maxy, s->miny, s->miny };
+			for (int j = 0; j < 6; ++j) {
+				int c = s_quad_corner[j];
+				v.posH = geom.shape[c];
+				v.uv.x = us[c];
+				v.uv.y = vs[c];
+				// Per-vertex colors: text uses per-corner text_colors, sprites flat color.
+				if (geom.is_text) v.color = geom.text_colors[c];
+				out[j] = v;
+			}
 
 			vert_count += 6;
 		}	break;
@@ -289,20 +254,23 @@ static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_
 		case BATCH_GEOMETRY_TYPE_CIRCLE: // Use the capsule path for circle rendering.
 		case BATCH_GEOMETRY_TYPE_CAPSULE:
 		{
-			for (int i = 0; i < 6; ++i) {
-				out[i].p = quad[i];
-				out[i].posH = quadH[i];
-				out[i].shape[0] = geom.shape[0];
-				out[i].shape[1] = geom.shape[1];
-				out[i].shape[2] = geom.shape[2];
-				out[i].color = s->geom.color;
-				out[i].radius = s->geom.radius;
-				out[i].stroke = s->geom.stroke;
-				out[i].aa = s->geom.aa;
-				out[i].type = VA_TYPE_SEGMENT;
-				out[i].alpha = s->geom.alpha;
-				out[i].fill = s->geom.fill ? 1.0f : 0.0f;
-				out[i].attributes = geom.user_params;
+			CF_Vertex v = { };
+			v.shape[0] = geom.shape[0];
+			v.shape[1] = geom.shape[1];
+			v.shape[2] = geom.shape[2];
+			v.color = geom.color;
+			v.radius = geom.radius;
+			v.stroke = geom.stroke;
+			v.aa = geom.aa;
+			v.type = VA_TYPE_SEGMENT;
+			v.alpha = geom.alpha;
+			v.fill = geom.fill ? 1.0f : 0.0f;
+			v.attributes = geom.user_params;
+			for (int j = 0; j < 6; ++j) {
+				int c = s_quad_corner[j];
+				v.p = geom.box[c];
+				v.posH = geom.boxH[c];
+				out[j] = v;
 			}
 
 			vert_count += 6;
@@ -310,47 +278,46 @@ static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_
 
 		case BATCH_GEOMETRY_TYPE_SEGMENT:
 		{
-			for (int i = 0; i < 3; ++i) {
-				out[i].shape[0] = geom.shape[0];
-				out[i].shape[1] = geom.shape[1];
-				out[i].shape[2] = geom.shape[2];
-				out[i].color = s->geom.color;
-				out[i].radius = s->geom.radius;
-				out[i].stroke = s->geom.stroke;
-				out[i].aa = s->geom.aa;
-				out[i].type = VA_TYPE_SEGMENT;
-				out[i].alpha = s->geom.alpha;
-				out[i].fill = s->geom.fill ? 1.0f : 0.0f;
-				out[i].attributes = geom.user_params;
+			CF_Vertex v = { };
+			v.shape[0] = geom.shape[0];
+			v.shape[1] = geom.shape[1];
+			v.shape[2] = geom.shape[2];
+			v.color = geom.color;
+			v.radius = geom.radius;
+			v.stroke = geom.stroke;
+			v.aa = geom.aa;
+			v.type = VA_TYPE_SEGMENT;
+			v.alpha = geom.alpha;
+			v.fill = geom.fill ? 1.0f : 0.0f;
+			v.attributes = geom.user_params;
+			for (int j = 0; j < 3; ++j) {
+				v.p = geom.box[j];
+				v.posH = geom.boxH[j];
+				out[j] = v;
 			}
-			
-			out[0].p = geom.box[0];
-			out[1].p = geom.box[1];
-			out[2].p = geom.box[2];
 
-			out[0].posH = geom.boxH[0];
-			out[1].posH = geom.boxH[1];
-			out[2].posH = geom.boxH[2];
-		
 			vert_count += 3;
 		}	break;
 
 		case BATCH_GEOMETRY_TYPE_POLYGON:
 		{
-			for (int i = 0; i < 6; ++i) {
-				out[i].p = quad[i];
-				out[i].posH = quadH[i];
-				out[i].n = geom.n;
-				for (int j = 0; j < geom.n; ++j) {
-					out[i].shape[j] = geom.shape[j];
-				}
-				out[i].color = s->geom.color;
-				out[i].radius = s->geom.radius;
-				out[i].aa = s->geom.aa;
-				out[i].type = VA_TYPE_POLYGON;
-				out[i].alpha = s->geom.alpha;
-				out[i].fill = 1.0f;
-				out[i].attributes = geom.user_params;
+			CF_Vertex v = { };
+			v.n = geom.n;
+			for (int j = 0; j < geom.n; ++j) {
+				v.shape[j] = geom.shape[j];
+			}
+			v.color = geom.color;
+			v.radius = geom.radius;
+			v.aa = geom.aa;
+			v.type = VA_TYPE_POLYGON;
+			v.alpha = geom.alpha;
+			v.fill = 1.0f;
+			v.attributes = geom.user_params;
+			for (int j = 0; j < 6; ++j) {
+				int c = s_quad_corner[j];
+				v.p = geom.box[c];
+				v.posH = geom.boxH[c];
+				out[j] = v;
 			}
 
 			vert_count += 6;
@@ -358,6 +325,14 @@ static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_
 		}
 	}
 
+	s_draw_report_submit(sprites, texture_w, texture_h, verts, vert_count);
+	s_draw->has_drawn_something = true;
+}
+
+// Shared tail of the report callback: user vertex callback, mesh upload, uniforms,
+// and the actual draw call.
+static void s_draw_report_submit(spritebatch_sprite_t* sprites, int texture_w, int texture_h, CF_Vertex* verts, int vert_count)
+{
 	// Allow users to optionally modulate vertices.
 	if (s_draw->vertex_fn) {
 		s_draw->vertex_fn(verts, vert_count);
@@ -407,12 +382,22 @@ static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_
 	}
 
 	cf_draw_elements();
-
-	s_draw->has_drawn_something = true;
 }
 
 //--------------------------------------------------------------------------------------------------
 // Hidden API called by CF_App.
+
+// CF submits sprites in painter's-algorithm push order and must keep that order, so
+// sorting by texture would be incorrect here. The internal merge sort in
+// cute_spritebatch is a stable no-op for in-order input (sort_bits is an ascending
+// push index, so merges always take the left run), yet it still costs O(n log n)
+// copies of the full sprite struct per flush. A no-op sorter skips that work and
+// also avoids the sprites_scratch buffer allocation entirely.
+static void s_noop_sprite_sorter(spritebatch_sprite_t* sprites, int count)
+{
+	CF_UNUSED(sprites);
+	CF_UNUSED(count);
+}
 
 static void s_init_sb(int w, int h)
 {
@@ -421,6 +406,7 @@ static void s_init_sb(int w, int h)
 	config.atlas_use_border_pixels = 1;
 	config.ticks_to_decay_texture = 100000;
 	config.batch_callback = s_draw_report;
+	config.sprites_sorter_callback = s_noop_sprite_sorter;
 	config.get_pixels_callback = cf_get_pixels;
 	config.generate_texture_callback = cf_generate_texture_handle;
 	config.delete_texture_callback = cf_destroy_texture_handle;
@@ -525,7 +511,7 @@ void cf_destroy_draw()
 void cf_draw_sprite(const CF_Sprite* sprite)
 {
 	CF_ASSERT(sprite);
-	spritebatch_sprite_t s = { };
+	CF_DrawItem s = { };
 
 	// Changes to spritebatch_internal_push_sprite() to support 9 slice sprites now requires all sprites to include
 	// local sprite UVs, having minx/miny being 0 and maxx/maxy being 1 will draw the entire full sprite texture
@@ -553,7 +539,9 @@ void cf_draw_sprite(const CF_Sprite* sprite)
 		s.miny = sub_image.miny;
 		s.maxy = sub_image.maxy;
 		s.image_id = sprite->easy_sprite_id;
-		s.texture_id = sub_image.image_id; // @JANK - Hijacked to store texture_id and avoid an extra hashtable lookup.
+		// (An old hack stored texture_id here, but spritebatch_push never carried it
+		// through -- spritebatch_internal_sprite_t has no texture_id -- so it was a
+		// dead store. The premades table lookup supplies the texture id instead.)
 		apply_border_scale = false;
 	} else {
 		s.image_id = sprite->easy_sprite_id;
@@ -788,7 +776,7 @@ void cf_draw_sprite_9_slice(const CF_Sprite* sprite)
 
 	for (int y = 0; y < 3; ++y) {
 		for (int x = 0; x < 3; ++x) {
-			spritebatch_sprite_t s = { 0 };
+			CF_DrawItem s = { 0 };
 			int index = x + y * 3;
 			s.minx = uvs0[index].x;
 			s.miny = uvs0[index].y;
@@ -986,7 +974,7 @@ void cf_draw_sprite_9_slice_tiled(const CF_Sprite* sprite)
 	v2 scale = V2(sprite->scale.x * sprite->w, sprite->scale.y * sprite->h);
 
 	auto push_quad = [&sprite, &image_id, &offset, &p, &scale](CF_V2* quad, CF_V2 uv0, CF_V2 uv1) {
-		spritebatch_sprite_t s = { };
+		CF_DrawItem s = { };
 		s.minx = uv0.x;
 		s.miny = uv0.y;
 		s.maxx = uv1.x;
@@ -1146,7 +1134,7 @@ static void s_draw_quad(CF_V2 p0, CF_V2 p1, CF_V2 p2, CF_V2 p3, float stroke, fl
 {
 	CF_M3x2 m = s_draw->mvp;
 	float aaf = s_draw->aaf;
-	spritebatch_sprite_t s = { };
+	CF_DrawItem s = { };
 	s.image_id = app->default_image_id;
 	s.w = s.h = 1;
 	s.geom.type = BATCH_GEOMETRY_TYPE_QUAD;
@@ -1232,7 +1220,7 @@ static void s_draw_circle(v2 position, float stroke, float radius, bool fill)
 {
 	CF_M3x2 m = s_draw->mvp;
 	float aaf = s_draw->aaf;
-	spritebatch_sprite_t s = { };
+	CF_DrawItem s = { };
 	s.image_id = app->default_image_id;
 	s.w = s.h = 1;
 	s.geom.type = BATCH_GEOMETRY_TYPE_CIRCLE;
@@ -1296,7 +1284,7 @@ static CF_INLINE void s_bounding_box_of_capsule(v2 a, v2 b, float radius, float 
 static void s_draw_capsule(v2 a, v2 b, float stroke, float radius, bool fill)
 {
 	CF_M3x2 m = s_draw->mvp;
-	spritebatch_sprite_t s = { };
+	CF_DrawItem s = { };
 	s.image_id = app->default_image_id;
 	s.w = s.h = 1;
 	s.geom.type = BATCH_GEOMETRY_TYPE_CAPSULE;
@@ -1374,7 +1362,7 @@ void CF_INLINE s_bounding_box_of_triangle(v2 a, v2 b, v2 c, float radius, float 
 static void s_draw_tri(v2 a, v2 b, v2 c, float stroke, float radius, bool fill)
 {
 	CF_M3x2 m = s_draw->mvp;
-	spritebatch_sprite_t s = { };
+	CF_DrawItem s = { };
 	s.image_id = app->default_image_id;
 	s.w = s.h = 1;
 
@@ -1455,7 +1443,7 @@ void cf_draw_polyline(const CF_V2* pts, int count, float thickness, bool loop)
 
 	// Each portion of the polyline will be rendered with a single triangle per spritebatch entry.
 	CF_M3x2 m = s_draw->mvp;
-	spritebatch_sprite_t s = { };
+	CF_DrawItem s = { };
 	s.image_id = app->default_image_id;
 	s.geom.color = premultiply(to_pixel(s_draw->colors.last()));
 	s.geom.alpha = 1.0f;
@@ -1624,7 +1612,7 @@ void cf_draw_polygon_fill(const CF_V2* points, int count, float chubbiness)
 {
 	CF_ASSERT(count >= 3 && count <= 8);
 	CF_M3x2 m = s_draw->mvp;
-	spritebatch_sprite_t s = { };
+	CF_DrawItem s = { };
 	s.image_id = app->default_image_id;
 	s.w = s.h = 1;
 
@@ -2815,7 +2803,7 @@ static v2 s_draw_text(const char* text, CF_V2 position, int text_length, bool re
 			continue;
 		}
 
-		spritebatch_sprite_t s = { };
+		CF_DrawItem s = { };
 		s.minx = 0; // 9-slice implementation expects these to be defaulted to 0..1.
 		s.miny = 0;
 		s.maxx = 1;
@@ -3542,10 +3530,7 @@ static void s_process_command(CF_Canvas canvas, CF_Command* cmd, CF_Command* nex
 		// Flush any accumulated geometry before the blit.
 		if (s_draw->need_flush) {
 			s_draw->need_flush = false;
-			if (!s_draw->delay_defrag) {
-				spritebatch_defrag(&s_draw->sb);
-			}
-			spritebatch_flush(&s_draw->sb);
+			s_defrag_and_flush();
 		}
 		s_blit(cmd, cmd->canvas, canvas, clear);
 		clear = false; // Only clear `canvas` once.
@@ -3553,11 +3538,25 @@ static void s_process_command(CF_Canvas canvas, CF_Command* cmd, CF_Command* nex
 		return;
 	}
 
-	// Collate all of the drawable items into the spritebatch.
+	// Collate all of the drawable items into the spritebatch. Each item's geometry
+	// stays put inside cmd->items; only a small sprite struct referencing it flows
+	// into the spritebatch.
 	if (cmd->items.count()) {
 		s_draw->need_flush = true;
-		for (int j = 0; j < cmd->items.count(); ++j) {
-			spritebatch_push(&s_draw->sb, cmd->items[j]);
+			for (int j = 0; j < cmd->items.count(); ++j) {
+			const CF_DrawItem& it = cmd->items[j];
+			spritebatch_sprite_t s;
+			s.image_id = it.image_id;
+			s.texture_id = 0;
+			s.sort_bits = 0;
+			s.geom.g = &it.geom;
+			s.w = it.w;
+			s.h = it.h;
+			s.minx = it.minx;
+			s.miny = it.miny;
+			s.maxx = it.maxx;
+			s.maxy = it.maxy;
+			spritebatch_push(&s_draw->sb, s);
 		}
 	}
 
@@ -3592,10 +3591,7 @@ static void s_process_command(CF_Canvas canvas, CF_Command* cmd, CF_Command* nex
 		// Process the collated drawable items. Might get split up into multiple draw calls depending on
 		// the atlas compiler.
 		s_draw->need_flush = false;
-		if (!s_draw->delay_defrag) {
-			spritebatch_defrag(&s_draw->sb);
-		}
-		spritebatch_flush(&s_draw->sb);
+		s_defrag_and_flush();
 	}
 }
 
@@ -3644,10 +3640,7 @@ void cf_render_layers_to(CF_Canvas canvas, int layer_lo, int layer_hi, bool clea
 	}
 	if (s_draw->need_flush) {
 		s_draw->need_flush = false;
-		if (!s_draw->delay_defrag) {
-			spritebatch_defrag(&s_draw->sb);
-		}
-		spritebatch_flush(&s_draw->sb);
+		s_defrag_and_flush();
 	}
 	s_draw->has_drawn_something = false;
 	cf_arena_reset(&s_draw->uniform_arena);

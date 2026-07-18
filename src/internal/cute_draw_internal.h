@@ -53,10 +53,33 @@ struct BatchGeometry
 	float uv_bounds[4]; // uv_min.xy, uv_max.zw. Zero for shapes.
 };
 
-#define SPRITEBATCH_SPRITE_GEOMETRY BatchGeometry
+// Sprites flowing through cute_spritebatch carry only a POINTER to their geometry
+// instead of the ~270-byte BatchGeometry itself. The geometry lives inside
+// CF_Command::items (see CF_DrawItem), which is stable from the moment items are
+// pushed into the spritebatch until the flush that consumes them: commands and
+// their item arrays are never mutated during command processing, and every
+// spritebatch_flush fully drains the input/sprite buffers before cf_render_layers_to
+// returns. This keeps the hot per-sprite structs small (~56 bytes instead of ~320),
+// which slashes the memcpy traffic in the push/process/flush pipeline.
+struct BatchGeometryRef
+{
+	const BatchGeometry* g;
+};
+
+#define SPRITEBATCH_SPRITE_GEOMETRY BatchGeometryRef
 
 #define SPRITEBATCH_ASSERT CF_ASSERT
 #include <cute/cute_spritebatch.h>
+
+// A recorded draw item: the sprite fields cute_spritebatch needs, plus the full
+// geometry payload stored inline (referenced by pointer from the spritebatch side).
+struct CF_DrawItem
+{
+	SPRITEBATCH_U64 image_id;
+	int w, h;
+	float minx, miny, maxx, maxy;
+	BatchGeometry geom;
+};
 
 struct CF_Strike
 {
@@ -87,7 +110,7 @@ struct CF_Command
 	CF_DrawFilterMode filter_mode = CF_DRAW_FILTER_SMOOTH;
 	CF_RenderState render_state;
 	CF_Shader shader;
-	Cute::Array<spritebatch_sprite_t> items;
+	Cute::Array<CF_DrawItem> items;
 	CF_DrawUniform u;
 	bool is_canvas = false;
 	CF_Canvas canvas = { 0 };
