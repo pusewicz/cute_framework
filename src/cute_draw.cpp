@@ -120,9 +120,60 @@ static CF_INLINE float s_intersect(float a, float b, float u0, float u1, float p
 	return u0 + (u1 - u0) * (da / (da - db));
 }
 
+// --- BEGIN item-2 throwaway profiling instrumentation ---
+// Phase-timer breakdown of s_draw_report's per-batch cost. Not for upstream; dropped once
+// item 2's fix lands. Prints accumulated phase totals to stderr every PROFILE_PRINT_EVERY
+// calls, then resets, so a bench run shows a stream of periodic phase-breakdown snapshots.
+#define DRAW_REPORT_PROFILE 1
+#if DRAW_REPORT_PROFILE
+#define PROFILE_PRINT_EVERY 2000
+static double s_prof_vertex_build_us = 0;
+static double s_prof_mesh_upload_us = 0;
+static double s_prof_texture_bind_us = 0;
+static double s_prof_uniforms_us = 0;
+static double s_prof_render_state_us = 0;
+static double s_prof_sampler_us = 0;
+static double s_prof_shader_apply_us = 0;
+static double s_prof_viewport_scissor_us = 0;
+static double s_prof_draw_elements_us = 0;
+static int s_prof_call_count = 0;
+
+static void s_prof_maybe_print()
+{
+	if (++s_prof_call_count < PROFILE_PRINT_EVERY) return;
+	fprintf(stderr,
+		"[s_draw_report profile] n=%d vertex_build=%.1fus mesh_upload=%.1fus texture_bind=%.1fus "
+		"uniforms=%.1fus render_state=%.1fus sampler=%.1fus shader_apply=%.1fus "
+		"viewport_scissor=%.1fus draw_elements=%.1fus\n",
+		s_prof_call_count,
+		s_prof_vertex_build_us / s_prof_call_count,
+		s_prof_mesh_upload_us / s_prof_call_count,
+		s_prof_texture_bind_us / s_prof_call_count,
+		s_prof_uniforms_us / s_prof_call_count,
+		s_prof_render_state_us / s_prof_call_count,
+		s_prof_sampler_us / s_prof_call_count,
+		s_prof_shader_apply_us / s_prof_call_count,
+		s_prof_viewport_scissor_us / s_prof_call_count,
+		s_prof_draw_elements_us / s_prof_call_count);
+	s_prof_vertex_build_us = s_prof_mesh_upload_us = s_prof_texture_bind_us = 0;
+	s_prof_uniforms_us = s_prof_render_state_us = s_prof_sampler_us = 0;
+	s_prof_shader_apply_us = s_prof_viewport_scissor_us = s_prof_draw_elements_us = 0;
+	s_prof_call_count = 0;
+}
+#define PROF_DECLARE() CF_Stopwatch s_prof_sw = cf_make_stopwatch()
+#define PROF_BEGIN() s_prof_sw = cf_make_stopwatch()
+#define PROF_END(accum) (accum) += cf_stopwatch_microseconds(s_prof_sw)
+#else
+#define PROF_DECLARE() do {} while (0)
+#define PROF_BEGIN() do {} while (0)
+#define PROF_END(accum) do {} while (0)
+#endif
+// --- END item-2 throwaway profiling instrumentation ---
+
 static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_w, int texture_h, void* udata)
 {
 	CF_UNUSED(udata);
+	PROF_DECLARE();
 	int vert_count = 0;
 	s_draw->verts.ensure_count(count * 6);
 	CF_Vertex* verts = s_draw->verts.data();
@@ -362,16 +413,19 @@ static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_
 	if (s_draw->vertex_fn) {
 		s_draw->vertex_fn(verts, vert_count);
 	}
+	PROF_END(s_prof_vertex_build_us); PROF_BEGIN();
 
 	CF_Command& cmd = s_draw->cmds[s_draw->cmd_index];
 
 	// Map the vertex buffer with sprite vertex data.
 	cf_mesh_update_vertex_data(s_draw->mesh, verts, vert_count);
 	cf_apply_mesh(s_draw->mesh);
+	PROF_END(s_prof_mesh_upload_us); PROF_BEGIN();
 
 	// Apply the atlas texture.
 	CF_Texture atlas = { sprites->texture_id };
 	cf_material_set_texture_fs(s_draw->material, "u_image", atlas);
+	PROF_END(s_prof_texture_bind_us); PROF_BEGIN();
 
 	// Apply uniforms.
 	v2 u_texture_size = cf_v2((float)texture_w, (float)texture_h);
@@ -383,16 +437,20 @@ static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_
 	// u_use_smooth_uv: 0 = apply shader smooth_uv function, 1 = use plain v_uv (hardware filtering only)
 	int use_smooth_uv = cmd.filter_mode == CF_DRAW_FILTER_SMOOTH ? 0 : 1;
 	cf_material_set_uniform_fs(s_draw->material, "u_use_smooth_uv", &use_smooth_uv, CF_UNIFORM_TYPE_INT, 1);
+	PROF_END(s_prof_uniforms_us); PROF_BEGIN();
 
 	// Apply render state.
 	cf_material_set_render_state(s_draw->material, cmd.render_state);
+	PROF_END(s_prof_render_state_us); PROF_BEGIN();
 
 	// Set sampler filter based on filter mode.
 	void* sampler_override = (cmd.filter_mode == CF_DRAW_FILTER_NEAREST) ? s_draw->sampler_nearest : s_draw->sampler_linear;
 	cf_set_sampler_override(sampler_override);
+	PROF_END(s_prof_sampler_us); PROF_BEGIN();
 
 	// Kick off a draw call.
 	cf_apply_shader(cmd.shader, s_draw->material);
+	PROF_END(s_prof_shader_apply_us); PROF_BEGIN();
 
 	// Apply viewport.
 	CF_Rect viewport = cmd.viewport;
@@ -405,8 +463,11 @@ static void s_draw_report(spritebatch_sprite_t* sprites, int count, int texture_
 	if (scissor.w >= 0 && scissor.h >= 0) {
 		cf_apply_scissor(scissor.x, scissor.y, scissor.w, scissor.h);
 	}
+	PROF_END(s_prof_viewport_scissor_us); PROF_BEGIN();
 
 	cf_draw_elements();
+	PROF_END(s_prof_draw_elements_us);
+	s_prof_maybe_print();
 
 	s_draw->has_drawn_something = true;
 }
@@ -3523,10 +3584,31 @@ void static s_blit(CF_Command* cmd, CF_Canvas src, CF_Canvas dst, bool clear_dst
 	cf_draw_elements();
 }
 
+#if DRAW_REPORT_PROFILE
+#define PROC_CMD_PRINT_EVERY 4000
+static double s_prof_push_us = 0;
+static double s_prof_compare_us = 0;
+static double s_prof_defrag_flush_us = 0;
+static int s_prof_cmd_count = 0;
+
+static void s_prof_cmd_maybe_print()
+{
+	if (++s_prof_cmd_count < PROC_CMD_PRINT_EVERY) return;
+	fprintf(stderr, "[s_process_command profile] n=%d push=%.1fus compare=%.1fus defrag_flush=%.1fus\n",
+		s_prof_cmd_count,
+		s_prof_push_us / s_prof_cmd_count,
+		s_prof_compare_us / s_prof_cmd_count,
+		s_prof_defrag_flush_us / s_prof_cmd_count);
+	s_prof_push_us = s_prof_compare_us = s_prof_defrag_flush_us = 0;
+	s_prof_cmd_count = 0;
+}
+#endif
+
 static void s_process_command(CF_Canvas canvas, CF_Command* cmd, CF_Command* next, bool& clear)
 {
 	if (cmd->processed) return;
 	cmd->processed = true;
+	PROF_DECLARE();
 
 	// Apply uniforms.
 	CF_DrawUniform* u = &cmd->u;
@@ -3560,6 +3642,7 @@ static void s_process_command(CF_Canvas canvas, CF_Command* cmd, CF_Command* nex
 			spritebatch_push(&s_draw->sb, cmd->items[j]);
 		}
 	}
+	PROF_END(s_prof_push_us); PROF_BEGIN();
 
 	// Merge with the next command if identical.
 	bool same = true;
@@ -3587,6 +3670,7 @@ static void s_process_command(CF_Canvas canvas, CF_Command* cmd, CF_Command* nex
 	} else {
 		same = false;
 	}
+	PROF_END(s_prof_compare_us); PROF_BEGIN();
 
 	if (!same && s_draw->need_flush) {
 		// Process the collated drawable items. Might get split up into multiple draw calls depending on
@@ -3597,6 +3681,8 @@ static void s_process_command(CF_Canvas canvas, CF_Command* cmd, CF_Command* nex
 		}
 		spritebatch_flush(&s_draw->sb);
 	}
+	PROF_END(s_prof_defrag_flush_us);
+	s_prof_cmd_maybe_print();
 }
 
 void cf_render_layers_to(CF_Canvas canvas, int layer_lo, int layer_hi, bool clear)
@@ -3620,10 +3706,29 @@ void cf_render_layers_to(CF_Canvas canvas, int layer_lo, int layer_hi, bool clea
 	}
 
 	// Sort the commands by layer first, then by age (to maintain relative ordering).
+#if DRAW_REPORT_PROFILE
+	{
+		CF_Stopwatch s_prof_sort_sw = cf_make_stopwatch();
+		std::stable_sort(s_draw->cmds.begin(), s_draw->cmds.end(), [](const CF_Command& a, const CF_Command& b) {
+			if (a.layer == b.layer) return a.id < b.id;
+			else return a.layer < b.layer;
+		});
+		static double s_prof_sort_total_us = 0;
+		static int s_prof_sort_calls = 0;
+		s_prof_sort_total_us += cf_stopwatch_microseconds(s_prof_sort_sw);
+		if (++s_prof_sort_calls >= 20) {
+			fprintf(stderr, "[cmds sort profile] calls=%d cmd_count=%d avg=%.1fus total_over_window=%.1fus\n",
+				s_prof_sort_calls, s_draw->cmds.count(), s_prof_sort_total_us / s_prof_sort_calls, s_prof_sort_total_us);
+			s_prof_sort_total_us = 0;
+			s_prof_sort_calls = 0;
+		}
+	}
+#else
 	std::stable_sort(s_draw->cmds.begin(), s_draw->cmds.end(), [](const CF_Command& a, const CF_Command& b) {
 		if (a.layer == b.layer) return a.id < b.id;
 		else return a.layer < b.layer;
 	});
+#endif
 
 	// Process each rendering command.
 	int count = s_draw->cmds.count();

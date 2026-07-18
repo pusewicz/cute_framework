@@ -87,6 +87,8 @@ int main(int argc, char* argv[])
 
 	double* round_medians = (double*)malloc(sizeof(double) * rounds);
 	double* samples = (double*)malloc(sizeof(double) * frames);
+	double* issue_samples = (double*)malloc(sizeof(double) * frames);
+	double* flush_samples = (double*)malloc(sizeof(double) * frames);
 
 	for (int r = 0; r < rounds; ++r) {
 		for (int f = 0; f < warmup + frames; ++f) {
@@ -98,17 +100,29 @@ int main(int argc, char* argv[])
 
 			CF_Stopwatch sw = cf_make_stopwatch();
 
+			CF_Stopwatch issue_sw = cf_make_stopwatch();
 			for (int i = 0; i < n; ++i) {
 				s_draw_one_broken_batch(w, h);
 			}
+			double issue_ms = cf_stopwatch_milliseconds(issue_sw);
+
+			CF_Stopwatch flush_sw = cf_make_stopwatch();
 			cf_app_draw_onto_screen(true);
+			double flush_ms = cf_stopwatch_milliseconds(flush_sw);
 
 			double ms = cf_stopwatch_milliseconds(sw);
-			if (f >= warmup) samples[f - warmup] = ms;
+			if (f >= warmup) {
+				samples[f - warmup] = ms;
+				issue_samples[f - warmup] = issue_ms;
+				flush_samples[f - warmup] = flush_ms;
+			}
 		}
 
 		round_medians[r] = s_median(samples, frames);
-		fprintf(stderr, "[draw_report_bench] round %d/%d median=%.4fms\n", r + 1, rounds, round_medians[r]);
+		double issue_median = s_median(issue_samples, frames);
+		double flush_median = s_median(flush_samples, frames);
+		fprintf(stderr, "[draw_report_bench] round %d/%d median=%.4fms (issue=%.4fms flush=%.4fms)\n",
+			r + 1, rounds, round_medians[r], issue_median, flush_median);
 	}
 
 	double best = round_medians[0];

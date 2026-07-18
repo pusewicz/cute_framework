@@ -494,6 +494,9 @@ void cf_app_update(CF_OnUpdateFn* on_update)
 	cf_update_time(s_on_update);
 }
 
+// Item-2 throwaway profiling instrumentation; dropped once the investigation concludes.
+#define DRAW_REPORT_PROFILE_APP 1
+
 int cf_app_draw_onto_screen(bool clear)
 {
 	if (app->sync_window) {
@@ -538,7 +541,14 @@ int cf_app_draw_onto_screen(bool clear)
 	}
 
 	// Render any remaining geometry in the draw API.
+#if DRAW_REPORT_PROFILE_APP
+	CF_Stopwatch s_prof_render_to_sw = cf_make_stopwatch();
+#endif
 	cf_render_to(app->offscreen_canvas, clear);
+#if DRAW_REPORT_PROFILE_APP
+	double s_prof_render_to_ms = cf_stopwatch_milliseconds(s_prof_render_to_sw);
+	CF_Stopwatch s_prof_blit_sw = cf_make_stopwatch();
+#endif
 
 	// Draw the app canvas
 	if (app->gfx_backend_type == CF_BACKEND_TYPE_GLES3) {
@@ -548,6 +558,9 @@ int cf_app_draw_onto_screen(bool clear)
 		cf_sdlgpu_blit_canvas(app->offscreen_canvas);
 #endif
 	}
+#if DRAW_REPORT_PROFILE_APP
+	double s_prof_blit_ms = cf_stopwatch_milliseconds(s_prof_blit_sw);
+#endif
 
 	// Dear ImGui draw.
 	if (app->using_imgui) {
@@ -565,6 +578,9 @@ int cf_app_draw_onto_screen(bool clear)
 		s_draw->delay_defrag = false;
 	}
 
+#if DRAW_REPORT_PROFILE_APP
+	CF_Stopwatch s_prof_endframe_sw = cf_make_stopwatch();
+#endif
 	if (app->gfx_backend_type == CF_BACKEND_TYPE_GLES3) {
 		cf_gles_end_frame();
 	} else {
@@ -594,6 +610,12 @@ int cf_app_draw_onto_screen(bool clear)
 	s_draw->draw_item_order = 0;
 	s_draw->cmds.clear();
 	s_draw->add_cmd();
+
+#if DRAW_REPORT_PROFILE_APP
+	double s_prof_endframe_ms = cf_stopwatch_milliseconds(s_prof_endframe_sw);
+	fprintf(stderr, "[cf_app_draw_onto_screen profile] render_to=%.4fms blit=%.4fms end_frame=%.4fms\n",
+		s_prof_render_to_ms, s_prof_blit_ms, s_prof_endframe_ms);
+#endif
 
 	// Report the number of draw calls.
 	int draw_call_count = app->draw_call_count;
