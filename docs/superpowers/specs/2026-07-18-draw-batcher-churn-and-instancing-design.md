@@ -182,6 +182,18 @@ kinds against the `spritebatch-perf` baseline.
 
 ## Item 4: frustum/viewport culling
 
+> **Status note (added 2026-07-18, after Randy Gaul's fuller plan was relayed):** Randy's
+> proposed tile-binned SDF renderer (per-tile shape lists feeding the SDF fragment shader,
+> replacing the CPU quad-wrap path — see
+> `docs/reports/tile-based-renderer-and-static-meshes-investigation.md` §7) would subsume
+> this item entirely: its AABB-vs-tile assignment step *is* the cull, since a shape
+> overlapping no visible tile never gets binned. Item 4 as scoped below remains worth doing
+> only as a near-term, low-risk win on the current architecture; if the tile renderer is
+> committed to as the next major direction, skip item 4 rather than building throwaway
+> culling. The same investigation also found the render-pass-churn root cause
+> (`docs/reports/gpu-submission-render-pass-churn-investigation.md`) whose staged-upload /
+> capture-replay fix now outranks items 2 and 3 in expected impact (~10x measured ceiling).
+
 **Scope.** All primitive types funnel through the same choke point before entering a
 batch: the `DRAW_PUSH_ITEM(s)` macro (`src/internal/cute_draw_internal.h:99-100`:
 `#define DRAW_PUSH_ITEM(s) s_draw->cmds.last().items.add(s)`), called from every

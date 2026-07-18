@@ -13,9 +13,16 @@ and [`approach-b-ssbo-vertex-pulling-feasibility.md`](./approach-b-ssbo-vertex-p
 of `RandyGaul/cute_framework` issues (titles: "tile based renderer", "static mesh", "tile",
 "batch") and PRs turned up nothing matching, and the repo has GitHub Discussions disabled.
 I'm treating it as context relayed directly by the user (presumably from a private
-conversation) rather than something I can cite a source for. Everything below is my own
-analysis of the technical claim against the actual code, not a summary of Randy's reasoning
-— I don't have his reasoning to summarize.
+conversation) rather than something I can cite a source for.
+
+**Update (same day):** the user later relayed Randy's fuller reasoning, which resolves the
+interpretation ambiguity this report originally had to hedge around. §7 (added in this
+revision) analyzes the fuller plan against this session's findings; §1's "most plausible
+reading" and the §4 "narrower reading" should be read knowing that **Randy means the §4
+reading** — per-tile binning of SDF primitives feeding the fragment shader, replacing the
+CPU quad-wrap functions — plus a capture/replay static-mesh API, with a known SSBO/web
+caveat. The original analysis below is kept as-is (it stands on its own evidence); §7
+reconciles it with Randy's actual plan.
 
 ---
 
@@ -233,6 +240,78 @@ per-primitive batcher optimizations under discussion.
 
 ---
 
+## 7. Update: Randy's fuller plan, reconciled with this session's findings
+
+After this report was first written, the user relayed Randy's fuller reasoning. Paraphrased,
+his plan has three parts:
+
+1. **Tile-binned SDF rendering** (credited to smalltalk's idea): reimplement
+   `cute_draw.cpp` so screen tiles are rasterized and per-tile shape lists feed the
+   existing SDF fragment-shader functions per shape type — replacing the CPU-side
+   quad-wrap functions entirely. Tile assignment is an AABB-vs-tile check for most shapes;
+   long skinny shapes (lines) use Bresenham rasterization over the tile grid.
+2. **A capture/replay static-mesh API**: "capture static commands" on → issue normal
+   `cf_draw_*` calls → capture off → receive an id; thereafter render that id. Everything
+   captured is uploaded to the GPU once. Also enables instanced rendering of a captured
+   mesh. Motivation: "right now CF renders everything streamed in each render over the bus."
+3. **SDF composability as a payoff**: with per-tile shape lists evaluated together in the
+   fragment shader, SDF ops (union, subtraction, intersection, xor) and gradient-SDF
+   lighting become possible. He notes he was prototyping with SSBOs and flags that this
+   likely doesn't work on the Emscripten path.
+
+Each part now has hard session data attached:
+
+**The capture/replay static-mesh API is directly validated — with a corrected mechanism.**
+The [render-pass-churn investigation](./gpu-submission-render-pass-churn-investigation.md)
+built exactly this shape of experiment (`scissor_churn_no_reupload_bench`: geometry
+uploaded once, replayed each frame inside one open render pass) and measured **82ms →
+8.2ms (~10x)** on the pathological multi-batch case. One refinement to Randy's framing:
+"streamed over the bus" attributes the cost to bandwidth, but the instancing experiment
+(`instanced_quad_bench`, item 3) showed ~45x less data per frame bought only ~1.2x — the
+dominant cost is the **render-pass teardown + copy-pass cycle forced once per batch** by
+`s_update_buffer`'s unconditional `s_end_active_pass()`, not bytes moved. This matters for
+sequencing: a staged-upload fix for the *streaming* path (one copy-pass per frame, before
+any render pass) captures most of the win without any new public API, and the capture API
+then adds the rest (plus eliminating per-frame CPU geometry regeneration) for genuinely
+static content. The two are complementary layers, not alternatives.
+
+**The tile renderer means §4's "narrower reading," and it subsumes this report's §2/§5
+culling recommendation.** Randy's description — per-tile shape lists feeding SDF functions,
+replacing quad-wrap — is the tiled-forward/binning architecture §4 sketched. Two
+consequences this report's original text didn't draw: (a) the AABB-vs-tile assignment step
+*is* frustum culling — a shape overlapping no visible tile never gets binned, so the
+"item 4" per-draw-call cull check becomes redundant if the tile renderer lands; and (b) the
+tile renderer inherently fixes the render-pass-churn problem too, since per-batch
+quad-vertex uploads disappear — shape data becomes one compact per-frame upload of tile
+lists + shape records. It also enables what the current one-quad-per-shape architecture
+structurally cannot: SDF ops and lighting require multiple shapes evaluated in a *single*
+fragment invocation, impossible when each shape is its own alpha-blended quad.
+
+**The SSBO caveat is confirmed and worse than suspected.** Randy flags SSBOs as likely
+unusable on Emscripten; the [Approach B report](./approach-b-ssbo-vertex-pulling-feasibility.md)
+found CF has **no graphics-stage storage-buffer binding path at all today, even on
+native** — no material API, no backend bind call (`SDL_BindGPUVertexStorageBuffers`/
+`SDL_BindGPUFragmentStorageBuffers` are never called), and a resize bug that silently drops
+`GRAPHICS_STORAGE_READ` on buffer growth (`cf_sdlgpu_update_storage_buffer`,
+`src/cute_graphics_sdlgpu.cpp:2046-2065`). The GLES3/WebGL2 backend stubs storage buffers
+to no-ops returning `{0}`. So the tile renderer's shape-list buffers need that binding
+layer built for native **plus** a web fallback encoding (data textures, UBO arrays, or
+per-tile instance attributes) — or an explicit decision to drop WebGL2.
+
+**Revised sequencing, superseding §5's ordering.** The pieces now order themselves by
+risk and dependency rather than by raw ceiling:
+
+1. **Staged uploads / capture-replay static meshes** — measured ~10x ceiling on multi-batch
+   frames, no shader rewrite, no SSBO dependency, buildable now. The capture API is the
+   public face; the staged-upload restructure is the engine mechanism under it.
+2. **Graphics-stage storage-buffer binding layer + web fallback decision** — prerequisite
+   plumbing for the tile renderer; independently useful (GPU-driven work generally).
+3. **Tile-binned SDF renderer** — the biggest prize: culling for free, churn fix inherent,
+   SDF composability/lighting unlocked. Spec items 3 (instancing) and 4 (frustum culling)
+   effectively fold into it; item 2's state-caching remains a minor orthogonal cleanup.
+
+---
+
 ## Appendix A — Source anchors
 
 ```
@@ -244,6 +323,9 @@ samples/canvas_readback.c                 — related canvas sample (CPU readbac
 src/cute_draw.cpp:369-370                 — cute_draw's own internal use of CF_Mesh (s_draw->mesh)
 include/cute_graphics.h (CF_Mesh section) — public low-level mesh API, usable standalone for static geometry
 approach-b-ssbo-vertex-pulling-feasibility.md §3, §6 — compute/storage-buffer maturity vs. graphics-stage gap
+gpu-submission-render-pass-churn-investigation.md — root cause + ~10x validation behind §7's static-mesh analysis
+samples/scissor_churn_no_reupload_bench.c (branch draw-report-overhead) — capture/replay-shaped validating experiment
+samples/instanced_quad_bench.c (branch instanced-quads) — bandwidth-vs-pass-churn disambiguation (§7)
 GitHub issue #109 (RandyGaul/cute_framework, closed) — origin of the current SDF-based draw
   API ("major batch optimization possibilities"), useful context for why today's architecture
   looks the way it does
