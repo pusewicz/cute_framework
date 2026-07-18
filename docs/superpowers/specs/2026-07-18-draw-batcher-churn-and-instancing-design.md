@@ -86,13 +86,19 @@ meshes would be a bigger perf lever) surfaced a third, independent gap:
 
 ## Workstream setup
 
-- **Item 2** lands as new commits directly on the existing `spritebatch-perf` worktree/branch
-  (`../cute_framework-spritebatch-perf`), extending it. Its baseline is `spritebatch-perf`'s
-  current tip (`1d9ca877`).
+- **Item 2** gets its own new worktree, `../cute_framework-draw-report-overhead`, branch
+  `draw-report-overhead`, branched from `master` @ `bb3a0aee` — *not* stacked on
+  `spritebatch-perf`. `spritebatch-perf` (commit `b4da6836`) already refactored
+  `s_draw_report`, splitting the exact block item 2 targets (vertex_fn, mesh upload,
+  texture/uniform/render-state/sampler/shader/viewport/scissor apply, draw call) into a new
+  `s_draw_report_submit` helper. Building item 2 from `master` instead keeps its diff
+  independent of that refactor and its baseline the same `s_draw_report` shape already cited
+  in this doc (`src/cute_draw.cpp:123-412`). The two branches will very likely conflict in
+  this region if both land — that's a rebase to do at merge time, not a reason to couple the
+  two pieces of work now.
 - **Item 3** gets a new worktree, `../cute_framework-instanced-quads`, on a new branch
-  `instanced-quads` branched from `spritebatch-perf`'s current tip (`1d9ca877` — *before*
-  item 2's commits, so item 3's baseline is the same clean spritebatch-perf tip already
-  used for the item-1 numbers, keeping the two comparisons independent of each other).
+  `instanced-quads` branched from `spritebatch-perf`'s current tip (`1d9ca877`), keeping its
+  baseline the same clean spritebatch-perf tip already used for the item-1 numbers.
   `batcher-refactor` is referenced for direction (its Phase 1 commit message and its
   already-landed P3/P5/P7 fixes) but not merged in — its diff also removes samples/tests
   unrelated to this work.
@@ -106,8 +112,15 @@ meshes would be a bigger perf lever) surfaced a third, independent gap:
 
 ## Item 2: `s_draw_report` per-batch overhead
 
+**Tooling.** `samples/draw_bench.c` (the `churn` kind) and `samples/draw_soa_microbench.c`
+(the phase-timer style this section reuses) only exist on `spritebatch-perf`, not `master`.
+Both are self-contained samples built purely against public `cf_draw_*`/`cf_render_to` API —
+neither depends on `spritebatch-perf`'s internal engine changes — so cherry-pick commits
+`ba4be2b2` (draw_bench) and `1d9ca877` (draw_soa_microbench) into the item-2 worktree before
+starting. This brings in bench tooling only, not any of the spritebatch optimization commits.
+
 **Instrumentation.** Add `CF_Stopwatch`-based phase timers around each sub-call inside
-`s_draw_report`, matching the phase-timer style already used by the `draw_soa_microbench`
+`s_draw_report`, matching the phase-timer style in the cherry-picked `draw_soa_microbench`
 sample (split submit/batch/present timings). This is throwaway diagnostic instrumentation —
 it doesn't need to be production-quality and can be dropped or left behind a debug flag
 once item 2 concludes. Run `draw_bench churn` (capped at N=2000 by the existing bench code)
@@ -243,5 +256,7 @@ separate benchmark harness.
   edge — too tight and visible content pops in/out at the boundary, too loose and some of
   the culling win is given back. This needs empirical tuning against the visual-correctness
   check described in §Item 4, not just the benchmark numbers.
-- Items 2, 3, and 4 are independent by construction (separate worktrees off the same base),
-  so a slip in one doesn't block delivering results for the others.
+- Items 2, 3, and 4 are independent by construction (separate worktrees — item 2 off
+  `master`, items 3/4 off `spritebatch-perf`'s tip), so a slip in one doesn't block
+  delivering results for the others, at the cost of a likely rebase for item 2 wherever it
+  and `spritebatch-perf` eventually meet (see §Workstream setup).
