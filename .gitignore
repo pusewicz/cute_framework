@@ -3,6 +3,7 @@ docs/*/*.md
 !docs/samples/*.md
 docs/api_reference.md
 !docs/topics/*.md
+!docs/reports/*.md
 /docs/samples/play/
 site/
 .cache
