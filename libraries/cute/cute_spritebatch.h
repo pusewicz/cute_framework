@@ -448,6 +448,29 @@ typedef struct spritebatch_internal_premade_sprite_t
 	SPRITEBATCH_U64 texture_id;
 } spritebatch_internal_premade_sprite_t;
 
+#ifndef SPRITEBATCH_DISABLE_IMAGE_CACHE
+// Small direct-mapped cache of image_id -> resolved texture/uv info, used to skip
+// the premade/atlas/lonely hash lookups for images repeated within one input-
+// processing run (very common: text glyphs, tilemaps, particles). Entries are
+// invalidated wholesale by bumping a generation counter at the start of each run,
+// so the cache never observes atlas rebuilds or decay (those happen outside the
+// runs). Size must be a power of two.
+#ifndef SPRITEBATCH_IMAGE_CACHE_SIZE
+	#define SPRITEBATCH_IMAGE_CACHE_SIZE 64
+#endif
+
+typedef struct spritebatch_internal_image_memo_t
+{
+	SPRITEBATCH_U64 gen;
+	SPRITEBATCH_U64 image_id;
+	SPRITEBATCH_U64 texture_id;
+	int state; // one of the SPRITEBATCH_MEMO_* states
+	int w, h;
+	float minx, miny; // atlas sub-image uv origin
+	float dx, dy;     // atlas sub-image uv extents
+} spritebatch_internal_image_memo_t;
+#endif // SPRITEBATCH_DISABLE_IMAGE_CACHE
+
 struct spritebatch_t
 {
 	int input_count;
@@ -489,6 +512,11 @@ struct spritebatch_t
 	sprites_sorter_fn* sprites_sorter_callback;
 	void* mem_ctx;
 	void* udata;
+
+#ifndef SPRITEBATCH_DISABLE_IMAGE_CACHE
+	SPRITEBATCH_U64 image_memo_gen;
+	spritebatch_internal_image_memo_t image_memos[SPRITEBATCH_IMAGE_CACHE_SIZE];
+#endif
 };
 
 #ifndef _CRT_SECURE_NO_WARNINGS
@@ -872,6 +900,11 @@ int spritebatch_init(spritebatch_t* sb, spritebatch_config_t* config, void* udat
 
 	sb->atlases = 0;
 
+#ifndef SPRITEBATCH_DISABLE_IMAGE_CACHE
+	SPRITEBATCH_MEMSET(sb->image_memos, 0, sizeof(sb->image_memos));
+	sb->image_memo_gen = 1;
+#endif
+
 	return 0;
 }
 
@@ -1217,6 +1250,13 @@ spritebatch_internal_premade_sprite_t* spritebatch_internal_premade_sprite(sprit
 	return tex;
 }
 
+#ifndef SPRITEBATCH_DISABLE_IMAGE_CACHE
+#define SPRITEBATCH_MEMO_PREMADE 1
+#define SPRITEBATCH_MEMO_ATLAS   2
+#define SPRITEBATCH_MEMO_LONELY  3
+#define SPRITEBATCH_MEMO_SKIPPED 4
+#endif
+
 int spritebatch_internal_push_sprite(spritebatch_t* sb, spritebatch_internal_sprite_t* s, int skip_missing_textures)
 {
 	int skipped_tex = 0;
@@ -1236,6 +1276,48 @@ int spritebatch_internal_push_sprite(spritebatch_t* sb, spritebatch_internal_spr
 	sprite.udata = s->udata;
 #endif
 
+	int memo_hit = 0;
+#ifndef SPRITEBATCH_DISABLE_IMAGE_CACHE
+	// Fast path: this image was already resolved earlier in this run. Skips the
+	// premade/atlas/lonely hash lookups. Behavior matches the slow path below;
+	// per-image side effects (timestamp reset, texture creation, lonely-buffer
+	// insertion) already happened when the memo entry was populated.
+	spritebatch_internal_image_memo_t* memo = sb->image_memos + (spritebatch_map_hash(s->image_id) & (SPRITEBATCH_IMAGE_CACHE_SIZE - 1));
+	if (memo->gen == sb->image_memo_gen && memo->image_id == s->image_id)
+	{
+		memo_hit = 1;
+		switch (memo->state)
+		{
+		case SPRITEBATCH_MEMO_PREMADE:
+			sprite.texture_id = memo->texture_id;
+			break;
+		case SPRITEBATCH_MEMO_ATLAS:
+			sprite.texture_id = memo->texture_id;
+			sprite.w = memo->w;
+			sprite.h = memo->h;
+			sprite.minx = memo->dx * sprite.minx + memo->minx;
+			sprite.miny = memo->dy * sprite.miny + memo->miny;
+			sprite.maxx = memo->dx * sprite.maxx + memo->minx;
+			sprite.maxy = memo->dy * sprite.maxy + memo->miny;
+			break;
+		case SPRITEBATCH_MEMO_LONELY:
+			sprite.texture_id = memo->texture_id;
+			if (SPRITEBATCH_LONELY_FLIP_Y_AXIS_FOR_UV)
+			{
+				float tmp = sprite.miny;
+				sprite.miny = sprite.maxy;
+				sprite.maxy = tmp;
+			}
+			break;
+		default: // SPRITEBATCH_MEMO_SKIPPED
+			return 1;
+		}
+	}
+#endif
+
+	if (!memo_hit)
+	{
+
 	spritebatch_internal_premade_sprite_t* premade = spritebatch_internal_premade_sprite(sb, s->image_id, &sprite);
 
 	if(!premade)
@@ -1253,7 +1335,7 @@ int spritebatch_internal_push_sprite(spritebatch_t* sb, spritebatch_internal_spr
 			sprite.h = tex->h;
 
 			// Previously the uvs were overwritten here directly with the sprite batch texture UVs
-			// now it expects the user code to send in local texture UVs. 
+			// now it expects the user code to send in local texture UVs.
 			// Default sprites should pass in minx and miny as 0 and maxx and maxy as 1 to draw the full
 			// texture, values above will creep into other textures of the atlas, between 0-1 will draw a portion
 			// and below 0 will again creep into other parts of the atlas.
@@ -1264,12 +1346,49 @@ int spritebatch_internal_push_sprite(spritebatch_t* sb, spritebatch_internal_spr
 			sprite.miny = dy * sprite.miny + tex->miny;
 			sprite.maxx = dx * sprite.maxx + tex->minx;
 			sprite.maxy = dy * sprite.maxy + tex->miny;
+
+#ifndef SPRITEBATCH_DISABLE_IMAGE_CACHE
+			memo->gen = sb->image_memo_gen;
+			memo->image_id = s->image_id;
+			memo->state = SPRITEBATCH_MEMO_ATLAS;
+			memo->texture_id = atlas->texture_id;
+			memo->w = tex->w;
+			memo->h = tex->h;
+			memo->minx = tex->minx;
+			memo->miny = tex->miny;
+			memo->dx = dx;
+			memo->dy = dy;
+#endif
 		}
-		else skipped_tex = spritebatch_internal_lonely_sprite(sb, s->image_id, s->w, s->h, &sprite, skip_missing_textures);
+		else
+		{
+			skipped_tex = spritebatch_internal_lonely_sprite(sb, s->image_id, s->w, s->h, &sprite, skip_missing_textures);
+#ifndef SPRITEBATCH_DISABLE_IMAGE_CACHE
+			memo->gen = sb->image_memo_gen;
+			memo->image_id = s->image_id;
+			if (skipped_tex)
+			{
+				memo->state = SPRITEBATCH_MEMO_SKIPPED;
+			}
+			else
+			{
+				memo->state = SPRITEBATCH_MEMO_LONELY;
+				memo->texture_id = sprite.texture_id;
+			}
+#endif
+		}
 	}
 	else
 	{
 		sprite.texture_id = premade->texture_id;
+#ifndef SPRITEBATCH_DISABLE_IMAGE_CACHE
+		memo->gen = sb->image_memo_gen;
+		memo->image_id = s->image_id;
+		memo->state = SPRITEBATCH_MEMO_PREMADE;
+		memo->texture_id = premade->texture_id;
+#endif
+	}
+
 	}
 
 	if (!skipped_tex)
@@ -1301,6 +1420,11 @@ int spritebatch_internal_push_sprite(spritebatch_t* sb, spritebatch_internal_spr
 
 void spritebatch_internal_process_input(spritebatch_t* sb, int skip_missing_textures)
 {
+#ifndef SPRITEBATCH_DISABLE_IMAGE_CACHE
+	// Invalidate the image memo cache; resolved info must not outlive one run
+	// since atlases can be rebuilt or decayed between runs.
+	++sb->image_memo_gen;
+#endif
 	int skipped_index = 0;
 	for (int i = 0; i < sb->input_count; ++i)
 	{
