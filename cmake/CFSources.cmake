@@ -1,0 +1,123 @@
+# Source and header manifests for the cute target. Kept explicit (no
+# globbing) so adding a file requires touching this list -- CMake can't
+# otherwise notice a new source until you reconfigure.
+
+set(CF_SRCS
+	src/cute_app.cpp
+	src/cute_binding.cpp
+	src/cute_ckit.cpp
+	src/cute_audio.cpp
+	src/cute_clipboard.cpp
+	src/cute_multithreading.cpp
+	src/cute_file_system.cpp
+	src/cute_input.cpp
+	src/cute_time.cpp
+	src/cute_version.cpp
+	src/cute_json.cpp
+	src/cute_base64.cpp
+	src/cute_math.cpp
+	src/cute_draw.cpp
+	src/cute_image.cpp
+	src/cute_graphics.cpp
+	src/cute_graphics_sdlgpu.cpp
+	src/cute_graphics_gles.cpp
+	src/cute_graphics_glad.cpp
+	src/cute_aseprite_cache.cpp
+	src/cute_custom_sprite.cpp
+	src/cute_https.cpp
+	src/cute_joypad.cpp
+	src/cute_symbol.cpp
+	src/cute_sprite.cpp
+	src/cute_coroutine.cpp
+	src/cute_networking.cpp
+	src/cute_guid.cpp
+	src/cute_alloc.cpp
+	src/cute_result.cpp
+	src/cute_noise.cpp
+	src/cute_imgui.cpp
+
+	src/internal/yyjson.c
+
+	libraries/imgui/imgui.cpp
+	libraries/imgui/imgui_demo.cpp
+	libraries/imgui/imgui_draw.cpp
+	libraries/imgui/imgui_tables.cpp
+	libraries/imgui/imgui_widgets.cpp
+	libraries/imgui/backends/imgui_impl_sdl3.cpp
+	libraries/imgui/dcimgui.cpp
+	libraries/imgui/dcimgui_internal.cpp
+	libraries/imgui/backends/imgui_impl_sdlgpu3.cpp
+	libraries/imgui/backends/imgui_impl_opengl3.cpp
+
+	libraries/glad/glad.c
+)
+
+set(CF_PUBLIC_HDRS
+	include/cute_alloc.h
+	include/cute_app.h
+	include/cute_audio.h
+	include/cute_user_config.h
+	include/cute_c_runtime.h
+	include/cute_clipboard.h
+	include/cute_multithreading.h
+	include/cute_defines.h
+	include/cute_result.h
+	include/cute_file_system.h
+	include/cute_input.h
+	include/cute_time.h
+	include/cute_version.h
+	include/cute_doubly_list.h
+	include/cute_json.h
+	include/cute_base64.h
+	include/cute_array.h
+	include/cute_map.h
+	include/cute_string.h
+	include/cute_defer.h
+	include/cute_math.h
+	include/cute_draw.h
+	include/cute_debug_printf.h
+	include/cute_image.h
+	include/cute_color.h
+	include/cute.h
+	include/cute_graphics.h
+	include/cute_rnd.h
+	include/cute_sprite.h
+	include/cute_custom_sprite.h
+	include/cute_https.h
+	include/cute_joypad.h
+	include/cute_priority_queue.h
+	include/cute_symbol.h
+	include/cute_coroutine.h
+	include/cute_networking.h
+	include/cute_guid.h
+	include/cute_routine.h
+	include/cute_noise.h
+)
+
+set(IMGUI_HDRS
+	libraries/imgui/imgui.h
+	libraries/imgui/imconfig.h
+	libraries/imgui/imgui_internal.h
+	libraries/imgui/imstb_rectpack.h
+	libraries/imgui/imstb_textedit.h
+	libraries/imgui/imstb_truetype.h
+	libraries/imgui/dcimgui.h
+	libraries/imgui/dcimgui_internal.h
+)
+
+set(CF_HDRS
+	${CF_PUBLIC_HDRS}
+	${IMGUI_HDRS}
+
+	src/internal/cute_imgui_internal.h
+	src/internal/cute_app_internal.h
+	src/internal/cute_input_internal.h
+	src/internal/cute_serialize_internal.h
+	src/internal/cute_custom_sprite_internal.h
+	src/internal/cute_draw_internal.h
+	src/internal/cute_font_internal.h
+	src/internal/cute_graphics_internal.h
+	src/internal/cute_aseprite_cache_internal.h
+	src/internal/cute_alloc_internal.h
+	src/internal/yyjson.h
+)
