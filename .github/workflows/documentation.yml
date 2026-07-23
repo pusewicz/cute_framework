@@ -54,17 +54,12 @@ jobs:
 
       - name: Configure Emscripten build
         run: |
-          emcmake cmake -S . -B build-emscripten -GNinja \
-            -DCMAKE_BUILD_TYPE=Release \
+          emcmake cmake --preset web-samples \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-            -DCMAKE_CXX_SCAN_FOR_MODULES=OFF \
-            -DCF_FRAMEWORK_BUILD_SAMPLES=ON \
-            -DCF_FRAMEWORK_BUILD_TESTS=OFF \
-            -DCF_BUILD_DOCSPARSER=OFF
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
 
       - name: Build Emscripten samples
-        run: cmake --build build-emscripten -j
+        run: cmake --build --preset web-samples -j
 
       - name: Generate sample pages
         run: |

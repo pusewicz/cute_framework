@@ -29,6 +29,8 @@ target_include_directories(tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src)
 set_target_properties(tests PROPERTIES
 	RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
 )
+add_test(NAME tests COMMAND tests)
+
 # For convenience make tests the startup project in Visual Studio.
 # Also set working directory to the target output folder.
 if (MSVC)

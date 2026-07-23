@@ -23,7 +23,14 @@ You will likely need to call `source ./emsdk_env.sh` on Linux/MacOS to setup env
 
 ## Build CF
 
-If on Windows go ahead and run the `emscripten.cmd` file. This will build libcute.a. If you're using something like Ninja the commands will be slightly different; consult the [emscripten docs](https://emscripten.org/docs/compiling/Building-Projects.html#integrating-with-a-build-system) if you need help.
+Configure with the `web` CMake preset, then build:
+
+```sh
+emcmake cmake --preset web
+cmake --build --preset web
+```
+
+This produces `libcute.a` (a static build; Emscripten doesn't support CF's shared-library option). Windows users can run the `web.cmd` file (in the repo root) to configure, then build with `cmake --build --preset web` as above.
 
 ## Build your Game
 

@@ -128,30 +128,30 @@ When renaming public API functions:
 ## Build Commands
 
 ### Building the Project
+CMake presets (`CMakePresets.json`, run `cmake --list-presets` to see all of them) are the
+standard way to configure -- they also match what CI runs.
 ```bash
-# Standard build (debug)
-cmake -B build/debug -S . -DCMAKE_BUILD_TYPE=Debug
-cmake --build build/debug
+# Standard build (debug) -- configures into build/
+cmake --preset debug
+cmake --build --preset debug
 
-# Release build
-cmake -B build/release -S . -DCMAKE_BUILD_TYPE=Release
-cmake --build build/release
+# Release build -- configures into build/release/
+cmake --preset release
+cmake --build --preset release
 
-# Web build (Emscripten)
-emcmake cmake -B build/web -S .
-cmake --build build/web
+# Web build (Emscripten) -- configures into build/web/
+emcmake cmake --preset web
+cmake --build --preset web
 
-# Build with specific options
-cmake -B build -S . \
-  -DCF_FRAMEWORK_STATIC=ON \
-  -DCF_CUTE_SHADERC=ON
+# Build with specific options (layer -D on top of any preset)
+cmake --preset debug -DCF_FRAMEWORK_STATIC=ON -DCF_CUTE_SHADERC=ON
 ```
 
 ### Running Tests
 ```bash
 # Build and run all tests
-cmake --build build/debug
-./build/debug/tests
+cmake --build --preset debug
+./build/tests
 
 # The test executable uses pico_unit framework
 # Test files are in test/ directory with pattern test_*.cpp
@@ -161,7 +161,7 @@ cmake --build build/debug
 ```bash
 # Samples are automatically built with the main project
 # Run a specific sample
-./build/debug/[sample_name]
+./build/[sample_name]
 
 # Key sample programs (50+ available, see samples/):
 # Basic: hello_triangle, basic_sprite, basic_input, basic_shapes, basic_camera
@@ -271,7 +271,7 @@ cute_framework/
 **Building Documentation**:
 ```bash
 # Generate API reference
-./build/debug/docs_parser
+./build/docsparser
 
 # Serve documentation locally
 mkdocs serve
@@ -293,7 +293,7 @@ Full documentation is available at https://randygaul.github.io/cute_framework/ap
 
 ```bash
 # Run all tests
-./build/debug/tests
+./build/tests
 
 # Tests are automatically built with the project
 # Test results are printed to console with pass/fail status

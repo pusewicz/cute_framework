@@ -175,6 +175,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 	# Cute unit tests executable (optional, defaulted to also build).
 	if (CF_FRAMEWORK_BUILD_TESTS)
+		enable_testing()
 		add_subdirectory(test)
 	endif()
 

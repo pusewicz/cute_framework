@@ -1,0 +1,98 @@
+{
+	"version": 6,
+	"cmakeMinimumRequired": { "major": 4, "minor": 2, "patch": 0 },
+	"configurePresets": [
+		{
+			"name": "base",
+			"hidden": true,
+			"generator": "Ninja"
+		},
+		{
+			"name": "debug",
+			"displayName": "Debug",
+			"description": "Debug build in build/. Matches what CI's desktop matrix configures.",
+			"inherits": "base",
+			"binaryDir": "${sourceDir}/build",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			}
+		},
+		{
+			"name": "release",
+			"displayName": "Release",
+			"inherits": "base",
+			"binaryDir": "${sourceDir}/build/release",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			}
+		},
+		{
+			"name": "web-base",
+			"hidden": true,
+			"inherits": "base",
+			"binaryDir": "${sourceDir}/build/web",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release",
+				"CMAKE_CXX_SCAN_FOR_MODULES": "OFF"
+			}
+		},
+		{
+			"name": "web",
+			"displayName": "Web (Emscripten)",
+			"description": "Configure with `emcmake cmake --preset web` -- emcmake supplies the Emscripten toolchain, so this preset doesn't hardcode one (EMSDK layout differs between the official emsdk installer and e.g. Homebrew's package).",
+			"inherits": "web-base"
+		},
+		{
+			"name": "web-samples",
+			"displayName": "Web samples (docs site)",
+			"description": "Builds the sample programs consumed by the docs site. Configure with `emcmake cmake --preset web-samples`. binaryDir is build-emscripten to match tools/generate_sample_pages.rb's hardcoded argument.",
+			"inherits": "web-base",
+			"binaryDir": "${sourceDir}/build-emscripten",
+			"cacheVariables": {
+				"CF_FRAMEWORK_BUILD_SAMPLES": "ON",
+				"CF_FRAMEWORK_BUILD_TESTS": "OFF",
+				"CF_BUILD_DOCSPARSER": "OFF"
+			}
+		},
+		{
+			"name": "ci-desktop",
+			"displayName": "CI desktop matrix",
+			"description": "Used by .github/workflows/build.yml. Assumes ccache is installed; not meant for casual local use.",
+			"inherits": "debug",
+			"cacheVariables": {
+				"CMAKE_C_COMPILER_LAUNCHER": "ccache",
+				"CMAKE_CXX_COMPILER_LAUNCHER": "ccache",
+				"CMAKE_MSVC_DEBUG_INFORMATION_FORMAT": "Embedded",
+				"CMAKE_POLICY_CMP0141": "NEW",
+				"SDL_ALSA": "OFF",
+				"SDL_CCACHE": "ON",
+				"SDL_JACK": "OFF",
+				"SDL_KMSDRM": "OFF",
+				"SDL_OPENGL": "OFF",
+				"SDL_OPENGLES": "OFF",
+				"SDL_PIPEWIRE": "OFF",
+				"SDL_PULSEAUDIO": "OFF",
+				"SDL_RENDER": "OFF",
+				"SDL_SNDIO": "OFF",
+				"SDL_WAYLAND": "OFF",
+				"SDL_X11": "ON",
+				"SDL_X11_XSCRNSAVER": "OFF",
+				"SDL_X11_XTEST": "OFF"
+			}
+		}
+	],
+	"buildPresets": [
+		{ "name": "debug", "configurePreset": "debug" },
+		{ "name": "release", "configurePreset": "release" },
+		{ "name": "web", "configurePreset": "web" },
+		{ "name": "web-samples", "configurePreset": "web-samples" },
+		{ "name": "ci-desktop", "configurePreset": "ci-desktop" }
+	],
+	"testPresets": [
+		{
+			"name": "debug",
+			"configurePreset": "debug",
+			"output": { "outputOnFailure": true }
+		}
+	]
+}

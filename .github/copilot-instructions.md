@@ -6,19 +6,20 @@
 
 ```bash
 # Debug build + tests (the normal workflow)
-cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
-cmake --build build
+cmake --preset debug
+cmake --build --preset debug
 ./build/tests
 
 # Release
-cmake -B build/release -G Ninja -DCMAKE_BUILD_TYPE=Release
-cmake --build build/release
+cmake --preset release
+cmake --build --preset release
 
 # Emscripten
-emcmake cmake -B build/web && cmake --build build/web
+emcmake cmake --preset web && cmake --build --preset web
 ```
 
-Key CMake options: `-DCF_FRAMEWORK_STATIC=ON|OFF`, `-DCF_RUNTIME_SHADER_COMPILATION=ON|OFF`, `-DCF_CUTE_SHADERC=ON|OFF`  
+Presets are defined in `CMakePresets.json`; run `cmake --list-presets` to see all of them.
+Key CMake options (layer on top of any preset, e.g. `cmake --preset debug -DCF_FRAMEWORK_STATIC=OFF`): `-DCF_FRAMEWORK_STATIC=ON|OFF`, `-DCF_CUTE_SHADERC=ON|OFF`  
 Tests use **pico_unit**. Test files: `test/test_*.cpp`. Test binary: `./build/tests`.
 
 ## Directory Layout
@@ -131,5 +132,5 @@ Comments must be succinct and compact. Audience are expert framework authors —
 
 - The build requires CMake **4.2+** (`cmake_minimum_required(VERSION 4.2)` in CMakeLists.txt). Older CMake will fail.
 - Web builds: tests binary is not built for Emscripten (no `./build/tests` step).
-- CI uses `cmake -B build -G Ninja` (no explicit `build/debug` subdir) — match this in local workflows.
+- CI configures via `cmake --preset ci-desktop`; local `cmake --preset debug` uses the same `build/` directory (no `build/debug` subdir) — match this in local workflows.
 - `include/cute_version.h` and `src/cute_version.cpp` are **generated** from `.in` templates by CMake `configure_file`; do not edit the generated files directly.
