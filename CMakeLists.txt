@@ -6,10 +6,6 @@ project(cute_framework
 	VERSION 1.1.1
 )
 
-# Must have at least C++20 and C23.
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_C_STANDARD 23)
-
 include(cmake/StandardProjectSettings.cmake)
 include(GNUInstallDirs)
 # These are needed for how we use FetchContent.
@@ -61,10 +57,10 @@ else()
 	message(FATAL_ERROR "No supported platform detected.")
 endif()
 
-# Disable annoying MSVC warnings.
+# Disable annoying MSVC warnings. Intentionally directory-scoped (not just on
+# `cute`) so it also reaches vendored deps like SDL3/PhysFS built in this tree.
 if(MSVC)
-	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
-	add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
+	add_compile_definitions(_CRT_SECURE_NO_WARNINGS _CRT_SECURE_NO_DEPRECATE)
 	add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
 	add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 	add_compile_options(/MP)
@@ -80,9 +76,6 @@ configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/src/cute_version.cpp"
 	@ONLY
 )
-
-# Common directories for compiler/linker path.
-include_directories(src libraries test)
 
 # Cute Framework shared library.
 set(CF_SRCS
@@ -218,6 +211,9 @@ else()
 	add_library(cute SHARED ${CF_SRCS} ${CF_HDRS})
 endif()
 target_compile_definitions(cute PRIVATE CF_EXPORT)
+# Must have at least C++20 and C23. Scoped to the cute target (not the whole
+# tree) so vendored deps like SDL3/PhysFS/s2n build with their own standard.
+target_compile_features(cute PUBLIC cxx_std_20 c_std_23)
 
 if(EMSCRIPTEN)
 	message(STATUS "Configuring CF for Web (Emscripten)")
@@ -261,7 +257,7 @@ if(ANDROID)
 
 	# Link Android-specific libraries.
 	# GLESv3 needed for imgui OpenGL3 backend (VAO functions).
-	set(CF_LINK_LIBS ${CF_LINK_LIBS} android log GLESv3 EGL)
+	target_link_libraries(cute PUBLIC android log GLESv3 EGL)
 endif()
 
 # PhysicsFS for virtual file system and archive support.
@@ -291,18 +287,18 @@ if(APPLE)
 	find_library(METAL Metal)
 	find_library(METALKIT MetalKit)
 	find_library(NETWORK Network)
-	set(CF_LINK_LIBS ${CF_LINK_LIBS} ${IOKIT} ${FOUNDATION} ${SECURITY} ${QUARTZCORE} ${METAL} ${METALKIT} ${NETWORK})
+	target_link_libraries(cute PUBLIC ${IOKIT} ${FOUNDATION} ${SECURITY} ${QUARTZCORE} ${METAL} ${METALKIT} ${NETWORK})
 endif()
 
 if(LINUX)
 	find_package(OpenGL REQUIRED)
-	set(CF_LINK_LIBS ${CF_LINK_LIBS} ${OPENGL_LIBRARIES})
+	target_link_libraries(cute PUBLIC ${OPENGL_LIBRARIES})
 endif()
 
 if(CF_FRAMEWORK_STATIC)
-	set(CF_LINK_LIBS ${CF_LINK_LIBS} PhysFS::PhysFS-static)
+	target_link_libraries(cute PUBLIC PhysFS::PhysFS-static)
 else ()
-	set(CF_LINK_LIBS ${CF_LINK_LIBS} PhysFS::PhysFS)
+	target_link_libraries(cute PUBLIC PhysFS::PhysFS)
 endif()
 
 # Add s2n for Linux builds.
@@ -318,12 +314,12 @@ if(LINUX)
 		EXCLUDE_FROM_ALL
 	)
 	FetchContent_MakeAvailable(s2n)
-	set(CF_LINK_LIBS ${CF_LINK_LIBS} s2n)
+	target_link_libraries(cute PUBLIC s2n)
 endif()
 
 # MinGW needs these since gcc ignores pragma links in C/C++.
 if(WINDOWS AND NOT MSVC)
-	set(CF_LINK_LIBS ${CF_LINK_LIBS} ws2_32 secur32 shlwapi)
+	target_link_libraries(cute PUBLIC ws2_32 secur32 shlwapi)
 endif()
 
 # Deprecated no-op, kept so existing user CMake scripts don't break. CF no longer
@@ -355,9 +351,9 @@ if(NOT EMSCRIPTEN) # Emscripten provides it's own SDL3.
 	)
 	FetchContent_MakeAvailable(SDL3)
 	if(CF_FRAMEWORK_STATIC)
-		set(CF_LINK_LIBS ${CF_LINK_LIBS} SDL3::SDL3-static)
+		target_link_libraries(cute PUBLIC SDL3::SDL3-static)
 	else ()
-		set(CF_LINK_LIBS ${CF_LINK_LIBS} SDL3::SDL3)
+		target_link_libraries(cute PUBLIC SDL3::SDL3)
 	endif()
 	target_include_directories(cute PUBLIC ${SDL3_INCLUDE_DIRS})
 
@@ -387,9 +383,9 @@ add_subdirectory(tools)
 
 # Some platform specific settings.
 if(MINGW)
-	set(CF_LINK_LIBS ${CF_LINK_LIBS} d3d11 crypt32)
+	target_link_libraries(cute PUBLIC d3d11 crypt32)
 elseif(WINDOWS)
-	set(CF_LINK_LIBS ${CF_LINK_LIBS} crypt32)
+	target_link_libraries(cute PUBLIC crypt32)
 elseif(LINUX)
 	target_compile_options(cute PRIVATE -msse4.1)
 elseif(APPLE)
@@ -408,10 +404,6 @@ elseif(APPLE)
 		endif()
 	endif()
 endif()
-
-
-# Link up all dependencies to Cute.
-target_link_libraries(cute PUBLIC ${CF_LINK_LIBS})
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	option(CF_FRAMEWORK_BUILD_TESTS "Build the cute framework unit tests." ON)
@@ -433,6 +425,7 @@ endif()
 target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
 target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libraries>)
 target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libraries/imgui>)
+target_include_directories(cute PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(cute PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tools)
 
 # Install target

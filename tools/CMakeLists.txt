@@ -32,7 +32,8 @@ if (CF_CUTE_SHADERC)
 		${CMAKE_CURRENT_SOURCE_DIR}/../src/cute_alloc.cpp
 		${CMAKE_CURRENT_SOURCE_DIR}/cute_shader_assert.cpp)
 	add_executable(cute-shaderc ${CUTE_SHADERC_SRCS})
-	target_include_directories(cute-shaderc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+	# ../src for cute_alloc.cpp's own #include <internal/cute_alloc_internal.h>.
+	target_include_directories(cute-shaderc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include ${CMAKE_CURRENT_SOURCE_DIR}/../libraries ${CMAKE_CURRENT_SOURCE_DIR}/../src)
 	set_target_properties(cute-shaderc PROPERTIES FOLDER "tools")
 	install(TARGETS cute-shaderc
 	BUNDLE DESTINATION .

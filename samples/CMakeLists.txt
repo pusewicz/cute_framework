@@ -76,6 +76,7 @@ add_sample(ime ime.c)
 add_sample(pivot pivot.cpp)
 add_sample(fluid_sim fluid_sim.cpp)
 add_sample(font_debug font_debug.cpp)
+target_include_directories(font_debug PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src) # internal/cute_font_internal.h.
 add_sample(hidpi hidpi.c)
 # Disabled on Windows -- MSVC crashes for internal reasons when compiling these.
 if(NOT WIN32)
