@@ -1,6 +1,11 @@
 # Source and header manifests for the cute target. Kept explicit (no
 # globbing) so adding a file requires touching this list -- CMake can't
 # otherwise notice a new source until you reconfigure.
+#
+# cute_version.h/.cpp are deliberately absent: they're generated into the
+# build tree (see CMakeLists.txt) and added via target_sources()/
+# target_include_directories() instead, since they don't exist at this
+# path in the source tree.
 
 set(CF_SRCS
 	src/cute_app.cpp
@@ -12,7 +17,6 @@ set(CF_SRCS
 	src/cute_file_system.cpp
 	src/cute_input.cpp
 	src/cute_time.cpp
-	src/cute_version.cpp
 	src/cute_json.cpp
 	src/cute_base64.cpp
 	src/cute_math.cpp
@@ -65,7 +69,6 @@ set(CF_PUBLIC_HDRS
 	include/cute_file_system.h
 	include/cute_input.h
 	include/cute_time.h
-	include/cute_version.h
 	include/cute_doubly_list.h
 	include/cute_json.h
 	include/cute_base64.h

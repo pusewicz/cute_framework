@@ -1,0 +1,10 @@
+@PACKAGE_INIT@
+
+# cute::cute doesn't carry its FetchContent'd dependencies (PhysFS, SDL3, and
+# on Linux s2n) in its installed link interface -- they're in-tree deps of
+# this build, not independently find_package-able. A consumer linking
+# cute::cute needs to supply those itself. See CMakeLists.txt's install()
+# block for why.
+include("${CMAKE_CURRENT_LIST_DIR}/cuteTargets.cmake")
+
+check_required_components(cute)

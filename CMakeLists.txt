@@ -36,14 +36,18 @@ if(MSVC)
 	add_compile_options(/MP)
 endif()
 
+# Generated into the build tree (not the source tree) so a clean checkout
+# never gets these as stray untracked files; see the target_sources()/
+# target_include_directories() calls below add_library(cute ...) for how
+# they're wired into the target.
 configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/include/cute_version.h.in"
-	"${CMAKE_CURRENT_SOURCE_DIR}/include/cute_version.h"
+	"${CMAKE_CURRENT_BINARY_DIR}/generated/cute_version.h"
 	@ONLY
 )
 configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/src/cute_version.cpp.in"
-	"${CMAKE_CURRENT_SOURCE_DIR}/src/cute_version.cpp"
+	"${CMAKE_CURRENT_BINARY_DIR}/generated/cute_version.cpp"
 	@ONLY
 )
 
@@ -66,6 +70,10 @@ target_compile_definitions(cute PRIVATE CF_EXPORT)
 # Must have at least C++20 and C23. Scoped to the cute target (not the whole
 # tree) so vendored deps like SDL3/PhysFS/s2n build with their own standard.
 target_compile_features(cute PUBLIC cxx_std_20 c_std_23)
+
+# Generated cute_version.h/.cpp (see configure_file() above).
+target_sources(cute PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated/cute_version.cpp")
+target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/generated>)
 
 if(EMSCRIPTEN)
 	message(STATUS "Configuring CF for Web (Emscripten)")
@@ -186,17 +194,69 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 endif()
 
 # Propogate public headers to other cmake scripts including this subdirectory.
-target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
-target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libraries>)
-target_include_directories(cute PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libraries/imgui>)
+# Each pair mirrors the same relative layout on both sides of BUILD_INTERFACE/
+# INSTALL_INTERFACE, e.g. `#include "cute/ckit.h"` resolves against
+# libraries/cute/ckit.h in the build tree and <prefix>/include/cute-libraries/
+# cute/ckit.h once installed (see the install(DIRECTORY libraries/ ...) below).
+target_include_directories(cute PUBLIC
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
+target_include_directories(cute PUBLIC
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libraries>
+	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/cute-libraries>
+)
+target_include_directories(cute PUBLIC
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libraries/imgui>
+	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/cute-libraries/imgui>
+)
 target_include_directories(cute PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(cute PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tools)
 
-# Install target
+# Install target. cute is exported so downstream projects can
+# find_package(cute) and link cute::cute -- see cmake/cuteConfig.cmake.in.
+# PhysFS/SDL3/s2n are linked via $<BUILD_INTERFACE:...> in
+# cmake/CFDependencies.cmake precisely so they're excluded from this export:
+# they're in-tree FetchContent deps, not independently find_package-able, so
+# an installed cute::cute doesn't try (and fail) to re-resolve them --
+# consumers of the installed package must supply their own SDL3/PhysFS, same
+# as CF's own recommended project-template workflow already assumes.
+include(CMakePackageConfigHelpers)
+
 install(TARGETS cute
+	EXPORT cuteTargets
 	BUNDLE DESTINATION .
 	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 	FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+# Installed wholesale rather than via the curated CF_PUBLIC_HDRS list: some
+# genuinely-public headers (e.g. cute_shader_bytecode.h, transitively
+# required by cute_graphics.h) aren't in that list, so a find_package(cute)
+# consumer failed to compile against a curated install -- verified by
+# actually building a throwaway consumer against the installed package.
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/generated/cute_version.h" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY libraries/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/cute-libraries)
+
+install(EXPORT cuteTargets
+	FILE cuteTargets.cmake
+	NAMESPACE cute::
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cute
+)
+configure_package_config_file(
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/cuteConfig.cmake.in"
+	"${CMAKE_CURRENT_BINARY_DIR}/cuteConfig.cmake"
+	INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cute
+)
+write_basic_package_version_file(
+	"${CMAKE_CURRENT_BINARY_DIR}/cuteConfigVersion.cmake"
+	VERSION ${PROJECT_VERSION}
+	COMPATIBILITY SameMajorVersion
+)
+install(FILES
+	"${CMAKE_CURRENT_BINARY_DIR}/cuteConfig.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/cuteConfigVersion.cmake"
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cute
 )

@@ -2,6 +2,14 @@
 # (Linux only), and SDL3 (everywhere except Emscripten, which provides its
 # own port). Each block owns its cache-variable setup, fetch, and link step
 # together so the dependency is self-contained and reorderable.
+#
+# Their targets are linked via $<BUILD_INTERFACE:...> rather than plain
+# target_link_libraries(), since they're ordinary (non-imported) targets
+# created by this build's own FetchContent, not part of cute's install
+# export set. Without the wrapper, `install(EXPORT cuteTargets ...)` in the
+# root CMakeLists.txt would fail at generate time ("target ... which
+# requires target ... that is not in any export set"). See cuteConfig.cmake.in
+# for what this means for installed-package consumers.
 
 # PhysicsFS for virtual file system and archive support.
 if(CF_FRAMEWORK_STATIC)
@@ -22,9 +30,9 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(physfs)
 if(CF_FRAMEWORK_STATIC)
-	target_link_libraries(cute PUBLIC PhysFS::PhysFS-static)
+	target_link_libraries(cute PUBLIC $<BUILD_INTERFACE:PhysFS::PhysFS-static>)
 else()
-	target_link_libraries(cute PUBLIC PhysFS::PhysFS)
+	target_link_libraries(cute PUBLIC $<BUILD_INTERFACE:PhysFS::PhysFS>)
 endif()
 
 # Add s2n for Linux builds.
@@ -40,7 +48,7 @@ if(LINUX)
 		EXCLUDE_FROM_ALL
 	)
 	FetchContent_MakeAvailable(s2n)
-	target_link_libraries(cute PUBLIC s2n)
+	target_link_libraries(cute PUBLIC $<BUILD_INTERFACE:s2n>)
 endif()
 
 if(NOT EMSCRIPTEN) # Emscripten provides it's own SDL3.
@@ -66,9 +74,9 @@ if(NOT EMSCRIPTEN) # Emscripten provides it's own SDL3.
 	)
 	FetchContent_MakeAvailable(SDL3)
 	if(CF_FRAMEWORK_STATIC)
-		target_link_libraries(cute PUBLIC SDL3::SDL3-static)
+		target_link_libraries(cute PUBLIC $<BUILD_INTERFACE:SDL3::SDL3-static>)
 	else ()
-		target_link_libraries(cute PUBLIC SDL3::SDL3)
+		target_link_libraries(cute PUBLIC $<BUILD_INTERFACE:SDL3::SDL3>)
 	endif()
 	target_include_directories(cute PUBLIC ${SDL3_INCLUDE_DIRS})
 
