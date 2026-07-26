@@ -46,6 +46,8 @@ TEST_SUITE(test_shader_directory);
 TEST_SUITE(test_shader_reload);
 TEST_SUITE(test_canvas_clear);
 TEST_SUITE(test_graphics_3d);
+TEST_SUITE(test_graphics_3d);
+TEST_SUITE(test_canvas_clear);
 TEST_SUITE(test_math);
 TEST_SUITE(test_math3d);
 extern "C" {
@@ -98,6 +100,8 @@ int main(int argc, char* argv[])
 	RUN_TRACED(test_shader_reload);
 	RUN_TRACED(test_canvas_clear);
 	RUN_TRACED(test_graphics_3d);
+	RUN_TRACED(test_graphics_3d);
+	RUN_TRACED(test_canvas_clear);
 	RUN_TRACED(test_math);
 	RUN_TRACED(test_math_c);
 	RUN_TRACED(test_math3d);
