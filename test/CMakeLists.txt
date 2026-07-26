@@ -19,6 +19,7 @@ set(CF_TEST_SRCS
 	test_draw_tiled.cpp
 	test_shader_directory.cpp
 	test_shader_reload.cpp
+	test_canvas_clear.cpp
 	test_math.cpp
 	test_math.c
 	test_math3d.cpp
