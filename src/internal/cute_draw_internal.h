@@ -344,6 +344,12 @@ struct CF_Draw
 	Cute::Array<CF_M3x2> cam_stack = { cf_make_identity() };
 	Cute::Array<CF_M3x2> projection_stack;
 	float aaf = 0;
+	// Pixels per logical unit of the CURRENT render target, per axis: canvas/window ratio
+	// when it is the default app canvas (pixel_scale normally; arbitrary during a one-shot
+	// cf_app_set_canvas_size override), else 1.0. Set per cf_render_layers_to; consumed by
+	// cf_draw_scale_rect.
+	float vp_scale_x = 1.0f;
+	float vp_scale_y = 1.0f;
 	// A default-projection refresh that arrived while it could not be applied safely (mid
 	// draw-list recording, or inside a cf_draw_push/pop pair whose pop would clobber it).
 	// Applied by reset_cam at the frame boundary. See cf_draw_on_app_canvas_resized.
@@ -468,6 +474,14 @@ void cf_atlas_defrag_once();
 // density change / cf_app_set_canvas_size): refreshes the default 2d projection. w/h are
 // LOGICAL units -- always window points, never the HiDPI (or one-shot-override) pixel size.
 void cf_draw_on_app_canvas_resized(int w, int h);
+
+// Scales a user viewport/scissor rect (logical units) to render-target pixels. Callers pass
+// CF_Draw::vp_scale_x/y: 1.0 everywhere except the default app canvas, where the canvas
+// holds canvas/window device pixels per logical unit on each axis (pixel_scale normally; an
+// arbitrary ratio while a one-shot cf_app_set_canvas_size override is live). Edges are
+// rounded (not x/w independently) so abutting logical rects stay seamless and an in-bounds
+// rect can never scale past the canvas edge at fractional densities. CF_API for the tests.
+CF_API CF_Rect cf_draw_scale_rect(CF_Rect r, float sx, float sy);
 
 // Called by cf_render_layers_to before the canvas (and its render pass) is applied: stages
 // every in-range untextured mesh command's instance data into one shared GPU instance buffer

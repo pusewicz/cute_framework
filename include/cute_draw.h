@@ -1618,7 +1618,11 @@ CF_API float CF_CALL cf_peek_text_stroke(void);
  * @category draw
  * @brief    Pushes a `CF_Rect` for the viewport to render within.
  * @param    viewport     The viewport.
- * @remarks  Applies to 3d mesh submissions (`cf_draw3d_mesh`) as well as 2d drawing.
+ * @remarks  Applies to 3d mesh submissions (`cf_draw3d_mesh`) as well as 2d drawing. The rect is in
+ *           logical units: on the default app canvas the rect is scaled from window points onto the
+ *           canvas's pixels (by `cf_app_get_pixel_scale` on high-density/Retina displays, and across
+ *           a one-shot `cf_app_set_canvas_size` override too), while user canvases are 1:1 with
+ *           their own pixels.
  * @related  cf_draw_push_viewport cf_draw_pop_viewport cf_draw_peek_viewport cf_draw3d_mesh
  */
 CF_API void CF_CALL cf_draw_push_viewport(CF_Rect viewport);
@@ -1644,7 +1648,11 @@ CF_API CF_Rect CF_CALL cf_draw_peek_viewport(void);
  * @category draw
  * @brief    Pushes a `CF_Rect` for the scissor to render within.
  * @param    scissor      The scissor box.
- * @remarks  Applies to 3d mesh submissions (`cf_draw3d_mesh`) as well as 2d drawing.
+ * @remarks  Applies to 3d mesh submissions (`cf_draw3d_mesh`) as well as 2d drawing. The rect is in
+ *           logical units: on the default app canvas the rect is scaled from window points onto the
+ *           canvas's pixels (by `cf_app_get_pixel_scale` on high-density/Retina displays, and across
+ *           a one-shot `cf_app_set_canvas_size` override too), while user canvases are 1:1 with
+ *           their own pixels.
  * @related  cf_draw_push_scissor cf_draw_pop_scissor cf_draw_peek_scissor cf_draw3d_mesh
  */
 CF_API void CF_CALL cf_draw_push_scissor(CF_Rect scissor);

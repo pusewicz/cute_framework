@@ -19,6 +19,12 @@ Two functions report display density, and they're easy to confuse:
 
 When you need to convert between points and physical pixels — for example, sizing an offscreen canvas to match the swapchain — use `cf_app_get_pixel_scale`.
 
+## Viewports, scissors, and screen-space strokes
+
+[`cf_draw_push_viewport`](../draw/function/cf_draw_push_viewport.md) and [`cf_draw_push_scissor`](../draw/function/cf_draw_push_scissor.md) rects are in the same logical units as everything else: compute them from `cf_app_get_width()`/`cf_app_get_height()` and CF scales them onto the default canvas's pixels itself — including across a one-shot [`cf_app_set_canvas_size`](../app/function/cf_app_set_canvas_size.md) override, where they keep mapping from window points onto whatever canvas is current. Do **not** pre-multiply by `cf_app_get_pixel_scale` — that double-scales. The same applies to screen-space 3d stroke thickness ([`cf_draw3d_push_stroke_pixels`](../draw3d/function/cf_draw3d_push_stroke_pixels.md)): thickness is logical, and holds the same on-screen width at any display density.
+
+User canvases you create with [`cf_make_canvas`](../graphics/function/cf_make_canvas.md) are exactly the pixel size you asked for, so their viewport/scissor rects are 1:1 with their own pixels.
+
 ## How the default canvas resizes
 
 CF recreates the app's default canvas at `window_size * pixel_scale` physical pixels on every *canvas recreation event*: a window resize, moving to a display with a different pixel density, [`cf_app_set_size`](../app/function/cf_app_set_size.md), or [`cf_app_set_msaa`](../app/function/cf_app_set_msaa.md).
