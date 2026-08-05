@@ -936,15 +936,18 @@ CF_API void CF_CALL cf_draw3d_pop_glow(void);
 /**
  * @function cf_draw3d_push_stroke_pixels
  * @category draw3d
- * @brief    Switches stroke thickness between world units and screen pixels.
- * @param    screen_space  True to read thickness as pixels, false (the default) as world units.
+ * @brief    Switches stroke thickness between world units and screen units.
+ * @param    screen_space  True to read thickness as screen units, false (the default) as world units.
  * @remarks  World-unit strokes are geometry: they get thinner with distance like everything else,
  *           which is what a wireframe or a drawn-in-the-world annotation wants. Screen-space
  *           strokes hold a constant on-screen width at any distance -- what editor gizmos,
  *           selection outlines, and debug overlays want. Thickness passed to `cf_draw3d_line` and
  *           friends is interpreted per this stack; shape *positions* and circle/arc radii stay in
  *           world units either way, since a shape's size is geometry and only its stroke width is
- *           a screen-space choice. Local anti-aliasing and sub-pixel fading work identically in
+ *           a screen-space choice. Screen units are logical, matching the 2d layer: on the default
+ *           app canvas they are window points (scaled to physical pixels automatically on
+ *           high-density/Retina displays -- see `cf_app_get_pixel_scale`), while user canvases are
+ *           1:1 with their own pixels. Local anti-aliasing and sub-pixel fading work identically in
  *           both modes.
  * @related  cf_draw3d_pop_stroke_pixels cf_draw3d_peek_stroke_pixels cf_draw3d_line cf_draw3d_circle
  */

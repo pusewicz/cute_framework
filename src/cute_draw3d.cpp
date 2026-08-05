@@ -905,11 +905,12 @@ static const char* s_stroke_vs =
 "        float cx = in_corner.x + 0.5;\n"
 "        float ppw = max(mix(length(pxa), length(pxb), cx), 0.0001);\n"
 "        float aa = 3.0 / ppw;\n"
-"        // Screen-space mode: half-thickness arrives in pixels, so divide by this end's\n"
-"        // pixels-per-world-unit to get the world width that covers it. Perspective then\n"
-"        // cancels out and the stroke holds a constant on-screen width at any distance.\n"
-"        float ht0 = in_nmat2.w > 0.5 ? in_model0.w / max(length(pxa), 0.0001) : in_model0.w;\n"
-"        float ht1 = in_nmat2.w > 0.5 ? in_model1.w / max(length(pxb), 0.0001) : in_model1.w;\n"
+"        // Screen-space mode: half-thickness arrives in logical units. Scale to device\n"
+"        // pixels (u_shape_res.z, HiDPI) and divide by this end's pixels-per-world-unit to\n"
+"        // get the world width that covers it. Perspective then cancels out and the stroke\n"
+"        // holds a constant on-screen width at any distance and display density.\n"
+"        float ht0 = in_nmat2.w > 0.5 ? in_model0.w * u_shape_res.z / max(length(pxa), 0.0001) : in_model0.w;\n"
+"        float ht1 = in_nmat2.w > 0.5 ? in_model1.w * u_shape_res.z / max(length(pxb), 0.0001) : in_model1.w;\n"
 "        float htmax = max(ht0, ht1);\n"
 "        float ext = max(htmax, 0.5 / ppw) + aa + fx_extent;\n"
 "        float s = mix(-ext, len + ext, cx);\n"
@@ -928,9 +929,10 @@ static const char* s_stroke_vs =
 "        vec2 ppx = (ca.xy / max(ca.w, 0.0001) - cc.xy / max(cc.w, 0.0001)) * u_shape_res.xy * 0.5;\n"
 "        float ppw = max(length(ppx), 0.0001);\n"
 "        float aa = 3.0 / ppw;\n"
-"        // Screen-space mode: ring half-thickness arrives in pixels (the radius stays in\n"
-"        // world units -- a ring's size is geometry, only its stroke width is screen-space).\n"
-"        float rht = in_nmat2.w > 0.5 ? in_model1.w / ppw : in_model1.w;\n"
+"        // Screen-space mode: ring half-thickness arrives in logical units, scaled to\n"
+"        // device pixels by u_shape_res.z (the radius stays in world units -- a ring's size\n"
+"        // is geometry, only its stroke width is screen-space).\n"
+"        float rht = in_nmat2.w > 0.5 ? in_model1.w * u_shape_res.z / ppw : in_model1.w;\n"
 "        float ext = in_model0.w + max(rht, 0.5 / ppw) + aa + fx_extent;\n"
 "        vec2 l = in_corner * 2.0 * ext;\n"
 "        world = center + bx * l.x + by * l.y;\n"
@@ -2074,7 +2076,15 @@ void cf_draw3d_process(CF_Command* cmd, CF_Canvas canvas, bool clear)
 	// uniform names are ignored at bind time, so this is free for every other shader.
 	int canvas_w, canvas_h;
 	cf_current_canvas_size(&canvas_w, &canvas_h);
-	CF_V4 shape_res = cf_v4((float)canvas_w, (float)canvas_h, 0, 0);
+	// .z carries device pixels per logical unit of the render target (the canvas/window
+	// x-ratio for the default app canvas -- pixel_scale normally -- else 1.0): screen-space
+	// stroke thickness is authored in logical units and the vertex shader scales it to
+	// device pixels, keeping strokes the same on-screen size at any display density -- the
+	// 3d analog of the 2d layer's `aaf / pixel_scale` compensation. Stroke width is
+	// isotropic, so the x-axis ratio is used; a one-shot cf_app_set_canvas_size override
+	// with a different aspect than the window skews it slightly, which is acceptable for
+	// that transient state.
+	CF_V4 shape_res = cf_v4((float)canvas_w, (float)canvas_h, s_draw->vp_scale_x, 0);
 	cf_material_set_uniform_vs(material, "u_shape_res", &shape_res, CF_UNIFORM_TYPE_FLOAT4, 1);
 
 	// 3d textures sample with their own sampler settings, not the 2d filter-mode override.
