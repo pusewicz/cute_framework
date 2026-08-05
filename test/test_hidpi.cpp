@@ -434,6 +434,53 @@ TEST_CASE(test_hidpi_scissor_stays_raw_on_user_canvas)
 	return true;
 }
 
+// Screen-space 3d strokes (cf_draw3d_push_stroke_pixels) measure in the same logical units
+// as the 2d layer, so an 8-unit stroke covers 8 * pixel_scale device pixels on the app
+// canvas -- the same on-screen width at any display density. The ortho projection maps one
+// world unit to one logical unit exactly, making the rendered width directly measurable.
+TEST_CASE(test_hidpi_3d_pixel_strokes_are_logical)
+{
+	if (!test_make_app(LOGICAL_W, LOGICAL_H)) return true; // Headless CI: no display/GPU.
+	HidpiGuard guard;
+
+	cf_app_force_pixel_scale(2.0f);
+	// Latch the default projection into mvp (see test_hidpi_default_projection_is_points).
+	cf_app_update(NULL);
+	cf_app_draw_onto_screen(false);
+	cf_app_update(NULL);
+
+	int w = cf_app_get_canvas_width();
+	int h = cf_app_get_canvas_height();
+	REQUIRE(w == LOGICAL_W * 2 && h == LOGICAL_H * 2);
+	CF_Pixel* px = (CF_Pixel*)cf_alloc(w * h * (int)sizeof(CF_Pixel));
+
+	cf_draw3d_push_projection(cf_ortho(-LOGICAL_W / 2.0f, LOGICAL_W / 2.0f, -LOGICAL_H / 2.0f, LOGICAL_H / 2.0f, 0.1f, 10.0f));
+	cf_draw3d_push_view(cf_look_at(cf_v3(0, 0, 1), cf_v3(0, 0, 0), cf_v3(0, 1, 0)));
+	cf_draw3d_push_stroke_pixels(true);
+	cf_draw3d_push_color(cf_make_color_rgb_f(1.0f, 0, 0));
+	cf_draw3d_line(cf_v3(0, -50, 0), cf_v3(0, 50, 0), 8.0f); // 8 logical units thick.
+	cf_draw3d_pop_color();
+	cf_draw3d_pop_stroke_pixels();
+	cf_draw3d_pop_view();
+	cf_draw3d_pop_projection();
+	cf_app_draw_onto_screen(true);
+
+	bool ok = s_readback_canvas(cf_app_get_canvas(), w, h, px);
+	REQUIRE(ok);
+	// Count solidly-red pixels across the vertical line at the center row. 8 logical units
+	// at pixel_scale 2 is a 16-device-pixel core; the AA fringe adds a couple more. The
+	// device-pixel interpretation this guards against reads ~8 instead.
+	int count = 0;
+	for (int x = 0; x < w; ++x) {
+		if (px[(h / 2) * w + x].colors.r > 100) count++;
+	}
+	if (!(count >= 13 && count <= 24)) printf("stroke width %d device px, expected ~16 in [13, 24]\n", count);
+	REQUIRE(count >= 13 && count <= 24);
+
+	cf_free(px);
+	return true;
+}
+
 // A canvas recreation landing mid-recording must not corrupt the retained draw list:
 // recording runs in identity space (cf_draw_list_begin) and replay composes the live
 // projection on top, so a projection/mvp refresh stomped into the recording bakes the
@@ -493,5 +540,6 @@ TEST_SUITE(test_hidpi)
 	RUN_TEST_CASE(test_hidpi_scissor_is_logical_on_app_canvas);
 	RUN_TEST_CASE(test_hidpi_viewport_is_logical_on_app_canvas);
 	RUN_TEST_CASE(test_hidpi_scissor_stays_raw_on_user_canvas);
+	RUN_TEST_CASE(test_hidpi_3d_pixel_strokes_are_logical);
 	RUN_TEST_CASE(test_hidpi_draw_list_recorded_across_resize);
 }
