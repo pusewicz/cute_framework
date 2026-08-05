@@ -746,10 +746,12 @@ static void s_draw_report_tiled(const BatchGeometry* geoms, const CF_PendingUV* 
 		cf_apply_fs_storage_buffers(fs_bufs, 1);
 		CF_Rect viewport = cmd.viewport;
 		if (viewport.w >= 0 && viewport.h >= 0) {
+			viewport = cf_draw_scale_rect(viewport, s_draw->vp_scale_x, s_draw->vp_scale_y);
 			cf_apply_viewport(viewport.x, viewport.y, viewport.w, viewport.h);
 		}
 		CF_Rect scissor = cmd.scissor;
 		if (scissor.w >= 0 && scissor.h >= 0) {
+			scissor = cf_draw_scale_rect(scissor, s_draw->vp_scale_x, s_draw->vp_scale_y);
 			cf_apply_scissor(scissor.x, scissor.y, scissor.w, scissor.h);
 		}
 		cf_push_gpu_label("instanced_draw");
@@ -860,6 +862,7 @@ static void s_draw_report_tiled(const BatchGeometry* geoms, const CF_PendingUV* 
 	sy1 = sy1 > canvas_h ? canvas_h : sy1;
 	CF_Rect scissor = cmd.scissor;
 	if (scissor.w >= 0 && scissor.h >= 0) {
+		scissor = cf_draw_scale_rect(scissor, s_draw->vp_scale_x, s_draw->vp_scale_y); // The coverage box is already pixels; only the user rect scales.
 		int ix0 = cf_max(sx0, scissor.x);
 		int iy0 = cf_max(sy0, scissor.y);
 		int ix1 = cf_min(sx1, scissor.x + scissor.w);
@@ -5022,12 +5025,14 @@ void static s_blit(CF_Command* cmd, CF_Canvas src, CF_Canvas dst, bool clear_dst
 	// Apply viewport.
 	CF_Rect viewport = cmd->viewport;
 	if (viewport.w >= 0 && viewport.h >= 0) {
+		viewport = cf_draw_scale_rect(viewport, s_draw->vp_scale_x, s_draw->vp_scale_y);
 		cf_apply_viewport(viewport.x, viewport.y, viewport.w, viewport.h);
 	}
 
 	// Apply scissor.
 	CF_Rect scissor = cmd->scissor;
 	if (scissor.w >= 0 && scissor.h >= 0) {
+		scissor = cf_draw_scale_rect(scissor, s_draw->vp_scale_x, s_draw->vp_scale_y);
 		cf_apply_scissor(scissor.x, scissor.y, scissor.w, scissor.h);
 	}
 
@@ -5202,6 +5207,22 @@ static void s_process_command(CF_Canvas canvas, CF_Command* cmd, CF_Command* nex
 // with N mesh/canvas fences into N full defrags. Images first seen after this frame's defrag
 // ride the lonely buffer (own texture, own batch) until the next frame's defrag packs them:
 // one frame of extra draw calls for brand-new content, instead of N defrags every frame.
+CF_Rect cf_draw_scale_rect(CF_Rect r, float sx, float sy)
+{
+	if (sx == 1.0f && sy == 1.0f) return r;
+	// Round the EDGES, not x/w independently: two independent round-ups can push an
+	// in-bounds rect one pixel past the canvas at fractional scales (Metal rejects an
+	// out-of-bounds scissor), and abutting rects would gap/overlap by a pixel.
+	int x1 = (int)CF_ROUNDF((r.x + r.w) * sx);
+	int y1 = (int)CF_ROUNDF((r.y + r.h) * sy);
+	CF_Rect out;
+	out.x = (int)CF_ROUNDF(r.x * sx);
+	out.y = (int)CF_ROUNDF(r.y * sy);
+	out.w = x1 - out.x;
+	out.h = y1 - out.y;
+	return out;
+}
+
 void cf_draw_on_app_canvas_resized(int w, int h)
 {
 	// The default 2d projection used to be computed once at startup and never again, so any
@@ -5249,6 +5270,19 @@ void cf_render_layers_to(CF_Canvas canvas, int layer_lo, int layer_hi, bool clea
 
 	// We will render to this canvas.
 	cf_apply_canvas(canvas, clear);
+
+	// User viewport/scissor rects are in logical units. The default app canvas is the one
+	// render target whose pixel size diverges from logical units -- by pixel_scale on a
+	// HiDPI display, or by an arbitrary per-axis ratio while a one-shot
+	// cf_app_set_canvas_size override is live -- so scale by the actual canvas/window
+	// ratio, the same mapping the projection applies to geometry. User canvases are 1:1.
+	if (canvas.id == app->offscreen_canvas.id && app->w > 0 && app->h > 0) {
+		s_draw->vp_scale_x = (float)app->canvas_w / (float)app->w;
+		s_draw->vp_scale_y = (float)app->canvas_h / (float)app->h;
+	} else {
+		s_draw->vp_scale_x = 1.0f;
+		s_draw->vp_scale_y = 1.0f;
+	}
 
 	// Uniform-only commands (no geometry, not canvas blits) inherit the layer of their
 	// next draw command. This keeps set_texture/set_uniform grouped with the draw_sprite

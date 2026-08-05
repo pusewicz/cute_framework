@@ -745,15 +745,14 @@ static void handle_clay_core_commands(const Clay_RenderCommand* command)
 			cf_draw_sprite(&sprite);
 		} break;
 		case CLAY_RENDER_COMMAND_TYPE_SCISSOR_START: {
-			// Clay's boundingBox is in logical points, but cf_draw_push_scissor/
-			// cf_apply_scissor operate directly in the canvas's physical pixel
-			// space, so scale by pixel_scale to match (see docs/topics/hidpi.md).
-			float pixel_scale = cf_app_get_pixel_scale();
+			// Clay's boundingBox is in logical points, which is exactly what
+			// cf_draw_push_scissor expects -- CF scales to the canvas's physical
+			// pixels on HiDPI displays itself (see docs/topics/hidpi.md).
 			cf_draw_push_scissor((CF_Rect){
-				.x = (int)(command->boundingBox.x * pixel_scale),
-				.y = (int)(command->boundingBox.y * pixel_scale),
-				.w = (int)(command->boundingBox.width * pixel_scale),
-				.h = (int)(command->boundingBox.height * pixel_scale),
+				.x = (int)command->boundingBox.x,
+				.y = (int)command->boundingBox.y,
+				.w = (int)command->boundingBox.width,
+				.h = (int)command->boundingBox.height,
 			});
 		} break;
 		case CLAY_RENDER_COMMAND_TYPE_SCISSOR_END: {

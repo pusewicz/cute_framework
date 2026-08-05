@@ -2082,6 +2082,8 @@ void cf_draw3d_process(CF_Command* cmd, CF_Canvas canvas, bool clear)
 
 	CF_Rect viewport = cmd->viewport;
 	CF_Rect scissor = cmd->scissor;
+	if (viewport.w >= 0 && viewport.h >= 0) viewport = cf_draw_scale_rect(viewport, s_draw->vp_scale_x, s_draw->vp_scale_y);
+	if (scissor.w >= 0 && scissor.h >= 0) scissor = cf_draw_scale_rect(scissor, s_draw->vp_scale_x, s_draw->vp_scale_y);
 
 	if (!textured) {
 		int nruns = mc->runs.count();

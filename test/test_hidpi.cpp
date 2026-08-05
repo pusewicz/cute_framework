@@ -56,6 +56,36 @@ static bool s_readback_canvas(CF_Canvas canvas, int w, int h, CF_Pixel* out)
 	return true;
 }
 
+// Rect scaling must round EDGES, not x/w independently: at fractional pixel densities
+// (Wayland 1.25/1.5, iOS ~2.6) independent rounding lets an in-bounds logical rect scale
+// one pixel past the canvas edge (an API-validation failure for scissors on Metal), and
+// abutting logical rects drift apart by a pixel. Pure math -- no GPU needed.
+TEST_CASE(test_hidpi_scale_rect_rounds_edges)
+{
+	// Logical {1, 0, 319, 240} inside a 320x240 window at 1.5x (canvas 480x360): x and w
+	// both round up independently (1.5 -> 2, 478.5 -> 479, sum 481 > 480). Edge rounding
+	// keeps x + w == round(320 * 1.5) == 480.
+	CF_Rect r = cf_draw_scale_rect({ 1, 0, 319, 240 }, 1.5f, 1.5f);
+	REQUIRE(r.x + r.w <= 480);
+	REQUIRE(r.x + r.w == 480); // Right edge lands exactly on the canvas edge.
+	REQUIRE(r.y + r.h == 360);
+
+	// Abutting logical rects stay seamless after scaling: shared edge maps identically.
+	CF_Rect a = cf_draw_scale_rect({ 0, 0, 213, 240 }, 1.5f, 1.5f);
+	CF_Rect b = cf_draw_scale_rect({ 213, 0, 107, 240 }, 1.5f, 1.5f);
+	REQUIRE(a.x + a.w == b.x);
+
+	// Integer scales are exact either way.
+	CF_Rect c = cf_draw_scale_rect({ 80, 60, 160, 120 }, 2.0f, 2.0f);
+	REQUIRE(c.x == 160 && c.y == 120 && c.w == 320 && c.h == 240);
+
+	// Per-axis scales (a one-shot cf_app_set_canvas_size override with a different aspect
+	// than the window): 320x240 points onto a 300x200 canvas.
+	CF_Rect d = cf_draw_scale_rect({ 80, 60, 160, 120 }, 300.0f / 320.0f, 200.0f / 240.0f);
+	REQUIRE(d.x == 75 && d.y == 50 && d.w == 150 && d.h == 100);
+	return true;
+}
+
 // The force hook itself: forcing 2x must recreate the default canvas at 2x the logical
 // window size (the same effect as a real display-density change), and forcing 0 must
 // restore the true SDL-reported density.
@@ -254,6 +284,23 @@ TEST_CASE(test_hidpi_one_shot_canvas_keeps_points_projection)
 	REQUIRE(s_px_near(px[(h - 6) * w + (w - 6)], 0, 0, 255, 255, 3));
 	REQUIRE(s_px_near(px[(h / 2) * w + (w / 2)], 0, 0, 255, 255, 3));
 
+	// A scissor in window points maps through the same canvas/window ratio as geometry:
+	// {80, 60, 160, 120} of 320x240 lands on {75, 50, 150, 100} of the 300x200 canvas.
+	cf_app_update(NULL);
+	CF_Rect scissor = { LOGICAL_W / 4, LOGICAL_H / 4, LOGICAL_W / 2, LOGICAL_H / 2 };
+	cf_draw_push_scissor(scissor);
+	cf_draw_push_color(cf_make_color_rgb_f(1.0f, 1.0f, 0));
+	cf_draw_quad_fill(cf_make_aabb(cf_v2(-LOGICAL_W / 2.0f, -LOGICAL_H / 2.0f), cf_v2(LOGICAL_W / 2.0f, LOGICAL_H / 2.0f)), 0);
+	cf_draw_pop_color();
+	cf_draw_pop_scissor();
+	cf_app_draw_onto_screen(true);
+
+	ok = s_readback_canvas(cf_app_get_canvas(), w, h, px);
+	REQUIRE(ok);
+	REQUIRE(s_px_near(px[(h / 2) * w + (w / 2)], 255, 255, 0, 255, 3)); // Inside the region.
+	REQUIRE(s_px_near(px[25 * w + (w / 2)], 0, 0, 0, 0, 0));           // Above/below the region.
+	REQUIRE(s_px_near(px[(h / 2) * w + 37], 0, 0, 0, 0, 0));           // Left of the region.
+
 	// The next recreation event snaps the override back to window * pixel_scale.
 	cf_app_set_size(LOGICAL_W, LOGICAL_H);
 	REQUIRE(cf_app_get_canvas_width() == LOGICAL_W * 2);
@@ -263,6 +310,129 @@ TEST_CASE(test_hidpi_one_shot_canvas_keeps_points_projection)
 	return true;
 }
 
+// cf_draw_push_scissor rects are in the same logical units as everything else drawn on the
+// default app canvas, so on a 2x display they must scale to physical pixels along with the
+// canvas. A scissor computed from cf_app_get_width() would otherwise clip a quarter-area
+// region. The rect is centered so every probe is insensitive to readback row order, and the
+// tiled path (which intersects the user scissor with its own coverage box) is exercised too.
+TEST_CASE(test_hidpi_scissor_is_logical_on_app_canvas)
+{
+	if (!test_make_app(LOGICAL_W, LOGICAL_H)) return true; // Headless CI: no display/GPU.
+	HidpiGuard guard;
+	// Restores the engine's default auto tile routing even when a REQUIRE returns early --
+	// leaking forced-instanced mode would silently drop tiled-path coverage for every
+	// later test in the shared-app run.
+	struct TiledModeGuard { ~TiledModeGuard() { cf_draw_set_tiled_auto(); } } tiled_guard;
+
+	cf_app_force_pixel_scale(2.0f);
+	// Latch the default projection into mvp (see test_hidpi_default_projection_is_points).
+	cf_app_update(NULL);
+	cf_app_draw_onto_screen(false);
+
+	int w = cf_app_get_canvas_width();
+	int h = cf_app_get_canvas_height();
+	REQUIRE(w == LOGICAL_W * 2 && h == LOGICAL_H * 2);
+	CF_Pixel* px = (CF_Pixel*)cf_alloc(w * h * (int)sizeof(CF_Pixel));
+
+	for (int mode = 0; mode < 2; ++mode) {
+		if (mode == 1 && !cf_draw_tiled_available()) break; // No SSBOs on GLES.
+		cf_draw_set_tiled_enabled(mode == 1);
+		cf_app_update(NULL);
+
+		// Centered quarter of the window in points: {80, 60, 160, 120} of 320x240.
+		CF_Rect scissor = { LOGICAL_W / 4, LOGICAL_H / 4, LOGICAL_W / 2, LOGICAL_H / 2 };
+		cf_draw_push_scissor(scissor);
+		cf_draw_push_color(cf_make_color_rgb_f(1.0f, 0, 0));
+		cf_draw_quad_fill(cf_make_aabb(cf_v2(-LOGICAL_W / 2.0f, -LOGICAL_H / 2.0f), cf_v2(LOGICAL_W / 2.0f, LOGICAL_H / 2.0f)), 0);
+		cf_draw_pop_color();
+		cf_draw_pop_scissor();
+		cf_app_draw_onto_screen(true);
+
+		bool ok = s_readback_canvas(cf_app_get_canvas(), w, h, px);
+		REQUIRE(ok);
+		// Clipped region in pixels: {160, 120, 320, 240}, centered.
+		REQUIRE(s_px_near(px[(h / 2) * w + (w / 2)], 255, 0, 0, 255, 3)); // Inside.
+		REQUIRE(s_px_near(px[100 * w + (w / 2)], 0, 0, 0, 0, 0));        // Above/below the region.
+		REQUIRE(s_px_near(px[(h / 2) * w + 100], 0, 0, 0, 0, 0));        // Left of the region.
+	}
+
+	cf_free(px);
+	return true;
+}
+
+// Same contract for cf_draw_push_viewport: logical units on the app canvas. (A set viewport
+// routes commands down the instanced path, so there is no tiled variant to cover.)
+TEST_CASE(test_hidpi_viewport_is_logical_on_app_canvas)
+{
+	if (!test_make_app(LOGICAL_W, LOGICAL_H)) return true; // Headless CI: no display/GPU.
+	HidpiGuard guard;
+
+	cf_app_force_pixel_scale(2.0f);
+	// Latch the default projection into mvp (see test_hidpi_default_projection_is_points).
+	cf_app_update(NULL);
+	cf_app_draw_onto_screen(false);
+	cf_app_update(NULL);
+
+	int w = cf_app_get_canvas_width();
+	int h = cf_app_get_canvas_height();
+	REQUIRE(w == LOGICAL_W * 2 && h == LOGICAL_H * 2);
+	CF_Pixel* px = (CF_Pixel*)cf_alloc(w * h * (int)sizeof(CF_Pixel));
+
+	CF_Rect viewport = { LOGICAL_W / 4, LOGICAL_H / 4, LOGICAL_W / 2, LOGICAL_H / 2 };
+	cf_draw_push_viewport(viewport);
+	cf_draw_push_color(cf_make_color_rgb_f(1.0f, 0, 0));
+	cf_draw_quad_fill(cf_make_aabb(cf_v2(-LOGICAL_W / 2.0f, -LOGICAL_H / 2.0f), cf_v2(LOGICAL_W / 2.0f, LOGICAL_H / 2.0f)), 0);
+	cf_draw_pop_color();
+	cf_draw_pop_viewport();
+	cf_app_draw_onto_screen(true);
+
+	bool ok = s_readback_canvas(cf_app_get_canvas(), w, h, px);
+	REQUIRE(ok);
+	// The full-extent quad fills exactly the viewport: pixels {160, 120, 320, 240}, centered.
+	REQUIRE(s_px_near(px[(h / 2) * w + (w / 2)], 255, 0, 0, 255, 3)); // Inside.
+	REQUIRE(s_px_near(px[100 * w + (w / 2)], 0, 0, 0, 0, 0));        // Above/below the region.
+	REQUIRE(s_px_near(px[(h / 2) * w + 100], 0, 0, 0, 0, 0));        // Left of the region.
+
+	cf_free(px);
+	return true;
+}
+
+// User canvases are sized by the user in pixels and are not density-scaled, so their
+// viewport/scissor rects stay 1:1 no matter the display density. Guards that the app-canvas
+// scaling above does not leak into user canvases.
+TEST_CASE(test_hidpi_scissor_stays_raw_on_user_canvas)
+{
+	if (!test_make_app(LOGICAL_W, LOGICAL_H)) return true; // Headless CI: no display/GPU.
+	HidpiGuard guard;
+
+	cf_app_force_pixel_scale(2.0f);
+	cf_app_update(NULL);
+	cf_app_draw_onto_screen(false);
+	cf_app_update(NULL);
+
+	int w = 100, h = 100;
+	CF_Canvas canvas = cf_make_canvas(cf_canvas_defaults(w, h));
+	CF_Pixel* px = (CF_Pixel*)cf_alloc(w * h * (int)sizeof(CF_Pixel));
+
+	CF_Rect scissor = { 25, 25, 50, 50 }; // Centered, in this canvas's own pixels.
+	cf_draw_push_scissor(scissor);
+	cf_draw_push_color(cf_make_color_rgb_f(0, 1.0f, 0));
+	cf_draw_quad_fill(cf_make_aabb(cf_v2(-LOGICAL_W / 2.0f, -LOGICAL_H / 2.0f), cf_v2(LOGICAL_W / 2.0f, LOGICAL_H / 2.0f)), 0);
+	cf_draw_pop_color();
+	cf_draw_pop_scissor();
+	cf_render_to(canvas, true);
+	cf_app_draw_onto_screen(false);
+
+	bool ok = s_readback_canvas(canvas, w, h, px);
+	REQUIRE(ok);
+	REQUIRE(s_px_near(px[(h / 2) * w + (w / 2)], 0, 255, 0, 255, 3)); // Inside.
+	REQUIRE(s_px_near(px[10 * w + (w / 2)], 0, 0, 0, 0, 0));         // Above/below the region.
+	REQUIRE(s_px_near(px[(h / 2) * w + 10], 0, 0, 0, 0, 0));         // Left of the region.
+
+	cf_free(px);
+	cf_destroy_canvas(canvas);
+	return true;
+}
 
 // A canvas recreation landing mid-recording must not corrupt the retained draw list:
 // recording runs in identity space (cf_draw_list_begin) and replay composes the live
@@ -312,6 +482,7 @@ TEST_CASE(test_hidpi_draw_list_recorded_across_resize)
 
 TEST_SUITE(test_hidpi)
 {
+	RUN_TEST_CASE(test_hidpi_scale_rect_rounds_edges);
 	RUN_TEST_CASE(test_hidpi_forced_scale_resizes_canvas);
 	RUN_TEST_CASE(test_hidpi_force_respects_no_high_dpi);
 	RUN_TEST_CASE(test_hidpi_force_is_safe_without_gfx);
@@ -319,5 +490,8 @@ TEST_SUITE(test_hidpi)
 	RUN_TEST_CASE(test_hidpi_full_extent_covers_app_canvas);
 	RUN_TEST_CASE(test_hidpi_first_frame_after_resize);
 	RUN_TEST_CASE(test_hidpi_one_shot_canvas_keeps_points_projection);
+	RUN_TEST_CASE(test_hidpi_scissor_is_logical_on_app_canvas);
+	RUN_TEST_CASE(test_hidpi_viewport_is_logical_on_app_canvas);
+	RUN_TEST_CASE(test_hidpi_scissor_stays_raw_on_user_canvas);
 	RUN_TEST_CASE(test_hidpi_draw_list_recorded_across_resize);
 }
