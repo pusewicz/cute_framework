@@ -156,14 +156,45 @@ static void s_canvas(int w, int h)
 	app->offscreen_canvas = cf_make_canvas(params);
 	app->canvas_w = w;
 	app->canvas_h = h;
-	cf_draw_on_app_canvas_resized(w, h);
+	// The default 2d projection spans LOGICAL units (window points), never canvas pixels:
+	// the canvas is normally app->w/h * pixel_scale physical pixels, and handing the hook
+	// that pixel size would halve everything drawn in point space on a 2x display. This
+	// holds for a one-shot cf_app_set_canvas_size override too -- draw coordinates stay in
+	// window points and the projection maps them onto whatever canvas is current.
+	cf_draw_on_app_canvas_resized(app->w, app->h);
 }
 
 void cf_app_recreate_default_canvas_if_needed()
 {
-	int w = (int)CF_ROUNDF(app->w * app->pixel_scale);
-	int h = (int)CF_ROUNDF(app->h * app->pixel_scale);
+	// The clamp keeps a degenerate pixel_scale (or a zero-sized window mid-minimize)
+	// from requesting a 0x0 canvas, which backends reject.
+	int w = cf_max((int)CF_ROUNDF(app->w * app->pixel_scale), 1);
+	int h = cf_max((int)CF_ROUNDF(app->h * app->pixel_scale), 1);
 	s_canvas(w, h);
+}
+
+void cf_app_force_pixel_scale(float scale)
+{
+	if (!app) return;
+	// NaN and negatives route to "clear" -- NaN fails every ordered comparison, so the
+	// test must be written inverted or it slips straight through to the canvas math.
+	if (!(scale > 0)) scale = 0;
+	// NO_HIGH_DPI pins pixel_scale at 1.0 and the real density path no-ops under it; a
+	// forced value must not manufacture a state production can never reach.
+	if (scale > 0 && (app->options & CF_APP_OPTIONS_NO_HIGH_DPI_BIT)) scale = 1.0f;
+	app->pixel_scale_override = scale;
+	float pixel_scale = scale;
+	if (pixel_scale <= 0) {
+		// Cleared: back to the real display density, same rules as init.
+		pixel_scale = app->window ? SDL_GetWindowPixelDensity(app->window) : 1.0f;
+		if (pixel_scale <= 0.0f) pixel_scale = 1.0f;
+		if (app->options & CF_APP_OPTIONS_NO_HIGH_DPI_BIT) pixel_scale = 1.0f;
+	}
+	if (pixel_scale != app->pixel_scale) {
+		app->pixel_scale = pixel_scale;
+		// NO_GFX apps have no canvas to recreate (cf_make_app only sizes one under use_gfx).
+		if (app->gfx_enabled) cf_app_recreate_default_canvas_if_needed();
+	}
 }
 
 CF_Result cf_make_app(const char* window_title, CF_DisplayID display_id, int x, int y, int w, int h, CF_AppOptionFlags options, const char* argv0)
