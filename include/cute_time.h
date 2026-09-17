@@ -144,9 +144,18 @@ CF_API void CF_CALL cf_set_fixed_timestep_max_updates(int max_updates);
  * @param    frames_per_second  Target frequency to run the app.
  * @remarks  This effect will try to render the game at a target framerate, similar to vsync. Set to -1 to disable this effect (disabled by default).
  *           This only affects rendering (not gameplay/update), see `cf_set_fixed_timestep` to control your gameplay/update framerate.
- * @related  cf_set_fixed_timestep cf_set_fixed_timestep_max_updates cf_update_time CF_DELTA_TIME_FIXED CF_DELTA_TIME_INTERPOLANT cf_set_target_framerate
+ * @related  cf_set_fixed_timestep cf_set_fixed_timestep_max_updates cf_update_time CF_DELTA_TIME_FIXED CF_DELTA_TIME_INTERPOLANT cf_set_target_framerate cf_get_target_framerate
  */
 CF_API void CF_CALL cf_set_target_framerate(int frames_per_second);
+
+/**
+ * @function cf_get_target_framerate
+ * @category time
+ * @brief    Returns the target framerate set by `cf_set_target_framerate`.
+ * @remarks  Returns -1 if no target framerate was set (the default).
+ * @related  cf_set_target_framerate cf_get_target_framerate
+ */
+CF_API int CF_CALL cf_get_target_framerate(void);
 
 /**
  * @function cf_set_update_udata
@@ -344,6 +353,7 @@ namespace Cute
 CF_INLINE void set_fixed_timestep(int frames_per_second = 60) { cf_set_fixed_timestep(frames_per_second); }
 CF_INLINE void set_fixed_timestep_max_updates(int max_updates = 5) { cf_set_fixed_timestep_max_updates(max_updates); }
 CF_INLINE void set_target_framerate(int frames_per_second = -1) { cf_set_target_framerate(frames_per_second); }
+CF_INLINE int get_target_framerate() { return cf_get_target_framerate(); }
 CF_INLINE void set_update_udata(void* udata) { cf_set_update_udata(udata); }
 CF_INLINE void update_time(CF_OnUpdateFn* on_update = NULL) { cf_update_time(on_update); }
 CF_INLINE void pause_for(float seconds) { cf_pause_for(seconds); }

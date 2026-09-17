@@ -296,6 +296,31 @@ TEST_CASE(test_app_msaa_4x_supported_when_2x_is)
 	return true;
 }
 
+TEST_CASE(test_get_target_framerate_reflects_set_value)
+{
+	cf_set_target_framerate(30);
+	REQUIRE(cf_get_target_framerate() == 30);
+	cf_set_target_framerate(120);
+	REQUIRE(cf_get_target_framerate() == 120);
+	cf_set_target_framerate(-1);
+	REQUIRE(cf_get_target_framerate() == -1);
+	return true;
+}
+
+// cf_app_get_smoothed_framerate seeds a function-local static on its first call ever in the
+// process, so this must be the only test case calling it (it stays untested if some earlier
+// test case calls it first).
+TEST_CASE(test_app_smoothed_framerate_seeds_near_target_framerate)
+{
+	cf_set_target_framerate(120);
+	CF_DELTA_TIME = 1.0f / 60.0f;
+	// lerp(120, 60, 1/60) = 119; an unseeded (0) start would instead give ~1.
+	float fps = cf_app_get_smoothed_framerate();
+	REQUIRE(fps > 110.0f && fps < 121.0f);
+	cf_set_target_framerate(-1);
+	return true;
+}
+
 TEST_SUITE(test_app)
 {
 	RUN_TEST_CASE(test_app_destroy_safety);
@@ -303,6 +328,8 @@ TEST_SUITE(test_app)
 	RUN_TEST_CASE(test_app_no_gfx_state_defaults);
 	RUN_TEST_CASE(test_display_count_matches_list);
 	RUN_TEST_CASE(test_display_invalid_id_is_safe);
+	RUN_TEST_CASE(test_get_target_framerate_reflects_set_value);
+	RUN_TEST_CASE(test_app_smoothed_framerate_seeds_near_target_framerate);
 
 	// Requires headless GPU context support in CI -- see
 	// https://github.com/RandyGaul/cute_framework/pull/517

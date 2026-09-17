@@ -851,7 +851,8 @@ CF_API float CF_CALL cf_app_get_framerate(void);
  * @function cf_app_get_smoothed_framerate
  * @category app
  * @brief    Returns the smoothed framerate of the application. Uses an exponential moving average whose smoothing factor is controlled by CF_FRAMERATE_SMOOTHING (default 60).
- * @related  cf_app_get_framerate cf_app_get_smoothed_framerate
+ * @remarks  The average is seeded with `cf_get_target_framerate` (see `cf_set_target_framerate`), or the display's refresh rate if no target framerate was set, so it starts near the real value instead of ramping up from 0.
+ * @related  cf_app_get_framerate cf_app_get_smoothed_framerate cf_set_target_framerate
  */
 CF_API float CF_CALL cf_app_get_smoothed_framerate(void);
 

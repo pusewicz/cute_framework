@@ -77,6 +77,11 @@ void cf_set_target_framerate(int frames_per_second)
 	target_framerate = frames_per_second;
 }
 
+int cf_get_target_framerate()
+{
+	return target_framerate;
+}
+
 static void s_step(uint64_t delta)
 {
 	CF_PREV_TICKS = CF_TICKS;

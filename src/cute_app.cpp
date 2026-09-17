@@ -888,7 +888,16 @@ SDL_Window* CF_CALL cf_app_get_window(void)
 
 float cf_app_get_smoothed_framerate()
 {
-	static float fps = 0;
+	static float fps = -1.0f;
+	if (fps < 0) {
+		int target_framerate = cf_get_target_framerate();
+		if (target_framerate > 0) {
+			fps = (float)target_framerate;
+		} else {
+			float refresh_rate = cf_display_refresh_rate(cf_default_display());
+			fps = refresh_rate > 0 ? refresh_rate : 60.0f;
+		}
+	}
 	fps = cf_lerp(fps, 1.0f / CF_DELTA_TIME, 1 / CF_FRAMERATE_SMOOTHING);
 	return fps;
 }
