@@ -232,6 +232,20 @@ CF_API void CF_CALL cf_easy_sprite_unload(CF_Sprite *sprite);
 CF_API CF_Sprite CF_CALL cf_make_sprite(const char* aseprite_path);
 
 /**
+ * @function cf_sprite_load
+ * @category sprite
+ * @brief    Loads a sprite from an aseprite file, returning an error instead of showing a message box.
+ * @param    aseprite_path  Virtual path to a .ase file.
+ * @param    sprite_out     Receives the loaded sprite, or `cf_sprite_defaults()` if loading fails.
+ * @return   Returns any errors as a `CF_Result`.
+ * @remarks  Loads and caches exactly as `cf_make_sprite` does. On failure `cf_make_sprite` shows a modal message box, which
+ *           blocks the calling thread until someone dismisses it; this function leaves reporting the error to the caller.
+ *           See [Virtual File System](https://randygaul.github.io/cute_framework/topics/virtual_file_system).
+ * @related  CF_Sprite cf_make_sprite cf_make_sprite_from_memory
+ */
+CF_API CF_Result CF_CALL cf_sprite_load(const char* aseprite_path, CF_Sprite* sprite_out);
+
+/**
  * @function cf_make_sprite_from_memory
  * @category sprite
  * @brief    Loads a sprite from an aseprite file already in memory.

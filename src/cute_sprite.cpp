@@ -103,6 +103,14 @@ CF_Sprite cf_make_sprite(const char* aseprite_path)
 	return s;
 }
 
+CF_Result cf_sprite_load(const char* aseprite_path, CF_Sprite* sprite_out)
+{
+	*sprite_out = cf_sprite_defaults();
+	CF_Result result = cf_aseprite_cache_load(aseprite_path, sprite_out);
+	if (cf_is_error(result)) *sprite_out = cf_sprite_defaults();
+	return result;
+}
+
 CF_Sprite cf_make_sprite_from_memory(const char* unique_name, const void* aseprite_data, int size)
 {
 	CF_Sprite s = cf_sprite_defaults();
