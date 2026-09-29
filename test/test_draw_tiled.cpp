@@ -2373,6 +2373,43 @@ TEST_CASE(test_draw_atlas_repack_gpu_copies)
 #endif // CF_STATIC
 }
 
+// Issue #624 scene: an opaque ground, then a box whose width is exactly zero.
+static void s_scene_zero_width_box()
+{
+	cf_draw_push_color(cf_make_color_rgb_f(0.3f, 0.7f, 0.3f));
+	cf_draw_box_fill(cf_make_aabb(cf_v2(-320, -240), cf_v2(320, -40)), 0);
+	cf_draw_pop_color();
+	cf_draw_push_color(cf_make_color_rgb_f(0.9f, 0.2f, 0.2f));
+	cf_draw_box_fill(cf_make_aabb(cf_v2(-50, 60), cf_v2(-50, 72)), 0);
+	cf_draw_box_fill(cf_make_aabb(cf_v2(-50, -150), cf_v2(-50, -100)), 0); // Zero-width box over the ground.
+	cf_draw_pop_color();
+}
+
+static int s_count_green(const CF_Pixel* px, int total)
+{
+	int n = 0;
+	for (int i = 0; i < total; ++i) {
+		if (px[i].colors.g > 150 && px[i].colors.r < 110 && px[i].colors.b < 110) n++;
+	}
+	return n;
+}
+
+TEST_CASE(test_draw_zero_width_box_keeps_batch)
+{
+	if (!test_make_app(640, 480)) return true; // Headless CI: no display/GPU.
+	const int w = 640, h = 480;
+	CF_Pixel* px = (CF_Pixel*)cf_alloc(w * h * sizeof(CF_Pixel));
+	for (int mode = 0; mode < 2; ++mode) {
+		REQUIRE(s_readback(s_scene_zero_width_box, mode, w, h, px));
+		int green = s_count_green(px, w * h);
+		if (green <= 120000) printf("zero-width box blanked the ground (mode %d): %d green pixels, expected ~128000\n", mode, green);
+		REQUIRE(green > 120000);
+	}
+	cf_free(px);
+	test_destroy_app();
+	return true;
+}
+
 TEST_SUITE(test_draw_tiled)
 {
 	// CF_TEST_ONLY=<case name> runs a single case, useful when isolating one scene.
@@ -2411,4 +2448,5 @@ TEST_SUITE(test_draw_tiled)
 	RUN_TEST_CASE_IF(test_draw_atlas_repack_gpu_copies);
 	RUN_TEST_CASE_IF(test_draw_canvas_blit_preserves_earlier_shapes);
 	RUN_TEST_CASE_IF(test_draw_lists);
+	RUN_TEST_CASE_IF(test_draw_zero_width_box_keeps_batch);
 }
