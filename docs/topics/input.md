@@ -89,6 +89,8 @@ for (int i = 0; i < touch_count; ++i) {
 
 If you'd like to see if a particular touch event is live, you can try to fetch it with [`cf_touch_get`](../input/function/cf_touch_get.md).
 
+A finger that is lifted again before your update runs is gone from `cf_touch_get_all`, so a quick tap can slip through that loop. To react to every new touch, loop over [`cf_touch_get_pressed`](../input/function/cf_touch_get_pressed.md) instead. It lists the touches that went down since the frame began, including ones already lifted, at the position they landed.
+
 ## Input Text
 
 You may at first assume the best way to get user input in the form of written text is to scan all the keystrokes as they come in with [`cf_key_just_pressed`](../input/function/cf_key_just_pressed.md). This can seem to work at first for languages like English, but doesn't actually work too well when considering more use-cases. For example, what if we want to type a capitalized letter? What if shift is held? What if we're typing in another language like Mandarin, Japanese, or Korean, where multiple keystrokes can compose a single (or sometimes multiple) glyphs?
