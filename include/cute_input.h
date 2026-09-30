@@ -939,7 +939,7 @@ CF_API bool CF_CALL cf_input_get_ime_composition(CF_ImeComposition* composition)
  * @struct   CF_Touch
  * @category input
  * @brief    Represents a single touch event on the device.
- * @related  CF_Touch cf_touch_get_all cf_touch_get
+ * @related  CF_Touch cf_touch_get_all cf_touch_get cf_touch_get_pressed
  */
 typedef struct CF_Touch
 {
@@ -969,7 +969,7 @@ typedef struct CF_Touch
  *     for (int i = 0; i < touch_count; ++i) {
  *         do_something(touches[i]);
  *     }
- * @related  CF_Touch cf_touch_get_all cf_touch_get
+ * @related  CF_Touch cf_touch_get_all cf_touch_get cf_touch_get_pressed
  */
 CF_API int CF_CALL cf_touch_get_all(CF_Touch** touch_all);
 
@@ -983,9 +983,28 @@ CF_API int CF_CALL cf_touch_get_all(CF_Touch** touch_all);
  * @remarks  You should use `cf_touch_get_all` to peek at all current touch events. Make note of any touch events that are
  *           new. Then, you can loop over all touch events you've noted with this function, and remove them when they
  *           become unavailable.
- * @related  CF_Touch cf_touch_get_all cf_touch_get
+ * @related  CF_Touch cf_touch_get_all cf_touch_get cf_touch_get_pressed
  */
 CF_API bool CF_CALL cf_touch_get(uint64_t id, CF_Touch* touch);
+
+/**
+ * @function cf_touch_get_pressed
+ * @category input
+ * @brief    Returns an array of the touches that went down since the current frame began.
+ * @param    touches        An array of `CF_Touch` touch events. Valid until the next frame begins. See example section.
+ * @return   Returns the number of `CF_Touch` events in `touches`.
+ * @remarks  A touch stays in this list even when the finger was lifted again before you looked, and holds the position the
+ *           finger landed at. `cf_touch_get_all` only lists fingers currently down, so a quick tap that starts and ends
+ *           within one frame never shows up there. This is the touch counterpart of `cf_mouse_just_pressed`.
+ * @example > Reacting to each new touch.
+ *     CF_Touch* touches = NULL;
+ *     int touch_count = cf_touch_get_pressed(&touches);
+ *     for (int i = 0; i < touch_count; ++i) {
+ *         on_tap(touches[i].x, touches[i].y);
+ *     }
+ * @related  CF_Touch cf_touch_get_all cf_touch_get cf_mouse_just_pressed
+ */
+CF_API int CF_CALL cf_touch_get_pressed(CF_Touch** touches);
 
 #ifdef __cplusplus
 }
@@ -1044,6 +1063,7 @@ CF_INLINE float mouse_motion_y() { return cf_mouse_motion_y(); }
 CF_INLINE void mouse_set_relative_mode(bool true_for_relative) { cf_mouse_set_relative_mode(true_for_relative); }
 CF_INLINE int touch_get_all(CF_Touch** touches) { return cf_touch_get_all(touches); }
 CF_INLINE bool touch_get(uint64_t id, CF_Touch* touch) { return cf_touch_get(id,touch); }
+CF_INLINE int touch_get_pressed(CF_Touch** touches) { return cf_touch_get_pressed(touches); }
 
 }
 

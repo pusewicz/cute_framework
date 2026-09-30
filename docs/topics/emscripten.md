@@ -86,6 +86,22 @@ Also don't forget to call `emscripten_set_main_loop` from your `main` function! 
 
 Where `upduate` will be run once per game tick, and replace your usually main loop body.
 
+## Asyncify, JSPI or Nothing
+
+A web page can't block, so anything that waits (`cf_sleep`, a coroutine yielding) has to hand control back to the browser. By default CF builds with Emscripten's ASYNCIFY, which rewrites the wasm so it can unwind and resume. That costs output size, and it isn't needed if nothing in your game waits. Pick another mode when configuring CF with `CF_EMSCRIPTEN_ASYNC`:
+
+| Value | Behavior |
+|---|---|
+| `asyncify` | The default. Needed for coroutines, and for `cf_sleep` to yield to the browser. |
+| `jspi` | WebAssembly JavaScript Promise Integration (`-sJSPI`). Needs a browser that supports it, and nothing may suspend outside a `WebAssembly.promising` export, which SDL's callback main loop is not. |
+| `none` | No suspension support at all. The smallest output and it runs in any WebGL 2 browser, but coroutines and `cf_sleep` can't yield. |
+
+With `jspi` or `none`, CF also stops waiting on GPU fences when it reuses a buffer it uploaded to earlier in the frame. WebGL orders uploads and draws by itself, so nothing is lost.
+
+```
+emcmake cmake -B build_web -S . -DCF_EMSCRIPTEN_ASYNC=none
+```
+
 ## Example Game Project
 
 The [Cute Snake](https://github.com/RandyGaul/cute_snake/blob/master/README.md) game project is a good example of how to setup an Emscripten build with CMake.

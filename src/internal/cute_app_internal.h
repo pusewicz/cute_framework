@@ -165,6 +165,7 @@ struct CF_App
 	void (*key_callback)(CF_KeyButton key, bool true_down_false_up) = NULL;
 	CF_MouseState mouse, mouse_prev;
 	Cute::Array<CF_Touch> touches;
+	Cute::Array<CF_Touch> touches_pressed; // Touches that went down since the frame began, even ones already lifted.
 
 	// SDL callback stuff
 	Cute::Array<CF_PendingEvent> pending_events;
