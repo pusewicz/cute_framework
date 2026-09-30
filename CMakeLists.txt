@@ -314,7 +314,7 @@ if(EMSCRIPTEN)
 	set(PHYSFS_BUILD_STATIC ON  CACHE BOOL "" FORCE)
 
 	target_compile_options(cute PUBLIC -sUSE_SDL=3)
-	target_compile_options(cute PRIVATE -gsplit-dwarf)
+	target_compile_options(cute PRIVATE $<$<CONFIG:Debug,RelWithDebInfo>:-gsplit-dwarf>)
 	# CF requires WebGL 2, but imgui_impl_opengl3 auto-selects its ES2 path on Emscripten, which
 	# compiles out glBindSampler: CF's sampler objects then stay bound to unit 0 during ImGui draws.
 	target_compile_definitions(cute PRIVATE IMGUI_IMPL_OPENGL_ES3)
@@ -335,7 +335,9 @@ if(EMSCRIPTEN)
 		-sASYNCIFY_REMOVE=@${CMAKE_CURRENT_SOURCE_DIR}/cmake/asyncify_remove.txt
 	)
 
-	target_compile_options(cute PRIVATE -O1 -fno-rtti -fno-exceptions)
+	# -O1 only for Debug, where it keeps links fast. Target options land after CMAKE_<LANG>_FLAGS_<CONFIG>,
+	# so an unconditional -O1 would cap every other configuration's optimisation level too.
+	target_compile_options(cute PRIVATE $<$<CONFIG:Debug>:-O1> -fno-rtti -fno-exceptions)
 endif()
 
 if(ANDROID)
