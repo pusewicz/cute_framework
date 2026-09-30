@@ -782,7 +782,11 @@ void cf_pump_input_msgs()
 			}
 		}	break;
 
+		// A cancelled finger is gone as far as the game can tell, whether the OS took it for a system
+		// gesture or, on the web, it left the canvas. Nothing else ever ends it, so without this it
+		// would stay in the list of live touches for good.
 		case SDL_EVENT_FINGER_UP:
+		case SDL_EVENT_FINGER_CANCELED:
 		{
 			uint64_t id = (uint64_t)event.tfinger.fingerID;
 			s_touch_remove(id);
