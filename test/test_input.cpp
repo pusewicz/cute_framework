@@ -103,8 +103,31 @@ TEST_CASE(test_touch_pressed_lasts_one_frame)
 	return true;
 }
 
+// A cancelled finger never gets an UP, so it has to leave the live touches on its own, or it stays
+// held for good (a stick stuck on, a button that never lets go).
+TEST_CASE(test_touch_cancelled_finger_leaves_the_live_touches)
+{
+	REQUIRE(s_make_headless_app());
+	TouchAppGuard guard;
+
+	s_push_finger(SDL_EVENT_FINGER_DOWN, 3, 0.5f, 0.5f);
+	s_push_finger(SDL_EVENT_FINGER_DOWN, 4, 0.2f, 0.2f);
+	cf_app_update(NULL);
+	CF_Touch* live = NULL;
+	REQUIRE(cf_touch_get_all(&live) == 2);
+
+	s_push_finger(SDL_EVENT_FINGER_CANCELED, 3, 0.5f, 0.5f);
+	cf_app_update(NULL);
+	REQUIRE(cf_touch_get_all(&live) == 1);
+	REQUIRE(live[0].id == 4);
+	CF_Touch gone;
+	REQUIRE(!cf_touch_get(3, &gone));
+	return true;
+}
+
 TEST_SUITE(test_input)
 {
 	RUN_TEST_CASE(test_touch_pressed_reports_a_tap_lifted_within_the_frame);
 	RUN_TEST_CASE(test_touch_pressed_lasts_one_frame);
+	RUN_TEST_CASE(test_touch_cancelled_finger_leaves_the_live_touches);
 }
