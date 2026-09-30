@@ -6,6 +6,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     name: "${{ matrix.os }} / ${{ matrix.compiler }} / ${{ matrix.framework_static == 'ON' && 'static' || 'shared' }}"
+    if: github.repository == 'RandyGaul/cute_framework'
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
 
@@ -184,6 +185,7 @@ jobs:
 
   emscripten:
     name: "emscripten / emcc / static"
+    if: github.repository == 'RandyGaul/cute_framework'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -219,6 +221,7 @@ jobs:
 
   gles-tests:
     name: "linux / gles3"
+    if: github.repository == 'RandyGaul/cute_framework'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
