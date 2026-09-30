@@ -32,6 +32,7 @@ TEST_SUITE(test_alloc);
 TEST_SUITE(test_app);
 TEST_SUITE(test_array);
 TEST_SUITE(test_aseprite);
+TEST_SUITE(test_input);
 TEST_SUITE(test_video);
 TEST_SUITE(test_audio);
 TEST_SUITE(test_base64);
@@ -111,6 +112,7 @@ int main(int argc, char* argv[])
 	RUN_TRACED(test_app);
 	RUN_TRACED(test_array);
 	RUN_TRACED(test_aseprite);
+	RUN_TRACED(test_input);
 	RUN_TRACED(test_audio);
 	RUN_TRACED(test_base64);
 	RUN_TRACED(test_color);
