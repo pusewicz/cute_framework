@@ -556,6 +556,17 @@ static inline CF_GL_Slot* s_force_slot(CF_GL_Ring* ring, uint32_t frame, int* ou
 	int index = ring->head;
 	CF_GL_Slot& slot = ring->slots[index];
 	if (!s_slot_ready(slot)) {
+#ifdef CF_EMSCRIPTEN_NO_SLOT_WAIT
+		// A web build without asyncify has nothing that can yield to the browser, and WebGL can't block on
+		// a fence anyway. It doesn't need to: WebGL copies every upload into its command stream, so draws
+		// still in flight read the storage they were issued against, and s_prepare_buffer_slot orphans the
+		// buffer or appends past them. Reuse the slot now.
+		if (slot.fence) {
+			glDeleteSync(slot.fence);
+			slot.fence = 0;
+		}
+		slot.in_flight_frame = 0;
+#else
 		// Block the CPU until the GPU is done with this slot.
 		// If you're seeing this on the hot-path of a profile or flame-graph it means you're GPU bound.
 		if (slot.in_flight_frame == g_ctx.frame_index && !slot.fence) {
@@ -576,6 +587,7 @@ static inline CF_GL_Slot* s_force_slot(CF_GL_Ring* ring, uint32_t frame, int* ou
 			slot.in_flight_frame = 0;
 		}
 		while (!s_slot_ready(slot)) cf_sleep(0);
+#endif
 #endif
 	}
 	slot.last_use_frame = frame;
