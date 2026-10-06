@@ -313,8 +313,23 @@ if(EMSCRIPTEN)
 	set(PHYSFS_BUILD_SHARED OFF CACHE BOOL "" FORCE)
 	set(PHYSFS_BUILD_STATIC ON  CACHE BOOL "" FORCE)
 
+	# How a web build lets code suspend (cf_sleep, coroutines) and hands control back to the browser:
+	#   asyncify  Binaryen rewrites the wasm so it can unwind and resume. The default, and what coroutines need.
+	#   jspi      WebAssembly JavaScript Promise Integration. Nothing may suspend outside a promising export,
+	#             and SDL's callback main loop is not one, so this is only useful once nothing suspends.
+	#   none      No suspension support. Smallest output, but coroutines and cf_sleep can't yield to the browser.
+	# jspi and none also skip the one wait CF's own code makes: the upload slot fence in s_force_slot.
+	set(CF_EMSCRIPTEN_ASYNC "asyncify" CACHE STRING "How a web build suspends: asyncify, jspi or none.")
+	set_property(CACHE CF_EMSCRIPTEN_ASYNC PROPERTY STRINGS asyncify jspi none)
+	if(NOT CF_EMSCRIPTEN_ASYNC MATCHES "^(asyncify|jspi|none)$")
+		message(FATAL_ERROR "CF_EMSCRIPTEN_ASYNC must be asyncify, jspi or none, not '${CF_EMSCRIPTEN_ASYNC}'.")
+	endif()
+	if(NOT CF_EMSCRIPTEN_ASYNC STREQUAL "asyncify")
+		target_compile_definitions(cute PRIVATE CF_EMSCRIPTEN_NO_SLOT_WAIT)
+	endif()
+
 	target_compile_options(cute PUBLIC -sUSE_SDL=3)
-	target_compile_options(cute PRIVATE -gsplit-dwarf)
+	target_compile_options(cute PRIVATE $<$<CONFIG:Debug,RelWithDebInfo>:-gsplit-dwarf>)
 	# CF requires WebGL 2, but imgui_impl_opengl3 auto-selects its ES2 path on Emscripten, which
 	# compiles out glBindSampler: CF's sampler objects then stay bound to unit 0 during ImGui draws.
 	target_compile_definitions(cute PRIVATE IMGUI_IMPL_OPENGL_ES3)
@@ -325,17 +340,25 @@ if(EMSCRIPTEN)
 		-sFULL_ES3=1
 		-sALLOW_MEMORY_GROWTH=1
 		-sFILESYSTEM=1
-		-sASYNCIFY=1
-		-sASYNCIFY_STACK_SIZE=2040000
-		# Skip ASYNCIFY instrumentation for functions proven never to suspend
-		# (never reach cf_sleep / a coroutine yield / a fiber swap). This severs
-		# the allocator hub (cf_alloc & co, an indirect call) and the cspv shader
-		# compiler from the instrumented set, shrinking the wasm-opt link pass and
-		# the output module. See cmake/asyncify_remove.txt for the list + contract.
-		-sASYNCIFY_REMOVE=@${CMAKE_CURRENT_SOURCE_DIR}/cmake/asyncify_remove.txt
 	)
+	if(CF_EMSCRIPTEN_ASYNC STREQUAL "asyncify")
+		target_link_options(cute INTERFACE
+			-sASYNCIFY=1
+			-sASYNCIFY_STACK_SIZE=2040000
+			# Skip ASYNCIFY instrumentation for functions proven never to suspend
+			# (never reach cf_sleep / a coroutine yield / a fiber swap). This severs
+			# the allocator hub (cf_alloc & co, an indirect call) and the cspv shader
+			# compiler from the instrumented set, shrinking the wasm-opt link pass and
+			# the output module. See cmake/asyncify_remove.txt for the list + contract.
+			-sASYNCIFY_REMOVE=@${CMAKE_CURRENT_SOURCE_DIR}/cmake/asyncify_remove.txt
+		)
+	elseif(CF_EMSCRIPTEN_ASYNC STREQUAL "jspi")
+		target_link_options(cute INTERFACE -sJSPI)
+	endif()
 
-	target_compile_options(cute PRIVATE -O1 -fno-rtti -fno-exceptions)
+	# -O1 only for Debug, where it keeps links fast. Target options land after CMAKE_<LANG>_FLAGS_<CONFIG>,
+	# so an unconditional -O1 would cap every other configuration's optimisation level too.
+	target_compile_options(cute PRIVATE $<$<CONFIG:Debug>:-O1> -fno-rtti -fno-exceptions)
 endif()
 
 if(ANDROID)

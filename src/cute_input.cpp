@@ -464,11 +464,20 @@ bool cf_touch_get(uint64_t id, CF_Touch* touch)
 	return false;
 }
 
+int cf_touch_get_pressed(CF_Touch** touches)
+{
+	if (touches) {
+		*touches = app->touches_pressed.data();
+	}
+	return app->touches_pressed.count();
+}
+
 void cf_begin_frame_input()
 {
 	// Clear any necessary single-frame state and copy to `prev` states.
 	app->mouse.xrel = 0;
 	app->mouse.yrel = 0;
+	app->touches_pressed.clear();
 	CF_MEMCPY(app->keys_prev, app->keys, sizeof(app->keys));
 	CF_MEMCPY(&app->mouse_prev, &app->mouse, sizeof(app->mouse));
 	CF_MEMCPY(&app->window_state_prev, &app->window_state, sizeof(app->window_state));
@@ -745,6 +754,8 @@ void cf_pump_input_msgs()
 			// Normalized [0,1], exactly as the header documents (SDL's tfinger is already so).
 			touch.x = event.tfinger.x;
 			touch.y = event.tfinger.y;
+			// A copy, so the press survives a FINGER_UP in the same frame and keeps the position it landed at.
+			app->touches_pressed.add(touch);
 		}	break;
 
 		case SDL_EVENT_FINGER_MOTION:
@@ -771,7 +782,11 @@ void cf_pump_input_msgs()
 			}
 		}	break;
 
+		// A cancelled finger is gone as far as the game can tell, whether the OS took it for a system
+		// gesture or, on the web, it left the canvas. Nothing else ever ends it, so without this it
+		// would stay in the list of live touches for good.
 		case SDL_EVENT_FINGER_UP:
+		case SDL_EVENT_FINGER_CANCELED:
 		{
 			uint64_t id = (uint64_t)event.tfinger.fingerID;
 			s_touch_remove(id);
