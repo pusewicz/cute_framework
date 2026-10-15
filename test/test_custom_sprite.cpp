@@ -59,6 +59,8 @@ TEST_CASE(test_custom_sprite_all)
 
 	cf_sprite_play(&sprite, "blink");
 	REQUIRE(cf_sprite_animation_count(&sprite) == 3);
+	REQUIRE(cf_sprite_layer_count(&sprite) == 0);
+	REQUIRE(cf_sprite_layer_name_at(&sprite, 0) == NULL);
 	REQUIRE(sprite.frame_index == 0);
 
 	CF_DELTA_TIME = 0.5f; // Hacky, yes.
