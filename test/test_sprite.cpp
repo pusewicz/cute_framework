@@ -12,6 +12,7 @@
 using namespace Cute;
 
 #include <internal/cute_girl.h>
+#include "layers.h"
 #include "slice_keys.h"
 
 /* Load a sprite destroy it. */
@@ -110,10 +111,34 @@ TEST_CASE(test_sprite_slice_keys)
 	return true;
 }
 
+/* Layers come in file order, bottom first, groups included: the names cf_sprite_add_blend takes. */
+TEST_CASE(test_sprite_layer_names)
+{
+	CHECK(cf_is_error(cf_make_app(NULL, 0, 0, 0, 0, 0, CF_APP_OPTIONS_HIDDEN_BIT | CF_APP_OPTIONS_NO_AUDIO_BIT | CF_APP_OPTIONS_NO_GFX_BIT, NULL)));
+	CF_Sprite s = cf_make_sprite_from_memory("layers.ase", layers_data, layers_sz);
+	REQUIRE(s.name);
+
+	REQUIRE(cf_sprite_layer_count(&s) == 3);
+	REQUIRE(cf_sprite_layer_name_at(&s, 0) == sintern("shadow"));
+	REQUIRE(cf_sprite_layer_name_at(&s, 1) == sintern("rig"));
+	REQUIRE(cf_sprite_layer_name_at(&s, 2) == sintern("body"));
+	REQUIRE(cf_sprite_layer_name_at(&s, -1) == NULL);
+	REQUIRE(cf_sprite_layer_name_at(&s, 3) == NULL);
+
+	// A sprite with no aseprite file behind it has no layers.
+	CF_Sprite none = cf_sprite_defaults();
+	REQUIRE(cf_sprite_layer_count(&none) == 0);
+	REQUIRE(cf_sprite_layer_name_at(&none, 0) == NULL);
+
+	cf_destroy_app();
+	return true;
+}
+
 TEST_SUITE(test_sprite)
 {
 	RUN_TEST_CASE(test_make_sprite);
 	RUN_TEST_CASE(test_easy_sprite_unload);
 	RUN_TEST_CASE(test_easy_sprite_center_patch);
 	RUN_TEST_CASE(test_sprite_slice_keys);
+	RUN_TEST_CASE(test_sprite_layer_names);
 }

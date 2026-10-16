@@ -468,6 +468,23 @@ const char* cf_sprite_animation_name_at(const CF_Sprite* sprite, int index)
 	return anim_vals[index]->name;
 }
 
+int cf_sprite_layer_count(const CF_Sprite* sprite)
+{
+	CF_ASSERT(sprite);
+	if (sprite->id == CF_SPRITE_ID_INVALID) return 0;
+	CF_SpriteAsset* asset = cf_sprite_get_asset(sprite->id);
+	return asset->ase ? asset->ase->layer_count : 0;
+}
+
+const char* cf_sprite_layer_name_at(const CF_Sprite* sprite, int index)
+{
+	CF_ASSERT(sprite);
+	if (index < 0 || index >= cf_sprite_layer_count(sprite)) return NULL;
+	CF_SpriteAsset* asset = cf_sprite_get_asset(sprite->id);
+	// Interned, so the name outlives the ase a reload frees.
+	return sintern(asset->ase->layers[index].name);
+}
+
 CF_V2 cf_sprite_pivot(const CF_Sprite* sprite)
 {
 	CF_ASSERT(sprite);
