@@ -296,6 +296,27 @@ CF_API int CF_CALL cf_sprite_animation_count(const CF_Sprite* sprite);
 CF_API const char* CF_CALL cf_sprite_animation_name_at(const CF_Sprite* sprite, int index);
 
 /**
+ * @function cf_sprite_layer_count
+ * @category sprite
+ * @brief    Returns the number of layers in the sprite's aseprite file, group layers included.
+ * @param    sprite     The sprite.
+ * @remarks  Returns 0 for a sprite without an aseprite file behind it, such as an easy or custom sprite.
+ * @related  CF_Sprite cf_sprite_layer_count cf_sprite_layer_name_at cf_sprite_add_blend
+ */
+CF_API int CF_CALL cf_sprite_layer_count(const CF_Sprite* sprite);
+
+/**
+ * @function cf_sprite_layer_name_at
+ * @category sprite
+ * @brief    Returns the name of the layer at the given index, as `cf_sprite_add_blend` takes it.
+ * @param    sprite     The sprite.
+ * @param    index      Zero-based index of the layer, in file order: the bottom layer first.
+ * @return   An interned string, or NULL if out of range.
+ * @related  CF_Sprite cf_sprite_layer_count cf_sprite_layer_name_at cf_sprite_add_blend
+ */
+CF_API const char* CF_CALL cf_sprite_layer_name_at(const CF_Sprite* sprite, int index);
+
+/**
  * @function cf_sprite_pivot
  * @category sprite
  * @brief    Returns the cached pivot of the current frame.
@@ -489,7 +510,8 @@ CF_INLINE bool cf_sprite_get_loop(CF_Sprite* sprite) { CF_ASSERT(sprite); return
  * @function cf_sprite_get_slice
  * @category sprite
  * @brief    Searches for and returns a particular slice. A zero'd out `CF_Aabb` is returned if no match was found.
- * @remarks  Only fetches for slices within the current frame of the current animation.
+ * @remarks  Returns the slice as it is on the current frame of the current animation: its latest key at or before that frame,
+ *           the way Aseprite shows it. A slice whose first key comes after the current frame is not found.
  * @related  CF_Sprite CF_SpriteSlice cf_sprite_get_slice
  */
 CF_API CF_Aabb CF_CALL cf_sprite_get_slice(CF_Sprite* sprite, const char* name);
@@ -846,6 +868,8 @@ CF_INLINE void sprite_reload(CF_Sprite* sprite) { cf_sprite_reload(sprite); }
 CF_INLINE void sprite_reload(CF_Sprite& sprite) { cf_sprite_reload(&sprite); }
 CF_INLINE int sprite_animation_count(const CF_Sprite* sprite) { return cf_sprite_animation_count(sprite); }
 CF_INLINE const char* sprite_animation_name_at(const CF_Sprite* sprite, int index) { return cf_sprite_animation_name_at(sprite, index); }
+CF_INLINE int sprite_layer_count(const CF_Sprite* sprite) { return cf_sprite_layer_count(sprite); }
+CF_INLINE const char* sprite_layer_name_at(const CF_Sprite* sprite, int index) { return cf_sprite_layer_name_at(sprite, index); }
 CF_INLINE CF_V2 sprite_pivot(const CF_Sprite* sprite) { return cf_sprite_pivot(sprite); }
 CF_INLINE void easy_sprite_update_pixels(CF_Sprite* sprite, const CF_Pixel* pixels) { cf_easy_sprite_update_pixels(sprite, pixels); }
 CF_INLINE void easy_sprite_unload(CF_Sprite* sprite) { cf_easy_sprite_unload(sprite); }
